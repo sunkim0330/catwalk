@@ -14,3 +14,5 @@ Installation
 Usage
 
 Team Members - Chris(Team Lead), Sun(Team Goal Tracker), Kate(Team Member), Alex(Tech Lead)
+
+Roadmap - still deciding. tba
