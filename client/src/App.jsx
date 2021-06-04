@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Overview from './Overview';
+import Related from './Related';
+import QandAs from './Q&As';
+import Reviews from './Reviews';
+
 
 const App = () => {
-  const [selectedCow, setSelectedCow] = React.useState({ cowName: 'betty', cowDescription: 'a pretty cool cow' });
-  const [cowList, setCowList] = React.useState([]);
+  const [currentProduct, setCurrentProduct] = React.useState({});
 
-  const eventHandler = () => {
 
-  };
+  useEffect(() => {
+    axios.get('/products/19089')
+      .then((response) => {
+        setCurrentProduct(response.data);
+      });
+  }, []);
 
   return (
     <div>
-      <List cowList={cowList}/>
-      <button onClick={eventHandler}></button>
+      Super Fun Shopping Experience
+      <Overview product={currentProduct}/>
+      <Related product={currentProduct}/>
+      <QandAs product={currentProduct}/>
+      <Reviews product={currentProduct}/>
     </div>
   );
 };

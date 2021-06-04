@@ -4,7 +4,9 @@
   "description": "super cool front end thingy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js",
+    "build": "webpack -w",
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,20 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "@testing-library/react": "^11.2.7",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.27.0",
-    "eslint-plugin-react": "^7.24.0"
+    "eslint-plugin-react": "^7.24.0",
+    "install": "^0.13.0",
+    "jest": "^27.0.4",
+    "jsdom": "^16.6.0",
+    "npm": "^7.16.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
   }
 }

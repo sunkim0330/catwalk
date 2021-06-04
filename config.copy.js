@@ -1,0 +1,1 @@
+const GIT_TOKEN = 'your key here';
