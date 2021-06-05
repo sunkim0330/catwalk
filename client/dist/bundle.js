@@ -415,6 +415,50 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./client/src/Reviews/AddReview.jsx":
+/*!******************************************!*\
+  !*** ./client/src/Reviews/AddReview.jsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar AddReview = function AddReview() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddReview);\n\n//# sourceURL=webpack://catwalk/./client/src/Reviews/AddReview.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/Reviews/Breakdown.jsx":
+/*!******************************************!*\
+  !*** ./client/src/Reviews/Breakdown.jsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar Breakdown = function Breakdown() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Breakdown);\n\n//# sourceURL=webpack://catwalk/./client/src/Reviews/Breakdown.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/Reviews/Characteristics.jsx":
+/*!************************************************!*\
+  !*** ./client/src/Reviews/Characteristics.jsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar Characteristics = function Characteristics() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Characteristics);\n\n//# sourceURL=webpack://catwalk/./client/src/Reviews/Characteristics.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/Reviews/Review.jsx":
+/*!***************************************!*\
+  !*** ./client/src/Reviews/Review.jsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar Review = function Review() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Review);\n\n//# sourceURL=webpack://catwalk/./client/src/Reviews/Review.jsx?");
+
+/***/ }),
+
 /***/ "./client/src/Reviews/index.jsx":
 /*!**************************************!*\
   !*** ./client/src/Reviews/index.jsx ***!
@@ -422,7 +466,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nvar Reviews = function Reviews(_ref) {\n  var product = _ref.product;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Reviews\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);\n\n//# sourceURL=webpack://catwalk/./client/src/Reviews/index.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ \"./node_modules/@babel/runtime/helpers/esm/slicedToArray.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _AddReview_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddReview.jsx */ \"./client/src/Reviews/AddReview.jsx\");\n/* harmony import */ var _Breakdown_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Breakdown.jsx */ \"./client/src/Reviews/Breakdown.jsx\");\n/* harmony import */ var _Characteristics_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Characteristics.jsx */ \"./client/src/Reviews/Characteristics.jsx\");\n/* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Review */ \"./client/src/Reviews/Review.jsx\");\n\n\n\n\n\n\n\n\nvar Reviews = function Reviews(_ref) {\n  var product = _ref.product;\n\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),\n      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),\n      reviews = _useState2[0],\n      setReviews = _useState2[1];\n\n  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),\n      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),\n      totalReviews = _useState4[0],\n      setTotalReviews = _useState4[1];\n\n  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),\n      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState5, 2),\n      avgRating = _useState6[0],\n      setAvgRating = _useState6[1];\n\n  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),\n      _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState7, 2),\n      meta = _useState8[0],\n      setMeta = _useState8[1];\n\n  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),\n      _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState9, 2),\n      filter = _useState10[0],\n      setFilter = _useState10[1];\n\n  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),\n      _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState11, 2),\n      sort = _useState12[0],\n      setSort = _useState12[1];\n\n  var getReviews = function getReviews(productId) {\n    return productId !== undefined ? axios__WEBPACK_IMPORTED_MODULE_2___default().get(\"/reviews/?product_id=\".concat(productId, \"&count=100\")).then(function (results) {\n      var newReviews = results.data.results;\n      setReviews(newReviews);\n      setTotalReviews(newReviews.length);\n      setAvgRating(getAvg(newReviews));\n    }) : null;\n  };\n\n  var getMeta = function getMeta(productId) {\n    return productId !== undefined ? axios__WEBPACK_IMPORTED_MODULE_2___default().get(\"/reviews/meta/?product_id=\".concat(productId)).then(function (results) {\n      return setMeta(results.data);\n    }) : null;\n  };\n\n  var getAvg = function getAvg(reviews) {\n    var total = 0;\n    reviews.forEach(function (review) {\n      return total += review.rating;\n    });\n    return (total / reviews.length).toFixed(1);\n  };\n\n  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {\n    getReviews(product.id);\n    getMeta(product.id);\n  }, [product]);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(\"div\", null, \"Reviews\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);\n\n//# sourceURL=webpack://catwalk/./client/src/Reviews/index.jsx?");
 
 /***/ }),
 
