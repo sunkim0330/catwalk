@@ -61,7 +61,7 @@ const Overview = ({ product }) => {
       <Gallery images={styles[currentStyle]}/>
       <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating}/>
       <StyleSelector styles={styles} styleSelector={setCurrentStyle}/>
-      <CartManagement />
+      <CartManagement styleInventory={styles[currentStyle].skus}/>
       <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
     </div>
   );
