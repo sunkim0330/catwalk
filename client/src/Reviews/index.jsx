@@ -13,25 +13,19 @@ const Reviews = ({ product }) => {
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('');
 
-  const getReviews = (productId) => {
-    return productId !== undefined
-      ? axios.get(`/reviews/?product_id=${productId}&count=100`)
-        .then((results) => {
-          let newReviews = results.data.results;
-          setReviews(newReviews);
-          setTotalReviews(newReviews.length);
-          setAvgRating(getAvg(newReviews));
-        })
-
-      : null;
+  const getReviews = () => {
+    axios.get(`/reviews/?product_id=${product.id}&count=100`)
+      .then((results) => {
+        let newReviews = results.data.results;
+        setReviews(newReviews);
+        setTotalReviews(newReviews.length);
+        setAvgRating(getAvg(newReviews));
+      });
   };
 
-  const getMeta = (productId) => {
-    return productId !== undefined
-      ? axios.get(`/reviews/meta/?product_id=${productId}`)
-        .then(results => setMeta(results.data))
-
-      : null;
+  const getMeta = () => {
+    axios.get(`/reviews/meta/?product_id=${product.id}`)
+      .then(results => setMeta(results.data));
   };
 
   const getAvg = (reviews) => {
@@ -41,9 +35,11 @@ const Reviews = ({ product }) => {
   };
 
   useEffect(() => {
-    getReviews(product.id);
-    getMeta(product.id);
-  }, [product]);
+    if (product.id) {
+      getReviews();
+      getMeta();
+    }
+  }, [product.id]);
 
 
 
