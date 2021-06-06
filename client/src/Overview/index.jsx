@@ -14,10 +14,9 @@ const Overview = ({ product }) => {
 
   const [styles, setStyles] = useState(defaultStyles);
   const [currentStyle, setCurrentStyle] = useState(0);
-  const [averageRating, setAverageRating] = useState(0); // might be more efficient to store this in base app level for use elsewhere
+  const [averageRating, setAverageRating] = useState(0);
 
   // algorithim found here https://stackoverflow.com/questions/10196579/algorithm-used-to-calculate-5-star-ratings/38378697
-  // ((Number(ratings['1']) * 1 + Number(ratings['2']) * 2 + Number(ratings['3']) * 3 + Number(ratings['4']) * 4 + Number(ratings['5']) * 5) / (Number(ratings['1']) + Number(ratings['2']) + Number(ratings['3']) + Number(ratings['4']) + Number(ratings['5'])));
   const calculateReviewAverage = (ratings) => {
     let first = 0;
     let second = 0;
@@ -26,17 +25,16 @@ const Overview = ({ product }) => {
       second += Number(ratings[reviews]);
     }
     let average = first / second;
-    // toFixed rounds a decimal to the nearest specified tenths position
-    // 1 rounds to nearest tenth, 2 rounds to nearest hundredth, 3 to nearest thousandth, etc
     return Number(average.toFixed(1));
   };
-
-
 
   const getProductStyles = () => {
     axios.get(`/products/${product.id}/styles`)
       .then((response) => {
         setStyles(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -46,21 +44,22 @@ const Overview = ({ product }) => {
         let ratings = response.data.ratings;
         let ratingAverage = calculateReviewAverage(ratings);
         setAverageRating(ratingAverage);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
   useEffect(() => {
-    if (product.id) {
-      getProductStyles();
-      getProductRatings();
-    }
+    getProductStyles();
+    getProductRatings();
   }, [product.id]);
 
   return (
     <div id="overview">
       <h2>Overview Component</h2>
       <Gallery images={styles[currentStyle]}/>
-      <ProductInfo />
+      <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating}/>
       <StyleSelector styles={styles} styleSelector={setCurrentStyle}/>
       <CartManagement />
       <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
