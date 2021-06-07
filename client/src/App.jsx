@@ -21,7 +21,7 @@ const App = () => {
     <div>
       Super Fun Shopping Experience
       <Overview product={currentProduct}/>
-      <Related product={currentProduct}/>
+      <Related product={currentProduct} setCurrentProduct={setCurrentProduct}/>
       <QandAs product={currentProduct}/>
       <Reviews product={currentProduct}/>
     </div>
