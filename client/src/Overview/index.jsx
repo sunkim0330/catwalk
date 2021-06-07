@@ -15,18 +15,9 @@ const Overview = ({ product }) => {
   const [styles, setStyles] = useState(defaultStyles);
   const [currentStyle, setCurrentStyle] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
+  const [totalReviews, setTotalReviews] = useState(0);
 
   // algorithim found here https://stackoverflow.com/questions/10196579/algorithm-used-to-calculate-5-star-ratings/38378697
-  const calculateReviewAverage = (ratings) => {
-    let first = 0;
-    let second = 0;
-    for (let reviews in ratings) {
-      first += (Number(reviews) * Number(ratings[reviews]));
-      second += Number(ratings[reviews]);
-    }
-    let average = first / second;
-    return Number(average.toFixed(1));
-  };
 
   const getProductStyles = () => {
     axios.get(`/products/${product.id}/styles`)
@@ -48,6 +39,20 @@ const Overview = ({ product }) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const calculateReviewAverage = (ratings) => {
+    let first = 0;
+    let second = 0;
+    let reviewCount = 0;
+    for (let reviews in ratings) {
+      reviewCount += Number(ratings[reviews]);
+      first += (Number(reviews) * Number(ratings[reviews]));
+      second += Number(ratings[reviews]);
+    }
+    setTotalReviews(newReviewCount);
+    let average = first / second;
+    return Number(average.toFixed(1));
   };
 
   useEffect(() => {
