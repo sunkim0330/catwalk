@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
   const [ratings, setRatings] = useState({});
+  const [ratingsPct, setRatingsPct] = useState({});
   const [filters, setFilters] = useState({
     1: false,
     2: false,
@@ -41,6 +42,10 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
     setReviewsList(newReviewsList);
   };
 
+  const calculatePercentage = (numberOfRatings) => {
+    return (numberOfRatings / reviews.length) * 100;
+  };
+
   // get number of reviews for each rating
   useEffect(() => {
     let newRatings = {
@@ -60,6 +65,16 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
   useEffect(() => {
     filterReviews();
   }, [filters]);
+
+  // get the percentage of each rating, determine the width of the div bar for each rating
+  useEffect(() => {
+    let newRatingsPct = {};
+    for (let rating in ratings) {
+      let percentage = Math.round((ratings[rating] / reviews.length) * 100);
+      newRatingsPct[rating] = percentage;
+    }
+    setRatingsPct(newRatingsPct);
+  }, [reviews.length, ratings]);
 
   return (
     <div id="breakdown">
