@@ -6,8 +6,8 @@ import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 
 const Reviews = ({ product }) => {
-  const [reviews, setReviews] = useState([]);
-  const [reviewsList, setReviewsList] = useState([]); // this is the list of eligible reviews based on filters (used in Breadown)
+  const [reviews, setReviews] = useState([]); // all reviews
+  const [reviewsList, setReviewsList] = useState([]); // manipulable list for sorting/filtering
   const [currentReviews, setCurrentReviews] = useState([]);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
   const [totalReviews, setTotalReviews] = useState(0);
@@ -127,7 +127,7 @@ const Reviews = ({ product }) => {
 
         {/* move breakdown and char divs to their components? */}
         <div id="breakdown">
-          <Breakdown reviewsList={reviewsList} setReviewsList={setReviewsList}/>
+          <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList}/>
         </div>
 
         <div id="characteristics">
