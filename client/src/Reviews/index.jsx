@@ -7,6 +7,7 @@ import Review from './Review';
 
 const Reviews = ({ product }) => {
   const [reviews, setReviews] = useState([]);
+  const [reviewsList, setReviewsList] = useState([]); // this is the list of eligible reviews based on filters (used in Breadown)
   const [currentReviews, setCurrentReviews] = useState([]);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
   const [totalReviews, setTotalReviews] = useState(0);
@@ -20,6 +21,7 @@ const Reviews = ({ product }) => {
       .then((results) => {
         let newReviews = results.data.results;
         setReviews(newReviews);
+        setReviewsList(newReviews);
         setCurrentReviews(newReviews.slice(0, 2));
         setTotalReviews(newReviews.length);
         setAvgRating(getAvg(newReviews));
@@ -37,7 +39,7 @@ const Reviews = ({ product }) => {
     return (total / reviews.length).toFixed(1);
   };
 
-  const sortReviews = (order) => {
+  const sortReviewsList = (order) => {
     const calculateRelevance = (review) => {
 
       // well after figuring this out I realized that the API simply sorts by helpfulness, then by date if helpfulness is equal
@@ -56,28 +58,28 @@ const Reviews = ({ product }) => {
         return b.helpfulness - a.helpfulness
         || new Date(b.date) - new Date(a.date);
       });
-      setReviews(relevantSort);
+      setReviewsList(relevantSort);
     }
 
     if (order === 'helpful') {
       let helpfulSort = reviews.sort((a, b) => {
         return b.helpfulness - a.helpfulness;
       });
-      setReviews(helpfulSort);
+      setReviewsList(helpfulSort);
     }
 
     if (order === 'newest') {
       let newSort = reviews.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
       });
-      setReviews(newSort);
+      setReviewsList(newSort);
     }
   };
 
   const handleSort = (e) => {
     setSort(e.target.value);
-    sortReviews(e.target.value);
-    setCurrentReviews(reviews.slice(0, currentReviewIndex));
+    sortReviewsList(e.target.value);
+    setCurrentReviews(reviewsList.slice(0, currentReviewIndex));
   };
 
   // Will also need this in Q and A section
@@ -105,7 +107,7 @@ const Reviews = ({ product }) => {
 
   // load the next couple of reviews
   useEffect(() => {
-    setCurrentReviews(reviews.slice(0, currentReviewIndex));
+    setCurrentReviews(reviewsList.slice(0, currentReviewIndex));
   }, [currentReviewIndex]);
 
   return (
@@ -125,7 +127,7 @@ const Reviews = ({ product }) => {
 
         {/* move breakdown and char divs to their components? */}
         <div id="breakdown">
-          <Breakdown reviews={reviews}/>
+          <Breakdown reviewsList={reviewsList} setReviewsList={setReviewsList}/>
         </div>
 
         <div id="characteristics">

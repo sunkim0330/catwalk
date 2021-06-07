@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-const Breakdown = ({ reviews }) => {
+const Breakdown = ({ reviewsList, setReviewsList }) => {
   const [ratings, setRatings] = useState({});
+  const [filters, setFilters] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+  });
+
+  const filterReviews = (e) => {
+    let rating = e.target.value;
+    if (ratings[rating]) {
+
+    }
+  };
 
   // get number of reviews for each rating
   useEffect(() => {
@@ -12,11 +26,11 @@ const Breakdown = ({ reviews }) => {
       4: 0,
       5: 0
     };
-    reviews.forEach((review) => {
+    reviewsList.forEach((review) => {
       newRatings[review.rating] += 1;
     });
     setRatings(newRatings);
-  }, [reviews.length]);
+  }, [reviewsList.length]);
 
   return (
     <div>
