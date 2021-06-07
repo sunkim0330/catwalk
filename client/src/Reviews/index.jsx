@@ -54,7 +54,7 @@ const Reviews = ({ product }) => {
     };
 
     if (order === 'relevant') {
-      let relevantSort = reviews.sort((a, b) => {
+      let relevantSort = reviewsList.sort((a, b) => {
         return b.helpfulness - a.helpfulness
         || new Date(b.date) - new Date(a.date);
       });
@@ -62,14 +62,14 @@ const Reviews = ({ product }) => {
     }
 
     if (order === 'helpful') {
-      let helpfulSort = reviews.sort((a, b) => {
+      let helpfulSort = reviewsList.sort((a, b) => {
         return b.helpfulness - a.helpfulness;
       });
       setReviewsList(helpfulSort);
     }
 
     if (order === 'newest') {
-      let newSort = reviews.sort((a, b) => {
+      let newSort = reviewsList.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
       });
       setReviewsList(newSort);
@@ -90,9 +90,8 @@ const Reviews = ({ product }) => {
   };
 
   const handleLoadMoreReviews = () => {
-    let newIndex = currentReviewIndex + 2;
 
-    newIndex <= reviews.length - 1
+    currentReviewIndex <= reviewsList.length - 2
       ? setCurrentReviewIndex(prev => prev += 2)
       : setCurrentReviewIndex(prev => prev += 1);
   };
@@ -108,7 +107,7 @@ const Reviews = ({ product }) => {
   // load the next couple of reviews
   useEffect(() => {
     setCurrentReviews(reviewsList.slice(0, currentReviewIndex));
-  }, [currentReviewIndex]);
+  }, [currentReviewIndex, reviewsList]);
 
   return (
     <div id="container">
@@ -139,7 +138,7 @@ const Reviews = ({ product }) => {
       {/* container for sort dropdown, reviews, add review button */}
       <div id="reviews">
         <div>
-          <span>{reviews.length}</span>
+          <span>{reviews.length} reviews</span>
           <select id="sort" value={sort} onChange={handleSort}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>
@@ -150,7 +149,7 @@ const Reviews = ({ product }) => {
           {currentReviews.map((review, index) => {
             return <Review key={index} review={review} />;
           })}
-          {currentReviews.length === reviews.length
+          {currentReviews.length === reviewsList.length
             ? null
             : <button onClick={handleLoadMoreReviews}>More Reviews</button>
           }

@@ -18,6 +18,18 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
   };
 
   const filterReviews = () => {
+    let allFalse = true;
+    for (let rating in filters) {
+      if (filters[rating]) {
+        allFalse = false;
+      }
+    }
+
+    if (allFalse) {
+      setReviewsList(reviews);
+      return;
+    }
+
     let newReviewsList = [];
 
     reviews.forEach((review) => {
