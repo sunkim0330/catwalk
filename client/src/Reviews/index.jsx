@@ -125,7 +125,7 @@ const Reviews = ({ product }) => {
 
         {/* move breakdown and char divs to their components? */}
         <div id="breakdown">
-          <Breakdown />
+          <Breakdown reviews={reviews}/>
         </div>
 
         <div id="characteristics">
