@@ -18,11 +18,16 @@ const Overview = ({ product }) => {
   const [totalReviews, setTotalReviews] = useState(0);
 
   // algorithim found here https://stackoverflow.com/questions/10196579/algorithm-used-to-calculate-5-star-ratings/38378697
-
   const getProductStyles = () => {
     axios.get(`/products/${product.id}/styles`)
       .then((response) => {
-        setStyles(response.data.results);
+        let newStyles = response.data.results;
+        setStyles(newStyles);
+        for (let i = 0; i < newStyles; i++) {
+          if (newStyles[i]['default?'] === true) {
+            setCurrentStyle(i);
+          }
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -50,7 +55,7 @@ const Overview = ({ product }) => {
       first += (Number(reviews) * Number(ratings[reviews]));
       second += Number(ratings[reviews]);
     }
-    setTotalReviews(newReviewCount);
+    setTotalReviews(reviewCount);
     let average = first / second;
     return Number(average.toFixed(1));
   };
@@ -64,7 +69,7 @@ const Overview = ({ product }) => {
     <div id="overview">
       <h2>Overview Component</h2>
       <Gallery images={styles[currentStyle]}/>
-      <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating}/>
+      <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
       <StyleSelector styles={styles} styleSelector={setCurrentStyle}/>
       <CartManagement styleInventory={styles[currentStyle].skus}/>
       <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
