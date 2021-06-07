@@ -55,7 +55,7 @@ const Review = ({ review }) => {
       </div>
       <div className="review-response">
 
-        {review.response ? <span>Respons: {review.response}</span> : null}
+        {review.response ? <span>Response: {review.response}</span> : null}
       </div>
       <div>
         Helpful?

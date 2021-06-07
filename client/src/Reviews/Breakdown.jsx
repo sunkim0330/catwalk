@@ -62,7 +62,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
   }, [filters]);
 
   return (
-    <div id="ratings-breakdown">
+    <div id="breakdown">
 
       <div className="left">
         <div onClick={handleFilterClick}>5 stars</div>

@@ -29,7 +29,7 @@ const Reviews = ({ product }) => {
   };
 
   const getMeta = () => {
-    axios.get(`/reviews/meta/?product_id=${product.id}`)
+    axios.get(`/reviews/meta?product_id=${product.id}`)
       .then(results => setMeta(results.data));
   };
 
@@ -124,14 +124,9 @@ const Reviews = ({ product }) => {
           </div>
         </div>
 
-        {/* move breakdown and char divs to their components? */}
-        <div id="breakdown">
-          <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList}/>
-        </div>
 
-        <div id="characteristics">
-          <Characteristics />
-        </div>
+        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList}/>
+        <Characteristics />
 
       </div>
 
