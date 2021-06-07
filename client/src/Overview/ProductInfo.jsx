@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ProductInfo = ({ product, style, rating }) => {
+const ProductInfo = ({ product, style, rating, reviewCount }) => {
 
-  let priceDisplay;
+  let priceDisplay, ratingDisplay;
 
   if (style.sale_price) {
     priceDisplay = <div id="priceDisplay"><div>{style.sale_price}</div><div>
@@ -11,9 +11,11 @@ const ProductInfo = ({ product, style, rating }) => {
     priceDisplay = <div>{product.default_price}</div>;
   }
 
+  reviewCount !== 0 ? ratingDisplay = <div>{`${rating} Read all ${reviewCount} <a>reviews<a>`}</div> : null;
+
   return (
     <div id="productInfo">
-      <div>{rating}</div>
+      {ratingDisplay}
       <div>{product.category}</div>
       <div>{product.name}</div>
       {priceDisplay}

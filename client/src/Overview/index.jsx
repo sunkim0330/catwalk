@@ -10,7 +10,7 @@ import { defaultProduct, defaultStyles, defaultRatings } from './dummyData.js';
 
 const Overview = ({ product }) => {
 
-  product.id === undefined ? product = defaultProduct : null;
+  // product.id === undefined ? product = defaultProduct : null;
 
   const [styles, setStyles] = useState(defaultStyles);
   const [currentStyle, setCurrentStyle] = useState(0);
@@ -61,8 +61,10 @@ const Overview = ({ product }) => {
   };
 
   useEffect(() => {
-    getProductStyles();
-    getProductRatings();
+    if (product.id) {
+      getProductStyles();
+      getProductRatings();
+    }
   }, [product.id]);
 
   return (
