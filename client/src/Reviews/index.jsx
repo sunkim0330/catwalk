@@ -14,7 +14,7 @@ const Reviews = ({ product }) => {
   const [sort, setSort] = useState('relevant');
 
   const getReviews = () => {
-    axios.get(`/reviews/?product_id=${product.id}&count=100`)
+    axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
       .then((results) => {
         let newReviews = results.data.results;
         setReviews(newReviews);
@@ -44,10 +44,23 @@ const Reviews = ({ product }) => {
   const sortReviews = (order) => {
     const calculateRelevance = (review) => {
 
+      // well after figuring this out I realized that the API simply sorts by helpfulness, then by date if helpfulness is equal
+
+      var d = 1000000000; // new Date difference is a huge number, use this number to get a decimal
+      var age = (new Date(review.date) - new Date()) / d; // call a new Date obj to allow subtraction
+      return age + review.helpfulness; // this is the relevance score;
+
+      // if a review has a high helpfulness number (e.g. 20) it will be at the top
+      // if a review has a low helpfulness number, but is newer it will be closer to the top
+      // e.g. helpfulness = 2, age = 3 months; helpfulness = 1, age = 2 weeks will be first
     };
 
     if (order === 'relevant') {
-
+      let relevantSort = reviews.sort((a, b) => {
+        return b.helpfulness - a.helpfulness
+        || new Date(b.date) - new Date(a.date);
+      });
+      setReviews(relevantSort);
     }
 
     if (order === 'helpful') {
