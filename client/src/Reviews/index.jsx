@@ -7,6 +7,8 @@ import Review from './Review';
 
 const Reviews = ({ product }) => {
   const [reviews, setReviews] = useState([]);
+  const [currentReviews, setCurrentReviews] = useState([]);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
   const [totalReviews, setTotalReviews] = useState(0);
   const [avgRating, setAvgRating] = useState(0);
   const [meta, setMeta] = useState([]);
@@ -18,6 +20,7 @@ const Reviews = ({ product }) => {
       .then((results) => {
         let newReviews = results.data.results;
         setReviews(newReviews);
+        setCurrentReviews(newReviews.slice(0, 2));
         setTotalReviews(newReviews.length);
         setAvgRating(getAvg(newReviews));
       });
@@ -33,13 +36,6 @@ const Reviews = ({ product }) => {
     reviews.forEach(review => total += review.rating);
     return (total / reviews.length).toFixed(1);
   };
-
-  useEffect(() => {
-    if (product.id) {
-      getReviews();
-      getMeta();
-    }
-  }, [product.id]);
 
   const sortReviews = (order) => {
     const calculateRelevance = (review) => {
@@ -81,6 +77,7 @@ const Reviews = ({ product }) => {
   const handleSort = (e) => {
     setSort(e.target.value);
     sortReviews(e.target.value);
+    setCurrentReviews(reviews.slice(0, currentReviewIndex));
   };
 
   // Will also need this in Q and A section
@@ -90,6 +87,26 @@ const Reviews = ({ product }) => {
     });
   };
 
+  const handleLoadMoreReviews = () => {
+    let newIndex = currentReviewIndex + 2;
+
+    newIndex <= reviews.length - 1
+      ? setCurrentReviewIndex(prev => prev += 2)
+      : setCurrentReviewIndex(prev => prev += 1);
+  };
+
+  // get review data
+  useEffect(() => {
+    if (product.id) {
+      getReviews();
+      getMeta();
+    }
+  }, [product.id]);
+
+  // load the next couple of reviews
+  useEffect(() => {
+    setCurrentReviews(reviews.slice(0, currentReviewIndex));
+  }, [currentReviewIndex]);
 
   return (
     <div id="container">
@@ -128,9 +145,13 @@ const Reviews = ({ product }) => {
           </select>
         </div>
         <div id="reviews-list">
-          {reviews.map((review, index) => {
+          {currentReviews.map((review, index) => {
             return <Review key={index} review={review} />;
           })}
+          {currentReviews.length === reviews.length
+            ? null
+            : <button onClick={handleLoadMoreReviews}>More Reviews</button>
+          }
         </div>
       </div>
 
