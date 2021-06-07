@@ -127,6 +127,11 @@ const Reviews = ({ product }) => {
             <option value="newest">Newest</option>
           </select>
         </div>
+        <div id="reviews-list">
+          {reviews.map((review, index) => {
+            return <Review key={index} review={review} />;
+          })}
+        </div>
       </div>
 
     </div>
