@@ -13,15 +13,20 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
   const handleFilterClick = (e) => {
     let rating = e.target.innerText.slice(0, 1);
     setFilters((prev) => {
-      return {...prev, [rating]: !prev[rating]}
+      return {...prev, [rating]: !prev[rating]};
     });
   };
 
-  const filterReviews = (e) => {
+  const filterReviews = () => {
+    let newReviewsList = [];
 
-    if (ratings[rating]) {
+    reviews.forEach((review) => {
+      if (filters[review.rating]) {
+        newReviewsList.push(review);
+      }
+    });
 
-    }
+    setReviewsList(newReviewsList);
   };
 
   // get number of reviews for each rating
@@ -33,11 +38,16 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
       4: 0,
       5: 0
     };
-    reviewsList.forEach((review) => {
+    reviews.forEach((review) => {
       newRatings[review.rating] += 1;
     });
     setRatings(newRatings);
-  }, [reviewsList.length]);
+  }, [reviews.length]);
+
+  // update filters
+  useEffect(() => {
+    filterReviews();
+  }, [filters]);
 
   return (
     <div id="ratings-breakdown">
