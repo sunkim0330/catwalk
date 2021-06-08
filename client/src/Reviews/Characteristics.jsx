@@ -7,7 +7,7 @@ const Characteristics = ({ meta }) => {
     Comfort: ['Uncomfortable', 'Ok', 'Perfect'],
     Quality: ['Poor', 'What I expected', 'Perfect'],
     Length: ['Runs short', 'Perfect', 'Runs long'],
-    Fit: ['Runs tight', 'Perfect', 'Runs long']
+    Fit: ['Runs tight', 'Perfect', 'Runs loose']
   });
   const [chars, setChars] = useState([]);
 

@@ -135,9 +135,10 @@ const Reviews = ({ product }) => {
             ? null
             : <button onClick={handleLoadMoreReviews}>More Reviews</button>
           }
+          <button>add a review</button>
         </div>
       </div>
-
+      <AddReview product={product.name} chars={meta.characteristics}/>
     </div>
   );
 };
