@@ -11,7 +11,10 @@ const ProductInfo = ({ product, style, rating, reviewCount }) => {
     priceDisplay = <div>{product.default_price}</div>;
   }
 
-  reviewCount !== 0 ? ratingDisplay = <div>{`${rating} Read all ${reviewCount} <a>reviews<a>`}</div> : null;
+  if (reviewCount) {
+    ratingDisplay = <div>{rating} <a href="#container">{`Read all ${reviewCount} reviews`}</a></div>;
+  }
+  // ask chris about changing reviews div tag
 
   return (
     <div id="productInfo">
