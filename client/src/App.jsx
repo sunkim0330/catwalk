@@ -7,8 +7,11 @@ import Reviews from './Reviews';
 
 
 const App = () => {
-  const [currentProduct, setCurrentProduct] = React.useState({});
 
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [reviewMetaData, setReviewMetaData] = useState({});
+  const [averageRating, setAverageRating] = useState(5);
+  const [currentStyles, setCurrentStyles] = useState();
 
   useEffect(() => {
     axios.get('/products/19089')
