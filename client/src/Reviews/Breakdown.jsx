@@ -43,9 +43,9 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     setReviewsList(newReviewsList);
   };
 
-  const calculatePercentage = (numberOfRatings) => {
-    return (numberOfRatings / reviews.length) * 100;
-  };
+  // const calculatePercentage = (numberOfRatings) => {
+  //   return (numberOfRatings / reviews.length) * 100;
+  // };
 
   // get number of reviews for each rating
   useEffect(() => {

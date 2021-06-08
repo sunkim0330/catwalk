@@ -19,6 +19,7 @@ const AddReview = ({ product, chars }) => {
       </div>
       <div>
         <form>
+
           <div>
             <label>
               Overall rating
@@ -35,7 +36,7 @@ const AddReview = ({ product, chars }) => {
                   type="radio"
                   name="recommend"
                   value="yes"
-                  className="radio-btn"
+                  required
                 />
               </label>
               <label>
@@ -44,10 +45,13 @@ const AddReview = ({ product, chars }) => {
                   type="radio"
                   name="recommend"
                   value="no"
-                  className="radio-btn"
                 />
               </label>
             </div>
+          </div>
+
+          <div>
+
           </div>
 
 
