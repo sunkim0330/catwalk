@@ -10,22 +10,20 @@ import { defaultProduct, defaultStyles, defaultRatings } from './dummyData.js';
 
 const Overview = ({ product }) => {
 
-  // product.id === undefined ? product = defaultProduct : null;
-
   const [styles, setStyles] = useState(defaultStyles);
   const [currentStyle, setCurrentStyle] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
 
-  // algorithim found here https://stackoverflow.com/questions/10196579/algorithm-used-to-calculate-5-star-ratings/38378697
   const getProductStyles = () => {
     axios.get(`/products/${product.id}/styles`)
       .then((response) => {
-        let newStyles = response.data.results;
-        setStyles(newStyles);
-        for (let i = 0; i < newStyles; i++) {
-          if (newStyles[i]['default?'] === true) {
+        let productStyles = response.data.results;
+        setStyles(productStyles);
+        for (let i = 0; i < productStyles; i++) {
+          if (productStyles[i]['default?'] === true) {
             setCurrentStyle(i);
+            break;
           }
         }
       })
@@ -46,6 +44,8 @@ const Overview = ({ product }) => {
       });
   };
 
+  // algorithim found here
+  // https://stackoverflow.com/questions/10196579/algorithm-used-to-calculate-5-star-ratings/38378697
   const calculateReviewAverage = (ratings) => {
     let first = 0;
     let second = 0;
