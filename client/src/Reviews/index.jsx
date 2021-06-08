@@ -40,19 +40,6 @@ const Reviews = ({ product }) => {
   };
 
   const sortReviewsList = (order) => {
-    const calculateRelevance = (review) => {
-
-      // well after figuring this out I realized that the API simply sorts by helpfulness, then by date if helpfulness is equal
-
-      var d = 1000000000; // new Date difference is a huge number, use this number to get a decimal
-      var age = (new Date(review.date) - new Date()) / d; // call a new Date obj to allow subtraction
-      return age + review.helpfulness; // this is the relevance score;
-
-      // if a review has a high helpfulness number (e.g. 20) it will be at the top
-      // if a review has a low helpfulness number, but is newer it will be closer to the top
-      // e.g. helpfulness = 2, age = 3 months; helpfulness = 1, age = 2 weeks will be first
-    };
-
     if (order === 'relevant') {
       let relevantSort = reviewsList.sort((a, b) => {
         return b.helpfulness - a.helpfulness
@@ -125,7 +112,7 @@ const Reviews = ({ product }) => {
         </div>
 
 
-        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList}/>
+        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
         <Characteristics />
 
       </div>

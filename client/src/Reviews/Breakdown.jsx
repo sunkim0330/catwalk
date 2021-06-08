@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
+const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
   const [ratings, setRatings] = useState({});
   const [ratingsPct, setRatingsPct] = useState({});
+  const [recommends, setRecommends] = useState('');
   const [filters, setFilters] = useState({
     1: false,
     2: false,
@@ -48,17 +49,26 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
 
   // get number of reviews for each rating
   useEffect(() => {
-    let newRatings = {
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0,
-      5: 0
-    };
-    reviews.forEach((review) => {
-      newRatings[review.rating] += 1;
-    });
-    setRatings(newRatings);
+    if (reviews.length) {
+      let newRatings = {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0
+      };
+      reviews.forEach((review) => {
+        newRatings[review.rating] += 1;
+      });
+      setRatings(newRatings);
+
+      let t = Number(meta.recommended.true);
+      let f = Number(meta.recommended.false);
+
+      setRecommends(() => {
+        return Math.round((f / (t + f)) * 100);
+      });
+    }
   }, [reviews.length]);
 
   // update filters
@@ -74,7 +84,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
       newRatingsPct[rating] = percentage;
     }
     setRatingsPct(newRatingsPct);
-  }, [reviews.length, ratings]);
+  }, [ratings]);
 
   return (
     <div id="breakdown">
@@ -138,6 +148,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList }) => {
       <div className="right">
         <div>{ratings[1]}</div>
       </div>
+
+      <div id="recommends">{recommends}% of reviews recommend this product</div>
 
     </div>
   );
