@@ -1,13 +1,17 @@
 import React, {useEffect, useState} from 'react';
 
 const Card = (props) => {
-  return (
-    <div>
-      {props.product.name}
 
-
-    </div>
-  );
+  if (props.style) {
+    return (
+      <div>
+        {props.product.name}
+        {props.style.name}
+      </div>
+    );
+  } else {
+    return (null);
+  }
 };
 
 
