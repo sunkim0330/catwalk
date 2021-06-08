@@ -90,7 +90,6 @@ const CartManagement = ({ styleInventory }) => {
 
   return (
     <div id="cartManagement">
-      <h3>Cart Management</h3>
       <select onChange={(event) => handleSizeSelection(event)}>
         <option>Select Size</option>
         {sizeOptions}
