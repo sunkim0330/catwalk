@@ -14,7 +14,6 @@ const ProductInfo = ({ product, style, rating, reviewCount }) => {
   if (reviewCount) {
     ratingDisplay = <div>{rating} <a href="#container">{`Read all ${reviewCount} reviews`}</a></div>;
   }
-  // ask chris about changing reviews div tag
 
   return (
     <div id="productInfo">
