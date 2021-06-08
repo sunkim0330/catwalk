@@ -36,6 +36,12 @@ const Review = ({ review }) => {
   // checks for review images
   // need to set conditional to check for bad urls
   const checkForImages = () => {
+    // for (let photos in reviews) {
+    //   if (photos.length) {
+
+    //   }
+    // }
+
     return (
       review.photos.length
         ? <div className="review-images">
@@ -47,7 +53,8 @@ const Review = ({ review }) => {
     );
   };
 
-  const style = { // just to help visualize for now
+  // just to help visualize for now
+  const style = {
     border: '1px solid black'
   };
   const thumbnail = {
@@ -58,6 +65,7 @@ const Review = ({ review }) => {
 
   return (
     <div style={style} className="review-tile">
+
       <div>
         <span className="stars">stars go here</span>
         {/* don't think it's possible to reference sales with the API */}
@@ -76,9 +84,11 @@ const Review = ({ review }) => {
 
         {review.response ? <span>Response: {review.response}</span> : null}
       </div>
+
       <div>
         Helpful?
       </div>
+
     </div>
   );
 };
