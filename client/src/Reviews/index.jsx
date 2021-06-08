@@ -113,7 +113,7 @@ const Reviews = ({ product }) => {
 
 
         <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
-        <Characteristics />
+        <Characteristics meta={meta}/>
 
       </div>
 
