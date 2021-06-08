@@ -33,8 +33,27 @@ const Review = ({ review }) => {
     }
   };
 
+  // checks for review images
+  // need to set conditional to check for bad urls
+  const checkForImages = () => {
+    return (
+      review.photos.length
+        ? <div className="review-images">
+          {review.photos.map((photo, index) => {
+            return <img key={index} src={photo.url} alt={`${review.reviewer_name} photo ${index}`} style={thumbnail}></img>;
+          })}
+        </div>
+        : null
+    );
+  };
+
   const style = { // just to help visualize for now
     border: '1px solid black'
+  };
+  const thumbnail = {
+    border: '1px solid black',
+    padding: '5px',
+    width: '100px'
   };
 
   return (
@@ -47,7 +66,7 @@ const Review = ({ review }) => {
         <div className="review-summary">{review.summary}</div>
         <div>
           {checkReviewLength()}
-          <div className="review-images">images go here if exist</div>
+          {checkForImages()}
         </div>
         <div>
           {review.recommend ? 'I recommend this product' : null}
