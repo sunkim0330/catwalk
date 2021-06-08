@@ -8,16 +8,33 @@ import Reviews from './Reviews';
 
 const App = () => {
 
-  const [currentProduct, setCurrentProduct] = useState({});
+  const [product, setProduct] = useState({});
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [averageRating, setAverageRating] = useState(5);
-  const [currentStyles, setCurrentStyles] = useState();
+  const [styles, setStyles] = useState([]);
   const [totalReviewCount, setTotalReviewCount] = useState(0);
+  const [defaultStyle, setDefaultStyle] = useState(0);
 
-  const getProductRatingsAndStyles = () => {
-    axios.get(`/reviews/meta?product_id=${currentProduct.id}`)
+  const getProductStyles = () => {
+    axios.get(`/products/${product.id}/styles`)
       .then((response) => {
-        console.log(response.data);
+        let productStyles = response.data.results;
+        setStyles(productStyles);
+        for (let i = 0; i < productStyles; i++) {
+          if (productStyles[i]['default?'] === true) {
+            setDefaultStyle(i);
+            break;
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getProductRatings = () => {
+    axios.get(`/reviews/meta?product_id=${product.id}`)
+      .then((response) => {
         let ratings = response.data.ratings;
         calculateReviewAverage(ratings);
         setReviewMetaData(response.data);
@@ -42,26 +59,26 @@ const App = () => {
   useEffect(() => {
     axios.get('/products/19089')
       .then((response) => {
-        setCurrentProduct(response.data);
+        setProduct(response.data);
       });
   }, []);
 
   useEffect(() => {
-    if (currentProduct.id) {
+    if (product.id) {
       getProductRatings();
+      getProductStyles();
     }
-  }, [currentProduct.id]);
+  }, [product.id]);
 
-  return (
+  return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
     <div>
       Super Fun Shopping Experience
-      <Overview product={currentProduct}/>
-      <Related product={currentProduct}/>
-      <QandAs product={currentProduct}/>
-      <Reviews product={currentProduct}/>
+      <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
+      <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]}/>
+      <QandAs product={product}/>
+      <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount}/>
     </div>
   );
 };
-
 
 export default App;
