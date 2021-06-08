@@ -8,7 +8,6 @@ const Answers = ({ questions, product }) => {
     if (questions) {
       axios.get(`/qa/questions/${questions}/answers`)
         .then((response) => {
-          console.log(response.data.results.photos);
           return setAnswer(response.data.results);
         })
         .catch(() => {
@@ -22,7 +21,7 @@ const Answers = ({ questions, product }) => {
   return (
     <div>
       {answers.map((answer, index) => {
-        return <div className="answers_div" key={answer.answer_id}>
+        return <div className="answer_div" key={answer.answer_id}>
           A: {answer.body}
         </div>;
       })}
@@ -37,5 +36,5 @@ If time allows, answers should have the capability of supporting image uploads. 
 Each image thumbnail should be clickable.  Upon clicking the thumbnail, a modal window expanding the image at full resolution should appear over the page.  The only functionality within this modal window should be an “X” icon through which the user can close out of the modal.
 
  <img src={answer.photos.url} />
-  something like this
+  something lik
 */
