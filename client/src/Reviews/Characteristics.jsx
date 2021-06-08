@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Characteristics = ({ meta }) => {
+const Characteristics = ({ chars }) => {
   const [scale, setScale] = useState({
     Size: ['Too small', 'Perfect', 'Too big'],
     Width: ['Too narrow', 'Perfect', 'Too wide'],
@@ -9,7 +9,7 @@ const Characteristics = ({ meta }) => {
     Length: ['Runs short', 'Perfect', 'Runs long'],
     Fit: ['Runs tight', 'Perfect', 'Runs loose']
   });
-  const [chars, setChars] = useState([]);
+  //const [chars, setChars] = useState([]);
 
   const mapAttributes = () => {
     if (chars.length) {
@@ -17,15 +17,15 @@ const Characteristics = ({ meta }) => {
     }
   };
 
-  useEffect(() => {
-    if (meta.product_id) {
-      let newChars = [];
-      for (let char in meta.characteristics) {
-        newChars.push(char);
-      }
-      setChars(newChars);
-    }
-  }, [meta.product_id]);
+  // useEffect(() => {
+  //   if (meta.product_id) {
+  //     let newChars = [];
+  //     for (let char in meta.characteristics) {
+  //       newChars.push(char);
+  //     }
+  //     setChars(newChars);
+  //   }
+  // }, [meta.product_id]);
 
   return (
     <div id="characteristics">

@@ -14,7 +14,14 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
   //const [avgRating, setAvgRating] = useState(0);
   //const [meta, setMeta] = useState([]);
   //const [filter, setFilter] = useState('');
-  const [sort, setSort] = useState('relevant');
+  //const [sort, setSort] = useState('relevant');
+  const [chars, setChars] = useState(() => {
+    let newChars = [];
+    for (let char in meta.characteristics) {
+      newChars.push(char);
+    }
+    return newChars;
+  });
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -111,7 +118,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
 
 
         <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
-        <Characteristics meta={meta}/>
+        <Characteristics chars={chars}/>
 
       </div>
 
@@ -136,7 +143,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
           <button>add a review</button>
         </div>
       </div>
-      <AddReview product={product.name} chars={meta.characteristics}/>
+      <AddReview product={product.name} chars={chars} ratings={meta.characteristics}/>
     </div>
   );
 };
