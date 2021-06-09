@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Styles from './styledComponents.js';
 
 const ProductInfo = ({ product, style, rating, reviewCount }) => {
 
@@ -16,12 +17,12 @@ const ProductInfo = ({ product, style, rating, reviewCount }) => {
   }
 
   return (
-    <div id="productInfo">
+    <Styles.ProductInfo>
       {ratingDisplay}
       <div>{product.category}</div>
       <div>{product.name}</div>
       {priceDisplay}
-    </div>
+    </Styles.ProductInfo>
   );
 
 };
