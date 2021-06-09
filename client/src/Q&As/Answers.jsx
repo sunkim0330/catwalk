@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
-const Answers = ({ questions }) => {
+const Answers = ({ questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
   const [loadPage, setLoadPage] = useState(2);
 
@@ -16,20 +16,12 @@ const Answers = ({ questions }) => {
           console.log('cant get request from question API');
         });
     }
-  }, [questions]);
+  }, []);
 
   const loadMore = useCallback(() => {
     setLoadPage(prev => prev + 2);
   }, []);
 
-  const setDateFormat = (array) => {
-    array.forEach((item) => {
-      item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
-    });
-    //return array;
-  };
-
-  //console.log('look at the date', answers);
 
   //couldn't figure out how to reuse loadMore function and the button from Question component.
   //I tried e.stopProgation many different ways, but didn't figure out yet.
