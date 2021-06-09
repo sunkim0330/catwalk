@@ -72,7 +72,12 @@ const AddReview = ({ product, chars, ratings }) => {
   const thumbnail = {
     border: '1px solid black',
     padding: '5px',
-    width: '100px'
+    width: '150px'
+  };
+  const xbutton = {
+    position: 'absolute',
+    right: '0',
+    zIndex: '1'
   };
 
   return (
@@ -161,29 +166,36 @@ const AddReview = ({ product, chars, ratings }) => {
             </div>
           </div>
 
+
           <div>
-            <label>
-            Share an image, up to 5
-            </label>
-            <input
-              type="file"
-              id="add-review-image"
-              name="add-review-image"
-              accept="image/*"
-              multiple
-              onChange={handleImageInput}
-            />
+            {imageURLs.length >= 5 ? null
+              : <div>
+                <label>
+                  Share an image, up to 5
+                </label>
+                <input
+                  type="file"
+                  id="add-review-image"
+                  name="add-review-image"
+                  accept="image/*"
+                  multiple
+                  onChange={handleImageInput}
+                />
+              </div>
+            }
             <div>
-              image preview:
+                image preview:
               {imageURLs.map(image => {
                 return (
                   <div>
-                    <img src={image} style={thumbnail}/>
+                    <img src={image} stle={thumbnail}/>
+                    {/* <button style={xbutton}>x</button> */}
                   </div>
                 );
               })}
             </div>
           </div>
+
 
 
         </form>
