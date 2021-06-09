@@ -7,7 +7,7 @@ import OutfitList from './OutfitList.jsx';
 const Related = (props) => {
   return (
     <div>
-      <RelatedList product={props.product} setCurrentProduct={props.setCurrentProduct} />
+      <RelatedList product={props.product} setCurrentProduct={props.setProduct} currentStyle={props.defaultStyle} />
       <OutfitList />
     </div>
   );
