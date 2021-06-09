@@ -82,7 +82,7 @@ const App = () => {
       <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
       <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]}/>
       <QandAs product={product} setDateFormat={setDateFormat}/>
-      {/* <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/> */}
+      <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/>
     </div>
   );
 };
