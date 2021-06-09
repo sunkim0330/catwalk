@@ -1,16 +1,39 @@
 import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import HeartButton from './ActionButtons';
 
 const Card = (props) => {
 
-  if (props.style) {
+  if (props.style && props.metaData) {
+
+    let averageRating;
+
+    if (props.metaData.ratings) {
+      let rating = 0;
+      let amountOfRatings = 0;
+      for (var key in props.metaData.ratings) {
+        amountOfRatings += Number(props.metaData.ratings[key]);
+        rating += (key * Number(props.metaData.ratings[key]));
+      }
+      averageRating = rating / amountOfRatings;
+    }
+
+    let handleClick = () => {
+      props.setCurrentProduct(props.product);
+    };
+
     return (
-      <div>
-        {props.product.name}
-        {props.style.name}
+      <div onClick={handleClick}>
+        <HeartButton />
+        <h3>{props.product.category}</h3>
+        <h1>{props.product.name}</h1>
+        <h3>Rating: {averageRating ? averageRating : 'Be the first to rate'}</h3>
+        {props.style.sale_price ? <div><strike>{props.style.original_price}</strike><style color='red'>{props.style.sale_price}</style></div> : <div>{props.style.original_price}</div>}
+        <img src={props.style.photos[0].thumbnail_url}></img>
       </div>
     );
   } else {
-    return (null);
+    return ('Loading...');
   }
 };
 
