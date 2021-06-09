@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
+import Helpful from '../shared/Helpful.jsx';
 
 const Questions = ({ product }) => {
   const [questions, setQuestions] = useState([]);
@@ -25,7 +26,7 @@ const Questions = ({ product }) => {
   const loadQuestions = questions.slice(0, loadPage).map((question, index) => {
     return (
       <div className="questions_div" key={index}>
-        Q: {question.question_body}<br/>
+        Q: {question.question_body} | <Helpful origin="qa/questions" id={question.question_id} helpCount={question.question_helpfulness}/><br/>
         <Answers questions={question.question_id} />
       </div>
     );

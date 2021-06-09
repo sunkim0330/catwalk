@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import Helpful from '../shared/Helpful.jsx';
 
 const Answers = ({ questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
@@ -30,7 +31,7 @@ const Answers = ({ questions, setDateFormat }) => {
     return (
       <div className="answer_div" key={answer.answer_id}>
             A: {answer.body} <br/>
-        <div> by {answer.answerer_name}, {answer.formattedDate}</div>
+        <div> by {answer.answerer_name}, {answer.formattedDate} | <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/></div>
 
       </div>
     );
