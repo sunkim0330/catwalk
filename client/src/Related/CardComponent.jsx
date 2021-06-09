@@ -24,7 +24,7 @@ const Card = (props) => {
 
     return (
       <div>
-        <HeartButton />
+        <HeartButton currentChar={props.currentChar} relatedChar={props.metaData.characteristics}/>
         <div onClick={handleClick}>
           <h3>{props.product.category}</h3>
           <h1>{props.product.name}</h1>

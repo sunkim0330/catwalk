@@ -91,7 +91,7 @@ const RelatedList = (props) => {
 
   return (
     <div>
-      {relatedObjects.map((object, i) => { return <Card setCurrentProduct={props.setCurrentProduct} product={object} style={relatedStyles[i]} metaData={relatedMetaData[i]} key={object.id} setCurrentProduct={props.setCurrentProduct} />; })}
+      {relatedObjects.map((object, i) => { return <Card product={object} style={relatedStyles[i]} metaData={relatedMetaData[i]} key={object.id} setCurrentProduct={props.setCurrentProduct} currentChar={props.currentChar}/>; })}
     </div>
   );
 

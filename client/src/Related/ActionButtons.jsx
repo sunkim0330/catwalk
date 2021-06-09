@@ -5,13 +5,17 @@ import ModalViewComponent from './ModalViewComponent';
 const HeartButton = (props) => {
   const [modalView, setModalView] = useState(false);
 
+  useEffect(() => {
+    setModalView(false);
+  }, [props.currentChar]);
+
   const handleClick = () => {
     setModalView(!modalView);
   };
 
   return (
     <div>
-      {modalView ? <ModalViewComponent /> : null}
+      {modalView ? <ModalViewComponent currentChar={props.currentChar} relatedChar={props.relatedChar}/> : null}
       <button onClick={handleClick}></button>
     </div>
   );
