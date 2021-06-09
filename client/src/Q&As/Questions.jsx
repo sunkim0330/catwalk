@@ -3,20 +3,18 @@ import axios from 'axios';
 import Answers from './Answers.jsx';
 import Helpful from '../shared/Helpful.jsx';
 
-const Questions = ({ product }) => {
+const Questions = ({ product, setDateFormat }) => {
   const [questions, setQuestions] = useState([]);
   const [loadPage, setLoadPage] = useState(2);
 
   useEffect(() => {
-    if (product.id) {
-      axios.get(`/qa/questions?product_id=${product.id}`)
-        .then((response) => {
-          return setQuestions(response.data.results);
-        })
-        .catch(() => {
-          console.log('cant get request from question API');
-        });
-    }
+    axios.get(`/qa/questions?product_id=${product.id}`)
+      .then((response) => {
+        return setQuestions(response.data.results);
+      })
+      .catch(() => {
+        console.log('cant get request from question API');
+      });
   }, [product.id]);
 
   const loadMore = useCallback(() => {
@@ -26,8 +24,8 @@ const Questions = ({ product }) => {
   const loadQuestions = questions.slice(0, loadPage).map((question, index) => {
     return (
       <div className="questions_div" key={index}>
-        Q: {question.question_body} | <Helpful origin="qa/questions" id={question.question_id} helpCount={question.question_helpfulness}/><br/>
-        <Answers questions={question.question_id} />
+        Q: {question.question_body} <Helpful origin="qa/questions" id={question.question_id} helpCount={question.question_helpfulness}/><br/>
+        <div><Answers questions={question.question_id} setDateFormat={setDateFormat} /></div>
       </div>
     );
   });
@@ -35,6 +33,7 @@ const Questions = ({ product }) => {
   return (
     <div>
       {loadQuestions}
+
       <button
         style = {{display: loadPage >= questions.length ? 'none' : 'block'}}
         className="question_button"

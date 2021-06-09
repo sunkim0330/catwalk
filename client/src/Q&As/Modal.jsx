@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Modal = ({title, subTitle }) => {
+
+
   return (
     <div className="qanda-modal">
       <div className="qanda-modal-content">

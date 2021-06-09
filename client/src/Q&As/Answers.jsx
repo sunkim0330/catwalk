@@ -7,17 +7,16 @@ const Answers = ({ questions, setDateFormat }) => {
   const [loadPage, setLoadPage] = useState(2);
 
   useEffect(() => {
-    if (questions) {
-      axios.get(`/qa/questions/${questions}/answers`)
-        .then((response) => {
-          setDateFormat(response.data.results);
-          setAnswer(response.data.results);
-        })
-        .catch(() => {
-          console.log('cant get request from question API');
-        });
-    }
-  }, []);
+    axios.get(`/qa/questions/${questions}/answers`)
+      .then((response) => {
+        setDateFormat(response.data.results);
+        setAnswer(response.data.results);
+      })
+
+      .catch(() => {
+        console.log('cant get request from answer API');
+      });
+  }, [questions]);
 
   const loadMore = useCallback(() => {
     setLoadPage(prev => prev + 2);
@@ -31,7 +30,7 @@ const Answers = ({ questions, setDateFormat }) => {
     return (
       <div className="answer_div" key={answer.answer_id}>
             A: {answer.body} <br/>
-        <div> by {answer.answerer_name}, {answer.formattedDate} | <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/></div>
+        <div> by {answer.answerer_name}, {answer.formattedDate}, <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/> </div>
 
       </div>
     );
@@ -40,6 +39,7 @@ const Answers = ({ questions, setDateFormat }) => {
   return (
     <div>
       {loadAnswers}
+
       <button
         style = {{display: loadPage >= answers.length ? 'none' : 'block'}}
         className="answer_button" onClick={loadMore}>See more answers</button>
@@ -62,6 +62,34 @@ Each image thumbnail should be clickable.  Upon clicking the thumbnail, a modal 
 */
 
 /*
+useEffect(() => {
+    axios.get(`/qa/questions/${questions}/answers`)
+      .then((response) => {
+        return setAnswer(response.data.results);
+      })
+      .then((data) => {
+        return setDateFormat(data);
+      })
+      .catch(() => {
+        console.log('cant get request from answer API');
+      });
+  }, [questions]);
+
+
+  const getAnswers = async () => {
+    let response = await axios.get(`/qa/questions/${questions}/answers`);
+    let answerData = await response.data;
+    setAnswer(answerData);
+    console.log('did I get it yet?', answers);
+  };
+
+  useEffect(() => {
+    if (questions) {
+      getAnswers();
+    }
+  }, []);
+
+
 return (
       <div>
         {answers.map((answer, index) => {

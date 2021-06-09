@@ -3,14 +3,14 @@ import axios from 'axios';
 import Questions from './Questions.jsx';
 import Search from './Search.jsx';
 
-const QandAs = ({ product }) => {
+const QandAs = ({ product, setDateFormat }) => {
 
   return (
     <div className="QandAsbox">
       QUESTIONS AND ANSWERS
       <div className="QandAsinput">
         <Search product={product}/>
-        <Questions product={product}/>
+        <Questions product={product} setDateFormat={setDateFormat}/>
         <button>ADD A QUESTION</button>
       </div>
     </div>
