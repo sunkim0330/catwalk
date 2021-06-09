@@ -5,16 +5,24 @@ import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 
+
 const Reviews = ({ product }) => {
   const [reviews, setReviews] = useState([]); // all reviews
   const [reviewsList, setReviewsList] = useState([]); // manipulable list for sorting/filtering
   const [currentReviews, setCurrentReviews] = useState([]);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
-  const [totalReviews, setTotalReviews] = useState(0);
-  const [avgRating, setAvgRating] = useState(0);
-  const [meta, setMeta] = useState([]);
-  const [filter, setFilter] = useState('');
-  const [sort, setSort] = useState('relevant');
+  //const [totalReviews, setTotalReviews] = useState(0);
+  //const [avgRating, setAvgRating] = useState(0);
+  //const [meta, setMeta] = useState([]);
+  //const [filter, setFilter] = useState('');
+  //const [sort, setSort] = useState('relevant');
+  const [chars, setChars] = useState(() => {
+    let newChars = [];
+    for (let char in meta.characteristics) {
+      newChars.push(char);
+    }
+    return newChars;
+  });
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -23,35 +31,21 @@ const Reviews = ({ product }) => {
         setReviews(newReviews);
         setReviewsList(newReviews);
         setCurrentReviews(newReviews.slice(0, 2));
-        setTotalReviews(newReviews.length);
-        setAvgRating(getAvg(newReviews));
       });
   };
 
-  const getMeta = () => {
-    axios.get(`/reviews/meta?product_id=${product.id}`)
-      .then(results => setMeta(results.data));
-  };
+  // const getMeta = () => {
+  //   axios.get(`/reviews/meta?product_id=${product.id}`)
+  //     .then(results => setMeta(results.data));
+  // };
 
-  const getAvg = (reviews) => {
-    let total = 0;
-    reviews.forEach(review => total += review.rating);
-    return (total / reviews.length).toFixed(1);
-  };
+  // const getAvg = (reviews) => {
+  //   let total = 0;
+  //   reviews.forEach(review => total += review.rating);
+  //   return (total / reviews.length).toFixed(1);
+  // };
 
   const sortReviewsList = (order) => {
-    const calculateRelevance = (review) => {
-
-      // well after figuring this out I realized that the API simply sorts by helpfulness, then by date if helpfulness is equal
-
-      var d = 1000000000; // new Date difference is a huge number, use this number to get a decimal
-      var age = (new Date(review.date) - new Date()) / d; // call a new Date obj to allow subtraction
-      return age + review.helpfulness; // this is the relevance score;
-
-      // if a review has a high helpfulness number (e.g. 20) it will be at the top
-      // if a review has a low helpfulness number, but is newer it will be closer to the top
-      // e.g. helpfulness = 2, age = 3 months; helpfulness = 1, age = 2 weeks will be first
-    };
 
     if (order === 'relevant') {
       let relevantSort = reviewsList.sort((a, b) => {
@@ -77,15 +71,14 @@ const Reviews = ({ product }) => {
   };
 
   const handleSort = (e) => {
-    setSort(e.target.value);
     sortReviewsList(e.target.value);
     setCurrentReviews(reviewsList.slice(0, currentReviewIndex));
   };
 
   // Will also need this in Q and A section
-  const setDateFormat = () => {
-    reviews.forEach((review) => {
-      review.date = new Date(review.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
+  const setDateFormat = (array) => {
+    array.forEach((item) => {
+      item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
     });
   };
 
@@ -100,7 +93,7 @@ const Reviews = ({ product }) => {
   useEffect(() => {
     if (product.id) {
       getReviews();
-      getMeta();
+      //getMeta();
     }
   }, [product.id]);
 
@@ -111,13 +104,13 @@ const Reviews = ({ product }) => {
 
   return (
     <div id="container">
-
+      {/* <Helpful origin='qa/answers' id='' type='report' /> */}
       {/* container for average rating, reviews breakdown, recommends, characteristics */}
       <div id="ratings-breakdown">
         <div>
           <span>RATINGS & REVIEWS</span>
           <div>
-            {avgRating}
+            {averageRating}
           </div>
           <div>
             stars go here
@@ -125,8 +118,8 @@ const Reviews = ({ product }) => {
         </div>
 
 
-        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList}/>
-        <Characteristics />
+        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
+        <Characteristics chars={chars}/>
 
       </div>
 
@@ -134,7 +127,7 @@ const Reviews = ({ product }) => {
       <div id="reviews">
         <div>
           <span>{reviews.length} reviews</span>
-          <select id="sort" value={sort} onChange={handleSort}>
+          <select id="sort" onChange={handleSort}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>
             <option value="newest">Newest</option>
@@ -148,9 +141,10 @@ const Reviews = ({ product }) => {
             ? null
             : <button onClick={handleLoadMoreReviews}>More Reviews</button>
           }
+          <button>add a review</button>
         </div>
       </div>
-
+      <AddReview product={product.name} chars={chars} ratings={meta.characteristics}/>
     </div>
   );
 };

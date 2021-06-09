@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Helpful from '../Shared/Helpful.jsx';
 
 const Review = ({ review }) => {
   const [showMore, setShowMore] = useState(false);
@@ -33,12 +34,39 @@ const Review = ({ review }) => {
     }
   };
 
-  const style = { // just to help visualize for now
+  // checks for review images
+  // need to set conditional to check for bad urls
+  const checkForImages = () => {
+    // for (let photos in reviews) {
+    //   if (photos.length) {
+
+    //   }
+    // }
+
+    return (
+      review.photos.length
+        ? <div className="review-images">
+          {review.photos.map((photo, index) => {
+            return <img key={index} src={photo.url} alt={`${review.reviewer_name} photo ${index}`} style={thumbnail}></img>;
+          })}
+        </div>
+        : null
+    );
+  };
+
+  // just to help visualize for now
+  const style = {
     border: '1px solid black'
+  };
+  const thumbnail = {
+    border: '1px solid black',
+    padding: '5px',
+    width: '100px'
   };
 
   return (
     <div style={style} className="review-tile">
+
       <div>
         <span className="stars">stars go here</span>
         {/* don't think it's possible to reference sales with the API */}
@@ -47,19 +75,22 @@ const Review = ({ review }) => {
         <div className="review-summary">{review.summary}</div>
         <div>
           {checkReviewLength()}
-          <div className="review-images">images go here if exist</div>
+          {checkForImages()}
         </div>
         <div>
           {review.recommend ? 'I recommend this product' : null}
         </div>
+        <Helpful origin='reviews' id={review.review_id} helpCount={review.helpfulness} />
       </div>
       <div className="review-response">
 
         {review.response ? <span>Response: {review.response}</span> : null}
       </div>
+
       <div>
         Helpful?
       </div>
+
     </div>
   );
 };
