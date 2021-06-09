@@ -12,6 +12,7 @@ const AddReview = ({ product, chars, ratings }) => {
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [minRequiredChars, setminRequiredChars] = useState(50);
+  const [imageURLs, setImageURLs] = useState([]);
 
   const handleBodyChange = (e) => {
     //let newBody = e.target.value.length;
@@ -20,6 +21,24 @@ const AddReview = ({ product, chars, ratings }) => {
       var chars = e.target.value.length;
       return chars < 50 ? 50 - chars : 0;
     });
+  };
+
+  const handleImageInput = (e) => {
+    let files = [...e.currentTarget.files];
+
+    // Should prevent more than 5 images, doesn't work yet
+    // if (files.length > 5) {
+    //   e.preventDefault();
+    //   console.log(files);
+    //   alert('Cannot upload more the 5 files');
+    //   return;
+    // }
+    let newFiles = [];
+    files.forEach(file => {
+      newFiles.push(URL.createObjectURL(file));
+    });
+
+    setImageURLs(prev => [...prev, ...newFiles]);
   };
 
   const renderCharButtons = (char) => {
@@ -50,6 +69,11 @@ const AddReview = ({ product, chars, ratings }) => {
     );
   };
 
+  const thumbnail = {
+    border: '1px solid black',
+    padding: '5px',
+    width: '100px'
+  };
 
   return (
     <div className="modal">
@@ -134,6 +158,30 @@ const AddReview = ({ product, chars, ratings }) => {
             />
             <div>
              Minimum required characters left: {minRequiredChars}
+            </div>
+          </div>
+
+          <div>
+            <label>
+            Share an image, up to 5
+            </label>
+            <input
+              type="file"
+              id="add-review-image"
+              name="add-review-image"
+              accept="image/*"
+              multiple
+              onChange={handleImageInput}
+            />
+            <div>
+              image preview:
+              {imageURLs.map(image => {
+                return (
+                  <div>
+                    <img src={image} style={thumbnail}/>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
