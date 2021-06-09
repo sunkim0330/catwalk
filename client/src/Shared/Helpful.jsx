@@ -20,6 +20,7 @@ const Helpful = ({ origin, id, helpCount }) => {
       .catch(err => {
         console.log('error in PUT request', err);
       });
+
   };
 
   const handleClick = (e) => {
