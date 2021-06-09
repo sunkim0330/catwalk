@@ -5,7 +5,8 @@ import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 
-const Reviews = ({ product, meta, averageRating, totalReviews }) => {
+
+const Reviews = ({ product }) => {
   const [reviews, setReviews] = useState([]); // all reviews
   const [reviewsList, setReviewsList] = useState([]); // manipulable list for sorting/filtering
   const [currentReviews, setCurrentReviews] = useState([]);
@@ -103,7 +104,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
 
   return (
     <div id="container">
-
+      {/* <Helpful origin='qa/answers' id='' type='report' /> */}
       {/* container for average rating, reviews breakdown, recommends, characteristics */}
       <div id="ratings-breakdown">
         <div>
