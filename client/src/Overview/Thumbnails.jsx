@@ -4,7 +4,6 @@ const Thumbnails = ({ styleThumbnails }) => {
 
   return (
     <div id="thumbnails">
-      <h3>Thumbnails</h3>
       <img src="" alt=""/>
     </div>
   );
