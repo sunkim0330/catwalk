@@ -44,11 +44,15 @@ const ModalViewComponent = (props) => {
     <div>
       <table>
         <thead>
-          <td>Current Product Name</td>
-          <td></td>
-          <td>Related Product Name</td>
+          <tr>
+            <td>Current Product Name</td>
+            <td></td>
+            <td>Related Product Name</td>
+          </tr>
         </thead>
-        {comparisonArray.map((row, i) => { return <ComparisonRow row={row} key={i}/>; })}
+        <tbody>
+          {comparisonArray.map((row, i) => { return <ComparisonRow row={row} key={i}/>; })}
+        </tbody>
       </table>
     </div>
   );
