@@ -130,6 +130,7 @@ const AddReview = ({ product, chars, ratings }) => {
               placeholder="Why did you like the product or not?"
               value={body}
               onChange={handleBodyChange}
+              required
             />
             <div>
              Minimum required characters left: {minRequiredChars}
