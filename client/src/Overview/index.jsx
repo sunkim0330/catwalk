@@ -5,19 +5,20 @@ import ProductDescription from './Description.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import CartManagement from './CartManagement.jsx';
 import StyleSelector from './StyleSelector.jsx';
+import * as Styles from './styledComponents.js';
 
 const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }) => {
 
   const [currentStyle, setCurrentStyle] = useState(defaultStyle);
 
   return (
-    <div id="overview">
+    <Styles.Overview>
       <Gallery images={styles[currentStyle]}/>
       <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
       <StyleSelector styles={styles} setCurrentStyle={setCurrentStyle} currentStyle={styles[currentStyle]}/>
       <CartManagement styleInventory={styles[currentStyle].skus}/>
       <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
-    </div>
+    </Styles.Overview>
   );
 
 };

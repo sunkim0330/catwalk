@@ -56,6 +56,12 @@ const App = () => {
     setAverageRating(average.toFixed(1));
   };
 
+  const setDateFormat = (array) => {
+    array.forEach((item) => {
+      item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
+    });
+  };
+
   useEffect(() => {
     axios.get('/products/19089')
       .then((response) => {
