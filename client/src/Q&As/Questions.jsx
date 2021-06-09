@@ -36,6 +36,7 @@ const Questions = ({ product }) => {
       {loadQuestions}
       <button
         style = {{display: loadPage >= questions.length ? 'none' : 'block'}}
+        className="question_button"
         onClick={loadMore}>MORE ANSWERED QUESTIONS</button>
     </div>
   );

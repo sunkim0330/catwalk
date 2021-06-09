@@ -21,14 +21,25 @@ const Answers = ({ questions }) => {
     setLoadPage(prev => prev + 2);
   }, []);
 
+  const setDateFormat = (array) => {
+    array.forEach((item) => {
+      item.date = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
+    });
+  };
 
-  //couldn't figure out how to reuse loadMore function from Question component.
+  let newAnswers = answers;
+  setDateFormat(newAnswers);
+  console.log('look at the date', newAnswers);
+
+  //couldn't figure out how to reuse loadMore function and the button from Question component.
   //I tried e.stopProgation many different ways, but didn't figure out yet.
   //I'll try to refactor when I finish with eveything
-  const loadAnswers = answers.slice(0, loadPage).map((answer, index) => {
+  const loadAnswers = newAnswers.slice(0, loadPage).map((answer, index) => {
     return (
       <div className="answer_div" key={answer.answer_id}>
-            A: {answer.body}
+            A: {answer.body} <br/>
+        <div> by {answer.answerer_name}, {answer.date}</div>
+
       </div>
     );
   });
@@ -36,7 +47,9 @@ const Answers = ({ questions }) => {
   return (
     <div>
       {loadAnswers}
-      <button className="answer_button" onClick={loadMore}>See more answers</button>
+      <button
+        style = {{display: loadPage >= answers.length ? 'none' : 'block'}}
+        className="answer_button" onClick={loadMore}>See more answers</button>
     </div>
   );
 };
