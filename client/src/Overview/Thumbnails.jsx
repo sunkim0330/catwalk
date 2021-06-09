@@ -1,11 +1,12 @@
 import React from 'react';
+import * as Styles from './styledComponents.js';
 
 const Thumbnails = ({ styleThumbnails }) => {
 
   return (
-    <div id="thumbnails">
+    <Styles.Thumbnails>
       <img src="" alt=""/>
-    </div>
+    </Styles.Thumbnails>
   );
 
 };

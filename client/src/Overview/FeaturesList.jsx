@@ -1,11 +1,15 @@
 import React from 'react';
+import * as Styles from './styledComponents.js';
 
 const FeaturesList = ({ features }) => (
-  <ul>
+
+  <Styles.Features>
+    <Styles.FeaturesHeader>Product Features</Styles.FeaturesHeader>
     {features.map((feature, index) => {
-      return <li key={index}>{feature.feature}: {feature.value}</li>;
+      return <Styles.FeaturesItem key={index}>{feature.feature}: {feature.value}</Styles.FeaturesItem>;
     })}
-  </ul>
+  </Styles.Features>
+
 );
 
 export default FeaturesList;

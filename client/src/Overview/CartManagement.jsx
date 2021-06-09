@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import * as Styles from './styledComponents.js';
 
 const CartManagement = ({ styleInventory }) => {
 
@@ -35,15 +36,18 @@ const CartManagement = ({ styleInventory }) => {
   }, [productSku]);
 
   useEffect(() => {
+    let sizeSelector = document.getElementById('sizeselect');
+    let addToCartButton = document.getElementById('addToCart');
     if (sizeOptions.length === 1 && availableQty === 0) {
-      document.getElementById('sizeselect').value = 'outOfStock';
-      document.getElementById('sizeselect').setAttribute('disabled', true);
-      document.getElementById('addToCart').setAttribute('hidden', true);
+
+      sizeSelector.value = 'outOfStock';
+      sizeSelector.setAttribute('disabled', true);
+      addToCartButton.setAttribute('hidden', true);
     } else {
-      if (document.getElementById('sizeselect').disabled) {
-        document.getElementById('sizeselect').toggleAttribute('disabled');
+      if (sizeSelector.disabled) {
+        sizeSelector.toggleAttribute('disabled');
       }
-      document.getElementById('addToCart').toggleAttribute('hidden', false);
+      addToCartButton.toggleAttribute('hidden', false);
     }
   }, [sizeOptions, formattedSkuData]);
 
@@ -75,7 +79,7 @@ const CartManagement = ({ styleInventory }) => {
         return <option value={index} key={index}>{sku.size}</option>;
       }
     });
-    newSizeOptions.length === 0 ? newSizeOptions = [<option value="outOfStock" key="goAway">OUT OF STOCK</option>] : null;
+    newSizeOptions.length === 0 ? newSizeOptions = [<option value="outOfStock" key="key">OUT OF STOCK</option>] : null;
     setSizeOptions(newSizeOptions);
   };
 
@@ -90,7 +94,7 @@ const CartManagement = ({ styleInventory }) => {
   const handleSizeSelection = (event) => {
     let skuIndex = event.target.value;
     if (skuIndex !== 'Select Size') {
-      document.getElementById('countselect').toggleAttribute('disabled');
+      document.getElementById('countselect').toggleAttribute('disabled', false);
       setPurchaseQty(1);
       setProductSku(formattedSkuData[skuIndex].sku);
       setAvailableQty(formattedSkuData[skuIndex].actualQty || formattedSkuData[skuIndex].quantity);
@@ -117,11 +121,11 @@ const CartManagement = ({ styleInventory }) => {
   return (
     <div id="cartManagement">
       <select id="sizeselect" onChange={(event) => handleSizeSelection(event)}>
-        <option>Select Size</option>
+        <option value="none">Select Size</option>
         {sizeOptions}
       </select>
       <select id="countselect" disabled onChange={(event) => handleQuantitySelection(event)}>
-        <option>-</option>
+        <option value="none">-</option>
         {quantityOptions}
       </select>
       <button type="button" id="addToCart" onClick={() => addToCart(Number(purchaseQty))}>Add to Cart</button>
