@@ -5,7 +5,6 @@ const Thumbnails = ({ styleThumbnails }) => {
 
   return (
     <Styles.Thumbnails>
-      {/* run a map over styleThumbnails */}
       <img src="" alt=""/>
     </Styles.Thumbnails>
   );

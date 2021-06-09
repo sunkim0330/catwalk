@@ -3,7 +3,6 @@ import * as Styles from './styledComponents.js';
 
 export const Overview = styled.div`
   text-align: center;
-  background-color: skyblue;
 `;
 
 export const ProductInfo = styled.div`
@@ -31,5 +30,4 @@ export const Features = styled.div`
 `;
 
 export const FeaturesItem = styled.li`
-  list-style-image: star;
 `;
