@@ -17,13 +17,15 @@ const ModalViewComponent = (props) => {
       comparison[relKey].push(props.relatedChar[relKey].value);
     } else {
     // if not, set the value to [null, value]
-      comparison[relKey] = [null, props.relatedChar[relKey].value];
+      comparison[relKey] = [undefined, props.relatedChar[relKey].value];
     }
   }
 
   const ifNumberOrNull = (data) => {
-    if (!data) {
+    if (data === null) {
       return 'Nothing yet';
+    } else if (!data) {
+      return '';
     } else if (Number(data) !== NaN) {
       data = Number(data);
       return data.toFixed(1);
