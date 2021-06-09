@@ -24,7 +24,6 @@ const Helpful = ({ origin, id, helpCount }) => {
   };
 
   const handleClick = (e) => {
-    console.log(e);
     let value = e.target.value;
     setType(value);
     if (!link[value]) {
