@@ -77,7 +77,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
   // Will also need this in Q and A section
   const setDateFormat = (array) => {
     array.forEach((item) => {
-      item.date = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
+      item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
     });
   };
 
