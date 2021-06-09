@@ -9,7 +9,8 @@ const Answers = ({ questions }) => {
     if (questions) {
       axios.get(`/qa/questions/${questions}/answers`)
         .then((response) => {
-          return setAnswer(response.data.results);
+          setDateFormat(response.data.results);
+          setAnswer(response.data.results);
         })
         .catch(() => {
           console.log('cant get request from question API');
@@ -25,16 +26,15 @@ const Answers = ({ questions }) => {
     array.forEach((item) => {
       item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
     });
+    //return array;
   };
 
-  let newAnswers = answers;
-  setDateFormat(newAnswers);
-  console.log('look at the date', newAnswers);
+  //console.log('look at the date', answers);
 
   //couldn't figure out how to reuse loadMore function and the button from Question component.
   //I tried e.stopProgation many different ways, but didn't figure out yet.
   //I'll try to refactor when I finish with eveything
-  const loadAnswers = newAnswers.slice(0, loadPage).map((answer, index) => {
+  const loadAnswers = answers.slice(0, loadPage).map((answer, index) => {
     return (
       <div className="answer_div" key={answer.answer_id}>
             A: {answer.body} <br/>
