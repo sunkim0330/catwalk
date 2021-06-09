@@ -23,7 +23,7 @@ const Answers = ({ questions }) => {
 
   const setDateFormat = (array) => {
     array.forEach((item) => {
-      item.date = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
+      item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
     });
   };
 
@@ -38,7 +38,7 @@ const Answers = ({ questions }) => {
     return (
       <div className="answer_div" key={answer.answer_id}>
             A: {answer.body} <br/>
-        <div> by {answer.answerer_name}, {answer.date}</div>
+        <div> by {answer.answerer_name}, {answer.formattedDate}</div>
 
       </div>
     );
