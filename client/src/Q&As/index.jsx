@@ -1,30 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Questions from './Questions.jsx';
 import Search from './Search.jsx';
 
-const QandAs = ({ product }) => {
-  const [questions, setQuestions] = useState([]);
-
-  useEffect(() => {
-    if (product.id) {
-      axios.get(`/qa/questions?product_id=${product.id}`)
-        .then((response) => {
-          return setQuestions(response.data.results);
-        })
-        .catch(() => {
-          console.log('cant get request from question API');
-        });
-    }
-  }, [product.id]);
+const QandAs = ({ product, setDateFormat }) => {
 
   return (
     <div className="QandAsbox">
       QUESTIONS AND ANSWERS
       <div className="QandAsinput">
         <Search product={product}/>
-        <Questions questions={questions}/>
-        <button>MORE ANSWERED QUESTIONS</button>
+        <Questions product={product} setDateFormat={setDateFormat}/>
         <button>ADD A QUESTION</button>
       </div>
     </div>
