@@ -5,7 +5,9 @@ const Thumbnails = ({ styleThumbnails }) => {
 
   return (
     <Styles.Thumbnails>
-      <img src="" alt=""/>
+      {styleThumbnails.map((stylePhoto) => {
+        return <Styles.GalleryThumbnail src={stylePhoto.thumbnail_url} key={stylePhoto.thumbnail_url}/>;
+      })}
     </Styles.Thumbnails>
   );
 
