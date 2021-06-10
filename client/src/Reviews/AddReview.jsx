@@ -13,6 +13,8 @@ const AddReview = ({ product, chars, ratings }) => {
   const [body, setBody] = useState('');
   const [minRequiredChars, setminRequiredChars] = useState(50);
   const [imageURLs, setImageURLs] = useState([]);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleBodyChange = (e) => {
     //let newBody = e.target.value.length;
@@ -41,33 +43,41 @@ const AddReview = ({ product, chars, ratings }) => {
     setImageURLs(prev => [...prev, ...newFiles]);
   };
 
-  const renderCharButtons = (char) => {
+  const renderCharButtons = () => {
+
     return (
-      <div key={char}>
-        <label>
-          {char}
-        </label>
-        {scale[char].map((attribute, index) => {
-          return (
+      chars.map(char => {
+        return (
+          <div key={char}>
+            <label>
+              {char}
+            </label>
+            {scale[char].map((attribute, index) => {
+              return (
 
-            <span>
-              <input
-                type="radio"
-                name={char}
-                value={attribute}
-                key={index}
-                required
-              />
-            </span>
+                <span key={index}>
+                  <input
+                    type="radio"
+                    name={char}
+                    value={attribute}
 
-          );
-        })}
-        <div>
-          {scale[char][0]}    {scale[char][4]}
-        </div>
-      </div>
+                    required
+                  />
+                </span>
+
+              );
+            })}
+            <div key={char}>
+              {scale[char][0]}    {scale[char][4]}
+            </div>
+          </div>
+        );
+      })
     );
+
   };
+
+
 
   const thumbnail = {
     border: '1px solid black',
@@ -122,9 +132,7 @@ const AddReview = ({ product, chars, ratings }) => {
           <div>
             Characteristics
             <div>
-              {chars.map((char) => {
-                return (renderCharButtons(char));
-              })}
+              {renderCharButtons()}
             </div>
           </div>
 
@@ -185,10 +193,10 @@ const AddReview = ({ product, chars, ratings }) => {
             }
             <div>
                 image preview:
-              {imageURLs.map(image => {
+              {imageURLs.map((image, index) => {
                 return (
-                  <div>
-                    <img src={image} stle={thumbnail}/>
+                  <div key={index} >
+                    <img src={image} style={thumbnail}/>
                     {/* <button style={xbutton}>x</button> */}
                   </div>
                 );
@@ -196,7 +204,32 @@ const AddReview = ({ product, chars, ratings }) => {
             </div>
           </div>
 
+          <div>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Example: jackson11!"
+              maxLength="60"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+            />
+            <p>For privacy reasons, do not use your full name or email address</p>
+          </div>
 
+          <div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Example: jackson11@email.com"
+              maxLength="60"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
         </form>
       </div>
