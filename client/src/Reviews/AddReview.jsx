@@ -19,7 +19,7 @@ const AddReview = ({ product, chars, ratings }) => {
 
   const [reviewInfo, setReviewInfo] = useState({
     'product_id': product.id,
-    rating: 5,
+    rating: 0,
     summary: '',
     body: '',
     recommend: true,

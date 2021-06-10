@@ -5,7 +5,7 @@ import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 
-const Reviews = ({ product, meta, averageRating, totalReviews }) => {
+const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) => {
   const [reviews, setReviews] = useState([]); // all reviews
   const [reviewsList, setReviewsList] = useState([]); // manipulable list for sorting/filtering
   const [currentReviews, setCurrentReviews] = useState([]);
@@ -76,11 +76,11 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
   };
 
   // Will also need this in Q and A section
-  const setDateFormat = (array) => {
-    array.forEach((item) => {
-      item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
-    });
-  };
+  // const setDateFormat = (array) => {
+  //   array.forEach((item) => {
+  //     item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
+  //   });
+  // };
 
   const handleLoadMoreReviews = () => {
 
