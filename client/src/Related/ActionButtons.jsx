@@ -15,7 +15,7 @@ const HeartButton = (props) => {
 
   return (
     <div>
-      {modalView ? <ModalViewComponent currentChar={props.currentChar} relatedChar={props.relatedChar}/> : null}
+      {modalView ? <ModalViewComponent currentName={props.currentName} currentChar={props.currentChar} relatedName={props.relatedName} relatedChar={props.relatedChar}/> : null}
       <button onClick={handleClick}></button>
     </div>
   );

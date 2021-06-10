@@ -47,9 +47,9 @@ const ModalViewComponent = (props) => {
       <table>
         <thead>
           <tr>
-            <td>Current Product Name</td>
+            <td>{props.currentName}</td>
             <td></td>
-            <td>Related Product Name</td>
+            <td>{props.relatedName}</td>
           </tr>
         </thead>
         <tbody>
