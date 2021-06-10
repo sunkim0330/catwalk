@@ -17,7 +17,8 @@ const RelatedList = (props) => {
     if (props.product.id) {
       axios.get(`/products/${props.product.id}/related`)
         .then((relatedIds) => {
-          return setUpdateIds(relatedIds.data);
+          let uniqueIds = [...new Set(relatedIds.data)];
+          return setUpdateIds(uniqueIds);
         });
 
     }
