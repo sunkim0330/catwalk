@@ -8,7 +8,7 @@ const Related = (props) => {
   return (
     <div>
       <RelatedList product={props.product} setCurrentProduct={props.setProduct} currentStyle={props.defaultStyle} currentChar={props.currentChar}/>
-      <OutfitList />
+      <OutfitList product={props.product} style={props.defaultStyle} rating={props.rating} />
     </div>
   );
 };

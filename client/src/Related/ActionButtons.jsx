@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ModalViewComponent from './ModalViewComponent';
 
 
-const HeartButton = (props) => {
+export const HeartButton = (props) => {
   const [modalView, setModalView] = useState(false);
 
   useEffect(() => {
@@ -21,4 +21,14 @@ const HeartButton = (props) => {
   );
 };
 
-export default HeartButton;
+export const DeleteButton = (props) => {
+  const handleDelete = () => {
+    console.log('Delete Clicked');
+  };
+
+  return (
+    <div>
+      <button onClick={handleDelete} ></button>
+    </div>
+  );
+};
