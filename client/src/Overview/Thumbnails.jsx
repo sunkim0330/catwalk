@@ -1,12 +1,12 @@
 import React from 'react';
 import * as Styles from './styledComponents.js';
 
-const Thumbnails = ({ styleThumbnails }) => {
+const Thumbnails = ({ styleThumbnails, changeMainImage }) => {
 
   return (
     <Styles.Thumbnails>
-      {styleThumbnails.map((stylePhoto) => {
-        return <Styles.GalleryThumbnail src={stylePhoto.thumbnail_url} key={stylePhoto.thumbnail_url}/>;
+      {styleThumbnails.map((stylePhoto, index) => {
+        return <Styles.GalleryThumbnail src={stylePhoto.thumbnail_url} key={stylePhoto.thumbnail_url} onClick={() => changeMainImage(index)}/>;
       })}
     </Styles.Thumbnails>
   );
