@@ -293,7 +293,7 @@ const AddReview = ({ product, chars, ratings }) => {
             />
           </div>
 
-          <Submit reviewInfo={reviewInfo} chars={chars} />
+          <Submit reviewInfo={reviewInfo} ratings={ratings} />
 
         </form>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Submit = ({ reviewInfo, chars }) => {
+const Submit = ({ reviewInfo, ratings }) => {
 
   const submitReview = () => {
     axios.post('/reviews', reviewInfo)
@@ -27,12 +27,19 @@ const Submit = ({ reviewInfo, chars }) => {
       }
 
       // need to get the char name
-      for (let char in reviewInfo.characteristics) {
-        if (!reviewInfo.characteristics[char]) {
+      // for (let char in reviewInfo.characteristics) {
+      //   if (!reviewInfo.characteristics[char]) {
+      //     errorMessage += `${char} rating\n`;
+      //     hasError = true;
+      //   }
+      // }
+
+      chars.forEach(char => {
+        if (!reviewInfo[char].id) {
           errorMessage += `${char} rating\n`;
           hasError = true;
         }
-      }
+      });
 
       if (reviewInfo.body.length < 50) {
         errorMessage += 'Review must be at least 50 characters\n';
