@@ -9,7 +9,7 @@ export const Overview = styled.div`
 // gallery start
 // gallery container
 export const Gallery = styled.div`
-  border-style: double;
+  border-style: inset;
   width: 70%;
   position: relative;
   top: 10px;
@@ -48,7 +48,7 @@ export const GalleryThumbnail = styled.img`
 
 // product info start
 export const ProductInfo = styled.div`
-  border-style: double;
+  border-style: outset;
   width: 28%;
   position: absolute;
   top: 36px;
@@ -59,7 +59,7 @@ export const ProductInfo = styled.div`
 
 // style selector start
 export const StyleSelector = styled.div`
-  border-style: double;
+  border-style: outset;
   width: 28%;
   position: absolute;
   top: 128px;
@@ -67,7 +67,6 @@ export const StyleSelector = styled.div`
 `;
 
 export const StyleName = styled.h3`
-  border-style: double;
   width: 100%;
 `;
 
@@ -79,7 +78,7 @@ export const Style = styled.img`
 
 // cart management start
 export const CartManagement = styled.div`
-  border-style: inset;
+  border-style: outset;
   width: 28%;
   position: absolute;
   top: 338px;
@@ -101,32 +100,36 @@ export const Option = styled.option`
 export const AddToCart = styled.button`
   border-style: solid;
   border-radius: 5%;
+  display: block;
+  margin: auto;
 `;
 
 export const PointlessButton = styled.button`
-border-radius: 5%;
+  border-style: solid;
+  border-radius: 5%;
+  display: block;
+  margin: auto;
 `;
 // cart management end
 
 // product description start
 export const ProductDescription = styled.div`
-  border-style: double;
+  border-style: outset;
   position: absolute;
-  top: 380px;
+  top: 412px;
   right: 18px;
   width: 28%;
+  display: block;
 `;
 
 export const Features = styled.div`
-  border-style: double;
 `;
 
 export const FeaturesHeader = styled.h3`
-  border-style: double;
+  margin: 10px auto;
 `;
 
 export const FeaturesItem = styled.li`
-  border-style: double;
   list-style-type: none;
 `;
 
