@@ -6,8 +6,8 @@ const Gallery = ({ images }) => {
 
   return (
     <Styles.Gallery>
-      <img src={images.photos[0].thumbnail_url} alt="An image of the currently selected style"/>
-      <Thumbnails />
+      <Styles.MainImage src={images.photos[0].url} alt="An image of the currently selected style"/>
+      <Thumbnails styleThumbnails={images.photos}/>
     </Styles.Gallery>
   );
 
