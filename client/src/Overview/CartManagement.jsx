@@ -129,7 +129,7 @@ const CartManagement = ({ styleInventory }) => {
         {quantityOptions}
       </select>
       <button type="button" id="addToCart" onClick={() => addToCart(Number(purchaseQty))}>Add to Cart</button>
-      <button type="button" onClick={() => window.alert('You clicked the pointless button!')}>:D</button>
+      <button type="button" onClick={() => window.alert('You clicked the pointless button!!')}>:D</button>
     </div>
   );
 
