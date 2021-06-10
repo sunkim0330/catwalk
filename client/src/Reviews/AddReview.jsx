@@ -10,12 +10,7 @@ const AddReview = ({ product, chars, ratings }) => {
     Length: ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
     Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs looose']
   });
-  // const [summary, setSummary] = useState('');
-  // const [body, setBody] = useState('');
   const [minRequiredChars, setminRequiredChars] = useState(50);
-  // const [imageURLs, setImageURLs] = useState([]);
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
 
   const [reviewInfo, setReviewInfo] = useState({
     'product_id': product.id,
