@@ -27,6 +27,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
       .then((results) => {
         let newReviews = results.data.results;
+        setDateFormat(newReviews);
         setReviews(newReviews);
         setReviewsList(newReviews);
         setCurrentReviews(newReviews.slice(0, 2));
@@ -144,7 +145,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
         </div>
       </div>
       {/* component not finished */}
-      {/* <AddReview product={product} chars={chars} ratings={meta.characteristics}/> */}
+      <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
     </div>
   );
 };

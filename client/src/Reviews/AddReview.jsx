@@ -10,16 +10,16 @@ const AddReview = ({ product, chars, ratings }) => {
     Length: ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
     Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs looose']
   });
-  const [summary, setSummary] = useState('');
-  const [body, setBody] = useState('');
+  // const [summary, setSummary] = useState('');
+  // const [body, setBody] = useState('');
   const [minRequiredChars, setminRequiredChars] = useState(50);
-  const [imageURLs, setImageURLs] = useState([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  // const [imageURLs, setImageURLs] = useState([]);
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
 
   const [reviewInfo, setReviewInfo] = useState({
     'product_id': product.id,
-    rating: 0,
+    rating: 5,
     summary: '',
     body: '',
     recommend: true,
@@ -69,6 +69,7 @@ const AddReview = ({ product, chars, ratings }) => {
 
   const handleImageInput = (e) => {
     let files = [...e.currentTarget.files];
+    files = files.slice(0, 5);
 
     // Should prevent more than 5 images, doesn't work yet
     // if (files.length > 5) {
@@ -77,12 +78,15 @@ const AddReview = ({ product, chars, ratings }) => {
     //   alert('Cannot upload more the 5 files');
     //   return;
     // }
-    let newFiles = [];
+    let newFiles = reviewInfo.imageURLs;
     files.forEach(file => {
       newFiles.push(URL.createObjectURL(file));
     });
 
-    setImageURLs(prev => [...prev, ...newFiles]);
+    newFiles = newFiles.slice(0, 5);
+    setReviewInfo(prev => {
+      return {...prev, imageURLs: newFiles};
+    });
   };
 
   const handleCharChange = (e) => {
@@ -110,7 +114,7 @@ const AddReview = ({ product, chars, ratings }) => {
                 <span key={index}>
                   <input
                     type="radio"
-                    name={char}
+                    name={ratings[char].id}
                     value={index + 1}
                     onChange={handleCharChange}
                     required
@@ -132,7 +136,7 @@ const AddReview = ({ product, chars, ratings }) => {
   useEffect(() => {
     let newChars = {};
     chars.forEach(char => {
-      newChars[char] = 0;
+      newChars[ratings[char].id] = 0;
     });
     setReviewInfo((prev) => {
       return {...prev, characteristics: newChars};
@@ -176,6 +180,7 @@ const AddReview = ({ product, chars, ratings }) => {
                   name="recommend"
                   value="yes"
                   onChange={handleRecommendsChange}
+                  checked
                   required
                 />
               </label>
@@ -238,7 +243,7 @@ const AddReview = ({ product, chars, ratings }) => {
 
 
           <div>
-            {imageURLs.length >= 5 ? null
+            {reviewInfo.imageURLs.length >= 5 ? null
               : <div>
                 <label>
                   Share an image, up to 5
@@ -255,7 +260,7 @@ const AddReview = ({ product, chars, ratings }) => {
             }
             <div>
                 image preview:
-              {imageURLs.map((image, index) => {
+              {reviewInfo.imageURLs.map((image, index) => {
                 return (
                   <div key={index} >
                     <img src={image} style={thumbnail}/>
