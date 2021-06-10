@@ -143,7 +143,8 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
           <button>add a review</button>
         </div>
       </div>
-      <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
+      {/* component not finished */}
+      {/* <AddReview product={product} chars={chars} ratings={meta.characteristics}/> */}
     </div>
   );
 };
