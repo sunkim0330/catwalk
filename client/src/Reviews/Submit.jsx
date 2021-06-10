@@ -26,20 +26,16 @@ const Submit = ({ reviewInfo, ratings }) => {
         hasError = true;
       }
 
-      // need to get the char name
-      // for (let char in reviewInfo.characteristics) {
-      //   if (!reviewInfo.characteristics[char]) {
-      //     errorMessage += `${char} rating\n`;
-      //     hasError = true;
-      //   }
-      // }
-
-      chars.forEach(char => {
-        if (!reviewInfo[char].id) {
-          errorMessage += `${char} rating\n`;
+      for (let char in reviewInfo.characteristics) {
+        if (!reviewInfo.characteristics[char]) {
           hasError = true;
+          for (let key in ratings) {
+            if (ratings[key].id === Number(char)) {
+              errorMessage += `${key} rating\n`;
+            }
+          }
         }
-      });
+      }
 
       if (reviewInfo.body.length < 50) {
         errorMessage += 'Review must be at least 50 characters\n';
