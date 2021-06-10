@@ -76,7 +76,7 @@ const CartManagement = ({ styleInventory }) => {
   const generateSizeOptions = () => {
     let newSizeOptions = formattedSkuData.map((sku, index) => {
       if (sku.quantity) {
-        return <option value={index} key={index}>{sku.size}</option>;
+        return <option value={index} key={sku.sku}>{sku.size}</option>;
       }
     });
     newSizeOptions.length === 0 ? newSizeOptions = [<option value="outOfStock" key="key">OUT OF STOCK</option>] : null;
