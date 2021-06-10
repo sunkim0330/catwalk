@@ -5,8 +5,7 @@ import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 
-
-const Reviews = ({ product }) => {
+const Reviews = ({ product, meta, averageRating, totalReviews }) => {
   const [reviews, setReviews] = useState([]); // all reviews
   const [reviewsList, setReviewsList] = useState([]); // manipulable list for sorting/filtering
   const [currentReviews, setCurrentReviews] = useState([]);
