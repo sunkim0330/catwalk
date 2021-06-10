@@ -11,7 +11,6 @@ const AddReview = ({ product, chars, ratings }) => {
     Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs looose']
   });
   const [minRequiredChars, setminRequiredChars] = useState(50);
-
   const [reviewInfo, setReviewInfo] = useState({
     'product_id': product.id,
     rating: 0,
