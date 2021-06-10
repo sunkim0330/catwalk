@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
 import Helpful from '../shared/Helpful.jsx';
+import Modal from './Modal.jsx';
 
 const Questions = ({ product, setDateFormat }) => {
   const [questions, setQuestions] = useState([]);

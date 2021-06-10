@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
+import styled, {css} from 'styled-components';
 
 const Modal = ({title, subTitle }) => {
+  const [show, setShow] = useState(false);
 
+  const showModal = (e) => {
+    setShow(true);
+  };
+
+  /*
+  <div><button onClick={(e) => { showModal(); }}>Add a question</button></div>
+  */
 
   return (
     <div className="qanda-modal">
