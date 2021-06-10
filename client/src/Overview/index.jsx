@@ -13,7 +13,7 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
 
   return (
     <Styles.Overview>
-      <Gallery images={styles[currentStyle].photos}/>
+      <Gallery images={styles[currentStyle].photos} productID={product.id}/>
       <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
       <StyleSelector styles={styles} setCurrentStyle={setCurrentStyle} currentStyle={styles[currentStyle]}/>
       <CartManagement styleInventory={styles[currentStyle].skus}/>

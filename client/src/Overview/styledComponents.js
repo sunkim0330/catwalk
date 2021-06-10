@@ -26,6 +26,19 @@ export const MainImage = styled.img`
   right: 278px;
 `;
 
+export const LeftArrow = styled.img`
+  position: absolute;
+  top: 320px;
+  left: 300px;
+  z-index: 1;
+`;
+
+export const RightArrow = styled.img`
+  position: absolute;
+  top: 320px;
+  right: 177px;
+  z-index: 1;
+`;
 
 // thumbnails container
 export const Thumbnails = styled.div`
@@ -101,14 +114,14 @@ export const AddToCart = styled.button`
   border-style: solid;
   border-radius: 5%;
   display: block;
-  margin: auto;
+  margin: 4px auto;
 `;
 
 export const PointlessButton = styled.button`
   border-style: solid;
   border-radius: 5%;
   display: block;
-  margin: auto;
+  margin: 4px auto;
 `;
 // cart management end
 
@@ -116,7 +129,7 @@ export const PointlessButton = styled.button`
 export const ProductDescription = styled.div`
   border-style: outset;
   position: absolute;
-  top: 412px;
+  top: 426px;
   right: 18px;
   width: 28%;
   display: block;

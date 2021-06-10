@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import * as Styles from './styledComponents.js';
 
-const Thumbnails = ({ styleThumbnails, changeMainImage }) => {
+const Thumbnails = ({ styleThumbnails, imageIndex, changeMainImage }) => {
+
+  const [renderedThumbnails, setRenderedThumbnails] = useState(styleThumbnails.slice(0, 7));
+
+  const updateRenderedThumbnails = () => {
+
+  };
+
+  useEffect(() => {
+
+  }, [imageIndex]);
 
   return (
     <Styles.Thumbnails>
