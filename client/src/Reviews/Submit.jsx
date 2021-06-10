@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Submit = ({ reviewInfo }) => {
+const Submit = ({ reviewInfo, chars }) => {
 
   const submitReview = () => {
     axios.post('/reviews', reviewInfo)
