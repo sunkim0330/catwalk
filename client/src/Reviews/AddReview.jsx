@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Submit from './Submit.jsx';
 
 const AddReview = ({ product, chars, ratings }) => {
   const [scale, setScale] = useState({
@@ -16,12 +17,53 @@ const AddReview = ({ product, chars, ratings }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  const [reviewInfo, setReviewInfo] = useState({
+    'product_id': product.id,
+    rating: 0,
+    summary: '',
+    body: '',
+    recommend: true,
+    name: '',
+    email: '',
+    imageURLs: [],
+    characteristics: {}
+  });
+
+  const handleSummaryChange = (e) => {
+    setReviewInfo(prev => {
+      return {...prev, summary: e.target.value};
+    });
+  };
+
   const handleBodyChange = (e) => {
-    //let newBody = e.target.value.length;
-    setBody(e.target.value);
+    let chars = e.target.value;
+
+    setReviewInfo((prev) => {
+      return {...prev, body: chars};
+    });
+
     setminRequiredChars(() => {
-      var chars = e.target.value.length;
-      return chars < 50 ? 50 - chars : 0;
+      return chars.length < 50 ? 50 - chars.length : 0;
+    });
+  };
+
+  const handleRecommendsChange = (e) => {
+    let value = e.target.value === 'yes';
+
+    setReviewInfo(prev => {
+      return {...prev, recommend: value};
+    });
+  };
+
+  const handleNameChange = (e) => {
+    setReviewInfo(prev => {
+      return {...prev, name: e.target.value};
+    });
+  };
+
+  const handleEmailChange = (e) => {
+    setReviewInfo(prev => {
+      return {...prev, email: e.target.value};
     });
   };
 
@@ -43,6 +85,16 @@ const AddReview = ({ product, chars, ratings }) => {
     setImageURLs(prev => [...prev, ...newFiles]);
   };
 
+  const handleCharChange = (e) => {
+    let charName = e.target.name;
+    let value = Number(e.target.value);
+    let newValue = reviewInfo.characteristics;
+    newValue[charName] = value;
+    setReviewInfo(prev => {
+      return {...prev, characteristics: newValue};
+    });
+  };
+
   const renderCharButtons = () => {
 
     return (
@@ -59,8 +111,8 @@ const AddReview = ({ product, chars, ratings }) => {
                   <input
                     type="radio"
                     name={char}
-                    value={attribute}
-
+                    value={index + 1}
+                    onChange={handleCharChange}
                     required
                   />
                 </span>
@@ -77,7 +129,15 @@ const AddReview = ({ product, chars, ratings }) => {
 
   };
 
-
+  useEffect(() => {
+    let newChars = {};
+    chars.forEach(char => {
+      newChars[char] = 0;
+    });
+    setReviewInfo((prev) => {
+      return {...prev, characteristics: newChars};
+    });
+  }, [chars]);
 
   const thumbnail = {
     border: '1px solid black',
@@ -94,7 +154,7 @@ const AddReview = ({ product, chars, ratings }) => {
     <div className="modal">
       <div>
         Write your review
-        About {product}
+        About {product.name}
       </div>
       <div>
         <form>
@@ -115,6 +175,7 @@ const AddReview = ({ product, chars, ratings }) => {
                   type="radio"
                   name="recommend"
                   value="yes"
+                  onChange={handleRecommendsChange}
                   required
                 />
               </label>
@@ -124,6 +185,7 @@ const AddReview = ({ product, chars, ratings }) => {
                   type="radio"
                   name="recommend"
                   value="no"
+                  onChange={handleRecommendsChange}
                 />
               </label>
             </div>
@@ -147,8 +209,8 @@ const AddReview = ({ product, chars, ratings }) => {
               maxLength="60"
               placeholder="Example: Best purchase ever!"
               size="30"
-              value={summary}
-              onChange={e => setSummary(e.target.value)}
+              // value={summary}
+              onChange={handleSummaryChange}
               required
             />
           </div>
@@ -165,7 +227,7 @@ const AddReview = ({ product, chars, ratings }) => {
               minLength="50"
               maxLength="1000"
               placeholder="Why did you like the product or not?"
-              value={body}
+              // value={body}
               onChange={handleBodyChange}
               required
             />
@@ -211,8 +273,8 @@ const AddReview = ({ product, chars, ratings }) => {
               name="username"
               placeholder="Example: jackson11!"
               maxLength="60"
-              value={name}
-              onChange={e => setName(e.target.value)}
+              // value={name}
+              onChange={handleNameChange}
               required
             />
             <p>For privacy reasons, do not use your full name or email address</p>
@@ -225,11 +287,13 @@ const AddReview = ({ product, chars, ratings }) => {
               name="email"
               placeholder="Example: jackson11@email.com"
               maxLength="60"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              // value={email}
+              onChange={handleEmailChange}
               required
             />
           </div>
+
+          <Submit reviewInfo={reviewInfo} />
 
         </form>
       </div>
