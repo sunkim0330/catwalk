@@ -81,7 +81,7 @@ const App = () => {
       Super Fun Shopping Experience
       <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
       <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features}/>
-      <QandAs product={product}/>
+      <QandAs product={product} setDateFormat={setDateFormat}/>
       {/* <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount}/> */}
     </div>
   );
