@@ -5,7 +5,7 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
 
   return (
     <Styles.StyleSelector>
-      <div className="styleTitle">{'Style Name > '}{currentStyle.name}</div>
+      <Styles.StyleName className="styleTitle">{'Style Name > '}{currentStyle.name}</Styles.StyleName>
       {styles.map((style, index) => {
         return <Styles.Style className="style" src={style.photos[0].thumbnail_url} alt={style.name + 'Style'} key={index} onClick={() => setCurrentStyle(index)}/>;
       })}

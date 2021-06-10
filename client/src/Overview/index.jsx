@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Gallery from './Gallery.jsx';
-import ProductDescription from './Description.jsx';
+import ProductDescription from './ProductDescription.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import CartManagement from './CartManagement.jsx';
 import StyleSelector from './StyleSelector.jsx';
