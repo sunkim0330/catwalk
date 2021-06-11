@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as Styles from './Styles.js';
 
 const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
   const [ratings, setRatings] = useState({});
@@ -112,7 +113,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
   }, [ratings]);
 
   return (
-    <div id="breakdown">
+    <Styles.Breakdown>
 
       {isFiltered ? showCurrentFilters() : null}
 
@@ -178,7 +179,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
       <div id="recommends">{recommends}% of reviews recommend this product</div>
 
-    </div>
+    </Styles.Breakdown>
   );
 };
 

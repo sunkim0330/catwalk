@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Submit from './Submit.jsx';
+import * as Styles from './Styles.js';
 
 const AddReview = ({ product, chars, ratings }) => {
   const [scale, setScale] = useState({
@@ -147,7 +148,7 @@ const AddReview = ({ product, chars, ratings }) => {
   };
 
   return (
-    <div className="modal">
+    <div>
       <div>
         Write your review
         About {product.name}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as Styles from './Styles.js';
 
 const Characteristics = ({ chars }) => {
   const [scale, setScale] = useState({
@@ -17,7 +18,7 @@ const Characteristics = ({ chars }) => {
   };
 
   return (
-    <div id="characteristics">
+    <Styles.Characteristics>
       {chars.map((char) => {
         return (
           <div className="char" key={char}>
@@ -35,7 +36,7 @@ const Characteristics = ({ chars }) => {
           </div>
         );
       })}
-    </div>
+    </Styles.Characteristics>
   );
 };
 

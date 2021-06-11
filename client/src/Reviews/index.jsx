@@ -4,6 +4,7 @@ import AddReview from './AddReview.jsx';
 import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
+import * as Styles from './Styles.js';
 
 const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) => {
   const [reviews, setReviews] = useState([]); // all reviews
@@ -79,49 +80,47 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   }, [currentReviewIndex, reviewsList]);
 
   return (
-    <div id="container">
+    <Styles.Grid>
       {/* container for average rating, reviews breakdown, recommends, characteristics */}
-      <div id="ratings-breakdown">
-        <div>
-          <span>RATINGS & REVIEWS</span>
-          <div>
-            {averageRating}
-          </div>
-          <div>
-            stars go here
-          </div>
-        </div>
+      {/* <div id="ratings-breakdown"> */}
+      <Styles.TitleBlock>
+        <Styles.title>RATINGS & REVIEWS</Styles.title>
+      </Styles.TitleBlock>
+      <Styles.Summary>
+        <Styles.rating>{averageRating}</Styles.rating>
+        <div>stars go here</div>
+      </Styles.Summary>
 
 
-        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
-        <Characteristics chars={chars}/>
+      <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
+      <Characteristics chars={chars}/>
 
-      </div>
+      {/* </div> */}
 
       {/* container for sort dropdown, reviews, add review button */}
-      <div id="reviews">
-        <div>
-          <span>{reviews.length} reviews</span>
-          <select id="sort" onChange={handleSort}>
-            <option value="relevant">Relevant</option>
-            <option value="helpful">Helpful</option>
-            <option value="newest">Newest</option>
-          </select>
-        </div>
-        <div id="reviews-list">
-          {currentReviews.map((review, index) => {
-            return <Review key={index} review={review} />;
-          })}
-          {currentReviews.length === reviewsList.length
-            ? null
-            : <button onClick={handleLoadMoreReviews}>More Reviews</button>
-          }
-          <button>add a review</button>
-        </div>
-      </div>
+      {/* <Styles.Review> */}
+      <Styles.Sort>
+        <Styles.total>{reviews.length} reviews</Styles.total>
+        <select id="sort" onChange={handleSort}>
+          <option value="relevant">Relevant</option>
+          <option value="helpful">Helpful</option>
+          <option value="newest">Newest</option>
+        </select>
+      </Styles.Sort>
+      <Styles.ReviewList>
+        {currentReviews.map((review, index) => {
+          return <Review key={index} review={review} />;
+        })}
+        {currentReviews.length === reviewsList.length
+          ? null
+          : <button onClick={handleLoadMoreReviews}>More Reviews</button>
+        }
+        <button>add a review</button>
+      </Styles.ReviewList>
+      {/* </Styles.Review> */}
 
-      <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
-    </div>
+      {/* <AddReview product={product} chars={chars} ratings={meta.characteristics}/> */}
+    </Styles.Grid>
   );
 };
 
