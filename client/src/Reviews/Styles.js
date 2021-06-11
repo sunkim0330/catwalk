@@ -6,7 +6,7 @@ import style from 'styled-components';
 // ==============
 export const Grid = style.div`
   border: 2px solid black;
-  height: 1000px;
+  height: 800px;
   width: 96%;
   margin: 10px 1% 150px 1%;
   padding: 10px;
@@ -85,9 +85,59 @@ export const total = style.h6`
 // SUMMARY BLOCK
 // ===============
 
-export const rating = style.h1`
+export const overall = style.h1`
   margin: 5px 2px;
   font-size: 5em;
   width: fit-content;
   height: fit-content;
+`;
+
+// ===============
+// RATINGS BREAKDOWN
+// ===============
+
+export const spacer = style.div`
+  height: 20%;
+  width: 100%;
+  border-bottom: 1px solid;
+  margin-bottom: 30px;
+`;
+
+export const ratingContainer = style.div`
+  margin: 10px 5px;
+  height: 7%;
+`;
+
+export const bar = style.div`
+  display: inline-block;
+  width: 65%;
+  height: 10px;
+  background: #d3d9d9;
+  margin-left: 10px;
+  border-radius: 3px;
+`;
+
+export const percent = style.div(props => ({
+  width: props.width,
+  height: '10px',
+  background: '#3a5a40',
+  'border-radius': '3px'
+}));
+
+export const rating = style.a`
+  font-size: 1em;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
+export const count = style.a`
+  margin: 0px 5px;
+  text-align: center;
+`;
+
+export const rec = style.div`
+  width: 100%;
+  margin: 20px 5px;
+  padding: 10px;
+  display: inline-block;
 `;

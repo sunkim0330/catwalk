@@ -87,7 +87,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
         <Styles.title>RATINGS & REVIEWS</Styles.title>
       </Styles.TitleBlock>
       <Styles.Summary>
-        <Styles.rating>{averageRating}</Styles.rating>
+        <Styles.overall>{averageRating}</Styles.overall>
         <div>stars go here</div>
       </Styles.Summary>
 

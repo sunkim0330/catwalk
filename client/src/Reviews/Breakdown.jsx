@@ -107,77 +107,48 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     let newRatingsPct = {};
     for (let rating in ratings) {
       let percentage = Math.round((ratings[rating] / reviews.length) * 100);
-      newRatingsPct[rating] = percentage;
+      newRatingsPct[rating] = percentage + '%';
     }
     setRatingsPct(newRatingsPct);
   }, [ratings]);
 
+  // refactor using map or loop
   return (
     <Styles.Breakdown>
 
-      {isFiltered ? showCurrentFilters() : null}
+      <Styles.spacer>{isFiltered ? showCurrentFilters() : null}</Styles.spacer>
 
-      <div className="left">
-        <div onClick={handleFilterClick}>5 stars</div>
-      </div>
-      <div className="middle">
-        <div className="bar">
-          <div className="bar-5"></div>
-        </div>
-      </div>
-      <div className="right">
-        <div>{ratings[5]}</div>
-      </div>
+      <Styles.ratingContainer>
+        <Styles.rating onClick={handleFilterClick}>5 stars</Styles.rating>
+        <Styles.bar><Styles.percent width={ratingsPct[5]}></Styles.percent></Styles.bar>
+        <Styles.count>({ratings[5]})</Styles.count>
+      </Styles.ratingContainer>
 
-      <div className="left">
-        <div onClick={handleFilterClick}>4 stars</div>
-      </div>
-      <div className="middle">
-        <div className="bar">
-          <div className="bar-4"></div>
-        </div>
-      </div>
-      <div className="right">
-        <div>{ratings[4]}</div>
-      </div>
+      <Styles.ratingContainer>
+        <Styles.rating onClick={handleFilterClick}>4 stars</Styles.rating>
+        <Styles.bar><Styles.percent width={ratingsPct[4]}></Styles.percent></Styles.bar>
+        <Styles.count>({ratings[4]})</Styles.count>
+      </Styles.ratingContainer>
 
-      <div className="left">
-        <div onClick={handleFilterClick}>3 stars</div>
-      </div>
-      <div className="middle">
-        <div className="bar">
-          <div className="bar-3"></div>
-        </div>
-      </div>
-      <div className="right">
-        <div>{ratings[3]}</div>
-      </div>
+      <Styles.ratingContainer>
+        <Styles.rating onClick={handleFilterClick}>3 stars</Styles.rating>
+        <Styles.bar><Styles.percent width={ratingsPct[3]}></Styles.percent></Styles.bar>
+        <Styles.count>({ratings[3]})</Styles.count>
+      </Styles.ratingContainer>
 
-      <div className="left">
-        <div onClick={handleFilterClick}>2 stars</div>
-      </div>
-      <div className="middle">
-        <div className="bar">
-          <div className="bar-2"></div>
-        </div>
-      </div>
-      <div className="right">
-        <div >{ratings[2]}</div>
-      </div>
+      <Styles.ratingContainer>
+        <Styles.rating onClick={handleFilterClick}>2 stars</Styles.rating>
+        <Styles.bar><Styles.percent width={ratingsPct[2]}></Styles.percent></Styles.bar>
+        <Styles.count>({ratings[2]})</Styles.count>
+      </Styles.ratingContainer>
 
-      <div className="left">
-        <div onClick={handleFilterClick}>1 stars</div>
-      </div>
-      <div className="middle">
-        <div className="bar">
-          <div className="bar-1"></div>
-        </div>
-      </div>
-      <div className="right">
-        <div>{ratings[1]}</div>
-      </div>
+      <Styles.ratingContainer>
+        <Styles.rating onClick={handleFilterClick}>1 stars</Styles.rating>
+        <Styles.bar><Styles.percent width={ratingsPct[1]}></Styles.percent></Styles.bar>
+        <Styles.count>({ratings[1]})</Styles.count>
+      </Styles.ratingContainer>
 
-      <div id="recommends">{recommends}% of reviews recommend this product</div>
+      <Styles.rec>{recommends}% of reviews recommend this product</Styles.rec>
 
     </Styles.Breakdown>
   );
