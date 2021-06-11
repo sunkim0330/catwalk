@@ -15,15 +15,15 @@ export const Gallery = styled.div`
   top: 10px;
   left: 10px;
   height: 850px;
+  object-fit: fill;
 `;
 
 // main img
 export const MainImage = styled.img`
-  border-style: double;
-  height: 100%;
-  position: absolute;
-  top: -3px;
-  right: 278px;
+  display: block;
+  margin: 4vh auto;
+  border-style: ridge;
+  height: 90%;
 `;
 
 export const LeftArrow = styled.img`
@@ -53,9 +53,9 @@ export const Thumbnails = styled.div`
 
 // thumbnail img
 export const GalleryThumbnail = styled.img`
-  border-style: double;
-  height: 15%;
-  padding: 4px;
+  // border-style: double;
+  height: 14.2%;
+  // padding: 4px;
 `;
 // gallery end
 
