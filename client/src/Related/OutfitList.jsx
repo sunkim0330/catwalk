@@ -23,23 +23,41 @@ const OutfitList = (props) => {
     // if closet exists, add to the front of it. Otherwise, create the list
     if (newStorage.getItem('closet')) {
       let localCloset = JSON.parse(newStorage.getItem('closet'));
-      localCloset.unshift(productCard);
-      newStorage.setItem('closet', JSON.stringify(localCloset));
+
+      // Checking for repeated items
+      let alreadyExists = false;
+      localCloset.forEach(item => {
+        if (item.product.name === props.product.name) {
+          alreadyExists = true;
+        }
+      });
+
+      if (!alreadyExists) {
+        localCloset.unshift(productCard);
+        newStorage.setItem('closet', JSON.stringify(localCloset));
+        updateCloset();
+      } else {
+        console.log('Already in the Outfit');
+      }
+
     } else {
       let newCloset = [];
       newCloset.push(productCard);
       newStorage.setItem('closet', JSON.stringify(newCloset));
+      updateCloset();
     }
 
+  };
+
+  const updateCloset = () => {
     let updatedCloset = newStorage.getItem('closet');
-    console.log(JSON.parse(updatedCloset));
     setCloset(JSON.parse(updatedCloset));
   };
 
   return (
     <div>
       <button onClick={handleAdd} ></button>
-      {closet ? closet.map((piece, i) => { return <OutfitCard piece={piece} key={i} />; }) : null}
+      {closet ? closet.map((piece, i) => { return <OutfitCard piece={piece} key={i} updateCloset={updateCloset} />; }) : null}
     </div>
   );
 };

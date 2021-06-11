@@ -23,7 +23,18 @@ export const HeartButton = (props) => {
 
 export const DeleteButton = (props) => {
   const handleDelete = () => {
-    console.log('Delete Clicked');
+    let newStorage = window.localStorage;
+    let stringStorage = newStorage.getItem('closet');
+    let listStorage = JSON.parse(stringStorage);
+    let indexToSplice = 0;
+    listStorage.forEach(piece => {
+      if (piece.product.name === props.name) {
+        indexToSplice = listStorage.indexOf(piece);
+      }
+    });
+    listStorage.splice(indexToSplice, 1);
+    newStorage.setItem('closet', JSON.stringify(listStorage));
+    props.updateCloset();
   };
 
   return (
