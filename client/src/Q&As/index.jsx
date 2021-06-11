@@ -2,16 +2,19 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Questions from './Questions.jsx';
 import Search from './Search.jsx';
+import Modal from './Modal.jsx';
 
 const QandAs = ({ product, setDateFormat }) => {
+  const [show, setShow] = useState(false);
 
   return (
     <div className="QandAsbox">
       QUESTIONS AND ANSWERS
       <div className="QandAsinput">
         <Search product={product}/>
-        <Questions product={product} setDateFormat={setDateFormat}/>
-        <button>ADD A QUESTION</button>
+        <Questions show={show} product={product} setDateFormat={setDateFormat}/>
+        <button onClick={() => setShow(true)} >Ask a Question</button>
+        <Modal title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
       </div>
     </div>
   );

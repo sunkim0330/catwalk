@@ -24,13 +24,13 @@ const Modal = ({origin, title, subTitle, questionBody, onClose, show}) => {
   //form looks different
 
 
-  const [isIsAnswer, setIsItAnswer] = useState(() => {
+  const [isItAnswer, setIsItAnswer] = useState(() => {
     return title === 'Submit Your Answer';
   });
 
 
   const displayQuestionBody = () => {
-    if (isIsAnswer) {
+    if (isItAnswer) {
       return <h2>{subTitle} : {questionBody}</h2>;
     } else {
       return <h2>{subTitle}</h2>;
@@ -42,14 +42,7 @@ const Modal = ({origin, title, subTitle, questionBody, onClose, show}) => {
     return null;
   }
 
-  //onclick 'submit' it is going to send a post request and maybe change to button to 'Submitted!'
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   axios({
-  //     method: 'post',
-  //     url: `/qa/questions/${}`
-  //   });
-  // };
+
 
 
   return (
@@ -61,10 +54,10 @@ const Modal = ({origin, title, subTitle, questionBody, onClose, show}) => {
             {displayQuestionBody}
           </div>
           <div className="qanda-modal-body">
-            <ModalForm />
+            <ModalForm isIsAnswer={isItAnswer}/>
           </div>
           <div className="qanda-modal-footer">
-            <button>Submit</button><button onClick={onClose}>Close</button>
+            <button onClick={onClose}>Close</button>
           </div>
         </div>
       </ModalContainer>
@@ -73,6 +66,9 @@ const Modal = ({origin, title, subTitle, questionBody, onClose, show}) => {
 
 
 };
+
+
+export default Modal;
 
 /*
 const ModalContainer = styled.div.attrs({className: 'qanda-modal'})`
@@ -103,4 +99,4 @@ const ModalContainer = styled.div.attrs({className: 'qanda-modal'})`
   `;
 */
 
-export default Modal;
+

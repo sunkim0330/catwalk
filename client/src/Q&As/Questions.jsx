@@ -1,13 +1,13 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
-import Helpful from '../Shared/Helpful.jsx';
+import Helpful from '../shared/Helpful.jsx';
 import Modal from './Modal.jsx';
 
 const Questions = ({ product, setDateFormat }) => {
   const [questions, setQuestions] = useState([]);
   const [loadPage, setLoadPage] = useState(2);
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
 
   useEffect(() => {
@@ -42,10 +42,6 @@ const Questions = ({ product, setDateFormat }) => {
         className="question_button" onClick={loadMore}>
         MORE ANSWERED QUESTIONS
       </button>
-
-      <button onClick={() => setShow(true)} >Ask a Question</button>
-
-      <Modal title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
     </div>
   );
 
