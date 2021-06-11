@@ -5,6 +5,9 @@ import style from 'styled-components';
 // GRID BREAKDOWN
 // ==============
 export const Grid = style.div`
+  cursor: default;
+  max-width: 1800px;
+  min-width: 1200px;
   border: 2px solid black;
   height: 800px;
   width: 96%;
@@ -104,6 +107,19 @@ export const spacer = style.div`
   margin-bottom: 30px;
 `;
 
+export const filter = style.div`
+  margin: 10px 5px;
+`;
+
+export const remove = style.div`
+  margin: 20px 0 0 5px;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: #d3d9d9;
+  }
+`;
+
 export const ratingContainer = style.div`
   margin: 10px 5px;
   height: 7%;
@@ -129,6 +145,9 @@ export const rating = style.a`
   font-size: 1em;
   text-decoration: underline;
   cursor: pointer;
+  &:hover {
+    color: #d3d9d9;
+  }
 `;
 
 export const count = style.a`

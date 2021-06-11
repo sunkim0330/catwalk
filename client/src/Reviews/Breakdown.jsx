@@ -22,17 +22,21 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
       }
     }
 
+    currentFilters.sort((a, b) => { return b - a; });
+
     return (
-      <div>
-        Filters currently applied:
-        {currentFilters.map((filter, index) => {
-          return (
-            // need to remove the comma on last item
-            <span key={index}>{filter} stars, </span>
-          );
-        })}
-        <div onClick={handleRemoveFilters}>Remove all filters</div>
-      </div>
+      <Styles.spacer>
+        <Styles.filter>
+          Filtered by:
+          {currentFilters.map((filter, index) => {
+            return (
+              // need to remove the comma on last item
+              <span key={index}> {filter} stars, </span>
+            );
+          })}
+        </Styles.filter>
+        <Styles.remove onClick={handleRemoveFilters}>Remove all filters</Styles.remove>
+      </Styles.spacer>
     );
   };
 
@@ -71,6 +75,20 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     });
 
     setReviewsList(newReviewsList);
+  };
+
+  const renderCharacteristics = () => {
+    let charRating = [5, 4, 3, 2, 1];
+
+    return charRating.map((rating) => {
+      return (
+        <Styles.ratingContainer key={rating}>
+          <Styles.rating onClick={handleFilterClick}>{rating} stars</Styles.rating>
+          <Styles.bar><Styles.percent width={ratingsPct[rating]}></Styles.percent></Styles.bar>
+          <Styles.count>({ratings[rating]})</Styles.count>
+        </Styles.ratingContainer>
+      );
+    });
   };
 
   // get number of reviews for each rating
@@ -116,37 +134,16 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
   return (
     <Styles.Breakdown>
 
-      <Styles.spacer>{isFiltered ? showCurrentFilters() : null}</Styles.spacer>
+      {isFiltered ? (
+        showCurrentFilters()
+      ) : (
+        <Styles.spacer>
+          <Styles.filter>Filtered by: none</Styles.filter>
+        </Styles.spacer>
+      )
+      }
 
-      <Styles.ratingContainer>
-        <Styles.rating onClick={handleFilterClick}>5 stars</Styles.rating>
-        <Styles.bar><Styles.percent width={ratingsPct[5]}></Styles.percent></Styles.bar>
-        <Styles.count>({ratings[5]})</Styles.count>
-      </Styles.ratingContainer>
-
-      <Styles.ratingContainer>
-        <Styles.rating onClick={handleFilterClick}>4 stars</Styles.rating>
-        <Styles.bar><Styles.percent width={ratingsPct[4]}></Styles.percent></Styles.bar>
-        <Styles.count>({ratings[4]})</Styles.count>
-      </Styles.ratingContainer>
-
-      <Styles.ratingContainer>
-        <Styles.rating onClick={handleFilterClick}>3 stars</Styles.rating>
-        <Styles.bar><Styles.percent width={ratingsPct[3]}></Styles.percent></Styles.bar>
-        <Styles.count>({ratings[3]})</Styles.count>
-      </Styles.ratingContainer>
-
-      <Styles.ratingContainer>
-        <Styles.rating onClick={handleFilterClick}>2 stars</Styles.rating>
-        <Styles.bar><Styles.percent width={ratingsPct[2]}></Styles.percent></Styles.bar>
-        <Styles.count>({ratings[2]})</Styles.count>
-      </Styles.ratingContainer>
-
-      <Styles.ratingContainer>
-        <Styles.rating onClick={handleFilterClick}>1 stars</Styles.rating>
-        <Styles.bar><Styles.percent width={ratingsPct[1]}></Styles.percent></Styles.bar>
-        <Styles.count>({ratings[1]})</Styles.count>
-      </Styles.ratingContainer>
+      {renderCharacteristics()}
 
       <Styles.rec>{recommends}% of reviews recommend this product</Styles.rec>
 
