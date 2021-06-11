@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import Helpful from '../shared/Helpful.jsx';
+import Helpful from '../Shared/Helpful.jsx';
 
 const Answers = ({ questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
