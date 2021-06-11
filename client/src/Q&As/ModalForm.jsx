@@ -31,6 +31,7 @@ const ModalForm = () => {
   };
 
   const [state, dispatch] = useReducer(reducer, intialState);
+
   const handleChange = (e) => dispatch({
     type: e.target.name,
     payload: e.target.value.trim()
