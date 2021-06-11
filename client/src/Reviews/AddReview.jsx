@@ -82,9 +82,10 @@ const AddReview = ({ product, chars, ratings }) => {
 
   const handleCharChange = (e) => {
     let charName = e.target.name;
+    let charId = ratings[charName].id;
     let value = Number(e.target.value);
     let newValue = reviewInfo.characteristics;
-    newValue[charName] = value;
+    newValue[charId] = value;
     setReviewInfo(prev => {
       return {...prev, characteristics: newValue};
     });
@@ -105,7 +106,7 @@ const AddReview = ({ product, chars, ratings }) => {
                 <span key={index}>
                   <input
                     type="radio"
-                    name={ratings[char].id}
+                    name={char}
                     value={index + 1}
                     onChange={handleCharChange}
                     required
