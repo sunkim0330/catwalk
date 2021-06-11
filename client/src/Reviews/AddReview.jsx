@@ -63,15 +63,12 @@ const AddReview = ({ product, chars, ratings }) => {
 
   const handleImageInput = (e) => {
     let files = [...e.currentTarget.files];
+
+    if (files.length > 5) { alert('Only 5 images will be uploaded'); }
+
     files = files.slice(0, 5);
 
-    // Should prevent more than 5 images, doesn't work yet
-    // if (files.length > 5) {
-    //   e.preventDefault();
-    //   console.log(files);
-    //   alert('Cannot upload more the 5 files');
-    //   return;
-    // }
+
     let newFiles = reviewInfo.imageURLs;
     files.forEach(file => {
       newFiles.push(URL.createObjectURL(file));
