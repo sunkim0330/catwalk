@@ -1,12 +1,14 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
-import Helpful from '../shared/Helpful.jsx';
+import Helpful from '../Shared/Helpful.jsx';
 import Modal from './Modal.jsx';
 
 const Questions = ({ product, setDateFormat }) => {
   const [questions, setQuestions] = useState([]);
   const [loadPage, setLoadPage] = useState(2);
+  const [show, setShow] = useState(false);
+
 
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${product.id}`)
@@ -26,7 +28,7 @@ const Questions = ({ product, setDateFormat }) => {
     return (
       <div className="questions_div" key={index}>
         Q: {question.question_body} <Helpful origin="qa/questions" id={question.question_id} helpCount={question.question_helpfulness}/><br/>
-        <div><Answers questions={question.question_id} setDateFormat={setDateFormat} /></div>
+        <div><Answers product={product} questions={question} setDateFormat={setDateFormat} /></div>
       </div>
     );
   });
@@ -37,8 +39,13 @@ const Questions = ({ product, setDateFormat }) => {
 
       <button
         style = {{display: loadPage >= questions.length ? 'none' : 'block'}}
-        className="question_button"
-        onClick={loadMore}>MORE ANSWERED QUESTIONS</button>
+        className="question_button" onClick={loadMore}>
+        MORE ANSWERED QUESTIONS
+      </button>
+
+      <button onClick={() => setShow(true)} >Ask a Question</button>
+
+      <Modal title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
     </div>
   );
 
