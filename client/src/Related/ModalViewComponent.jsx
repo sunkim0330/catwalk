@@ -2,33 +2,28 @@ import React from 'react';
 
 const ModalViewComponent = (props) => {
 
-  // declare new comparison object
+
   let comparison = {};
   let comparisonArray = [];
 
-  // iterate over current product, setting the characteristic as the key and the value as the first index in an array at the new key
-  for (let key in props.currentChar) {
-    comparison[key] = [props.currentChar[key].value];
-  }
-  // iterate over related product
-  for (let relKey in props.relatedChar) {
-    // if they key exists, push this new value to the value array for that key
-    if (comparison[relKey]) {
-      comparison[relKey].push(props.relatedChar[relKey].value);
-    } else {
-    // if not, set the value to [null, value]
-      comparison[relKey] = [undefined, props.relatedChar[relKey].value];
-    }
-  }
+  props.currentChar.forEach(feature => {
+    comparison[feature.feature] = [feature.value];
+  });
 
-  const ifNumberOrNull = (data) => {
-    if (data === null) {
-      return 'Nothing yet';
+
+  props.relatedChar.forEach(feature => {
+    if (comparison[feature.feature]) {
+      comparison[feature.feature].push(feature.value);
+    } else {
+      comparison[feature.feature] = [undefined, feature.value];
+    }
+  });
+
+  const ifTrueOrNull = (data) => {
+    if (data === 'true') {
+      return 'v'; //styled checkmark
     } else if (!data) {
       return '';
-    } else if (Number(data) !== NaN) {
-      data = Number(data);
-      return data.toFixed(1);
     } else {
       return data;
     }
@@ -36,8 +31,8 @@ const ModalViewComponent = (props) => {
 
 
   for (let row in comparison) {
-    let currentProductValue = ifNumberOrNull(comparison[row][0]);
-    let relatedProductValue = ifNumberOrNull(comparison[row][1]);
+    let currentProductValue = ifTrueOrNull(comparison[row][0]);
+    let relatedProductValue = ifTrueOrNull(comparison[row][1]);
     comparisonArray.push([row, currentProductValue, relatedProductValue]);
   }
 
