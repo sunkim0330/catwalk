@@ -93,7 +93,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
 
 
       <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
-      <Characteristics chars={chars}/>
+      <Characteristics chars={chars} ratings={meta.characteristics} />
 
       {/* </div> */}
 

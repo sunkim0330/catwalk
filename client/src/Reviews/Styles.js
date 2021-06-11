@@ -12,7 +12,7 @@ export const Grid = style.div`
   padding: 10px;
   display: grid;
   grid-template-columns: 24% 38% 38%;
-  grid-template-rows: 5% 15% 50% 20% 10%;
+  grid-template-rows: 5% 15% 40% 20% 20%;
   column-gap: 10px;
   row-gap: 10px;
   grid-template-areas:
@@ -20,7 +20,7 @@ export const Grid = style.div`
     "summary review review"
     "breakdown review review"
     "characteristics review review"
-    ". review review";
+    "characteristics review review";
 `;
 
 export const TitleBlock = style.div`
@@ -53,6 +53,7 @@ export const ReviewList = style.div`
 export const Characteristics = style.div`
   grid-area: characteristics;
   border: 1px solid blue;
+  height: fit-content;
 `;
 
 // ===============
@@ -140,4 +141,54 @@ export const rec = style.div`
   margin: 20px 5px;
   padding: 10px;
   display: inline-block;
+`;
+
+// ===============
+// CHARACTERISTICS
+// ===============
+
+export const charContainer = style.div`
+  padding: 4px;
+`;
+
+export const charName = style.div`
+  margin: 5px;
+  width: fit-content;
+  font-size: 1.2em;
+`;
+
+export const attBox = style.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const attribute = style.div`
+  display: inline-block;
+  margin: 3px;
+  font-size: .8em;
+`;
+
+export const scale = style.div`
+  height: 10px;
+  width: 90%;
+  background: #d3d9d9;
+  margin: 3px 5px 3px 10px;
+`;
+
+export const marker = style.div(props => ({
+  display: 'inline-block',
+  width: 0,
+  height: 0,
+  'border-left': '10px solid transparent',
+  'border-right': '10px solid transparent',
+  'border-top': '15px solid #3a5a40',
+  'margin-left': props['margin-left']
+}));
+
+// ===============
+// REVIEWS
+// ===============
+
+export const reviewContainer = style.div`
+
 `;
