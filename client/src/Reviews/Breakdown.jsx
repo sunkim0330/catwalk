@@ -4,6 +4,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
   const [ratings, setRatings] = useState({});
   const [ratingsPct, setRatingsPct] = useState({});
   const [recommends, setRecommends] = useState('');
+  const [isFiltered, setIsFiltered] = useState(false);
   const [filters, setFilters] = useState({
     1: false,
     2: false,
@@ -12,11 +13,38 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     5: false,
   });
 
+  const showCurrentFilters = () => {
+    let currentFilters = [];
+    for (let i in filters) {
+      if (filters[i]) {
+        currentFilters.push(i);
+      }
+    }
+
+    return (
+      <div>
+        Filters currently applied:
+        {currentFilters.map((filter, index) => {
+          return (
+            // need to remove the comma on last item
+            <span key={index}>{filter} stars, </span>
+          );
+        })}
+        <div onClick={handleRemoveFilters}>Remove all filters</div>
+      </div>
+    );
+  };
+
+  const handleRemoveFilters = () => {
+    setIsFiltered(false);
+  };
+
   const handleFilterClick = (e) => {
     let rating = e.target.innerText.slice(0, 1);
     setFilters((prev) => {
       return {...prev, [rating]: !prev[rating]};
     });
+    setIsFiltered(true);
   };
 
   const filterReviews = () => {
@@ -29,6 +57,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
     if (allFalse) {
       setReviewsList(reviews);
+      setIsFiltered(false);
       return;
     }
 
@@ -42,10 +71,6 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
     setReviewsList(newReviewsList);
   };
-
-  // const calculatePercentage = (numberOfRatings) => {
-  //   return (numberOfRatings / reviews.length) * 100;
-  // };
 
   // get number of reviews for each rating
   useEffect(() => {
@@ -88,6 +113,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
   return (
     <div id="breakdown">
+
+      {isFiltered ? showCurrentFilters() : null}
 
       <div className="left">
         <div onClick={handleFilterClick}>5 stars</div>
