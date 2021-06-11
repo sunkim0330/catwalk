@@ -80,7 +80,6 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
 
   return (
     <div id="container">
-      {/* <Helpful origin='qa/answers' id='' type='report' /> */}
       {/* container for average rating, reviews breakdown, recommends, characteristics */}
       <div id="ratings-breakdown">
         <div>
@@ -120,7 +119,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
           <button>add a review</button>
         </div>
       </div>
-      {/* component not finished */}
+
       <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
     </div>
   );
