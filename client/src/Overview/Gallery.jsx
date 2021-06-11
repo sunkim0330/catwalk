@@ -40,13 +40,7 @@ const Gallery = ({ styleImages, productID }) => {
   };
 
   const imageSelect = (index) => {
-    if (index === 0) {
-      scrollLeft();
-    } else if (index === 6) {
-      scrollRight();
-    } else {
-      setMainImageIndex(index);
-    }
+    setMainImageIndex(index);
   };
 
   return (
