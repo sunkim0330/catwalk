@@ -53,7 +53,11 @@ const App = () => {
     }
     setTotalReviewCount(second);
     let average = first / second;
-    setAverageRating(average.toFixed(1));
+    second === 0 ? (
+      setAverageRating(0)
+    ) : (
+      setAverageRating(average.toFixed(1))
+    );
   };
 
   const setDateFormat = (array) => {
