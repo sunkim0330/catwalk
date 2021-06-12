@@ -93,27 +93,26 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
   // get number of reviews for each rating
   useEffect(() => {
-    if (reviews.length) {
-      let newRatings = {
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5: 0
-      };
-      reviews.forEach((review) => {
-        newRatings[review.rating] += 1;
-      });
-      setRatings(newRatings);
+    let newRatings = {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0
+    };
+    reviews.forEach((review) => {
+      newRatings[review.rating] += 1;
+    });
 
-      let t = Number(meta.recommended.true);
-      let f = Number(meta.recommended.false);
+    setRatings(newRatings);
 
-      setRecommends(() => {
-        return Math.round((f / (t + f)) * 100);
-      });
-    }
-  }, [reviews.length]);
+    let t = Number(meta.recommended.true);
+    let f = Number(meta.recommended.false);
+
+    setRecommends(() => {
+      return Math.round((f / (t + f)) * 100);
+    });
+  }, [reviews]);
 
   // update filters
   useEffect(() => {
@@ -124,7 +123,14 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
   useEffect(() => {
     let newRatingsPct = {};
     for (let rating in ratings) {
-      let percentage = Math.round((ratings[rating] / reviews.length) * 100);
+      let percentage;
+      // for products with no reviews
+      ratings[rating] === 0 ? (
+        percentage = 0
+      ) : (
+        percentage = Math.round((ratings[rating] / reviews.length) * 100)
+      );
+
       newRatingsPct[rating] = percentage + '%';
     }
     setRatingsPct(newRatingsPct);

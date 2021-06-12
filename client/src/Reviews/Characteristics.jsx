@@ -10,20 +10,22 @@ const Characteristics = ({ chars, ratings }) => {
     Length: ['Runs short', 'Perfect', 'Runs long'],
     Fit: ['Runs tight', 'Perfect', 'Runs loose']
   });
-  const [ratingsPct, setRatingsPct] = useState(() => {
+  const [ratingsPct, setRatingsPct] = useState('');
+
+  const getNewRatings = () => {
     let newRatings = {};
     for (let key in ratings) {
       let percentage = Math.round((ratings[key].value / 5) * 100);
+      // over 95% screws up my css marker
+      percentage > 95 ? percentage = 95 : percentage = percentage;
       newRatings[key] = percentage + '%';
     }
-    return newRatings;
-  });
-
-  const mapAttributes = () => {
-    if (chars.length) {
-
-    }
+    setRatingsPct(newRatings);
   };
+
+  useEffect(() => {
+    getNewRatings();
+  }, [ratings]);
 
   return (
     <Styles.Characteristics>

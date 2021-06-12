@@ -79,9 +79,9 @@ const App = () => {
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
     <div>
       Super Fun Shopping Experience
-      {/* <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
+      <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
       <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features}/>
-      <QandAs product={product} setDateFormat={setDateFormat}/> */}
+      <QandAs product={product} setDateFormat={setDateFormat}/>
       <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/>
     </div>
   );
