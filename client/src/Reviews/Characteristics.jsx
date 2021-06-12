@@ -27,26 +27,36 @@ const Characteristics = ({ chars, ratings }) => {
     getNewRatings();
   }, [ratings]);
 
+  const renderChars = () => {
+    return (
+      <Styles.Characteristics>
+        {chars.map((char) => {
+          return (
+            <Styles.charContainer key={char}>
+              <Styles.charName>{char}</Styles.charName>
+              <Styles.scale>
+                <Styles.marker margin-left={ratingsPct[char]}></Styles.marker>
+              </Styles.scale>
+              <Styles.attBox>
+                {scale[char].map((attribute, index) => {
+                  return (
+                    <Styles.attribute key={index}>{attribute}</Styles.attribute>
+                  );
+                })}
+              </Styles.attBox>
+            </Styles.charContainer>
+          );
+        })}
+      </Styles.Characteristics>
+    );
+  };
+
+  useEffect(() => {
+    renderChars();
+  }, [chars]);
+
   return (
-    <Styles.Characteristics>
-      {chars.map((char) => {
-        return (
-          <Styles.charContainer key={char}>
-            <Styles.charName>{char}</Styles.charName>
-            <Styles.scale>
-              <Styles.marker margin-left={ratingsPct[char]}></Styles.marker>
-            </Styles.scale>
-            <Styles.attBox>
-              {scale[char].map((attribute, index) => {
-                return (
-                  <Styles.attribute key={index}>{attribute}</Styles.attribute>
-                );
-              })}
-            </Styles.attBox>
-          </Styles.charContainer>
-        );
-      })}
-    </Styles.Characteristics>
+    renderChars()
   );
 };
 

@@ -11,13 +11,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   const [reviewsList, setReviewsList] = useState([]); // manipulable list for sorting/filtering
   const [currentReviews, setCurrentReviews] = useState([]);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
-  const [chars, setChars] = useState(() => {
-    let newChars = [];
-    for (let char in meta.characteristics) {
-      newChars.push(char);
-    }
-    return newChars;
-  });
+  const [chars, setChars] = useState([]);
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -78,6 +72,15 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   useEffect(() => {
     setCurrentReviews(reviewsList.slice(0, currentReviewIndex));
   }, [currentReviewIndex, reviewsList]);
+
+  // update chars array
+  useEffect(() => {
+    let newChars = [];
+    for (let char in meta.characteristics) {
+      newChars.push(char);
+    }
+    setChars(newChars);
+  }, [meta]);
 
   return (
     <Styles.Grid>
