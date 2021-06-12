@@ -90,7 +90,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     return charRating.map((rating) => {
       return (
         <Styles.ratingContainer key={rating}>
-          <Styles.rating onClick={handleFilterClick}>{rating} stars</Styles.rating>
+          <Styles.rating onClick={handleFilterClick}>{rating} {rating === 1 ? 'star' : 'stars'}</Styles.rating>
           <Styles.bar><Styles.percent width={ratingsPct[rating]}></Styles.percent></Styles.bar>
           <Styles.count>({ratings[rating]})</Styles.count>
         </Styles.ratingContainer>

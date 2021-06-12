@@ -125,14 +125,19 @@ export const remove = style.div`
 export const ratingContainer = style.div`
   margin: 10px 5px;
   height: 7%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const bar = style.div`
   display: inline-block;
-  width: 65%;
+  width: 70%;
   height: 10px;
   background: #d3d9d9;
-  margin-left: 10px;
   border-radius: 3px;
 `;
 
@@ -143,17 +148,18 @@ export const percent = style.div(props => ({
   'border-radius': '3px'
 }));
 
-export const rating = style.a`
-  font-size: 1em;
+export const rating = style.div`
+  font-size: 1em;;
   text-decoration: underline;
   cursor: pointer;
+  width: 15%;
   &:hover {
     color: #d3d9d9;
   }
 `;
 
 export const count = style.a`
-  margin: 0px 5px;
+  width: 10%;
   text-align: center;
 `;
 
