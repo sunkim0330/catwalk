@@ -15,15 +15,9 @@ align-items: center;
 justify-content: center;
 `;
 
-const Modal = ({origin, title, subTitle, questionBody, onClose, show}) => {
-  //if it's an answer
-  //I have different url endpoint
-  //I need question_id
-  //different subTitle display [done]
-  //need question body
-  //form looks different
-
-
+const Modal = ({title, subTitle, questionBody, onClose, show, id}) => {
+  const [origin, setOrigin] = useState('');
+  const [placeholder, setPlaceholder] = useState('');
   const [isItAnswer, setIsItAnswer] = useState(() => {
     return title === 'Submit Your Answer';
   });
@@ -37,13 +31,20 @@ const Modal = ({origin, title, subTitle, questionBody, onClose, show}) => {
     }
   };
 
+  useEffect(() => {
+    if (isItAnswer) {
+      setOrigin(`${id}/answers`);
+      setPlaceholder('Please enter your answer');
+    } else {
+      setOrigin(null);
+      setPlaceholder('Please enter your question');
+    }
+  }, [isItAnswer]);
+
 
   if (!show) {
     return null;
   }
-
-
-
 
   return (
     <div>
@@ -51,10 +52,10 @@ const Modal = ({origin, title, subTitle, questionBody, onClose, show}) => {
         <div className="qanda-modal-content">
           <div className="qanda-modal-header">
             <h4>{title}</h4>
-            {displayQuestionBody}
+            {displayQuestionBody()}
           </div>
           <div className="qanda-modal-body">
-            <ModalForm isIsAnswer={isItAnswer}/>
+            <ModalForm origin={origin} title={title} placeholder={placeholder}/>
           </div>
           <div className="qanda-modal-footer">
             <button onClick={onClose}>Close</button>

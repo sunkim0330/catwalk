@@ -2,8 +2,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 
-const ModalForm = ({title, origin, placeholder, isItAnswer}) => {
-
+const ModalForm = ({origin, title, placeholder}) => {
   const [formData, setFormData] = useState({
     answerer_name: '',
     body: '',
@@ -57,6 +56,8 @@ const ModalForm = ({title, origin, placeholder, isItAnswer}) => {
 
   };
 
+
+
   const handleClick = (e) => {
     e.preventDefault();
     axios({
@@ -77,7 +78,7 @@ const ModalForm = ({title, origin, placeholder, isItAnswer}) => {
   return (
     <form>
       <label>{title}</label>
-      <textarea type="text" name="body" onChange={handleBodyChange} placeholder="please enter your answer/question" >
+      <textarea type="text" name="body" onChange={handleBodyChange} placeholder={placeholder} >
       </textarea>
       <p>{charCount.body_char} / 1000</p>
       <label>What is your nickname: </label>
