@@ -5,16 +5,11 @@ import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 
-const Reviews = ({ product, meta, averageRating, totalReviews }) => {
+const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) => {
   const [reviews, setReviews] = useState([]); // all reviews
   const [reviewsList, setReviewsList] = useState([]); // manipulable list for sorting/filtering
   const [currentReviews, setCurrentReviews] = useState([]);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
-  //const [totalReviews, setTotalReviews] = useState(0);
-  //const [avgRating, setAvgRating] = useState(0);
-  //const [meta, setMeta] = useState([]);
-  //const [filter, setFilter] = useState('');
-  //const [sort, setSort] = useState('relevant');
   const [chars, setChars] = useState(() => {
     let newChars = [];
     for (let char in meta.characteristics) {
@@ -27,22 +22,12 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
       .then((results) => {
         let newReviews = results.data.results;
+        setDateFormat(newReviews);
         setReviews(newReviews);
         setReviewsList(newReviews);
         setCurrentReviews(newReviews.slice(0, 2));
       });
   };
-
-  // const getMeta = () => {
-  //   axios.get(`/reviews/meta?product_id=${product.id}`)
-  //     .then(results => setMeta(results.data));
-  // };
-
-  // const getAvg = (reviews) => {
-  //   let total = 0;
-  //   reviews.forEach(review => total += review.rating);
-  //   return (total / reviews.length).toFixed(1);
-  // };
 
   const sortReviewsList = (order) => {
 
@@ -74,13 +59,6 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
     setCurrentReviews(reviewsList.slice(0, currentReviewIndex));
   };
 
-  // Will also need this in Q and A section
-  const setDateFormat = (array) => {
-    array.forEach((item) => {
-      item.formattedDate = new Date(item.date).toLocaleDateString({}, {month: 'long', day: '2-digit', year: 'numeric'});
-    });
-  };
-
   const handleLoadMoreReviews = () => {
 
     currentReviewIndex <= reviewsList.length - 2
@@ -92,7 +70,6 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
   useEffect(() => {
     if (product.id) {
       getReviews();
-      //getMeta();
     }
   }, [product.id]);
 
@@ -103,7 +80,6 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
 
   return (
     <div id="container">
-      {/* <Helpful origin='qa/answers' id='' type='report' /> */}
       {/* container for average rating, reviews breakdown, recommends, characteristics */}
       <div id="ratings-breakdown">
         <div>
@@ -143,7 +119,8 @@ const Reviews = ({ product, meta, averageRating, totalReviews }) => {
           <button>add a review</button>
         </div>
       </div>
-      <AddReview product={product.name} chars={chars} ratings={meta.characteristics}/>
+
+      <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
     </div>
   );
 };
