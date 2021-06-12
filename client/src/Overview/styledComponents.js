@@ -194,7 +194,7 @@ export const AddToCart = styled.button`
   width: 150px;
 
   &:hover {
-    background-color: #9f7f31;
+    box-shadow: 2px 2px grey;
   }
 
   &:active {
@@ -211,7 +211,7 @@ export const PointlessButton = styled.button`
   width: 150px;
 
   &:hover {
-    background-color: #9f7f31;
+    box-shadow: 2px 2px grey;
   }
 
   &:active {
