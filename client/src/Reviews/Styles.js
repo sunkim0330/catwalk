@@ -66,8 +66,9 @@ export const Characteristics = style.div`
 // TITLE BLOCK
 // ===============
 
-export const title = style.h3`
-  margin: 2px 4px 2px 28px;
+export const title = style.div`
+  margin: 2px 4px 2px 0px;
+  font-size: 1em;
 `;
 
 // ===============
