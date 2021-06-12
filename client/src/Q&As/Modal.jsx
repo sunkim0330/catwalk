@@ -36,7 +36,7 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id}) => {
       setOrigin(`${id}/answers`);
       setPlaceholder('Please enter your answer');
     } else {
-      setOrigin(null);
+      setOrigin('');
       setPlaceholder('Please enter your question');
     }
   }, [isItAnswer]);

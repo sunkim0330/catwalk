@@ -8,6 +8,14 @@ const QandAs = ({ product, setDateFormat }) => {
   const [show, setShow] = useState(false);
   const [input, setInput] = useState('');
 
+  const getClickedElement = (event) => {
+    const module = 'Questions and Answers';
+    axios.post('/interactions', {element: event.target.localName, widget: module, time: new Date() })
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
 
   return (
     <div className="QandAsbox">

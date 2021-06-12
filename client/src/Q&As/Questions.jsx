@@ -9,8 +9,6 @@ const Questions = ({ product, setDateFormat }) => {
   const [loadPage, setLoadPage] = useState(2);
   const [search, setSearch] = useState('');
   const [questions, setQuestions] = useState([]);
-  // const [filterQuestions, setFilterQuestions] = useState(questions);
-  // const [show, setShow] = useState(false);
 
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${product.id}`)
@@ -26,14 +24,6 @@ const Questions = ({ product, setDateFormat }) => {
   const loadMore = useCallback(() => {
     setLoadPage(prev => prev + 2);
   }, []);
-
-  // const filter = e => {
-  //   setSearch(e.target.value);
-  //   let value = e.target.value;
-  //   const filtered = filterQuestions.filter( data => {
-  //     return data.question_body.toLowerCase().includes(value);
-  //   });
-  // };
 
   const loadQuestions = questions.slice(0, loadPage).map((question) => {
     return (
@@ -63,18 +53,4 @@ const Questions = ({ product, setDateFormat }) => {
 
 export default Questions;
 
-/*
-The list will by default only display up to 2 questions asked.
-If there are 2 or less questions for the given product, then the button will not appear.
--- keeping this just in case I want to refactor loading button again
- <div>
-  {questions.map((question, index) => {
-    return <div className="questions_div" key={index}>
-      Q: {question.question_body}<br/>
-      <Answers questions={question.question_id}/>
-    </div>;
-  })}
-</div>
 
-onClick={e => e.stopPropagation()}
-*/

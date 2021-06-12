@@ -12,7 +12,7 @@ const Search = ({ questions }) => {
         placeholder="Have a question? Search for answers..."
       />
       {questions.filter((val) => {
-        if (search === '' ) {
+        if (search === '' || search.length <= 3 ) {
           return null;
         } else if (val.question_body.toLowerCase().includes(search.toLowerCase())) {
           return val;
