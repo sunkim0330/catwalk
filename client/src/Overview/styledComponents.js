@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import checkmark from './images/checkmark.png';
 
 export const Overview = styled.div`
-  background-color: darkcyan;
+  background-color: white;
   display: grid;
   grid-template-columns: 70% 30%;
   text-align: center;
@@ -119,10 +118,11 @@ export const Name = styled.h3`
 export const Price = styled.span`
   bottom: 20px;
   font-size: 22px;
-  left: 24px;
+  float: left;
+  left: 18px;
   position: relative;
-  text-align: left;
-  margin: 10px 0px;
+  margin: 0px 5px;
+  color: ${props => props.color || 'black'}
 `;
 
 export const SalePrice = styled.div`
@@ -151,7 +151,7 @@ export const Style = styled.img`
   height: 75px;
 `;
 
-export const Check = styled.i`
+export const Checkmark = styled.i`
 position: absolute;
 left: 1385px;
 top: 305px;
@@ -188,7 +188,7 @@ export const Option = styled.option`
 export const AddToCart = styled.button`
   border-radius: 5px;
   font-size: 18px;
-  height: 34px;
+  height: 32px;
   width: 150px;
 
   &:hover {
