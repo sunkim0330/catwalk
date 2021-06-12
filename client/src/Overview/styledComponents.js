@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import checkmark from './images/checkmark.png';
 
 export const Overview = styled.div`
   background-color: darkcyan;
@@ -115,7 +116,7 @@ export const Name = styled.h3`
   text-align: left;
 `;
 
-export const Price = styled.div`
+export const Price = styled.span`
   bottom: 20px;
   font-size: 22px;
   left: 24px;
@@ -149,6 +150,14 @@ export const Style = styled.img`
   width: 75px;
   height: 75px;
 `;
+
+export const Check = styled.i`
+position: absolute;
+left: 1385px;
+top: 305px;
+font-size: 42px;
+color: green;
+`;
 // style selector end
 
 // cart management start
@@ -160,7 +169,7 @@ export const SizeSelect = styled.select`
   border-radius: 6px;
   font-size: 18px;
   height: 28px;
-  margin: 10px;
+  margin: 0px;
   width: 200px;
 `;
 
@@ -177,10 +186,10 @@ export const Option = styled.option`
 `;
 
 export const AddToCart = styled.button`
-  border-radius: 24px;
-  font-size: 22px;
+  border-radius: 5px;
+  font-size: 18px;
   height: 34px;
-  width: 200px;
+  width: 150px;
 
   &:hover {
     background-color: #9f7f31;
@@ -192,8 +201,7 @@ export const AddToCart = styled.button`
 `;
 
 export const PointlessButton = styled.button`
-  border-style: solid;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 18px;
   height: 32px;
   margin: 4px;
@@ -238,7 +246,7 @@ export const Socials = styled.div`
 `;
 
 export const Twitter = styled.button`
-  border-radius: 16px;
+  border-radius: 5px;
   width: 150px;
   height: 30px;
   font-size: 18px;
@@ -254,7 +262,7 @@ export const Twitter = styled.button`
 `;
 
 export const Pinterest = styled.button`
-  border-radius: 16px;
+  border-radius: 5px;
   width: 150px;
   height: 30px;
   font-size: 18px;
@@ -270,7 +278,7 @@ export const Pinterest = styled.button`
 `;
 
 export const Facebook = styled.button`
-  border-radius: 16px;
+  border-radius: 5px;
   width: 150px;
   height: 30px;
   font-size: 18px;
