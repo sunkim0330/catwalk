@@ -267,7 +267,7 @@ export const summary = style.div`
 export const reviewBody = style.div`
   width: 100%;
   font-size: 1em;
-  margin: 3px 2px;
+  margin: auto;
 `;
 
 export const bodyContainer = style.div`
@@ -283,7 +283,7 @@ export const reviewThumbnail = style.img`
   border: 1px solid black;
   border-radius: 5px;
   width: 100px;
-  margin: 0px 3px;
+  margin: auto;
   cursor: pointer;
   &:hover {
     border-color: #d3d9d9
@@ -305,6 +305,6 @@ export const more = style.div`
   margin-right: 5px;
   cursor: pointer;
   &:hover {
-    color: ;
+    color: #d3d9d9;
   }
 `;
