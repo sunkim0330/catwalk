@@ -210,26 +210,38 @@ export const marker = style.div(props => ({
 
 // might change justify content value
 // check align items as well
-export const reviewContainer = style.div`
-  border-bottom: solid 1px black;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: space-between;
-`;
+// export const reviewContainer = style.div`
+//   border-bottom: solid 1px black;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: flex-start;
+//   align-content: space-between;
+// `;
 
 export const topRow = style.div`
   display: flex;
-  justtify-content: space-between;
+  justify-content: space-between;
+  width: 100%;
+  margin: 3px 0;
 
 `;
 
 export const reviewStars = style.div`
-
+  width: fit-content;
+  margin-left: 5px;
 `;
 
 export const user = style.div`
+  width: fit-content;
+  font-size: .8em;
+  margin-right: 5px;
+`;
 
+export const reviewContainer = style.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 `;
 
 export const summary = style.div`

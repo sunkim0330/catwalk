@@ -69,10 +69,13 @@ const Review = ({ review }) => {
     <div style={style} className="review-tile">
 
       <div>
-        <span className="stars">stars go here</span>
+        <Styles.topRow>
+          <Styles.reviewStars>stars go here</Styles.reviewStars>
+          <Styles.user>{review.reviewer_name}, {review.formattedDate}</Styles.user>
+        </Styles.topRow>
         {/* don't think it's possible to reference sales with the API */}
         {/* <span>verified purchase goes here</span> */}
-        <span>{review.reviewer_name}, {review.formattedDate}</span>
+
         <div className="review-summary">{review.summary}</div>
         <div>
           {checkReviewLength()}
