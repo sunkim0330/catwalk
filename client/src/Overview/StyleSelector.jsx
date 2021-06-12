@@ -1,13 +1,12 @@
 import React from 'react';
 import * as Styles from './styledComponents.js';
-import checkmark from './images/checkmark.png';
 
 const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
 
   return (
     <Styles.StyleSelector>
 
-      <Styles.Check className="fas fa-check checkmark"></Styles.Check>
+      <Styles.Checkmark className="fas fa-check checkmark"></Styles.Checkmark>
 
       <Styles.StyleName className="styleTitle">{'Style Name > '}{currentStyle.name}</Styles.StyleName>
 
