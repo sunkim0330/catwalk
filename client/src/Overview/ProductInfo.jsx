@@ -6,14 +6,25 @@ const ProductInfo = ({ product, style, rating, reviewCount }) => {
   let priceDisplay, ratingDisplay;
 
   if (style.sale_price) {
-    priceDisplay = <div id="priceDisplay"><Styles.Price>{style.sale_price}</Styles.Price><Styles.Price>
-      <del>{product.default_price}</del></Styles.Price></div>;
+    priceDisplay = (
+      <>
+        <Styles.Price>{style.sale_price}</Styles.Price>
+        <Styles.Price color={'red'}>
+          <del>{product.default_price}</del>
+        </Styles.Price>
+      </>
+    );
   } else {
     priceDisplay = <Styles.Price>{product.default_price}</Styles.Price>;
   }
 
   if (reviewCount) {
-    ratingDisplay = <Styles.RatingDisplay>{rating} <a href="#container">{`Read all ${reviewCount} reviews`}</a></Styles.RatingDisplay>;
+    ratingDisplay = (
+      <Styles.RatingDisplay>
+        {rating}
+        <a href="#container">{`Read all ${reviewCount} reviews`}</a>
+      </Styles.RatingDisplay>
+    );
   }
 
   return (
