@@ -1,20 +1,25 @@
 import React from 'react';
 import * as Styles from './styledComponents.js';
+import checkmark from './images/checkmark.png';
 
 const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
 
   return (
     <Styles.StyleSelector>
+
+      <Styles.Check className="fas fa-check checkmark"></Styles.Check>
+
       <Styles.StyleName className="styleTitle">{'Style Name > '}{currentStyle.name}</Styles.StyleName>
+
       {styles.map((style, index) => {
-        let classNames = 'style';
-        return <div id={style.name}><Styles.Style className={classNames} id={style.name} src={style.photos[0].thumbnail_url} alt={style.name + 'Style'} key={index} onClick={() => {
-          document.getElementById(style.name).style.backgroundImage = 'url(./images/checkmark.png)';
-          document.getElementById(style.name).style.zIndex = 1;
-          document.getElementById(currentStyle.name).style.backgroundImage = null;
+        return <Styles.Style className='style' id={style.name} src={style.photos[0].thumbnail_url} alt={style.name + 'Style'} key={style.name} onClick={(event) => {
+          let checkMark = document.querySelector('.checkmark');
+          checkMark.style.left = event.target.x + 20 + 'px';
+          checkMark.style.top = event.target.y + 20 + 'px';
           setCurrentStyle(index);
-        } }/></div>;
+        }}/>;
       })}
+
     </Styles.StyleSelector>
   );
 
