@@ -75,9 +75,7 @@ export const dropdown = style.select`
 
 `;
 
-export const total = style.h6`
-  margin-block-start: 0;
-  margin-block-end: 0;
+export const total = style.a`
   display: inline-block;
   font-size: 1.2em;
   margin: 15px 30px;
