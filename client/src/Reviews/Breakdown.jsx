@@ -42,6 +42,12 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
   const handleRemoveFilters = () => {
     setIsFiltered(false);
+    setFilters(prev => {
+      for (let rating in prev) {
+        prev[rating] = false;
+      }
+      return prev;
+    });
   };
 
   const handleFilterClick = (e) => {
