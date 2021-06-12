@@ -34,6 +34,7 @@ export const LeftArrow = styled.img`
   align-self: center;
   grid-column-start: 2;
   position: absolute;
+  padding-left: 20px;
 
   &:hover {
   }
@@ -48,6 +49,7 @@ export const RightArrow = styled.img`
   grid-column-start: 2;
   justify-self: right;
   position: absolute;
+  padding-right: 20px;
 
   &:hover {
   }
@@ -79,6 +81,9 @@ export const GalleryThumbnail = styled.img`
 
 // container for everything next to gallery
 export const Sidebar = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
 
@@ -92,21 +97,31 @@ export const RatingDisplay = styled.span`
 `;
 
 export const Category = styled.h4`
-  font-size: 18px;
+  font-size: 22px;
   text-align: left;
-  left: 22px;
+  left: 24px;
   position: relative;
+  margin: 10px 0px;
 `;
 
 export const Name = styled.h3`
-  padding: 10px;
-  text-align: left;
+  bottom: 8px;
+  font-size: 28px;
+  left: 24px;
+  margin: 10px 0px;
   position: relative;
-  left: 18px;
+  padding: 10px;
+  padding: 0px;
+  text-align: left;
 `;
 
 export const Price = styled.div`
-  color: white;
+  bottom: 20px;
+  font-size: 22px;
+  left: 24px;
+  position: relative;
+  text-align: left;
+  margin: 10px 0px;
 `;
 
 export const SalePrice = styled.div`
@@ -219,7 +234,54 @@ export const Slogan = styled.h3`
 export const Description = styled.p`
 `;
 
-export const Socials = styled.h3`
-  border-style: inset;
+export const Socials = styled.div`
+`;
+
+export const Twitter = styled.button`
+  border-radius: 16px;
+  width: 150px;
+  height: 30px;
+  font-size: 18px;
+  margin: 10px;
+
+  &:hover {
+    background-color: #9f7f31;
+  }
+
+  &:active {
+    transform: translateY(2px)
+  }
+`;
+
+export const Pinterest = styled.button`
+  border-radius: 16px;
+  width: 150px;
+  height: 30px;
+  font-size: 18px;
+  margin: 10px;
+
+  &:hover {
+    background-color: #9f7f31;
+  }
+
+  &:active {
+    transform: translateY(2px)
+  }
+`;
+
+export const Facebook = styled.button`
+  border-radius: 16px;
+  width: 150px;
+  height: 30px;
+  font-size: 18px;
+  margin: 10px;
+
+  &:hover {
+    background-color: #9f7f31;
+  }
+
+  &:active {
+    transform: translateY(2px)
+  }
 `;
 // product description end
