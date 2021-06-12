@@ -138,6 +138,7 @@ export const StyleSelector = styled.div`
   grid-template-columns: 25% 25% 25% 25%;
   justify-items: center;
   row-gap: 4px;
+  padding-bottom: 4px;
 `;
 
 export const StyleName = styled.h3`
@@ -189,6 +190,7 @@ export const AddToCart = styled.button`
   border-radius: 5px;
   font-size: 18px;
   height: 32px;
+  margin-bottom: 8px;
   width: 150px;
 
   &:hover {
@@ -205,6 +207,7 @@ export const PointlessButton = styled.button`
   font-size: 18px;
   height: 32px;
   margin: 4px;
+  margin-bottom: 8px;
   width: 150px;
 
   &:hover {
