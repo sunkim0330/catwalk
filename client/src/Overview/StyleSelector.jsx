@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Styles from './styledComponents.js';
 
 const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
+
+  useEffect(() => {
+    if (styles[0]) {
+      let checkMark = document.querySelector('.checkmark');
+      let style = document.querySelectorAll('.style')[0];
+      checkMark.style.left = style.offsetLeft + 20 + 'px';
+      checkMark.style.top = style.offsetTop + 20 + 'px';
+    }
+  }, [styles]);
 
   return (
     <Styles.StyleSelector>
