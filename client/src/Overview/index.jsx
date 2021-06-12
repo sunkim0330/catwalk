@@ -13,14 +13,8 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
   const [currentStyle, setCurrentStyle] = useState(defaultStyle);
 
   useEffect(() => {
-    setCurrentStyle(0);
+    setCurrentStyle(defaultStyle);
   }, [product.name]);
-
-  useEffect(() => {
-    if (!styles[currentStyle]) {
-      setCurrentStyle(styles.length);
-    }
-  }, [styles[0].name]);
 
   const getClickedElement = (event) => {
     const module = 'Overview';
