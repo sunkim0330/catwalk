@@ -57,6 +57,9 @@ export const Characteristics = style.div`
   grid-area: characteristics;
   border: 1px solid blue;
   height: fit-content;
+  display: flex;
+  flex-direction: column;
+
 `;
 
 // ===============
