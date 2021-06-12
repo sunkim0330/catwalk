@@ -6,6 +6,7 @@ import ProductInfo from './ProductInfo.jsx';
 import CartManagement from './CartManagement.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import * as Styles from './styledComponents.js';
+import ShareButtons from './ShareButtons.jsx';
 
 const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }) => {
 
@@ -22,10 +23,13 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
   return (
     <Styles.Overview onClick={getClickedElement}>
       <Gallery styleImages={styles[currentStyle].photos} productID={product.id}/>
-      <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
-      <StyleSelector styles={styles} setCurrentStyle={setCurrentStyle} currentStyle={styles[currentStyle]}/>
-      <CartManagement styleInventory={styles[currentStyle].skus}/>
-      <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
+      <Styles.Sidebar>
+        <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
+        <StyleSelector styles={styles} setCurrentStyle={setCurrentStyle} currentStyle={styles[currentStyle]}/>
+        <CartManagement styleInventory={styles[currentStyle].skus}/>
+        <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
+        <ShareButtons />
+      </Styles.Sidebar>
     </Styles.Overview>
   );
 

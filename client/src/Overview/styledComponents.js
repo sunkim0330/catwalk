@@ -1,71 +1,116 @@
 import styled from 'styled-components';
 
 export const Overview = styled.div`
+  background-color: darkcyan;
+  display: grid;
+  grid-template-columns: 70% 30%;
   text-align: center;
-  margin: auto;
-  width: 95%;
+  width: 100%;
 `;
 
 // gallery start
 // gallery container
 export const Gallery = styled.div`
-  border-style: inset;
-  width: 70%;
-  position: relative;
-  top: 10px;
-  left: 10px;
+  align-items: center;
+  border-style: ridge;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 100%;
   height: 850px;
-  object-fit: fill;
+  position: relative;
 `;
 
 // main img
 export const MainImage = styled.img`
-  display: block;
-  margin: 4vh auto;
   border-style: ridge;
-  height: 90%;
+  border-width: 20px;
+  display: block;
+  grid-column-start: 2;
+  height: 95%;
+  margin: 4vh auto;
 `;
 
 export const LeftArrow = styled.img`
+  align-self: center;
+  grid-column-start: 2;
   position: absolute;
-  top: 320px;
-  left: 300px;
-  z-index: 1;
+
+  &:hover {
+  }
+
+  &:active {
+    transform: translateX(-12px);
+  }
 `;
 
 export const RightArrow = styled.img`
+  align-self: center;
+  grid-column-start: 2;
+  justify-self: right;
   position: absolute;
-  top: 320px;
-  right: 177px;
-  z-index: 1;
+
+  &:hover {
+  }
+
+  &:active {
+    transform: translateX(12px);
+  }
 `;
 
 // thumbnails container
 export const Thumbnails = styled.div`
-  border-style: double;
+  border-style: outset;
+  border-width: 8px;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  height: 100%;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  height: 98%;
+  justify-content: center;
+  justify-self: center;
 `;
 
 // thumbnail img
 export const GalleryThumbnail = styled.img`
-  // border-style: double;
   height: 14.2%;
-  // padding: 4px;
 `;
 // gallery end
+
+
+// container for everything next to gallery
+export const Sidebar = styled.div`
+`;
+
 
 // product info start
 export const ProductInfo = styled.div`
   border-style: outset;
-  width: 28%;
-  position: absolute;
-  top: 36px;
-  right: 19px;
+`;
+
+export const RatingDisplay = styled.span`
+  font-size: 20px;
+`;
+
+export const Category = styled.h4`
+  font-size: 18px;
+  text-align: left;
+  left: 22px;
+  position: relative;
+`;
+
+export const Name = styled.h3`
+  padding: 10px;
+  text-align: left;
+  position: relative;
+  left: 18px;
+`;
+
+export const Price = styled.div`
+  color: white;
+`;
+
+export const SalePrice = styled.div`
+  color: red;
 `;
 // product info end
 
@@ -73,36 +118,42 @@ export const ProductInfo = styled.div`
 // style selector start
 export const StyleSelector = styled.div`
   border-style: outset;
-  width: 28%;
-  position: absolute;
-  top: 128px;
-  right: 19px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  justify-items: center;
+  row-gap: 4px;
 `;
 
 export const StyleName = styled.h3`
-  width: 100%;
+  grid-column-start: 1;
+  grid-column-end: 5;
 `;
 
 export const Style = styled.img`
   border-radius: 50%;
-  width: 15%;
+  width: 75px;
+  height: 75px;
 `;
 // style selector end
 
 // cart management start
 export const CartManagement = styled.div`
   border-style: outset;
-  width: 28%;
-  position: absolute;
-  top: 338px;
-  right: 18px;
 `;
 
 export const SizeSelect = styled.select`
+  border-radius: 6px;
+  font-size: 18px;
+  height: 28px;
+  margin: 10px;
   width: 200px;
 `;
 
 export const QtySelect = styled.select`
+  border-radius: 6px;
+  font-size: 18px;
+  height: 28px;
+  margin: 10px;
   width: 100px;
 `;
 
@@ -111,27 +162,41 @@ export const Option = styled.option`
 `;
 
 export const AddToCart = styled.button`
-  border-style: solid;
-  border-radius: 5%;
-  display: block;
-  margin: 4px auto;
+  border-radius: 24px;
+  font-size: 22px;
+  height: 34px;
+  width: 200px;
+
+  &:hover {
+    background-color: #9f7f31;
+  }
+
+  &:active {
+    transform: translateY(2px)
+  }
 `;
 
 export const PointlessButton = styled.button`
   border-style: solid;
-  border-radius: 5%;
-  display: block;
-  margin: 4px auto;
+  border-radius: 15px;
+  font-size: 18px;
+  height: 32px;
+  margin: 4px;
+  width: 150px;
+
+  &:hover {
+    background-color: #9f7f31;
+  }
+
+  &:active {
+    transform: translateY(2px)
+  }
 `;
 // cart management end
 
 // product description start
 export const ProductDescription = styled.div`
   border-style: outset;
-  position: absolute;
-  top: 426px;
-  right: 18px;
-  width: 28%;
   display: block;
 `;
 
@@ -147,6 +212,7 @@ export const FeaturesItem = styled.li`
 `;
 
 export const Slogan = styled.h3`
+  background-color:
   font-style: italic;
 `;
 
