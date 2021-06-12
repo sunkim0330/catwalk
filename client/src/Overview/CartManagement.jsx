@@ -128,6 +128,7 @@ const CartManagement = ({ styleInventory }) => {
         <Styles.Option value="none">-</Styles.Option>
         {quantityOptions}
       </Styles.QtySelect>
+      <br/>
       <Styles.AddToCart type="button" id="addToCart" onClick={() => addToCart(Number(purchaseQty))}>Add to Cart</Styles.AddToCart>
       <Styles.PointlessButton type="button" onClick={() => window.alert('You clicked the pointless button! Nice!!!')}>Pointless Button</Styles.PointlessButton>
     </Styles.CartManagement>
