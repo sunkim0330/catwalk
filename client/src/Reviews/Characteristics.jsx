@@ -9,23 +9,12 @@ const Characteristics = ({ chars }) => {
     Length: ['Runs short', 'Perfect', 'Runs long'],
     Fit: ['Runs tight', 'Perfect', 'Runs loose']
   });
-  //const [chars, setChars] = useState([]);
 
   const mapAttributes = () => {
     if (chars.length) {
 
     }
   };
-
-  // useEffect(() => {
-  //   if (meta.product_id) {
-  //     let newChars = [];
-  //     for (let char in meta.characteristics) {
-  //       newChars.push(char);
-  //     }
-  //     setChars(newChars);
-  //   }
-  // }, [meta.product_id]);
 
   return (
     <div id="characteristics">
