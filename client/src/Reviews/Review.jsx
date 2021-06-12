@@ -14,23 +14,32 @@ const Review = ({ review }) => {
   const checkReviewLength = () => {
     if (review.body.length <= 250) {
       return (
-        <div className="review-body">{review.body}</div>
+        <Styles.bodyContainer>
+          <Styles.reviewBody>
+            {review.body}
+          </Styles.reviewBody>
+          {checkForImages()}
+        </Styles.bodyContainer>
       );
     } else if (!showMore) {
       return (
-        <div className="review-body">
-          {review.body.slice(0, 250)}...
-          <br></br>
-          <a onClick={handleShowMore}>Show more</a>
-        </div>
+        <Styles.bodyContainer>
+          <Styles.reviewBody>
+            {review.body.slice(0, 250)}...
+            <Styles.more onClick={handleShowMore}>Show more</Styles.more>
+          </Styles.reviewBody>
+          {checkForImages()}
+        </Styles.bodyContainer>
       );
     } else {
       return (
-        <div className="review-body">
-          {review.body}
-          <br></br>
-          <a onClick={handleShowMore}>Show less</a>
-        </div>
+        <Styles.bodyContainer>
+          <Styles.reviewBody>
+            {review.body}
+            <Styles.more onClick={handleShowMore}>Show less</Styles.more>
+          </Styles.reviewBody>
+          {checkForImages()}
+        </Styles.bodyContainer>
       );
     }
   };
@@ -45,13 +54,13 @@ const Review = ({ review }) => {
     // }
 
     return (
-      review.photos.length
-        ? <div className="review-images">
+      review.photos.length ? (
+        <div>
           {review.photos.map((photo, index) => {
-            return <img key={index} src={photo.url} alt={`${review.reviewer_name} photo ${index}`} style={thumbnail}></img>;
+            return <Styles.reviewThumbnail key={index} src={photo.url} alt={`${review.reviewer_name} photo ${index}`}></Styles.reviewThumbnail>;
           })}
         </div>
-        : null
+      ) : null
     );
   };
 
@@ -66,36 +75,29 @@ const Review = ({ review }) => {
   };
 
   return (
-    <div style={style} className="review-tile">
+    <Styles.reviewTile>
 
-      <div>
-        <Styles.topRow>
-          <Styles.reviewStars>stars go here</Styles.reviewStars>
-          <Styles.user>{review.reviewer_name}, {review.formattedDate}</Styles.user>
-        </Styles.topRow>
-        {/* don't think it's possible to reference sales with the API */}
-        {/* <span>verified purchase goes here</span> */}
 
-        <div className="review-summary">{review.summary}</div>
-        <div>
-          {checkReviewLength()}
-          {checkForImages()}
-        </div>
-        <div>
-          {review.recommend ? 'I recommend this product' : null}
-        </div>
+      <Styles.topRow>
+        <Styles.reviewStars>stars go here</Styles.reviewStars>
+        <Styles.text>{review.reviewer_name}, {review.formattedDate}</Styles.text>
+      </Styles.topRow>
+      {/* don't think it's possible to reference sales with the API */}
+      {/* <span>verified purchase goes here</span> */}
+
+      <Styles.reviewContainer>
+        <Styles.summary>{review.summary}</Styles.summary>
+        {checkReviewLength()}
+        {/* {checkForImages()} */}
+        <Styles.text>{review.recommend ? 'I recommend this product' : null}</Styles.text>
+        <Styles.response>
+          {review.response ? <span>Response: {review.response}</span> : null}
+        </Styles.response>
         <Helpful origin='reviews' id={review.review_id} helpCount={review.helpfulness} />
-      </div>
-      <div className="review-response">
+      </Styles.reviewContainer>
 
-        {review.response ? <span>Response: {review.response}</span> : null}
-      </div>
 
-      <div>
-        Helpful?
-      </div>
-
-    </div>
+    </Styles.reviewTile>
   );
 };
 

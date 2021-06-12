@@ -218,11 +218,23 @@ export const marker = style.div(props => ({
 //   align-content: space-between;
 // `;
 
+export const reviewTile = style.div`
+  width: 98%;
+  height: 45%;
+  border: solid 1px black;
+  margin: 5px 3px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+`;
+
 export const topRow = style.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 3px 0;
+  margin: 3px 0 5px 0;
 
 `;
 
@@ -231,7 +243,7 @@ export const reviewStars = style.div`
   margin-left: 5px;
 `;
 
-export const user = style.div`
+export const text = style.div`
   width: fit-content;
   font-size: .8em;
   margin-right: 5px;
@@ -242,20 +254,59 @@ export const reviewContainer = style.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  margin: 3px 0;
+  flex: 1;
 `;
 
 export const summary = style.div`
-
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 3px 2px;
+  flex: 1;
 `;
 
 export const reviewBody = style.div`
+  width: 100%;
+  font-size: 1em;
+  margin: 3px 2px;
+`;
 
+export const bodyContainer = style.div`
+  width: 100%;
+  margin: 3px 2px;
+  flex: 5;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`;
+
+export const reviewThumbnail = style.img`
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100px;
+  margin: 0px 3px;
+  cursor: pointer;
+  &:hover {
+    border-color: #d3d9d9
+  }
 `;
 
 export const response = style.div`
-
+  flex: 1;
 `;
 
 export const buttons = style.div`
+  flex: 1;
+`;
 
+export const more = style.div`
+  width: fit-content;
+  font-size: 1em;
+  text-decoration: underline;
+  margin-right: 5px;
+  cursor: pointer;
+  &:hover {
+    color: ;
+  }
 `;
