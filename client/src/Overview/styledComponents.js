@@ -92,8 +92,22 @@ export const ProductInfo = styled.div`
   border-style: outset;
 `;
 
+export const StarContainer = styled.div`
+  left: 22px;
+  margin-top: 4px;
+  position: relative;
+  width: 100px;
+`;
+
 export const RatingDisplay = styled.span`
   font-size: 20px;
+`;
+
+export const LinkToReviews = styled.a`
+  display: flex;
+  position: relative;
+  text-decoration: none;
+  left: 24px;
 `;
 
 export const Category = styled.h4`
@@ -116,17 +130,13 @@ export const Name = styled.h3`
 `;
 
 export const Price = styled.span`
-  bottom: 20px;
+  bottom: 11px;
   font-size: 22px;
   float: left;
   left: 18px;
   position: relative;
   margin: 0px 5px;
   color: ${props => props.color || 'black'}
-`;
-
-export const SalePrice = styled.div`
-  color: red;
 `;
 // product info end
 
