@@ -286,8 +286,8 @@ export const bodyContainer = style.div`
 export const reviewThumbnail = style.img`
   border: 1px solid black;
   border-radius: 5px;
-  width: 100px;
-  margin: auto;
+  height: 50px;
+  margin: auto 8px 5px 0;
   cursor: pointer;
   &:hover {
     border-color: #d3d9d9
