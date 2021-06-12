@@ -208,6 +208,42 @@ export const marker = style.div(props => ({
 // REVIEWS
 // ===============
 
+// might change justify content value
+// check align items as well
 export const reviewContainer = style.div`
+  border-bottom: solid 1px black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+`;
+
+export const topRow = style.div`
+  display: flex;
+  justtify-content: space-between;
+
+`;
+
+export const reviewStars = style.div`
+
+`;
+
+export const user = style.div`
+
+`;
+
+export const summary = style.div`
+
+`;
+
+export const reviewBody = style.div`
+
+`;
+
+export const response = style.div`
+
+`;
+
+export const buttons = style.div`
 
 `;

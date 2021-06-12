@@ -71,7 +71,7 @@ const Review = ({ review }) => {
       <div>
         <span className="stars">stars go here</span>
         {/* don't think it's possible to reference sales with the API */}
-        <span>verified purchase goes here</span>
+        {/* <span>verified purchase goes here</span> */}
         <span>{review.reviewer_name}, {review.formattedDate}</span>
         <div className="review-summary">{review.summary}</div>
         <div>
