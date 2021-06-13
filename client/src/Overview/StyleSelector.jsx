@@ -13,11 +13,11 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
   }, [styles]);
 
   const updateSelectedStyle = (index, event) => {
+    let weAreSeniorsYay = document.body.getBoundingClientRect();
     let newStyleIcon = event.target.getBoundingClientRect();
-    console.log(newStyleIcon);
     let checkMark = document.querySelector('.checkmark');
     checkMark.style.left = newStyleIcon.x + 20 + 'px';
-    checkMark.style.top = newStyleIcon.top + 20 + 'px';
+    checkMark.style.top = newStyleIcon.top - weAreSeniorsYay.top + 20 + 'px';
     setCurrentStyle(index);
   };
 
