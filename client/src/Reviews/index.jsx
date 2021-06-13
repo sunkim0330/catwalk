@@ -13,6 +13,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   const [currentReviews, setCurrentReviews] = useState([]);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
   const [chars, setChars] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -62,6 +63,10 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       : setCurrentReviewIndex(prev => prev += 1);
   };
 
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
   // get review data
   useEffect(() => {
     if (product.id) {
@@ -109,7 +114,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       {/* </div> */}
 
       {/* container for sort dropdown, reviews, add review button */}
-      {/* <Styles.Review> */}
+
       <Styles.Sort>
         <Styles.total>{reviews.length} reviews</Styles.total>
         <select id="sort" onChange={handleSort}>
@@ -126,11 +131,15 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
           ? null
           : <button onClick={handleLoadMoreReviews}>More Reviews</button>
         }
-        <button>add a review</button>
+        <button onClick={handleShowForm}>add a review</button>
       </Styles.ReviewList>
-      {/* </Styles.Review> */}
 
-      {/* <AddReview product={product} chars={chars} ratings={meta.characteristics}/> */}
+      {showForm ? (
+        <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
+      ) : (
+        null
+      )}
+
     </Styles.Grid>
   );
 };
