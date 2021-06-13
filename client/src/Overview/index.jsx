@@ -25,7 +25,7 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
   };
 
   return (
-    <Styles.Overview onClick={getClickedElement}>
+    <Styles.Overview onClick={getClickedElement} id="overview">
       <Gallery styleImages={styles[currentStyle].photos} productID={product.id}/>
       <Styles.Sidebar>
         <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
