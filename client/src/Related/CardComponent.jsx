@@ -23,9 +23,12 @@ const Card = (props) => {
       props.setCurrentProduct(props.product);
     };
 
+
+    let image = props.style.photos[0].thumbnail_url || 'client/src/Related/assets/file.png';
+
     return (
 
-      <CardDiv grid={props.grid} image={props.style.photos[0].thumbnail_url} >
+      <CardDiv grid={props.grid} image={image} >
         <HeartButton currentName={props.currentName} currentChar={props.currentChar} relatedName={props.product.name} relatedChar={props.product.features}/>
         <LabelDiv onClick={handleClick}>
           <SecondaryText>{props.product.category}</SecondaryText>

@@ -5,8 +5,10 @@ import {Stars, StarsDiv} from '../Shared/Star.jsx';
 
 
 const OutfitCard = (props) => {
+  let image = props.piece.style.photos[0].thumbnail_url || 'client/src/Related/assets/file.png';
+
   return (
-    <CardDiv image={props.piece.style.photos[0].thumbnail_url} grid={props.grid}>
+    <CardDiv image={image} grid={props.grid}>
       <DeleteButton name={props.piece.product.name} updateCloset={props.updateCloset} />
       <LabelDiv>
         <SecondaryText>{props.piece.product.category}</SecondaryText>

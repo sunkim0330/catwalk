@@ -51,6 +51,12 @@ export const SecondaryText = styled.p`
   margin: 4px;
   font-size: 15px;
   font-color: darkgray;
+  font-family: sans-serif;
+`;
+
+export const SecondaryTextTitle = styled(SecondaryText)`
+  margin-left: 10%;
+  color: gray;
 `;
 
 export const AddToOutfitButton = styled.div`
