@@ -3,7 +3,7 @@ import Submit from './Submit.jsx';
 import Stars from '../Shared/Star.jsx';
 import * as Styles from './Styles.js';
 
-const AddReview = ({ product, chars, ratings }) => {
+const AddReview = ({ product, chars, ratings, setShowForm }) => {
   const [scale, setScale] = useState({
     Size: ['Too small', '\u00B9/\u2082 a size too small', 'Perfect', '\u00B9/\u2082 a size too big', 'Too big'],
     Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'],
@@ -162,10 +162,8 @@ const AddReview = ({ product, chars, ratings }) => {
   }, [chars]);
 
 
-  const thumbnail = {
-    border: '1px solid black',
-    padding: '5px',
-    width: '150px'
+  const closeReview = () => {
+    setShowForm(false);
   };
 
 
@@ -227,11 +225,11 @@ const AddReview = ({ product, chars, ratings }) => {
           </Styles.section>
 
           <Styles.section>
-            <div>
-              <label>
+            <Styles.flexContainerCol>
+              <Styles.textMain>
                 Review summary
-              </label>
-              <input
+              </Styles.textMain>
+              <Styles.textInput
                 type="text"
                 id="add-review-summary"
                 name="add-review-summary"
@@ -242,13 +240,13 @@ const AddReview = ({ product, chars, ratings }) => {
                 onChange={handleSummaryChange}
                 required
               />
-            </div>
+            </Styles.flexContainerCol>
 
-            <div>
-              <label>
+            <Styles.flexContainerCol>
+              <Styles.textMain>
                 Review
-              </label>
-              <textarea
+              </Styles.textMain>
+              <Styles.textarea
                 id="add-review-body"
                 name="add-review-body"
                 rows="5"
@@ -260,19 +258,19 @@ const AddReview = ({ product, chars, ratings }) => {
                 onChange={handleBodyChange}
                 required
               />
-              <div>
+              <Styles.textSmall>
               Minimum required characters left: {minRequiredChars}
-              </div>
-            </div>
+              </Styles.textSmall>
+            </Styles.flexContainerCol>
           </Styles.section>
 
 
           <Styles.section>
             {reviewInfo.imageURLs.length >= 5 ? null
-              : <div>
-                <label>
-                  Share an image, up to 5
-                </label>
+              : <Styles.flexContainerCol>
+                <Styles.textMain>
+                  Share your pics! Up to 5
+                </Styles.textMain>
                 <input
                   type="file"
                   id="add-review-image"
@@ -281,24 +279,26 @@ const AddReview = ({ product, chars, ratings }) => {
                   multiple
                   onChange={handleImageInput}
                 />
-              </div>
+              </Styles.flexContainerCol>
             }
-            <div>
-                image preview:
-              {reviewInfo.imageURLs.map((image, index) => {
-                return (
-                  <div key={index} >
-                    <img src={image} style={thumbnail}/>
-                    {/* <button style={xbutton}>x</button> */}
-                  </div>
-                );
-              })}
-            </div>
+            <Styles.flexContainerCol>
+              <Styles.textMain>image preview:</Styles.textMain>
+              <Styles.flexFit>
+                {reviewInfo.imageURLs.map((image, index) => {
+                  return (
+                    <div key={index} >
+                      <Styles.reviewThumbnail src={image} />
+                      {/* <button style={xbutton}>x</button> */}
+                    </div>
+                  );
+                })}
+              </Styles.flexFit>
+            </Styles.flexContainerCol>
           </Styles.section>
 
           <Styles.section>
-            <div>
-              <input
+            <Styles.flexContainerCol>
+              <Styles.textInput
                 type="text"
                 id="username"
                 name="username"
@@ -308,11 +308,11 @@ const AddReview = ({ product, chars, ratings }) => {
                 onChange={handleNameChange}
                 required
               />
-              <p>For privacy reasons, do not use your full name or email address</p>
-            </div>
+              <Styles.textSmall>For privacy reasons, do not use your full name or email address</Styles.textSmall>
 
-            <div>
-              <input
+
+
+              <Styles.textInput
                 type="email"
                 id="email"
                 name="email"
@@ -322,11 +322,13 @@ const AddReview = ({ product, chars, ratings }) => {
                 onChange={handleEmailChange}
                 required
               />
-            </div>
+            </Styles.flexContainerCol>
           </Styles.section>
 
-
-          <Submit reviewInfo={reviewInfo} ratings={ratings} />
+          <Styles.flexContainerShort>
+            <Submit reviewInfo={reviewInfo} ratings={ratings} />
+            <button onClick={closeReview}>Cancel</button>
+          </Styles.flexContainerShort>
 
         </Styles.formContainer>
 

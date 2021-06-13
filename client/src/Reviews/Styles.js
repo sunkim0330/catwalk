@@ -370,6 +370,7 @@ export const modalOverlay = style.div`
   height: 100%;
   opacity: 0.5;
   background-color: rgba(0, 0, 0, 0.8);
+
 `;
 
 export const modal = style.div`
@@ -382,13 +383,14 @@ export const modal = style.div`
   min-width: 700px;
   max-height: 100px;
   min-height: 1000px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(211, 217, 217,1);
   border: solid 1px black;
   border-radius: 10px;
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  cursor: default;
 `;
 
 export const formHeader = style.div`
@@ -451,24 +453,54 @@ export const charBox = style.div`
   border-bottom: solid 1px;
 `;
 
+export const charButtons = style.div`
+display: inline-block;
+margin-right: 10px;
+`;
+
+export const charbutton = style.input`
+width: 15px;
+margin: 0px 10px 0px 0px;
+cursor: pointer;
+
+`;
+
 export const flexContainerLong = style.div`
   display: flex;
   justify-content: space-between;
   width: 300px;
 `;
 
-export const charButtons = style.div`
-  display: inline-block;
-  margin-right: 10px;
-`;
-
-export const charbutton = style.input`
-  width: 15px;
-  margin-right: 10px;
-`;
-
 export const flexContainerShort = style.div`
   width: 100px;
   display: flex;
   justify-content: space-between;
+`;
+
+export const flexContainerCol = style.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const textInput = style.input`
+  padding: 1px;
+  font-size: 1em;
+  margin: 2px 0;
+  border: none;
+`;
+
+export const textarea = style.textarea`
+  padding: 1px;
+  font-size: 1em;
+  margin: 2px 0;
+  border: none;
+  resize: none;
+`;
+
+export const flexFit = style.div`
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
 `;

@@ -139,7 +139,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       </Styles.Grid>
 
       {showForm ? (
-        <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
+        <AddReview product={product} chars={chars} ratings={meta.characteristics} setShowForm={setShowForm} />
       ) : (
         null
       )}
