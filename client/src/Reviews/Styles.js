@@ -327,9 +327,30 @@ export const more = style.div`
 // ===============
 
 export const helpful = style.div`
-
+  display: flex;
+  justify-content: flex-start;
+  font-size: .9em;
+  width: 25%;
 `;
 
-export const helpButton = style.a`
+export const helpButton = style.button`
+  appearance: none;
+  border-width: 0;
+  border-style: outset;
+  color: black;
+  cursor: pointer;
+  background-color: white;
+  font-size: .9em;
+  padding: 0 5px;
+  text-decoration: underline;
+  &:hover {
+    color: #d3d9d9;
+  }
+`;
 
+export const helpText = style.a`
+  border-right: solid 1px black;
+  width: 50%;
+  padding-right: 5%;
+  margin-right: 5%;
 `;

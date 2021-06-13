@@ -43,9 +43,13 @@ const Helpful = ({ origin, id, helpCount }) => {
     if (isQuestion) {
       return null;
     } else if (link.report) {
-      return <div className="report_button">Reported!</div>;
+      return <Styles.helpText>Reported!</Styles.helpText>;
     } else {
-      return <div><button onClick={handleClick} value="report">Report</button></div>;
+      return (
+        <>
+          <Styles.helpButton onClick={handleClick} value="report">Report</Styles.helpButton>
+        </>
+      );
     }
   };
 
@@ -58,10 +62,10 @@ const Helpful = ({ origin, id, helpCount }) => {
 
   return (
     <Styles.helpful>
-      <div className='helpful_button'> Helpful? <button value="helpful" onClick={handleClick}>Yes ({count})</button></div>
+      <Styles.helpText> Helpful? <Styles.helpButton value="helpful" onClick={handleClick}>Yes</Styles.helpButton> ({count})</Styles.helpText>
+      {/* <div>|</div> */}
       {displayReport()}
     </Styles.helpful>
-
   );
 };
 
