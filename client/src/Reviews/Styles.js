@@ -91,7 +91,7 @@ export const total = style.a`
 // SUMMARY BLOCK
 // ===============
 
-export const overall = style.h1`
+export const overall = style.div`
   margin: 5px 2px;
   font-size: 5em;
   width: fit-content;
@@ -176,10 +176,12 @@ export const rec = style.div`
 
 export const charContainer = style.div`
   padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const charName = style.div`
-  margin: 5px;
   width: fit-content;
   font-size: 1.2em;
 `;
@@ -187,6 +189,7 @@ export const charName = style.div`
 export const attBox = style.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 
 export const attribute = style.div`
@@ -197,9 +200,9 @@ export const attribute = style.div`
 
 export const scale = style.div`
   height: 10px;
-  width: 90%;
+  width: 100%;
   background: #d3d9d9;
-  margin: 3px 5px 3px 10px;
+  margin: 3px 2px 3px 0px;
 `;
 
 export const marker = style.div(props => ({
@@ -317,4 +320,16 @@ export const more = style.div`
   &:hover {
     color: #d3d9d9;
   }
+`;
+
+// ===============
+// HELPFUL
+// ===============
+
+export const helpful = style.div`
+
+`;
+
+export const helpButton = style.a`
+
 `;

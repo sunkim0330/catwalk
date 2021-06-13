@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import * as Styles from '../Reviews/Styles.js';
 
 const Helpful = ({ origin, id, helpCount }) => {
   const [link, setLink] = useState({
@@ -56,10 +57,10 @@ const Helpful = ({ origin, id, helpCount }) => {
 
 
   return (
-    <div>
+    <Styles.helpful>
       <div className='helpful_button'> Helpful? <button value="helpful" onClick={handleClick}>Yes ({count})</button></div>
       {displayReport()}
-    </div>
+    </Styles.helpful>
 
   );
 };
