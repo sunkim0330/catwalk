@@ -6,7 +6,7 @@ import style from 'styled-components';
 // ==============
 export const Grid = style.div`
   cursor: default;
-  max-width: 1800px;
+  max-width: 1500px;
   min-width: 1200px;
   border: 2px solid black;
   height: 800px;
@@ -38,6 +38,8 @@ export const Sort = style.div`
 
 export const Summary = style.div`
   grid-area: summary;
+  display: flex;
+  justify-content: space-between;
   border: 1px solid blue;
 `;
 

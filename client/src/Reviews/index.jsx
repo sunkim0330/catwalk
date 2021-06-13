@@ -83,6 +83,8 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
     setChars(newChars);
   }, [meta]);
 
+  // const style = 'width: 200px';
+
   return (
     <Styles.Grid>
       {/* container for average rating, reviews breakdown, recommends, characteristics */}
@@ -92,7 +94,12 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       </Styles.TitleBlock>
       <Styles.Summary>
         <Styles.overall>{averageRating}</Styles.overall>
-        <div>stars go here</div>
+        <Stars
+          rating={averageRating}
+          width='50%'
+          padding='10px 10px 0 5px'
+          margin='10px 5px'
+        />
       </Styles.Summary>
 
 
