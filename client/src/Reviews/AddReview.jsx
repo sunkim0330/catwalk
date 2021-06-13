@@ -24,6 +24,7 @@ const AddReview = ({ product, chars, ratings }) => {
     imageURLs: [],
     characteristics: {}
   });
+  const [selected, setSelected] = useState({});
 
   const handleSummaryChange = (e) => {
     setReviewInfo(prev => {
@@ -84,6 +85,7 @@ const AddReview = ({ product, chars, ratings }) => {
 
   const handleCharChange = (e) => {
     let charName = e.target.name;
+
     let charId = ratings[charName].id;
     let value = Number(e.target.value);
     let newValue = reviewInfo.characteristics;
@@ -91,6 +93,14 @@ const AddReview = ({ product, chars, ratings }) => {
     setReviewInfo(prev => {
       return {...prev, characteristics: newValue};
     });
+
+    setSelected(prev => {
+      return {...prev, [charName]: scale[charName][value - 1]};
+    });
+  };
+
+  const displaySelection = () => {
+
   };
 
   const renderCharButtons = () => {
@@ -99,8 +109,14 @@ const AddReview = ({ product, chars, ratings }) => {
       chars.map(char => {
         return (
           <Styles.charBox key={char}>
-            <Styles.textMain>{char}</Styles.textMain>
-            <Styles.charButtonsBox>
+            <Styles.flexContainerLong>
+
+              <Styles.textMain>{char}</Styles.textMain>
+              <Styles.textSmall>{selected[char]}</Styles.textSmall>
+
+            </Styles.flexContainerLong>
+
+            <Styles.flexContainerLong>
               {scale[char].map((attribute, index) => {
                 return (
 
@@ -116,11 +132,11 @@ const AddReview = ({ product, chars, ratings }) => {
 
                 );
               })}
-            </Styles.charButtonsBox>
-            <Styles.charScale key={char}>
+            </Styles.flexContainerLong>
+            <Styles.flexContainerLong key={char}>
               <Styles.textSmall>{scale[char][0]}</Styles.textSmall>
               <Styles.textSmall>{scale[char][4]}</Styles.textSmall>
-            </Styles.charScale>
+            </Styles.flexContainerLong>
           </Styles.charBox>
         );
       })
@@ -129,14 +145,22 @@ const AddReview = ({ product, chars, ratings }) => {
   };
 
   useEffect(() => {
+
     let newChars = {};
     chars.forEach(char => {
       newChars[ratings[char].id] = 0;
+      setSelected(prev => {
+        return {...prev, [char]: null};
+      });
     });
+
     setReviewInfo((prev) => {
       return {...prev, characteristics: newChars};
     });
+
+
   }, [chars]);
+
 
   const thumbnail = {
     border: '1px solid black',
@@ -170,7 +194,7 @@ const AddReview = ({ product, chars, ratings }) => {
 
           <Styles.section>
             <Styles.textMain>Do you recommend this product?</Styles.textMain>
-            <Styles.flexContainer>
+            <Styles.flexContainerShort>
               <label>
                 <Styles.textSmall>Yes</Styles.textSmall>
                 <input
@@ -191,7 +215,7 @@ const AddReview = ({ product, chars, ratings }) => {
                   onChange={handleRecommendsChange}
                 />
               </label>
-            </Styles.flexContainer>
+            </Styles.flexContainerShort>
           </Styles.section>
 
           <Styles.section>

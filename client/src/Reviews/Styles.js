@@ -418,6 +418,7 @@ export const textSmall = style.div`
   display: inline-block;
   font-size: .8em;
   margin: 3px 0;
+  width: fit-content;
 `;
 
 export const formContainer = style.form`
@@ -450,16 +451,10 @@ export const charBox = style.div`
   border-bottom: solid 1px;
 `;
 
-export const charScale = style.div`
+export const flexContainerLong = style.div`
   display: flex;
   justify-content: space-between;
   width: 300px;
-`;
-
-export const charButtonsBox = style.div`
-  width: 300px;
-  display: flex;
-  justify-content: space-between;
 `;
 
 export const charButtons = style.div`
@@ -472,7 +467,7 @@ export const charbutton = style.input`
   margin-right: 10px;
 `;
 
-export const flexContainer = style.div`
+export const flexContainerShort = style.div`
   width: 100px;
   display: flex;
   justify-content: space-between;
