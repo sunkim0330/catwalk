@@ -1,19 +1,7 @@
 import React, {useState, useEffect, useReducer} from 'react';
-import styled, {css} from 'styled-components';
+import * as Styles from './Styles.js';
 import axios from 'axios';
 import ModalForm from './ModalForm.jsx';
-
-const ModalContainer = styled.div`
-position: fixed;
-left: 0;
-top: 0;
-right: 0;
-bottom: 0;
-background-color: rgba(0,0,0, 0.5);
-display: flex;
-align-items: center;
-justify-content: center;
-`;
 
 const Modal = ({title, subTitle, questionBody, onClose, show, id}) => {
   const [origin, setOrigin] = useState('');
@@ -48,20 +36,20 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id}) => {
 
   return (
     <div>
-      <ModalContainer>
-        <div className="qanda-modal-content">
-          <div className="qanda-modal-header">
+      <Styles.ModalContainer>
+        <Styles.ModalContent>
+          <Styles.ModalHeaderFooter>
             <h4>{title}</h4>
             {displayQuestionBody()}
-          </div>
-          <div className="qanda-modal-body">
+          </Styles.ModalHeaderFooter>
+          <Styles.ModalBody>
             <ModalForm origin={origin} title={title} placeholder={placeholder}/>
-          </div>
-          <div className="qanda-modal-footer">
+          </Styles.ModalBody>
+          <Styles.ModalHeaderFooter>
             <button onClick={onClose}>Close</button>
-          </div>
-        </div>
-      </ModalContainer>
+          </Styles.ModalHeaderFooter>
+        </Styles.ModalContent>
+      </Styles.ModalContainer>
     </div>
   );
 
@@ -70,34 +58,5 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id}) => {
 
 
 export default Modal;
-
-/*
-const ModalContainer = styled.div.attrs({className: 'qanda-modal'})`
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `;
-
-  const ModalContent = styled.div.attrs({className: 'qanda-modal-content'})`
-    width: 500px;
-    background-color: palevioletred;
-  `;
-
-  const ModalHeaderFooter = styled.div.attrs({className: 'qanda-modal-content'})`
-    padding: 10px;
-`;
-
-  const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
-    padding: 10px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-  `;
-*/
 
 

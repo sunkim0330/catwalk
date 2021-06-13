@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Questions from './Questions.jsx';
 import Modal from './Modal.jsx';
+import * as Styles from './Styles.js';
 
 
 const QandAs = ({ product, setDateFormat }) => {

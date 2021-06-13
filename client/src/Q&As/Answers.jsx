@@ -34,6 +34,7 @@ const Answers = ({ product, questions, setDateFormat }) => {
     return (
       <div className="answer_div" key={answer.answer_id}>
             A: {answer.body} <br/>
+        <div>{answer.photos}</div><br/>
         <div> by {answer.answerer_name}, {answer.formattedDate}, <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/> </div>
         <button onClick={() => setShow(true)} >Add Answer</button>
         <Modal title="Submit Your Answer" subTitle={product.name} id={answer.question_id} questionBody={answer.question_body} show={show} onClose={() => setShow(false)}/>
