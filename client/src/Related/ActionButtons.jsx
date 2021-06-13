@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ModalViewComponent from './ModalViewComponent';
+import {ModalViewButton} from './styled.js';
 
 
 export const HeartButton = (props) => {
@@ -14,10 +15,10 @@ export const HeartButton = (props) => {
   };
 
   return (
-    <div>
+    <ModalViewButton onClick={handleClick}>
       {modalView ? <ModalViewComponent currentName={props.currentName} currentChar={props.currentChar} relatedName={props.relatedName} relatedChar={props.relatedChar}/> : null}
-      <button onClick={handleClick}></button>
-    </div>
+      {/* <button onClick={handleClick}></button> */}
+    </ModalViewButton>
   );
 };
 
@@ -38,8 +39,8 @@ export const DeleteButton = (props) => {
   };
 
   return (
-    <div>
-      <button onClick={handleDelete} ></button>
-    </div>
+    <ModalViewButton onClick={handleDelete}>
+      {/* <button onClick={handleDelete} ></button> */}
+    </ModalViewButton>
   );
 };

@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import OutfitCard from './OutfitCardComponent';
+import {RelatedListDiv, AddToOutfitButton} from './styled.js';
 
 
 const OutfitList = (props) => {
   let newStorage = window.localStorage;
 
-  const [closet, setCloset] = useState([]);
+  const [closet, setCloset] = useState(null);
 
   useEffect(() => {
     let localCloset = newStorage.getItem('closet');
     setCloset(JSON.parse(localCloset));
+
   }, []);
 
   const handleAdd = () => {
@@ -46,20 +48,24 @@ const OutfitList = (props) => {
       newStorage.setItem('closet', JSON.stringify(newCloset));
       updateCloset();
     }
-
   };
 
   const updateCloset = () => {
     let updatedCloset = newStorage.getItem('closet');
     setCloset(JSON.parse(updatedCloset));
+    console.log(closet.length);
   };
 
-  return (
-    <div>
-      <button onClick={handleAdd} ></button>
-      {closet ? closet.map((piece, i) => { return <OutfitCard piece={piece} key={i} updateCloset={updateCloset} />; }) : null}
-    </div>
-  );
+  if (closet !== null) {
+    return (
+      <RelatedListDiv listLength={closet.length + 1}>
+        <AddToOutfitButton onClick={handleAdd}>Add To Outfit</AddToOutfitButton>
+        {closet ? closet.map((piece, i) => { return <OutfitCard piece={piece} key={i} grid={i + 1} updateCloset={updateCloset} />; }) : null}
+      </RelatedListDiv>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default OutfitList;

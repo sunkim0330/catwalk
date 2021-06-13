@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {HeartButton} from './ActionButtons';
-import {CardDiv, ImageDiv, LabelDiv, NameText, SecondaryText, StarsDiv} from './styled.js';
-import Star from '../Shared/Star.jsx';
+import {CardDiv, ImageDiv, LabelDiv, NameText, SecondaryText} from './styled.js';
+import {Stars, StarsDiv} from '../Shared/Star.jsx';
 
 const Card = (props) => {
 
@@ -31,7 +31,7 @@ const Card = (props) => {
           <SecondaryText>{props.product.category}</SecondaryText>
           <NameText>{props.product.name}</NameText>
           {props.style.sale_price ? <div><strike>${props.style.original_price}</strike><style color='red'>${props.style.sale_price}</style></div> : <div>${props.style.original_price}</div>}
-          {averageRating ? <StarsDiv><Star rating={averageRating.toFixed(1)} /></StarsDiv> : null}
+          {averageRating ? <StarsDiv scale='30%'><Stars rating={averageRating.toFixed(1)} /></StarsDiv> : null}
         </LabelDiv>
       </CardDiv >
 

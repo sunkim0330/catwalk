@@ -1,7 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 
 
-const Stars = (props) => {
+export const Stars = (props) => {
   return (
     <div>
 
@@ -29,4 +30,8 @@ const Stars = (props) => {
   );
 };
 
-export default Stars;
+export const StarsDiv = styled.div`
+width: ${props => props.scale};
+height: ${props => props.scale};
+`;
+
