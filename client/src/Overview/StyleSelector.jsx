@@ -12,6 +12,15 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
     }
   }, [styles]);
 
+  const updateSelectedStyle = (index, event) => {
+    let newStyleIcon = event.target.getBoundingClientRect();
+    console.log(newStyleIcon);
+    let checkMark = document.querySelector('.checkmark');
+    checkMark.style.left = newStyleIcon.x + 20 + 'px';
+    checkMark.style.top = newStyleIcon.top + 20 + 'px';
+    setCurrentStyle(index);
+  };
+
   return (
     <Styles.StyleSelector>
 
@@ -20,12 +29,14 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
       <Styles.StyleName className="styleTitle">{'Style Name > '}{currentStyle.name}</Styles.StyleName>
 
       {styles.map((style, index) => {
-        return <Styles.Style className='style' id={style.name} src={style.photos[0].thumbnail_url} alt={style.name + 'Style'} key={style.name} onClick={(event) => {
-          let checkMark = document.querySelector('.checkmark');
-          checkMark.style.left = event.target.x + 20 + 'px';
-          checkMark.style.top = event.target.y + 20 + 'px';
-          setCurrentStyle(index);
-        }}/>;
+        return <Styles.Style
+          className='style'
+          id={style.name}
+          src={style.photos[0].thumbnail_url}
+          alt={style.name + 'Style'}
+          key={style.name}
+          onClick={(event) => updateSelectedStyle(index, event)}
+        />;
       })}
 
     </Styles.StyleSelector>

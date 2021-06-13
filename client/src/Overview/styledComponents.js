@@ -146,6 +146,12 @@ export const StyleName = styled.h3`
   grid-column-end: 5;
 `;
 
+export const StyleContainer = styled.div`
+  position: absolute;
+  left: 20px;
+  top: 20px;
+`;
+
 export const Style = styled.img`
   border-radius: 50%;
   width: 75px;
