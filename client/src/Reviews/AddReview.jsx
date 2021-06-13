@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Submit from './Submit.jsx';
+import Stars from '../Shared/Star.jsx';
 import * as Styles from './Styles.js';
 
 const AddReview = ({ product, chars, ratings }) => {
@@ -97,29 +98,30 @@ const AddReview = ({ product, chars, ratings }) => {
     return (
       chars.map(char => {
         return (
-          <div key={char}>
-            <label>
-              {char}
-            </label>
-            {scale[char].map((attribute, index) => {
-              return (
+          <Styles.charBox key={char}>
+            <Styles.textMain>{char}</Styles.textMain>
+            <Styles.charButtonsBox>
+              {scale[char].map((attribute, index) => {
+                return (
 
-                <span key={index}>
-                  <input
-                    type="radio"
-                    name={char}
-                    value={index + 1}
-                    onChange={handleCharChange}
-                    required
-                  />
-                </span>
+                  <Styles.charButtons key={index}>
+                    <Styles.charbutton
+                      type="radio"
+                      name={char}
+                      value={index + 1}
+                      onChange={handleCharChange}
+                      required
+                    />
+                  </Styles.charButtons>
 
-              );
-            })}
-            <div key={char}>
-              {scale[char][0]}    {scale[char][4]}
-            </div>
-          </div>
+                );
+              })}
+            </Styles.charButtonsBox>
+            <Styles.charScale key={char}>
+              <Styles.textSmall>{scale[char][0]}</Styles.textSmall>
+              <Styles.textSmall>{scale[char][4]}</Styles.textSmall>
+            </Styles.charScale>
+          </Styles.charBox>
         );
       })
     );
@@ -148,53 +150,59 @@ const AddReview = ({ product, chars, ratings }) => {
       <Styles.modalOverlay></Styles.modalOverlay>
       <Styles.modal>
 
-        <Styles.formHeading>
-          Write your review
-          About {product.name}
-        </Styles.formHeading>
-        <div>
-          <form>
+        <Styles.formHeader>
+          <Styles.textTitle>Write your review</Styles.textTitle>
+          <Styles.textSub>About the {product.name}</Styles.textSub>
+        </Styles.formHeader>
 
-            <div>
+        <Styles.formContainer>
+
+          <Styles.section>
+            <label>
+              <Styles.textMain>Overall rating</Styles.textMain>
+              <Stars rating={0}
+                width='150px'
+                cursor='pointer'
+                margin='10px 0'
+              />
+            </label>
+          </Styles.section>
+
+          <Styles.section>
+            <Styles.textMain>Do you recommend this product?</Styles.textMain>
+            <Styles.flexContainer>
               <label>
-                Overall rating
-                {/* star buttons go here */}
+                <Styles.textSmall>Yes</Styles.textSmall>
+                <input
+                  type="radio"
+                  name="recommend"
+                  value="yes"
+                  onChange={handleRecommendsChange}
+                  checked
+                  required
+                />
               </label>
-            </div>
+              <label>
+                <Styles.textSmall>No</Styles.textSmall>
+                <input
+                  type="radio"
+                  name="recommend"
+                  value="no"
+                  onChange={handleRecommendsChange}
+                />
+              </label>
+            </Styles.flexContainer>
+          </Styles.section>
 
-            <div>
-              Do you recommend this product?
-              <div>
-                <label>
-                  Yes
-                  <input
-                    type="radio"
-                    name="recommend"
-                    value="yes"
-                    onChange={handleRecommendsChange}
-                    checked
-                    required
-                  />
-                </label>
-                <label>
-                  No
-                  <input
-                    type="radio"
-                    name="recommend"
-                    value="no"
-                    onChange={handleRecommendsChange}
-                  />
-                </label>
-              </div>
-            </div>
+          <Styles.section>
+            <Styles.textMain>Characteristics</Styles.textMain>
 
-            <div>
-              Characteristics
-              <div>
-                {renderCharButtons()}
-              </div>
-            </div>
+            <Styles.section>
+              {renderCharButtons()}
+            </Styles.section>
+          </Styles.section>
 
+          <Styles.section>
             <div>
               <label>
                 Review summary
@@ -232,37 +240,39 @@ const AddReview = ({ product, chars, ratings }) => {
               Minimum required characters left: {minRequiredChars}
               </div>
             </div>
+          </Styles.section>
 
 
-            <div>
-              {reviewInfo.imageURLs.length >= 5 ? null
-                : <div>
-                  <label>
-                    Share an image, up to 5
-                  </label>
-                  <input
-                    type="file"
-                    id="add-review-image"
-                    name="add-review-image"
-                    accept="image/*"
-                    multiple
-                    onChange={handleImageInput}
-                  />
-                </div>
-              }
-              <div>
-                  image preview:
-                {reviewInfo.imageURLs.map((image, index) => {
-                  return (
-                    <div key={index} >
-                      <img src={image} style={thumbnail}/>
-                      {/* <button style={xbutton}>x</button> */}
-                    </div>
-                  );
-                })}
+          <Styles.section>
+            {reviewInfo.imageURLs.length >= 5 ? null
+              : <div>
+                <label>
+                  Share an image, up to 5
+                </label>
+                <input
+                  type="file"
+                  id="add-review-image"
+                  name="add-review-image"
+                  accept="image/*"
+                  multiple
+                  onChange={handleImageInput}
+                />
               </div>
+            }
+            <div>
+                image preview:
+              {reviewInfo.imageURLs.map((image, index) => {
+                return (
+                  <div key={index} >
+                    <img src={image} style={thumbnail}/>
+                    {/* <button style={xbutton}>x</button> */}
+                  </div>
+                );
+              })}
             </div>
+          </Styles.section>
 
+          <Styles.section>
             <div>
               <input
                 type="text"
@@ -289,11 +299,13 @@ const AddReview = ({ product, chars, ratings }) => {
                 required
               />
             </div>
+          </Styles.section>
 
-            <Submit reviewInfo={reviewInfo} ratings={ratings} />
 
-          </form>
-        </div>
+          <Submit reviewInfo={reviewInfo} ratings={ratings} />
+
+        </Styles.formContainer>
+
       </Styles.modal>
     </>
   );

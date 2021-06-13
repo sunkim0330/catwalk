@@ -391,6 +391,89 @@ export const modal = style.div`
   align-items: flex-start;
 `;
 
-export const formHeading = style.div`
+export const formHeader = style.div`
+  width: 100%;
+  height: fit-content;
+  border-bottom: solid 1px black;
+  margin-bottom: 10px;
+`;
 
+export const textTitle = style.div`
+  font-size: 3em;
+  margin: 3px 0;
+`;
+
+export const textSub = style.div`
+  font-size: 1.5em;
+  margin: 3px 0;
+`;
+
+export const textMain = style.div`
+  display: inline-block;
+  font-size: 1em;
+  margin: 3px 0;
+`;
+
+export const textSmall = style.div`
+  display: inline-block;
+  font-size: .8em;
+  margin: 3px 0;
+`;
+
+export const formContainer = style.form`
+  width: 100%;
+  height: 850px;
+  margin: 5px 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+
+export const section = style.div`
+  width: 100%;
+  height: fit-content;
+  margin: 5px 0;
+`;
+
+export const line = style.div`
+  width:  100%;
+  height: 2px;
+  border-bottom: solid 1px black;
+`;
+
+export const charBox = style.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  border-bottom: solid 1px;
+`;
+
+export const charScale = style.div`
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+`;
+
+export const charButtonsBox = style.div`
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const charButtons = style.div`
+  display: inline-block;
+  margin-right: 10px;
+`;
+
+export const charbutton = style.input`
+  width: 15px;
+  margin-right: 10px;
+`;
+
+export const flexContainer = style.div`
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
 `;
