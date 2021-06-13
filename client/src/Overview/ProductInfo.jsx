@@ -1,26 +1,38 @@
 import React from 'react';
 import * as Styles from './styledComponents.js';
+import Stars from '../Shared/Star.jsx';
 
 const ProductInfo = ({ product, style, rating, reviewCount }) => {
 
   let priceDisplay, ratingDisplay;
 
   if (style.sale_price) {
-    priceDisplay = <div id="priceDisplay"><div>{style.sale_price}</div><div>
-      <del>{product.default_price}</del></div></div>;
+    priceDisplay = (
+      <>
+        <Styles.Price color={'red'}>
+          <del>${product.default_price}</del>
+        </Styles.Price>
+        <Styles.Price>${style.sale_price}</Styles.Price>
+      </>
+    );
   } else {
-    priceDisplay = <div>{product.default_price}</div>;
+    priceDisplay = <Styles.Price>${product.default_price}</Styles.Price>;
   }
 
   if (reviewCount) {
-    ratingDisplay = <div>{rating} <a href="#container">{`Read all ${reviewCount} reviews`}</a></div>;
+    ratingDisplay = (
+      <Styles.RatingDisplay>
+        <Stars rating={rating} width={'50px'} left={'24px'} position={'relative'}/>
+        <Styles.LinkToReviews href="#container">{`Read all ${reviewCount} reviews`}</Styles.LinkToReviews>
+      </Styles.RatingDisplay>
+    );
   }
 
   return (
     <Styles.ProductInfo>
       {ratingDisplay}
-      <div>{product.category}</div>
-      <div>{product.name}</div>
+      <Styles.Category>{product.category}</Styles.Category>
+      <Styles.Name>{product.name}</Styles.Name>
       {priceDisplay}
     </Styles.ProductInfo>
   );
