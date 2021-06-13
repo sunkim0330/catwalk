@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Helpful from '../Shared/Helpful.jsx';
+import Stars from '../Shared/Star.jsx';
 import * as Styles from './Styles.js';
 
 const Review = ({ review }) => {

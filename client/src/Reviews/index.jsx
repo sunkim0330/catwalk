@@ -4,6 +4,7 @@ import AddReview from './AddReview.jsx';
 import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
+import Stars from '../Shared/Star.jsx';
 import * as Styles from './Styles.js';
 
 const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) => {
