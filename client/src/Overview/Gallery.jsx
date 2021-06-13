@@ -33,7 +33,7 @@ const Gallery = ({ styleImages, productID }) => {
         setRenderedThumbnails(styleImages.slice(thumbnailsStart - 1, thumbnailsStart + 6));
         setThumbnailsStart(prev => prev - 1);
       }
-      setMainImageIndex(prev => prev - 1);
+      imageSelect(mainImageIndex - 1);
     }
   };
 
@@ -43,11 +43,13 @@ const Gallery = ({ styleImages, productID }) => {
         setRenderedThumbnails(styleImages.slice(thumbnailsStart + 1, thumbnailsStart + 8));
         setThumbnailsStart(prev => prev + 1);
       }
-      setMainImageIndex(prev => prev + 1);
+      imageSelect(mainImageIndex + 1);
     }
   };
 
   const imageSelect = (index) => {
+    document.getElementById('thumbnail' + index).style.transform = 'scale(1.1)';
+    document.getElementById('thumbnail' + mainImageIndex).style.transform = 'scale(0.8)';
     setMainImageIndex(index);
   };
 

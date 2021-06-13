@@ -63,8 +63,6 @@ export const RightArrow = styled.img`
 
 // thumbnails container
 export const Thumbnails = styled.div`
-  border-style: outset;
-  border-width: 8px;
   display: flex;
   flex-direction: column;
   grid-column-start: 1;
@@ -76,7 +74,8 @@ export const Thumbnails = styled.div`
 
 // thumbnail img
 export const GalleryThumbnail = styled.img`
-  height: 14.2%;
+  height: 14.5%;
+  transform: scale(0.8);
 `;
 // gallery end
 

@@ -6,7 +6,12 @@ const Thumbnails = ({ styleImages, imageIndex, changeMainImage }) => {
   return (
     <Styles.Thumbnails>
       {styleImages.map((stylePhoto, index) => {
-        return <Styles.GalleryThumbnail src={stylePhoto.thumbnail_url} key={stylePhoto.thumbnail_url} onClick={() => changeMainImage(index)}/>;
+        return <Styles.GalleryThumbnail
+          src={stylePhoto.thumbnail_url}
+          key={stylePhoto.thumbnail_url}
+          id={'thumbnail' + index}
+          onClick={() => changeMainImage(index) }
+        />;
       })}
     </Styles.Thumbnails>
   );
