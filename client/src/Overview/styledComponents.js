@@ -5,7 +5,8 @@ export const Overview = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   text-align: center;
-  width: 100%;
+  width: 80%;
+  margin: auto;
 `;
 
 // gallery start
@@ -25,6 +26,7 @@ export const MainImage = styled.img`
   border-style: ridge;
   border-width: 20px;
   display: block;
+  max-width: 600px;
   grid-column-start: 2;
   height: 95%;
   margin: 4vh auto;
@@ -34,7 +36,7 @@ export const LeftArrow = styled.img`
   align-self: center;
   grid-column-start: 2;
   position: absolute;
-  padding-left: 20px;
+  padding-left: 8px;
 
   &:hover {
   }
@@ -49,7 +51,7 @@ export const RightArrow = styled.img`
   grid-column-start: 2;
   justify-self: right;
   position: absolute;
-  padding-right: 20px;
+  padding-right: 8px;
 
   &:hover {
   }
@@ -84,6 +86,7 @@ export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border-style: ridge;
 `;
 
 
