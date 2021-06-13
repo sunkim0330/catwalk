@@ -141,161 +141,161 @@ const AddReview = ({ product, chars, ratings }) => {
     padding: '5px',
     width: '150px'
   };
-  const xbutton = {
-    position: 'absolute',
-    right: '0',
-    zIndex: '1'
-  };
+
 
   return (
-    <div>
-      <div>
-        Write your review
-        About {product.name}
-      </div>
-      <div>
-        <form>
+    <>
+      <Styles.modalOverlay></Styles.modalOverlay>
+      <Styles.modal>
 
-          <div>
-            <label>
-              Overall rating
-              {/* star buttons go here */}
-            </label>
-          </div>
+        <Styles.formHeading>
+          Write your review
+          About {product.name}
+        </Styles.formHeading>
+        <div>
+          <form>
 
-          <div>
-            Do you recommend this product?
             <div>
               <label>
-                Yes
-                <input
-                  type="radio"
-                  name="recommend"
-                  value="yes"
-                  onChange={handleRecommendsChange}
-                  checked
-                  required
-                />
-              </label>
-              <label>
-                No
-                <input
-                  type="radio"
-                  name="recommend"
-                  value="no"
-                  onChange={handleRecommendsChange}
-                />
+                Overall rating
+                {/* star buttons go here */}
               </label>
             </div>
-          </div>
 
-          <div>
-            Characteristics
             <div>
-              {renderCharButtons()}
-            </div>
-          </div>
-
-          <div>
-            <label>
-              Review summary
-            </label>
-            <input
-              type="text"
-              id="add-review-summary"
-              name="add-review-summary"
-              maxLength="60"
-              placeholder="Example: Best purchase ever!"
-              size="30"
-              // value={summary}
-              onChange={handleSummaryChange}
-              required
-            />
-          </div>
-
-          <div>
-            <label>
-              Review
-            </label>
-            <textarea
-              id="add-review-body"
-              name="add-review-body"
-              rows="5"
-              columns="30"
-              minLength="50"
-              maxLength="1000"
-              placeholder="Why did you like the product or not?"
-              // value={body}
-              onChange={handleBodyChange}
-              required
-            />
-            <div>
-             Minimum required characters left: {minRequiredChars}
-            </div>
-          </div>
-
-
-          <div>
-            {reviewInfo.imageURLs.length >= 5 ? null
-              : <div>
+              Do you recommend this product?
+              <div>
                 <label>
-                  Share an image, up to 5
+                  Yes
+                  <input
+                    type="radio"
+                    name="recommend"
+                    value="yes"
+                    onChange={handleRecommendsChange}
+                    checked
+                    required
+                  />
                 </label>
-                <input
-                  type="file"
-                  id="add-review-image"
-                  name="add-review-image"
-                  accept="image/*"
-                  multiple
-                  onChange={handleImageInput}
-                />
+                <label>
+                  No
+                  <input
+                    type="radio"
+                    name="recommend"
+                    value="no"
+                    onChange={handleRecommendsChange}
+                  />
+                </label>
               </div>
-            }
-            <div>
-                image preview:
-              {reviewInfo.imageURLs.map((image, index) => {
-                return (
-                  <div key={index} >
-                    <img src={image} style={thumbnail}/>
-                    {/* <button style={xbutton}>x</button> */}
-                  </div>
-                );
-              })}
             </div>
-          </div>
 
-          <div>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Example: jackson11!"
-              maxLength="60"
-              // value={name}
-              onChange={handleNameChange}
-              required
-            />
-            <p>For privacy reasons, do not use your full name or email address</p>
-          </div>
+            <div>
+              Characteristics
+              <div>
+                {renderCharButtons()}
+              </div>
+            </div>
 
-          <div>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Example: jackson11@email.com"
-              maxLength="60"
-              // value={email}
-              onChange={handleEmailChange}
-              required
-            />
-          </div>
+            <div>
+              <label>
+                Review summary
+              </label>
+              <input
+                type="text"
+                id="add-review-summary"
+                name="add-review-summary"
+                maxLength="60"
+                placeholder="Example: Best purchase ever!"
+                size="30"
+                // value={summary}
+                onChange={handleSummaryChange}
+                required
+              />
+            </div>
 
-          <Submit reviewInfo={reviewInfo} ratings={ratings} />
+            <div>
+              <label>
+                Review
+              </label>
+              <textarea
+                id="add-review-body"
+                name="add-review-body"
+                rows="5"
+                columns="30"
+                minLength="50"
+                maxLength="1000"
+                placeholder="Why did you like the product or not?"
+                // value={body}
+                onChange={handleBodyChange}
+                required
+              />
+              <div>
+              Minimum required characters left: {minRequiredChars}
+              </div>
+            </div>
 
-        </form>
-      </div>
-    </div>
+
+            <div>
+              {reviewInfo.imageURLs.length >= 5 ? null
+                : <div>
+                  <label>
+                    Share an image, up to 5
+                  </label>
+                  <input
+                    type="file"
+                    id="add-review-image"
+                    name="add-review-image"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageInput}
+                  />
+                </div>
+              }
+              <div>
+                  image preview:
+                {reviewInfo.imageURLs.map((image, index) => {
+                  return (
+                    <div key={index} >
+                      <img src={image} style={thumbnail}/>
+                      {/* <button style={xbutton}>x</button> */}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Example: jackson11!"
+                maxLength="60"
+                // value={name}
+                onChange={handleNameChange}
+                required
+              />
+              <p>For privacy reasons, do not use your full name or email address</p>
+            </div>
+
+            <div>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Example: jackson11@email.com"
+                maxLength="60"
+                // value={email}
+                onChange={handleEmailChange}
+                required
+              />
+            </div>
+
+            <Submit reviewInfo={reviewInfo} ratings={ratings} />
+
+          </form>
+        </div>
+      </Styles.modal>
+    </>
   );
 };
 

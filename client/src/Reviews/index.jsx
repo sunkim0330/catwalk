@@ -91,48 +91,52 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   // const style = 'width: 200px';
 
   return (
-    <Styles.Grid>
-      {/* container for average rating, reviews breakdown, recommends, characteristics */}
-      {/* <div id="ratings-breakdown"> */}
-      <Styles.TitleBlock>
-        <Styles.title>RATINGS & REVIEWS</Styles.title>
-      </Styles.TitleBlock>
-      <Styles.Summary>
-        <Styles.overall>{averageRating}</Styles.overall>
-        <Stars
-          rating={averageRating}
-          width='50%'
-          padding='10px 10px 0 5px'
-          margin='10px 5px'
-        />
-      </Styles.Summary>
+    <>
+      <Styles.Grid>
+        {/* container for average rating, reviews breakdown, recommends, characteristics */}
+        {/* <div id="ratings-breakdown"> */}
+        <Styles.TitleBlock>
+          <Styles.title>RATINGS & REVIEWS</Styles.title>
+        </Styles.TitleBlock>
+        <Styles.Summary>
+          <Styles.overall>{averageRating}</Styles.overall>
+          <Stars
+            rating={averageRating}
+            width='50%'
+            padding='10px 10px 0 5px'
+            margin='10px 5px'
+          />
+        </Styles.Summary>
 
 
-      <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
-      <Characteristics chars={chars} ratings={meta.characteristics} />
+        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
+        <Characteristics chars={chars} ratings={meta.characteristics} />
 
-      {/* </div> */}
+        {/* </div> */}
 
-      {/* container for sort dropdown, reviews, add review button */}
+        {/* container for sort dropdown, reviews, add review button */}
 
-      <Styles.Sort>
-        <Styles.total>{reviews.length} reviews</Styles.total>
-        <select id="sort" onChange={handleSort}>
-          <option value="relevant">Relevant</option>
-          <option value="helpful">Helpful</option>
-          <option value="newest">Newest</option>
-        </select>
-      </Styles.Sort>
-      <Styles.ReviewList>
-        {currentReviews.map((review, index) => {
-          return <Review key={index} review={review} />;
-        })}
-        {currentReviews.length === reviewsList.length
-          ? null
-          : <button onClick={handleLoadMoreReviews}>More Reviews</button>
-        }
-        <button onClick={handleShowForm}>add a review</button>
-      </Styles.ReviewList>
+        <Styles.Sort>
+          <Styles.total>{reviews.length} reviews</Styles.total>
+          <select id="sort" onChange={handleSort}>
+            <option value="relevant">Relevant</option>
+            <option value="helpful">Helpful</option>
+            <option value="newest">Newest</option>
+          </select>
+        </Styles.Sort>
+        <Styles.ReviewList>
+          {currentReviews.map((review, index) => {
+            return <Review key={index} review={review} />;
+          })}
+          {currentReviews.length === reviewsList.length
+            ? null
+            : <button onClick={handleLoadMoreReviews}>More Reviews</button>
+          }
+          <button onClick={handleShowForm}>add a review</button>
+        </Styles.ReviewList>
+
+
+      </Styles.Grid>
 
       {showForm ? (
         <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
@@ -140,7 +144,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
         null
       )}
 
-    </Styles.Grid>
+    </>
   );
 };
 
