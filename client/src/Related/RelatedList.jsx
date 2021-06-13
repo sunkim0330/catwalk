@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Card from './CardComponent.jsx';
-
+import {RelatedListDiv} from './styled.js';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -91,9 +91,9 @@ const RelatedList = (props) => {
 
 
   return (
-    <div>
-      {relatedObjects.map((object, i) => { return <Card product={object} style={relatedStyles[i]} metaData={relatedMetaData[i]} key={object.id} setCurrentProduct={props.setCurrentProduct} currentName={props.product.name} currentChar={props.currentChar}/>; })}
-    </div>
+    <RelatedListDiv listLength={productIds.length}>
+      {relatedObjects.map((object, i) => { return <Card product={object} style={relatedStyles[i]} metaData={relatedMetaData[i]} key={object.id} setCurrentProduct={props.setCurrentProduct} currentName={props.product.name} currentChar={props.currentChar} grid={i}/>; })}
+    </RelatedListDiv>
   );
 
 };

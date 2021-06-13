@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
-import Helpful from '../shared/Helpful.jsx';
+import Helpful from '../Shared/Helpful.jsx';
 import Modal from './Modal.jsx';
 import Search from './Search.jsx';
 
