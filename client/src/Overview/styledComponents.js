@@ -20,13 +20,21 @@ export const Gallery = styled.div`
   position: relative;
 `;
 
-// main img
-export const MainImage = styled.img`
-  display: block;
-  max-width: 600px;
+export const MainImgWrapper = styled.div`
   grid-column-start: 2;
+  height: 100%;
+  margin: 4vh auto;
+`;
+
+// main img
+export const MainImg = styled.img`
+  max-width: 600px;
   height: 95%;
   margin: 4vh auto;
+
+  &:hover {
+    cursor: zoom-in;
+  }
 `;
 
 export const LeftArrow = styled.img`
@@ -306,4 +314,16 @@ export const Facebook = styled.button`
     transform: translateY(2px)
   }
 `;
+
+export const BottomBorder = styled.hr`
+  bottom: 0px;
+  border: 0;
+  color: black;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 2px;
+  position: relative;
+  width: 100%;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  `;
 // product description end

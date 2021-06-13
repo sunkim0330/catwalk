@@ -34,6 +34,7 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
         <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
         <ShareButtons />
       </Styles.Sidebar>
+      <Styles.BottomBorder></Styles.BottomBorder>
     </Styles.Overview>
   );
 
