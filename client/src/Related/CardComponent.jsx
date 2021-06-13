@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import styled from 'styled-components';
-import HeartButton from './ActionButtons';
+import {HeartButton} from './ActionButtons';
+import {CardDiv, ImageDiv, LabelDiv, NameText, SecondaryText, StarsDiv} from './styled.js';
+import Star from '../Shared/Star.jsx';
 
 const Card = (props) => {
 
@@ -23,16 +24,17 @@ const Card = (props) => {
     };
 
     return (
-      <div>
-        <HeartButton />
-        <div onClick={handleClick}>
-          <h3>{props.product.category}</h3>
-          <h1>{props.product.name}</h1>
-          <h3>Rating: {averageRating ? averageRating : 'Be the first to rate'}</h3>
-          {props.style.sale_price ? <div><strike>{props.style.original_price}</strike><style color='red'>{props.style.sale_price}</style></div> : <div>{props.style.original_price}</div>}
-          <img src={props.style.photos[0].thumbnail_url}></img>
-        </div>
-      </div>
+
+      <CardDiv grid={props.grid} image={props.style.photos[0].thumbnail_url} >
+        <HeartButton currentName={props.currentName} currentChar={props.currentChar} relatedName={props.product.name} relatedChar={props.product.features}/>
+        <LabelDiv onClick={handleClick}>
+          <SecondaryText>{props.product.category}</SecondaryText>
+          <NameText>{props.product.name}</NameText>
+          {props.style.sale_price ? <div><strike>${props.style.original_price}</strike><style color='red'>${props.style.sale_price}</style></div> : <div>${props.style.original_price}</div>}
+          {averageRating ? <StarsDiv><Star rating={averageRating.toFixed(1)} /></StarsDiv> : null}
+        </LabelDiv>
+      </CardDiv >
+
     );
   } else {
     return ('Loading...');
