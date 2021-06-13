@@ -13,7 +13,6 @@ export const Overview = styled.div`
 // gallery container
 export const Gallery = styled.div`
   align-items: center;
-  border-style: ridge;
   display: grid;
   grid-template-columns: 25% 75%;
   grid-template-rows: 100%;
@@ -23,8 +22,6 @@ export const Gallery = styled.div`
 
 // main img
 export const MainImage = styled.img`
-  border-style: ridge;
-  border-width: 20px;
   display: block;
   max-width: 600px;
   grid-column-start: 2;
@@ -69,7 +66,7 @@ export const Thumbnails = styled.div`
   grid-row-start: 1;
   height: 98%;
   justify-content: center;
-  justify-self: center;
+  justify-self: end;
 `;
 
 // thumbnail img
@@ -85,13 +82,11 @@ export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border-style: ridge;
 `;
 
 
 // product info start
 export const ProductInfo = styled.div`
-  border-style: outset;
 `;
 
 export const StarContainer = styled.div`
@@ -145,7 +140,6 @@ export const Price = styled.span`
 
 // style selector start
 export const StyleSelector = styled.div`
-  border-style: outset;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   justify-items: center;
@@ -181,7 +175,6 @@ color: green;
 
 // cart management start
 export const CartManagement = styled.div`
-  border-style: outset;
 `;
 
 export const SizeSelect = styled.select`
@@ -240,7 +233,6 @@ export const PointlessButton = styled.button`
 
 // product description start
 export const ProductDescription = styled.div`
-  border-style: outset;
   display: block;
 `;
 
@@ -253,6 +245,7 @@ export const FeaturesHeader = styled.h3`
 
 export const FeaturesItem = styled.li`
   list-style-type: none;
+  margin: 2px;
 `;
 
 export const Slogan = styled.h3`
@@ -303,7 +296,7 @@ export const Facebook = styled.button`
   width: 150px;
   height: 30px;
   font-size: 18px;
-  margin: 10px;
+  margin: 8px 8px 12px 8px;
 
   &:hover {
     background-color: #9f7f31;

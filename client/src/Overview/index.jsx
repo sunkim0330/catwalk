@@ -20,7 +20,7 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
     const module = 'Overview';
     axios.post('/interactions', {element: event.target.localName, widget: module, time: new Date() })
       .then((response) => {
-        console.log('We\'re stalking you!! :D');
+        console.log('interaction logged');
       });
   };
 
