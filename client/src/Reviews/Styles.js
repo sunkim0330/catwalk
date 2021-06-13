@@ -252,7 +252,7 @@ export const topRow = style.div`
 `;
 
 export const reviewStars = style.div`
-  width: fit-content;
+  width: 10%;
   margin-left: 5px;
 `;
 

@@ -80,7 +80,9 @@ const Review = ({ review }) => {
 
 
       <Styles.topRow>
-        <Styles.reviewStars>stars go here</Styles.reviewStars>
+        <Styles.reviewStars>
+          <Stars rating={review.rating} />
+        </Styles.reviewStars>
         <Styles.text>{review.reviewer_name}, {review.formattedDate}</Styles.text>
       </Styles.topRow>
       {/* don't think it's possible to reference sales with the API */}
