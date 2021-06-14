@@ -85,7 +85,9 @@ export const Thumbnails = styled.div`
 // thumbnail img
 export const GalleryThumbnail = styled.img`
   height: 14.5%;
-  transform: scale(0.8);
+  ${({ id }) => {
+    return id === 'thumbnail0' ? 'transform: scale(1.1)' : 'transform: scale(0.8)';
+  }}
 `;
 // gallery end
 
