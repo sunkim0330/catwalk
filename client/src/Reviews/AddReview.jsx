@@ -25,6 +25,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
     characteristics: {}
   });
   const [selected, setSelected] = useState({});
+  const [userRating, setUserRating] = useState(0);
 
   const handleSummaryChange = (e) => {
     setReviewInfo(prev => {
@@ -161,9 +162,23 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
   }, [chars]);
 
+  const handleRating = (e) => {
+    let rating = e.target.value;
+
+    setUserRating(rating);
+  };
 
   const closeReview = () => {
     setShowForm(false);
+  };
+
+  const style = {
+    display: 'inline-block',
+    width: '200px',
+    'zIndex': '100',
+    position: 'absolute',
+    marginLeft: '9px'
+    // 'justifyContent': 'space-between'
   };
 
 
@@ -180,14 +195,55 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
         <Styles.formContainer>
 
           <Styles.section>
-            <label>
-              <Styles.textMain>Overall rating</Styles.textMain>
-              <Stars rating={0}
+
+            <Styles.textMain>Overall rating</Styles.textMain>
+            <div>
+              <Stars rating={userRating}
                 width='150px'
                 cursor='pointer'
-                margin='10px 0'
+                // margin='10px 0'
+                z-index = '-10'
+                position='absolute'
               />
-            </label>
+              <div style={style}>
+
+                <Styles.radio
+                  type="radio"
+                  value="1"
+                  name="star"
+                  onChange={handleRating}
+                />
+                <Styles.radio
+                  type="radio"
+                  value="2"
+                  name="star"
+
+                  onChange={handleRating}
+                />
+                <Styles.radio
+                  type="radio"
+                  value="3"
+                  name="star"
+
+                  onChange={handleRating}
+                />
+                <Styles.radio
+                  type="radio"
+                  value="4"
+                  name="star"
+
+                  onChange={handleRating}
+                />
+                <Styles.radio
+                  type="radio"
+                  value="5"
+                  name="star"
+
+                  onChange={handleRating}
+                />
+              </div>
+            </div>
+
           </Styles.section>
 
           <Styles.section>
@@ -298,17 +354,19 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
           <Styles.section>
             <Styles.flexContainerCol>
-              <Styles.textInput
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Example: jackson11!"
-                maxLength="60"
-                // value={name}
-                onChange={handleNameChange}
-                required
-              />
-              <Styles.textSmall>For privacy reasons, do not use your full name or email address</Styles.textSmall>
+              <Styles.flexFit>
+                <Styles.textInput
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Example: jackson11!"
+                  maxLength="60"
+                  // value={name}
+                  onChange={handleNameChange}
+                  required
+                />
+                <Styles.textSmall>For privacy reasons, do not use your full name or email address</Styles.textSmall>
+              </Styles.flexFit>
 
 
 

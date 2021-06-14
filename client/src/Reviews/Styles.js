@@ -53,6 +53,7 @@ export const ReviewList = style.div`
   border: 1px solid blue;
   width: 95%;
   height: 94%;
+  overflow: scroll;
 `;
 
 export const Characteristics = style.div`
@@ -503,4 +504,11 @@ export const flexFit = style.div`
   display: flex;
   justify-content: space-between;
   width: fit-content;
+`;
+
+export const radio = style.input`
+  cursor: pointer;
+  transform: scale(1.8);
+  margin: 10px 17px 0 0;
+  opacity: 0;
 `;
