@@ -25,17 +25,17 @@ export const MainImgWrapper = styled.div`
   grid-column-start: 2;
   height: 100%;
   margin: 4vh auto;
-
+  display: grid;
 `;
 
 // main img
 export const MainImg = styled.img`
   max-width: 600px;
   height: auto;
-  max-height: 95%;
+  max-height: 80%;
   width: auto;
-  margin: 4vh auto;
-  justify
+  margin: auto;
+  align-self: center;
 
   &:hover {
     cursor: zoom-in;
