@@ -504,6 +504,7 @@ export const textarea = style.textarea`
   margin: 2px 0;
   border: none;
   resize: none;
+  font-family: sans-serif;
 `;
 
 export const flexFit = style.div`
