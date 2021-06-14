@@ -26,6 +26,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
   });
   const [selected, setSelected] = useState({});
   const [userRating, setUserRating] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleSummaryChange = (e) => {
     setReviewInfo(prev => {
@@ -162,10 +163,24 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
   }, [chars]);
 
-  const handleRating = (e) => {
+  const handleStarEvent = (e) => {
     let rating = e.target.value;
+    let type = e.type;
 
-    setUserRating(rating);
+    if (type === 'change') {
+      setUserRating(rating);
+      setIsClicked(true);
+    }
+
+    // if (!isClicked) {
+    //   if (type === 'mouseenter') {
+    //     setUserRating(rating);
+    //   } else {
+    //     setUserRating(0);
+    //   }
+    // }
+
+
   };
 
   const closeReview = () => {
@@ -211,35 +226,41 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                   type="radio"
                   value="1"
                   name="star"
-                  onChange={handleRating}
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
                 />
                 <Styles.radio
                   type="radio"
                   value="2"
                   name="star"
-
-                  onChange={handleRating}
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
                 />
                 <Styles.radio
                   type="radio"
                   value="3"
                   name="star"
-
-                  onChange={handleRating}
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
                 />
                 <Styles.radio
                   type="radio"
                   value="4"
                   name="star"
-
-                  onChange={handleRating}
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
                 />
                 <Styles.radio
                   type="radio"
                   value="5"
                   name="star"
-
-                  onChange={handleRating}
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
                 />
               </div>
             </div>

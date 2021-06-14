@@ -5,6 +5,7 @@ import style from 'styled-components';
 // GRID BREAKDOWN
 // ==============
 export const Grid = style.div`
+  font-family: sans-serif;
   cursor: default;
   max-width: 1500px;
   min-width: 1200px;
@@ -363,6 +364,7 @@ export const helpText = style.a`
 // ===============
 
 export const modalOverlay = style.div`
+  font-family: sans-serif;
   z-index: 5;
   position: fixed;
   top: 0;
