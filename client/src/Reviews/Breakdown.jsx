@@ -24,16 +24,29 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
     currentFilters.sort((a, b) => { return b - a; });
 
+    const displayFilter = (filter, i) => {
+      let last = currentFilters.length - 1;
+      let stars;
+
+      currentFilters[i] === '1' ? stars = 'star' : stars = 'stars';
+
+      if (i === last) {
+        return (
+          <span key={i}> {filter} {stars}</span>
+        );
+      } else {
+        return (
+          <span key={i}> {filter} {stars}, </span>
+        );
+      }
+    };
+
     return (
       <Styles.spacer>
         <Styles.filter>
           Filtered by:
           {currentFilters.map((filter, index) => {
-            return (
-              // need to remove the comma on last item
-              // 1 star instead of stars
-              <span key={index}> {filter} stars, </span>
-            );
+            return displayFilter(filter, index);
           })}
         </Styles.filter>
         <Styles.remove onClick={handleRemoveFilters}>Remove all filters</Styles.remove>
