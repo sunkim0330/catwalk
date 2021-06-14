@@ -406,17 +406,20 @@ export const formHeader = style.div`
 export const textTitle = style.div`
   font-size: 3em;
   margin: 3px 0;
+  font-family: sans-serif;
 `;
 
 export const textSub = style.div`
   font-size: 1.5em;
   margin: 3px 0;
+  font-family: sans-serif;
 `;
 
 export const textMain = style.div`
   display: inline-block;
   font-size: 1em;
   margin: 3px 0;
+  font-family: sans-serif;
 `;
 
 export const textSmall = style.div`
@@ -424,6 +427,7 @@ export const textSmall = style.div`
   font-size: .8em;
   margin: 3px 0;
   width: fit-content;
+  font-family: sans-serif;
 `;
 
 export const formContainer = style.form`
