@@ -2,13 +2,14 @@
 import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 
-const ModalForm = ({origin, title, placeholder}) => {
+const ModalForm = ({origin, title, placeholder, productId}) => {
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
   const [formData, setFormData] = useState({
     answerer_name: '',
     body: '',
-    email: ''
+    email: '',
+    product_id: productId
   });
 
   const [charCount, setCharCount] = useState(() => {
@@ -28,7 +29,6 @@ const ModalForm = ({origin, title, placeholder}) => {
     if (formData.answerer_name === '') {
       newErrors.answerer_name = 'Please fill out your username';
     }
-    // let regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!regEmail.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
@@ -79,6 +79,17 @@ const ModalForm = ({origin, title, placeholder}) => {
       email_char: char_limit - char
     });
 
+  };
+
+  const askQuestion = () => {
+    if (title === 'Ask Your Question') {
+      setFormData({
+        ...formData,
+        product_id: productId
+      });
+    } else {
+      return;
+    }
   };
 
   const sendRequest = () => {

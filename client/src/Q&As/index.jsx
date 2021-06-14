@@ -17,14 +17,13 @@ const QandAs = ({ product, setDateFormat }) => {
       });
   };
 
-
   return (
     <div className="QandAsbox">
       QUESTIONS AND ANSWERS
       <div className="QandAsinput">
         <Questions product={product} setDateFormat={setDateFormat}/>
         <button onClick={() => setShow(true)} >Ask a Question</button>
-        <Modal title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
+        <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
       </div>
     </div>
   );
