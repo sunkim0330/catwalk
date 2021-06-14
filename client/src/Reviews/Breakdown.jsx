@@ -30,8 +30,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
           Filtered by:
           {currentFilters.map((filter, index) => {
             return (
-              // need to remove the comma on last item
-              // 1 star instead of stars
+            // need to remove the comma on last item
+
               <span key={index}> {filter} stars, </span>
             );
           })}
