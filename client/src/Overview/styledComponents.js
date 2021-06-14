@@ -89,8 +89,8 @@ export const GalleryThumbnail = styled.img`
   max-height: 14.5%;
   width: auto;
   margin: auto;
-  ${({ id }) => {
-    return id === 'thumbnail0' ? 'box-shadow: 0px 0px 0px 5px #808080' : 'border-shadow: 0px 0px 0px 0px #808080';
+  ${({ selected }) => {
+    return selected ? 'box-shadow: 0px 0px 0px 5px #808080' : 'box-shadow: 0px 0px 0px 0px #808080';
   }}
 `;
 // gallery end

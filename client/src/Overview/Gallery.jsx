@@ -33,7 +33,7 @@ const Gallery = ({ styleImages, productID }) => {
         setRenderedThumbnails(styleImages.slice(thumbnailsStart - 1, thumbnailsStart + 6));
         setThumbnailsStart(prev => prev - 1);
       }
-      imageSelect(mainImageIndex - 1);
+      setMainImageIndex(mainImageIndex - 1);
     }
   };
 
@@ -43,14 +43,8 @@ const Gallery = ({ styleImages, productID }) => {
         setRenderedThumbnails(styleImages.slice(thumbnailsStart + 1, thumbnailsStart + 8));
         setThumbnailsStart(prev => prev + 1);
       }
-      imageSelect(mainImageIndex + 1);
+      setMainImageIndex(mainImageIndex + 1);
     }
-  };
-
-  const imageSelect = (index) => {
-    document.getElementById('thumbnail' + index).style.boxShadow = '0px 0px 0px 5px #808080';
-    document.getElementById('thumbnail' + mainImageIndex).style.boxShadow = 'none';
-    setMainImageIndex(index);
   };
 
   const openExpandedView = (event) => {
@@ -126,7 +120,7 @@ const Gallery = ({ styleImages, productID }) => {
 
       <Styles.RightArrow src={rightArrow} alt="Click here to scroll right" id="rightArrow" onClick={scrollRight}/>
 
-      <Thumbnails styleImages={renderedThumbnails} imageIndex={mainImageIndex} changeMainImage={imageSelect}/>
+      <Thumbnails styleImages={renderedThumbnails} mainImageIndex={mainImageIndex} changeMainImage={setMainImageIndex}/>
 
     </Styles.Gallery>
   );
