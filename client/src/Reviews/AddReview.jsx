@@ -193,7 +193,6 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
     'zIndex': '100',
     position: 'absolute',
     marginLeft: '9px'
-    // 'justifyContent': 'space-between'
   };
 
 
@@ -266,7 +265,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
             </div>
 
           </Styles.section>
-
+          <br></br>
           <Styles.section>
             <Styles.textMain>Do you recommend this product?</Styles.textMain>
             <Styles.flexContainerShort>
