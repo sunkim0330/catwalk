@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Submit from './Submit.jsx';
+import Stars from '../Shared/Star.jsx';
+import * as Styles from './Styles.js';
 
-const AddReview = ({ product, chars, ratings }) => {
+const AddReview = ({ product, chars, ratings, setShowForm }) => {
   const [scale, setScale] = useState({
     Size: ['Too small', '\u00B9/\u2082 a size too small', 'Perfect', '\u00B9/\u2082 a size too big', 'Too big'],
     Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'],
@@ -22,6 +24,9 @@ const AddReview = ({ product, chars, ratings }) => {
     imageURLs: [],
     characteristics: {}
   });
+  const [selected, setSelected] = useState({});
+  const [userRating, setUserRating] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleSummaryChange = (e) => {
     setReviewInfo(prev => {
@@ -82,6 +87,7 @@ const AddReview = ({ product, chars, ratings }) => {
 
   const handleCharChange = (e) => {
     let charName = e.target.name;
+
     let charId = ratings[charName].id;
     let value = Number(e.target.value);
     let newValue = reviewInfo.characteristics;
@@ -89,6 +95,14 @@ const AddReview = ({ product, chars, ratings }) => {
     setReviewInfo(prev => {
       return {...prev, characteristics: newValue};
     });
+
+    setSelected(prev => {
+      return {...prev, [charName]: scale[charName][value - 1]};
+    });
+  };
+
+  const displaySelection = () => {
+
   };
 
   const renderCharButtons = () => {
@@ -96,29 +110,36 @@ const AddReview = ({ product, chars, ratings }) => {
     return (
       chars.map(char => {
         return (
-          <div key={char}>
-            <label>
-              {char}
-            </label>
-            {scale[char].map((attribute, index) => {
-              return (
+          <Styles.charBox key={char}>
+            <Styles.flexContainerLong>
 
-                <span key={index}>
-                  <input
-                    type="radio"
-                    name={char}
-                    value={index + 1}
-                    onChange={handleCharChange}
-                    required
-                  />
-                </span>
+              <Styles.textMain>{char}</Styles.textMain>
+              <Styles.textSmall>{selected[char]}</Styles.textSmall>
 
-              );
-            })}
-            <div key={char}>
-              {scale[char][0]}    {scale[char][4]}
-            </div>
-          </div>
+            </Styles.flexContainerLong>
+
+            <Styles.flexContainerLong>
+              {scale[char].map((attribute, index) => {
+                return (
+
+                  <Styles.charButtons key={index}>
+                    <Styles.charbutton
+                      type="radio"
+                      name={char}
+                      value={index + 1}
+                      onChange={handleCharChange}
+                      required
+                    />
+                  </Styles.charButtons>
+
+                );
+              })}
+            </Styles.flexContainerLong>
+            <Styles.flexContainerLong key={char}>
+              <Styles.textSmall>{scale[char][0]}</Styles.textSmall>
+              <Styles.textSmall>{scale[char][4]}</Styles.textSmall>
+            </Styles.flexContainerLong>
+          </Styles.charBox>
         );
       })
     );
@@ -126,47 +147,130 @@ const AddReview = ({ product, chars, ratings }) => {
   };
 
   useEffect(() => {
+
     let newChars = {};
     chars.forEach(char => {
       newChars[ratings[char].id] = 0;
+      setSelected(prev => {
+        return {...prev, [char]: null};
+      });
     });
+
     setReviewInfo((prev) => {
       return {...prev, characteristics: newChars};
     });
+
+
   }, [chars]);
 
-  const thumbnail = {
-    border: '1px solid black',
-    padding: '5px',
-    width: '150px'
+  const handleStarEvent = (e) => {
+    let rating = e.target.value;
+    let type = e.type;
+
+    if (type === 'change') {
+      setUserRating(rating);
+      setIsClicked(true);
+    }
+
+    // if (!isClicked) {
+    //   if (type === 'mouseenter') {
+    //     setUserRating(rating);
+    //   } else {
+    //     setUserRating(0);
+    //   }
+    // }
+
+
   };
-  const xbutton = {
+
+  const closeReview = () => {
+    setShowForm(false);
+  };
+
+  const style = {
+    display: 'inline-block',
+    width: '200px',
+    'zIndex': '100',
     position: 'absolute',
-    right: '0',
-    zIndex: '1'
+    marginLeft: '9px'
   };
+
 
   return (
-    <div className="modal">
-      <div>
-        Write your review
-        About {product.name}
-      </div>
-      <div>
-        <form>
+    <>
+      <Styles.modalOverlay></Styles.modalOverlay>
+      <Styles.modal>
 
-          <div>
-            <label>
-              Overall rating
-              {/* star buttons go here */}
-            </label>
-          </div>
+        <Styles.formHeader>
+          <Styles.textTitle>Write your review</Styles.textTitle>
+          <Styles.textSub>About the {product.name}</Styles.textSub>
+        </Styles.formHeader>
 
-          <div>
-            Do you recommend this product?
+        <Styles.formContainer>
+
+          <Styles.section>
+
+            <Styles.textMain>Overall rating</Styles.textMain>
             <div>
+              <Stars rating={userRating}
+                width='150px'
+                cursor='pointer'
+                // margin='10px 0'
+                z-index = '-10'
+                position='absolute'
+              />
+              <div style={style}>
+
+                <Styles.radio
+                  type="radio"
+                  value="1"
+                  name="star"
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
+                />
+                <Styles.radio
+                  type="radio"
+                  value="2"
+                  name="star"
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
+                />
+                <Styles.radio
+                  type="radio"
+                  value="3"
+                  name="star"
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
+                />
+                <Styles.radio
+                  type="radio"
+                  value="4"
+                  name="star"
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
+                />
+                <Styles.radio
+                  type="radio"
+                  value="5"
+                  name="star"
+                  onMouseEnter={handleStarEvent}
+                  onMouseLeave={handleStarEvent}
+                  onChange={handleStarEvent}
+                />
+              </div>
+            </div>
+
+          </Styles.section>
+          <br></br>
+          <Styles.section>
+            <Styles.textMain>Do you recommend this product?</Styles.textMain>
+            <Styles.flexContainerShort>
               <label>
-                Yes
+                <Styles.textSmall>Yes</Styles.textSmall>
                 <input
                   type="radio"
                   name="recommend"
@@ -177,7 +281,7 @@ const AddReview = ({ product, chars, ratings }) => {
                 />
               </label>
               <label>
-                No
+                <Styles.textSmall>No</Styles.textSmall>
                 <input
                   type="radio"
                   name="recommend"
@@ -185,61 +289,64 @@ const AddReview = ({ product, chars, ratings }) => {
                   onChange={handleRecommendsChange}
                 />
               </label>
-            </div>
-          </div>
+            </Styles.flexContainerShort>
+          </Styles.section>
 
-          <div>
-            Characteristics
-            <div>
+          <Styles.section>
+            <Styles.textMain>Characteristics</Styles.textMain>
+
+            <Styles.section>
               {renderCharButtons()}
-            </div>
-          </div>
+            </Styles.section>
+          </Styles.section>
 
-          <div>
-            <label>
-              Review summary
-            </label>
-            <input
-              type="text"
-              id="add-review-summary"
-              name="add-review-summary"
-              maxLength="60"
-              placeholder="Example: Best purchase ever!"
-              size="30"
-              // value={summary}
-              onChange={handleSummaryChange}
-              required
-            />
-          </div>
+          <Styles.section>
+            <Styles.flexContainerCol>
+              <Styles.textMain>
+                Review summary
+              </Styles.textMain>
+              <Styles.textInput
+                type="text"
+                id="add-review-summary"
+                name="add-review-summary"
+                maxLength="60"
+                placeholder="Example: Best purchase ever!"
+                size="30"
+                // value={summary}
+                onChange={handleSummaryChange}
+                required
+              />
+            </Styles.flexContainerCol>
 
-          <div>
-            <label>
-              Review
-            </label>
-            <textarea
-              id="add-review-body"
-              name="add-review-body"
-              rows="5"
-              columns="30"
-              minLength="50"
-              maxLength="1000"
-              placeholder="Why did you like the product or not?"
-              // value={body}
-              onChange={handleBodyChange}
-              required
-            />
-            <div>
-             Minimum required characters left: {minRequiredChars}
-            </div>
-          </div>
+            <Styles.flexContainerCol>
+              <Styles.textMain>
+                Review
+              </Styles.textMain>
+              <Styles.textarea
+                id="add-review-body"
+                name="add-review-body"
+                rows="5"
+                columns="30"
+                minLength="50"
+                maxLength="1000"
+                placeholder="Why did you like the product or not?"
+                // value={body}
+                onChange={handleBodyChange}
+                required
+              />
+              <Styles.textSmall>
+              Minimum required characters left: {minRequiredChars}
+              </Styles.textSmall>
+            </Styles.flexContainerCol>
+          </Styles.section>
 
 
-          <div>
+          <Styles.section>
             {reviewInfo.imageURLs.length >= 5 ? null
-              : <div>
-                <label>
-                  Share an image, up to 5
-                </label>
+              : <Styles.flexContainerCol>
+                <Styles.textMain>
+                  Share your pics! Up to 5
+                </Styles.textMain>
                 <input
                   type="file"
                   id="add-review-image"
@@ -248,53 +355,63 @@ const AddReview = ({ product, chars, ratings }) => {
                   multiple
                   onChange={handleImageInput}
                 />
-              </div>
+              </Styles.flexContainerCol>
             }
-            <div>
-                image preview:
-              {reviewInfo.imageURLs.map((image, index) => {
-                return (
-                  <div key={index} >
-                    <img src={image} style={thumbnail}/>
-                    {/* <button style={xbutton}>x</button> */}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+            <Styles.flexContainerCol>
+              <Styles.textMain>image preview:</Styles.textMain>
+              <Styles.flexFit>
+                {reviewInfo.imageURLs.map((image, index) => {
+                  return (
+                    <div key={index} >
+                      <Styles.reviewThumbnail src={image} />
+                      {/* <button style={xbutton}>x</button> */}
+                    </div>
+                  );
+                })}
+              </Styles.flexFit>
+            </Styles.flexContainerCol>
+          </Styles.section>
 
-          <div>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Example: jackson11!"
-              maxLength="60"
-              // value={name}
-              onChange={handleNameChange}
-              required
-            />
-            <p>For privacy reasons, do not use your full name or email address</p>
-          </div>
+          <Styles.section>
+            <Styles.flexContainerCol>
+              <Styles.flexFit>
+                <Styles.textInput
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Example: jackson11!"
+                  maxLength="60"
+                  // value={name}
+                  onChange={handleNameChange}
+                  required
+                />
+                <Styles.textSmall>For privacy reasons, do not use your full name or email address</Styles.textSmall>
+              </Styles.flexFit>
 
-          <div>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Example: jackson11@email.com"
-              maxLength="60"
-              // value={email}
-              onChange={handleEmailChange}
-              required
-            />
-          </div>
 
-          <Submit reviewInfo={reviewInfo} ratings={ratings} />
 
-        </form>
-      </div>
-    </div>
+              <Styles.textInput
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Example: jackson11@email.com"
+                maxLength="60"
+                // value={email}
+                onChange={handleEmailChange}
+                required
+              />
+            </Styles.flexContainerCol>
+          </Styles.section>
+
+          <Styles.flexContainerShort>
+            <Submit reviewInfo={reviewInfo} ratings={ratings} />
+            <button onClick={closeReview}>Cancel</button>
+          </Styles.flexContainerShort>
+
+        </Styles.formContainer>
+
+      </Styles.modal>
+    </>
   );
 };
 

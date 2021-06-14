@@ -10,6 +10,7 @@ const StyledStars = styled.div(
   }
 );
 
+
 const Stars = ( {rating, ...styles }) => {
   return (
     <StyledStars styles={styles}>

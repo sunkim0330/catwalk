@@ -4,19 +4,16 @@ import AddReview from './AddReview.jsx';
 import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
+import Stars from '../Shared/Star.jsx';
+import * as Styles from './Styles.js';
 
 const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) => {
   const [reviews, setReviews] = useState([]); // all reviews
   const [reviewsList, setReviewsList] = useState([]); // manipulable list for sorting/filtering
   const [currentReviews, setCurrentReviews] = useState([]);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
-  const [chars, setChars] = useState(() => {
-    let newChars = [];
-    for (let char in meta.characteristics) {
-      newChars.push(char);
-    }
-    return newChars;
-  });
+  const [chars, setChars] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -66,6 +63,10 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       : setCurrentReviewIndex(prev => prev += 1);
   };
 
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
   // get review data
   useEffect(() => {
     if (product.id) {
@@ -78,37 +79,52 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
     setCurrentReviews(reviewsList.slice(0, currentReviewIndex));
   }, [currentReviewIndex, reviewsList]);
 
+  // update chars array
+  useEffect(() => {
+    let newChars = [];
+    for (let char in meta.characteristics) {
+      newChars.push(char);
+    }
+    setChars(newChars);
+  }, [meta]);
+
+  // const style = 'width: 200px';
+
   return (
-    <div id="container">
-      {/* container for average rating, reviews breakdown, recommends, characteristics */}
-      <div id="ratings-breakdown">
-        <div>
-          <span>RATINGS & REVIEWS</span>
-          <div>
-            {averageRating}
-          </div>
-          <div>
-            stars go here
-          </div>
-        </div>
+    <>
+      <Styles.Grid>
+        {/* container for average rating, reviews breakdown, recommends, characteristics */}
+        {/* <div id="ratings-breakdown"> */}
+        <Styles.TitleBlock>
+          <Styles.title>RATINGS & REVIEWS</Styles.title>
+        </Styles.TitleBlock>
+        <Styles.Summary>
+          <Styles.overall>{averageRating}</Styles.overall>
+          <Stars
+            rating={averageRating}
+            width='50%'
+            padding='10px 10px 0 5px'
+            margin='10px 5px'
+          />
+        </Styles.Summary>
 
 
         <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
-        <Characteristics chars={chars}/>
+        <Characteristics chars={chars} ratings={meta.characteristics} />
 
-      </div>
+        {/* </div> */}
 
-      {/* container for sort dropdown, reviews, add review button */}
-      <div id="reviews">
-        <div>
-          <span>{reviews.length} reviews</span>
+        {/* container for sort dropdown, reviews, add review button */}
+
+        <Styles.Sort>
+          <Styles.total>{reviews.length} reviews</Styles.total>
           <select id="sort" onChange={handleSort}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>
             <option value="newest">Newest</option>
           </select>
-        </div>
-        <div id="reviews-list">
+        </Styles.Sort>
+        <Styles.ReviewList>
           {currentReviews.map((review, index) => {
             return <Review key={index} review={review} />;
           })}
@@ -116,12 +132,19 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
             ? null
             : <button onClick={handleLoadMoreReviews}>More Reviews</button>
           }
-          <button>add a review</button>
-        </div>
-      </div>
+          <button onClick={handleShowForm}>add a review</button>
+        </Styles.ReviewList>
 
-      <AddReview product={product} chars={chars} ratings={meta.characteristics}/>
-    </div>
+
+      </Styles.Grid>
+
+      {showForm ? (
+        <AddReview product={product} chars={chars} ratings={meta.characteristics} setShowForm={setShowForm} />
+      ) : (
+        null
+      )}
+
+    </>
   );
 };
 
