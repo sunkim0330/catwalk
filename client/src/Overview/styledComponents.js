@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Overview = styled.div`
+  font-family: sans-serif;
   background-color: white;
   display: grid;
   grid-template-columns: 70% 30%;
@@ -24,13 +25,17 @@ export const MainImgWrapper = styled.div`
   grid-column-start: 2;
   height: 100%;
   margin: 4vh auto;
+
 `;
 
 // main img
 export const MainImg = styled.img`
   max-width: 600px;
-  height: 95%;
+  height: auto;
+  max-height: 95%;
+  width: auto;
   margin: 4vh auto;
+  justify
 
   &:hover {
     cursor: zoom-in;
@@ -156,8 +161,7 @@ export const StyleSelector = styled.div`
 `;
 
 export const StyleName = styled.h3`
-  grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column: 1 / span 4;
 `;
 
 export const StyleContainer = styled.div`

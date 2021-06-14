@@ -4,7 +4,7 @@ import Overview from './Overview';
 import Related from './Related';
 import QandAs from './Q&As';
 import Reviews from './Reviews';
-
+import * as Styles from './Shared/styledComponents.js';
 
 const App = () => {
 
@@ -78,7 +78,7 @@ const App = () => {
 
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
     <div>
-      Super Fun Shopping Experience
+      <Styles.Title>Super Fun Shopping Experience</Styles.Title>
       <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
       <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features} rating={averageRating}/>
       <QandAs product={product} setDateFormat={setDateFormat}/>
