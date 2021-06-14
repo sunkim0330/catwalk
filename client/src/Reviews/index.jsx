@@ -5,6 +5,7 @@ import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 import Stars from '../Shared/Star.jsx';
+import Dropdown from './Dropdown.jsx';
 import * as Styles from './Styles.js';
 
 const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) => {
@@ -14,7 +15,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
   const [chars, setChars] = useState([]);
   const [showForm, setShowForm] = useState(false);
-  const [sort, setSort] = useState('relevant');
+  const [sort, setSort] = useState('Relevant');
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -31,7 +32,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
     // update sort method
     setSort(order);
 
-    if (order === 'relevant') {
+    if (order === 'Relevant') {
       let relevantSort = reviewsList.sort((a, b) => {
         return b.helpfulness - a.helpfulness
         || new Date(b.date) - new Date(a.date);
@@ -39,14 +40,14 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       setReviewsList(relevantSort);
     }
 
-    if (order === 'helpful') {
+    if (order === 'Helpful') {
       let helpfulSort = reviewsList.sort((a, b) => {
         return b.helpfulness - a.helpfulness;
       });
       setReviewsList(helpfulSort);
     }
 
-    if (order === 'newest') {
+    if (order === 'Newest') {
       let newSort = reviewsList.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
       });
@@ -91,10 +92,14 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
     setChars(newChars);
   }, [meta]);
 
+  useEffect(() => {
+    sortReviewsList(sort);
+  }, [sort]);
+
 
   return (
     <>
-      <Styles.Grid>
+      <Styles.Grid id="reviews-container">
         {/* container for average rating, reviews breakdown, recommends, characteristics */}
         {/* <div id="ratings-breakdown"> */}
         <Styles.TitleBlock>
@@ -120,11 +125,19 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
 
         <Styles.Sort>
           <Styles.total>{reviews.length} reviews</Styles.total>
-          <select id="sort" onChange={handleSort}>
+          {/* <select id="sort" onChange={handleSort}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>
             <option value="newest">Newest</option>
-          </select>
+          </select> */}
+          <Dropdown
+            sort={sort}
+            setSort={setSort}
+            sortReviewsList={sortReviewsList}
+            setCurrentReviews={setCurrentReviews}
+            currentReviewIndex={currentReviewIndex}
+            reviewsList={reviewsList}
+          />
         </Styles.Sort>
         <Styles.ReviewList>
           {currentReviews.map((review, index) => {
