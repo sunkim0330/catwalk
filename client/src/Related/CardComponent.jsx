@@ -35,7 +35,7 @@ const Card = (props) => {
           <SecondaryText>{props.product.category}</SecondaryText>
           <NameText>{props.product.name}</NameText>
           {props.style.sale_price ? <div><strike>${props.style.original_price}</strike><style color='red'>${props.style.sale_price}</style></div> : <div>${props.style.original_price}</div>}
-          {averageRating ? <Stars rating={averageRating.toFixed(1)} width={'30%'}/> : null}
+          {averageRating ? <Stars rating={averageRating.toFixed(1)} width={'25%'}/> : null}
         </LabelDiv>
       </CardDiv >
 

@@ -14,8 +14,8 @@ const OutfitCard = (props) => {
       <LabelDiv>
         <SecondaryText>{props.piece.product.category}</SecondaryText>
         <NameText>{props.piece.product.name}</NameText>
-        {props.piece.rating !== 'NaN' ? <Stars rating={props.piece.rating} width={'30%'}></Stars> : null}
-        {props.piece.style.sale_price ? <div><strike>{props.piece.style.original_price}</strike><style color='red'>{props.piece.style.sale_price}</style></div> : <div>{props.piece.style.original_price}</div>}
+        {props.piece.rating !== 'NaN' ? <Stars rating={props.piece.rating} width={'25%'}></Stars> : null}
+        {props.piece.style.sale_price ? <div><strike>${props.piece.style.original_price}</strike><style color='red'>${props.piece.style.sale_price}</style></div> : <div>${props.piece.style.original_price}</div>}
       </LabelDiv>
     </CardDiv>
   );

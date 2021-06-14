@@ -164,7 +164,7 @@ export const ModalView = styled.div`
   margin-top: -40px;
   height: 300px;
   width: 350px;
-  box-shadow: 0 0 8px lightgray;
+  box-shadow: 0 0 8px gray;
 `;
 
 export const ModalTable = styled.table`
