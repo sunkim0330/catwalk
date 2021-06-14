@@ -124,7 +124,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
         {/* container for sort dropdown, reviews, add review button */}
 
         <Styles.Sort>
-          <Styles.total>{reviews.length} reviews</Styles.total>
+          <Styles.textMain>{reviews.length} reviews</Styles.textMain>
           {/* <select id="sort" onChange={handleSort}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as Styles from './Styles.js';
 
 const Dropdown = ({ sort, setSort, sortReviewsList, setCurrentReviews, currentReviewIndex, reviewsList }) => {
   const [hovered, setHovered] = useState(false);
@@ -10,37 +11,38 @@ const Dropdown = ({ sort, setSort, sortReviewsList, setCurrentReviews, currentRe
     type === 'mouseenter' ? setHovered(true) : setHovered(false);
   };
 
-  // const handleSort = (e) => {
-  //   let method = e.target.innerText;
-  //   // console.log(e);
-  //   setSort(method);
-  // };
-
   const handleSort = (e) => {
+    setHovered(false);
     sortReviewsList(e.target.innerText);
     setCurrentReviews(reviewsList.slice(0, currentReviewIndex));
   };
 
   return (
     <>
-      <div
-        onMouseEnter={handleHover}
-        onMouseLeave={handleHover}
-      >{sort}
-        <div>
-          {hovered ? (
-            options.map(option => {
-              return <div
+
+      {hovered ? (
+        <div onMouseLeave={handleHover}>
+          {options.map(option => {
+            return (
+              <Styles.textMain
                 onClick={handleSort}
                 key={option}
-              >{option}</div>;
-            })
-          ) : null
-          }
+              >{option}</Styles.textMain>
+            );
+          })}
         </div>
-      </div>
+      ) : (
+        <Styles.currentSort
+          onMouseEnter={handleHover}
+
+        >
+          {sort} <Styles.arrow></Styles.arrow>
+        </Styles.currentSort>
+      )}
+
     </>
   );
 };
 
 export default Dropdown;
+

@@ -35,6 +35,8 @@ export const TitleBlock = style.div`
 export const Sort = style.div`
   grid-area: sort;
   border: 1px solid blue;
+  display: flex;
+  align-items: flex-end;
 `;
 
 export const Summary = style.div`
@@ -79,16 +81,61 @@ export const title = style.div`
 // SORT BLOCK
 // ===============
 
-export const dropdown = style.select`
+export const currentSort = style.div`
+  width: 100px;
+  height: fit-content;
+  display: flex;
+  margin: 3px 5px;
+  padding: 0 5px;
+`;
+
+export const sortMethods = style.div`
 
 `;
 
+// export const arrow = style.div`
+//   position: relative;
+//   display: block;
+//   heigth: 50px;
+
+//   :before,
+//   :after {
+//     position: absolute;
+//     display: block;
+//     content: "";
+//     border: 25px solid transparent;
+//   }
+
+//   :before {
+//     top: 0;
+//     border-top-color: black;
+//   }
+
+//   :after {
+//     top: -10px;
+//     border-top-color: white;
+//   }
+// `;
+
+export const arrow = style.div`
+border-style: solid;
+border-width: 0.15em 0.15em 0 0;
+content: '';
+display: inline-block;
+height: 0.45em;
+left: 0.15em;
+position: relative;
+top: 0;
+transform: rotate(135deg);
+vertical-align: top;
+width: 0.45em;
+margin: 5px 0 0 4px;
+`;
+
 export const total = style.a`
-  display: inline-block;
   font-size: 1.2em;
   margin: 15px 30px;
   width: fit-content;
-  font-weight: normal;
 `;
 
 // ===============
