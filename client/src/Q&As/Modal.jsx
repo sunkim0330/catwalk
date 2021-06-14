@@ -1,35 +1,62 @@
-import React, {useState} from 'react';
-import styled, {css} from 'styled-components';
+import React, {useState, useEffect, useReducer} from 'react';
+import * as Styles from './Styles.js';
+import axios from 'axios';
+import ModalForm from './ModalForm.jsx';
 
-const Modal = ({title, subTitle }) => {
-  const [show, setShow] = useState(false);
+const Modal = ({title, subTitle, questionBody, onClose, show, id}) => {
+  const [origin, setOrigin] = useState('');
+  const [placeholder, setPlaceholder] = useState('');
+  const [isItAnswer, setIsItAnswer] = useState(() => {
+    return title === 'Submit Your Answer';
+  });
 
-  const showModal = (e) => {
-    setShow(true);
+
+  const displayQuestionBody = () => {
+    if (isItAnswer) {
+      return <h2>{subTitle} : {questionBody}</h2>;
+    } else {
+      return <h2>{subTitle}</h2>;
+    }
   };
 
-  /*
-  <div><button onClick={(e) => { showModal(); }}>Add a question</button></div>
-  */
+  useEffect(() => {
+    if (isItAnswer) {
+      setOrigin(`${id}/answers`);
+      setPlaceholder('Please enter your answer');
+    } else {
+      setOrigin('');
+      setPlaceholder('Please enter your question');
+    }
+  }, [isItAnswer]);
+
+
+  if (!show) {
+    return null;
+  }
 
   return (
-    <div className="qanda-modal">
-      <div className="qanda-modal-content">
-        <div className="qanda-modal-header">
-          <h4>{title}</h4>
-          <h2>{subTitle}</h2>
-        </div>
-        <div className="qanda-modal-body">
-          This is the body, form goes in here
-        </div>
-        <div className="qanda-modal-footer">
-          <button>Submit</button>
-        </div>
-      </div>
+    <div>
+      <Styles.ModalContainer>
+        <Styles.ModalContent>
+          <Styles.ModalHeaderFooter>
+            <h4>{title}</h4>
+            {displayQuestionBody()}
+          </Styles.ModalHeaderFooter>
+          <Styles.ModalBody>
+            <ModalForm origin={origin} title={title} placeholder={placeholder}/>
+          </Styles.ModalBody>
+          <Styles.ModalHeaderFooter>
+            <button onClick={onClose}>Close</button>
+          </Styles.ModalHeaderFooter>
+        </Styles.ModalContent>
+      </Styles.ModalContainer>
     </div>
   );
+
+
 };
 
 
-
 export default Modal;
+
+
