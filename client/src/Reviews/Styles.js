@@ -12,7 +12,7 @@ export const Grid = style.div`
   border: 2px solid black;
   height: 800px;
   width: 96%;
-  margin: auto;
+  margin: 30px auto;
   padding: 10px;
   display: grid;
   grid-template-columns: 24% 38% 38%;
