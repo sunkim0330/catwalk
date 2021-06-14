@@ -84,9 +84,13 @@ export const Thumbnails = styled.div`
 
 // thumbnail img
 export const GalleryThumbnail = styled.img`
-  height: 14.5%;
+  max-width: 100%;
+  height: auto;
+  max-height: 14.5%;
+  width: auto;
+  margin: auto;
   ${({ id }) => {
-    return id === 'thumbnail0' ? 'transform: scale(1.1)' : 'transform: scale(0.8)';
+    return id === 'thumbnail0' ? 'box-shadow: 0px 0px 0px 5px #808080' : 'border-shadow: 0px 0px 0px 0px #808080';
   }}
 `;
 // gallery end

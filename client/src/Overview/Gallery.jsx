@@ -48,8 +48,8 @@ const Gallery = ({ styleImages, productID }) => {
   };
 
   const imageSelect = (index) => {
-    document.getElementById('thumbnail' + index).style.transform = 'scale(1.1)';
-    document.getElementById('thumbnail' + mainImageIndex).style.transform = 'scale(0.8)';
+    document.getElementById('thumbnail' + index).style.boxShadow = '0px 0px 0px 5px #808080';
+    document.getElementById('thumbnail' + mainImageIndex).style.boxShadow = 'none';
     setMainImageIndex(index);
   };
 
@@ -115,12 +115,19 @@ const Gallery = ({ styleImages, productID }) => {
 
   return (
     <Styles.Gallery>
+
       <Styles.LeftArrow src={leftArrow} alt="Click here to scroll left" id="leftArrow" onClick={(event) => scrollLeft(event)}/>
+
       <Styles.MainImgWrapper id="imgWrapper">
+
         <Styles.MainImg src={styleImages[mainImageIndex].url} id="mainImg" alt={styleImages[mainImageIndex].name} onClick={openExpandedView}/>
+
       </Styles.MainImgWrapper>
+
       <Styles.RightArrow src={rightArrow} alt="Click here to scroll right" id="rightArrow" onClick={scrollRight}/>
+
       <Thumbnails styleImages={renderedThumbnails} imageIndex={mainImageIndex} changeMainImage={imageSelect}/>
+
     </Styles.Gallery>
   );
 
