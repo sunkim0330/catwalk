@@ -14,6 +14,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
   const [chars, setChars] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [sort, setSort] = useState('relevant');
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -27,6 +28,8 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   };
 
   const sortReviewsList = (order) => {
+    // update sort method
+    setSort(order);
 
     if (order === 'relevant') {
       let relevantSort = reviewsList.sort((a, b) => {
@@ -88,7 +91,6 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
     setChars(newChars);
   }, [meta]);
 
-  // const style = 'width: 200px';
 
   return (
     <>
@@ -109,7 +111,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
         </Styles.Summary>
 
 
-        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
+        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta} sort={sort} sortReviewsList={sortReviewsList} />
         <Characteristics chars={chars} ratings={meta.characteristics} />
 
         {/* </div> */}

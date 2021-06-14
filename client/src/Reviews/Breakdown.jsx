@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as Styles from './Styles.js';
 
-const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
+const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortReviewsList }) => {
   const [ratings, setRatings] = useState({});
   const [ratingsPct, setRatingsPct] = useState({});
   const [recommends, setRecommends] = useState('');
@@ -30,8 +30,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
           Filtered by:
           {currentFilters.map((filter, index) => {
             return (
-              // need to remove the comma on last item
-              // 1 star instead of stars
+            // need to remove the comma on last item
+
               <span key={index}> {filter} stars, </span>
             );
           })}
@@ -49,6 +49,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
       }
       return prev;
     });
+
+    setReviewsList(reviews);/////////////////
   };
 
   const handleFilterClick = (e) => {
@@ -126,6 +128,11 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     filterReviews();
   }, [filters]);
 
+  useEffect(() => {
+    sortReviewsList(sort);
+    console.log('sorted');
+  }, [reviewsList.length]);
+
   // get the percentage of each rating, determine the width of the div bar for each rating
   useEffect(() => {
     let newRatingsPct = {};
@@ -142,6 +149,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     }
     setRatingsPct(newRatingsPct);
   }, [ratings]);
+
+
 
   // refactor using map or loop
   return (
