@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import OutfitCard from './OutfitCardComponent';
 import {RelatedListDiv, AddToOutfitButton, SecondaryTextTitle, PlusAnimation} from './styled.js';
+import leftArrow from '../Overview/images/chevron-left.png';
+import rightArrow from '../Overview/images/chevron-right.png';
 
 
 const OutfitList = (props) => {
@@ -9,8 +11,12 @@ const OutfitList = (props) => {
   const [closet, setCloset] = useState(null);
 
   useEffect(() => {
-    let localCloset = newStorage.getItem('closet');
-    setCloset(JSON.parse(localCloset));
+    if (newStorage.getItem('closet')) {
+      let localCloset = newStorage.getItem('closet');
+      setCloset(JSON.parse(localCloset));
+    } else {
+      setCloset([]);
+    }
 
   }, []);
 

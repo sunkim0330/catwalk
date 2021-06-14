@@ -14,6 +14,10 @@ export const RelatedListDiv = styled.div`
   overflow-y: hidden;
 `;
 
+export const ArrowWrapper = styled.div`
+
+`;
+
 export const CardDiv = styled.div`
   grid-column: ${props => props.grid + 1} / ${props => props.grid + 2};
   grid-row: 1 / 2;
@@ -26,6 +30,19 @@ export const CardDiv = styled.div`
   background-image: url(${props => props.image});
   background-size: cover;
   border: 0.5px lightgray solid;
+`;
+
+export const Arrow = styled.div`
+  background: url(${props => props.arrow});
+  background-size: cover;
+`;
+
+export const ArrowRight = styled(Arrow)`
+  grid-column:
+`;
+
+export const ArrowLeft = styled(Arrow)`
+
 `;
 
 
