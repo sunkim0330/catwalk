@@ -18,14 +18,14 @@ const QandAs = ({ product, setDateFormat }) => {
   };
 
   return (
-    <div className="QandAsbox">
+    <Styles.Index>
       QUESTIONS AND ANSWERS
-      <div className="QandAsinput">
+      <Styles.QandAsInput>
         <Questions product={product} setDateFormat={setDateFormat}/>
         <button onClick={() => setShow(true)} >Ask a Question</button>
         <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
-      </div>
-    </div>
+      </Styles.QandAsInput>
+    </Styles.Index>
   );
 };
 

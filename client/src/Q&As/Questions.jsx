@@ -4,6 +4,7 @@ import Answers from './Answers.jsx';
 import Helpful from '../Shared/Helpful.jsx';
 import Modal from './Modal.jsx';
 import Search from './Search.jsx';
+import * as Styles from './Styles.js';
 
 const Questions = ({ product, setDateFormat }) => {
   const [loadPage, setLoadPage] = useState(2);
@@ -12,7 +13,7 @@ const Questions = ({ product, setDateFormat }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    axios.get(`/qa/questions?product_id=${product.id}`)
+    axios.get(`/qa/questions?product_id=${product.id}&count=100`)
       .then((response) => {
         return setQuestions(response.data.results);
       })
@@ -28,12 +29,12 @@ const Questions = ({ product, setDateFormat }) => {
 
   const loadQuestions = questions.slice(0, loadPage).map((question) => {
     return (
-      <div>
-        <div className="questions_div" key={question.question_id}>
+      <div className="questions_div" key={question.question_id}>
+        <Styles.QuestionsContainer>
           Q: {question.question_body} <button onClick={() => setShow(true)} >Add Answer</button>
-          <Modal title="Submit Your Answer" subTitle={product.name} id={question.question_id} questionBody={question.question_body} show={show} onClose={() => setShow(false)}/><br/><Helpful origin="qa/questions" id={question.question_id} helpCount={question.question_helpfulness}/><br/>
+          <Modal title="Submit Your Answer" subTitle={product.name} id={question.question_id} questionBody={question.question_body} show={show} onClose={() => setShow(false)}/><Helpful origin="qa/questions" id={question.question_id} helpCount={question.question_helpfulness}/><br/>
           <div><Answers product={product} questions={question} setDateFormat={setDateFormat} /></div>
-        </div>
+        </Styles.QuestionsContainer>
       </div>
     );
   });
