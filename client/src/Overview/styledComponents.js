@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
 export const Overview = styled.div`
+  font-family: sans-serif;
   background-color: white;
   display: grid;
   grid-template-columns: 70% 30%;
   text-align: center;
-  width: 100%;
+  width: 80%;
+  margin: auto;
 `;
 
 // gallery start
 // gallery container
 export const Gallery = styled.div`
   align-items: center;
-  border-style: ridge;
   display: grid;
   grid-template-columns: 25% 75%;
   grid-template-rows: 100%;
@@ -20,21 +21,32 @@ export const Gallery = styled.div`
   position: relative;
 `;
 
-// main img
-export const MainImage = styled.img`
-  border-style: ridge;
-  border-width: 20px;
-  display: block;
+export const MainImgWrapper = styled.div`
   grid-column-start: 2;
-  height: 95%;
+  height: 100%;
   margin: 4vh auto;
+  display: grid;
+`;
+
+// main img
+export const MainImg = styled.img`
+  max-width: 600px;
+  height: auto;
+  max-height: 80%;
+  width: auto;
+  margin: auto;
+  align-self: center;
+
+  &:hover {
+    cursor: zoom-in;
+  }
 `;
 
 export const LeftArrow = styled.img`
   align-self: center;
   grid-column-start: 2;
   position: absolute;
-  padding-left: 20px;
+  padding-left: 8px;
 
   &:hover {
   }
@@ -49,7 +61,7 @@ export const RightArrow = styled.img`
   grid-column-start: 2;
   justify-self: right;
   position: absolute;
-  padding-right: 20px;
+  padding-right: 8px;
 
   &:hover {
   }
@@ -61,20 +73,19 @@ export const RightArrow = styled.img`
 
 // thumbnails container
 export const Thumbnails = styled.div`
-  border-style: outset;
-  border-width: 8px;
   display: flex;
   flex-direction: column;
   grid-column-start: 1;
   grid-row-start: 1;
   height: 98%;
   justify-content: center;
-  justify-self: center;
+  justify-self: end;
 `;
 
 // thumbnail img
 export const GalleryThumbnail = styled.img`
-  height: 14.2%;
+  height: 14.5%;
+  transform: scale(0.8);
 `;
 // gallery end
 
@@ -89,7 +100,6 @@ export const Sidebar = styled.div`
 
 // product info start
 export const ProductInfo = styled.div`
-  border-style: outset;
 `;
 
 export const StarContainer = styled.div`
@@ -143,7 +153,6 @@ export const Price = styled.span`
 
 // style selector start
 export const StyleSelector = styled.div`
-  border-style: outset;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   justify-items: center;
@@ -152,8 +161,7 @@ export const StyleSelector = styled.div`
 `;
 
 export const StyleName = styled.h3`
-  grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column: 1 / span 4;
 `;
 
 export const StyleContainer = styled.div`
@@ -179,7 +187,6 @@ color: green;
 
 // cart management start
 export const CartManagement = styled.div`
-  border-style: outset;
 `;
 
 export const SizeSelect = styled.select`
@@ -238,7 +245,6 @@ export const PointlessButton = styled.button`
 
 // product description start
 export const ProductDescription = styled.div`
-  border-style: outset;
   display: block;
 `;
 
@@ -251,6 +257,7 @@ export const FeaturesHeader = styled.h3`
 
 export const FeaturesItem = styled.li`
   list-style-type: none;
+  margin: 2px;
 `;
 
 export const Slogan = styled.h3`
@@ -301,7 +308,7 @@ export const Facebook = styled.button`
   width: 150px;
   height: 30px;
   font-size: 18px;
-  margin: 10px;
+  margin: 8px 8px 12px 8px;
 
   &:hover {
     background-color: #9f7f31;
@@ -311,4 +318,16 @@ export const Facebook = styled.button`
     transform: translateY(2px)
   }
 `;
+
+export const BottomBorder = styled.hr`
+  bottom: 0px;
+  border: 0;
+  color: black;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 2px;
+  position: relative;
+  width: 100%;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  `;
 // product description end

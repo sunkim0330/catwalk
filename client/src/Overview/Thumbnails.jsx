@@ -4,9 +4,14 @@ import * as Styles from './styledComponents.js';
 const Thumbnails = ({ styleImages, imageIndex, changeMainImage }) => {
 
   return (
-    <Styles.Thumbnails>
+    <Styles.Thumbnails id="thumbnails">
       {styleImages.map((stylePhoto, index) => {
-        return <Styles.GalleryThumbnail src={stylePhoto.thumbnail_url} key={stylePhoto.thumbnail_url} onClick={() => changeMainImage(index)}/>;
+        return <Styles.GalleryThumbnail
+          src={stylePhoto.thumbnail_url}
+          key={stylePhoto.thumbnail_url}
+          id={'thumbnail' + index}
+          onClick={() => changeMainImage(index) }
+        />;
       })}
     </Styles.Thumbnails>
   );

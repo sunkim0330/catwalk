@@ -20,12 +20,12 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
     const module = 'Overview';
     axios.post('/interactions', {element: event.target.localName, widget: module, time: new Date() })
       .then((response) => {
-        console.log('We\'re stalking you!! :D');
+        console.log('interaction logged');
       });
   };
 
   return (
-    <Styles.Overview onClick={getClickedElement}>
+    <Styles.Overview onClick={getClickedElement} id="overview">
       <Gallery styleImages={styles[currentStyle].photos} productID={product.id}/>
       <Styles.Sidebar>
         <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
@@ -34,6 +34,7 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
         <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
         <ShareButtons />
       </Styles.Sidebar>
+      <Styles.BottomBorder></Styles.BottomBorder>
     </Styles.Overview>
   );
 

@@ -22,7 +22,7 @@ const ProductInfo = ({ product, style, rating, reviewCount }) => {
   if (reviewCount) {
     ratingDisplay = (
       <Styles.RatingDisplay>
-        <Stars rating={rating} width={'50px'} left={'24px'} position={'relative'}/>
+        <Stars rating={rating} width={'100px'} left={'24px'} position={'relative'}/>
         <Styles.LinkToReviews href="#container">{`Read all ${reviewCount} reviews`}</Styles.LinkToReviews>
       </Styles.RatingDisplay>
     );
