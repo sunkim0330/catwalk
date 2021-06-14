@@ -70,15 +70,75 @@ export const SecondaryTextTitle = styled(SecondaryText)`
 `;
 
 export const AddToOutfitButton = styled.div`
+  position: absolute;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   text-align: center;
   height: 390px;
   width: 300px;
   border: 0.5px lightgray solid;
+  background: white;
+  z-index: 1;
+  transition: all .4s;
 
   :hover {
-    box-shadow: 0 0 8px lightgray;
+    box-shadow: 0 0 15px lightgray;
+    background-color: gray;
+    color: white;
+    border-radius: 15px;
+  }
+`;
+
+
+export const PlusAnimation = styled.div`
+  text-align: center;
+  font-size: 20px;
+  font-family: sans-serif;
+  width: 200px;
+  height: 10px;
+  margin: 55% auto;
+
+  :before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 50px;
+    margin: 50% 50px;
+    z-index: 2;
+    transition: all 0.5s;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  :after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 50px;
+    margin: 50% 50px;
+    z-index: 2;
+    transition: all 0.5s;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  :hover {
+    color: rgba(255,255,255,0);
+  }
+
+  :hover::before {
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 10px;
+  }
+
+  :hover::after {
+    transform: rotate(90deg);
+    background-color: rgba(255, 255, 255,.6);
+    border-radius: 10px;
   }
 `;
 
@@ -89,6 +149,11 @@ export const ModalViewButton = styled.i`
   padding: 10px;
   justify-self: end;
   color: lightgray;
+
+  :hover {
+    color: red;
+    text-shadow: 0 0 8px gray;
+  }
 `;
 
 export const ModalView = styled.div`

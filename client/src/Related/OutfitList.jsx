@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import OutfitCard from './OutfitCardComponent';
-import {RelatedListDiv, AddToOutfitButton, SecondaryTextTitle} from './styled.js';
+import {RelatedListDiv, AddToOutfitButton, SecondaryTextTitle, PlusAnimation} from './styled.js';
 
 
 const OutfitList = (props) => {
@@ -61,7 +61,9 @@ const OutfitList = (props) => {
       <div>
         <SecondaryTextTitle>Your Outfit</SecondaryTextTitle>
         <RelatedListDiv listLength={closet.length + 1}>
-          <AddToOutfitButton onClick={handleAdd}>Add To Outfit</AddToOutfitButton>
+          <AddToOutfitButton onClick={handleAdd}>
+            <PlusAnimation>Add To Outfit</PlusAnimation>
+          </AddToOutfitButton>
           {closet ? closet.map((piece, i) => { return <OutfitCard piece={piece} key={i} grid={i + 1} updateCloset={updateCloset} />; }) : null}
         </RelatedListDiv>
       </div>
