@@ -276,7 +276,6 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                   name="recommend"
                   value="yes"
                   onChange={handleRecommendsChange}
-                  checked
                   required
                 />
               </label>
