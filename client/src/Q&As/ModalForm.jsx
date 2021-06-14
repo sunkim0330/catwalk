@@ -2,13 +2,14 @@
 import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 
-const ModalForm = ({origin, title, placeholder}) => {
+const ModalForm = ({origin, title, placeholder, productId}) => {
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
   const [formData, setFormData] = useState({
-    answerer_name: '',
+    name: '',
     body: '',
-    email: ''
+    email: '',
+    product_id: productId
   });
 
   const [charCount, setCharCount] = useState(() => {
@@ -25,10 +26,9 @@ const ModalForm = ({origin, title, placeholder}) => {
     if (formData.body === '') {
       newErrors.body = 'Please fill out this part';
     }
-    if (formData.answerer_name === '') {
-      newErrors.answerer_name = 'Please fill out your username';
+    if (formData.name === '') {
+      newErrors.name = 'Please fill out your username';
     }
-    // let regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!regEmail.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
@@ -38,7 +38,6 @@ const ModalForm = ({origin, title, placeholder}) => {
     }
 
     setErrors(newErrors);
-    console.log('errors', errors);
   };
 
   const handleBodyChange = (e) => {
@@ -57,7 +56,7 @@ const ModalForm = ({origin, title, placeholder}) => {
   const handleNameChange = (e) => {
     setFormData({
       ...formData,
-      answerer_name: e.target.value
+      name: e.target.value
     });
 
     let char_limit = 60;
@@ -81,6 +80,17 @@ const ModalForm = ({origin, title, placeholder}) => {
 
   };
 
+  const askQuestion = () => {
+    if (title === 'Ask Your Question') {
+      setFormData({
+        ...formData,
+        product_id: productId
+      });
+    } else {
+      return;
+    }
+  };
+
   const sendRequest = () => {
     axios({
       method: 'post',
@@ -97,7 +107,6 @@ const ModalForm = ({origin, title, placeholder}) => {
   };
 
   useEffect(() => {
-    console.log('keys', Object.keys(errors));
     if (Object.keys(errors).length === 0) {
       setIsValid(true);
     }
@@ -119,7 +128,7 @@ const ModalForm = ({origin, title, placeholder}) => {
       <p>{charCount.body_char} / 1000</p>
       {errors.body && ( <p>{errors.body}</p>)}
       <label>What is your username: </label>
-      <input type="text" name="answerer_name" onChange={handleNameChange} placeholder="please enter your nickname" required/>
+      <input type="text" name="name" onChange={handleNameChange} placeholder="please enter your nickname" required/>
       <p>{charCount.name_char} / 60</p>
       {errors.answerer_name && ( <p>{errors.answerer_name}</p>)}
       <label>Your email</label>

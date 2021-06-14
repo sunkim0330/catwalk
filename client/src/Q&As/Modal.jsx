@@ -1,9 +1,10 @@
+/* eslint-disable camelcase */
 import React, {useState, useEffect, useReducer} from 'react';
 import * as Styles from './Styles.js';
 import axios from 'axios';
 import ModalForm from './ModalForm.jsx';
 
-const Modal = ({title, subTitle, questionBody, onClose, show, id}) => {
+const Modal = ({title, subTitle, questionBody, onClose, show, id, productId}) => {
   const [origin, setOrigin] = useState('');
   const [placeholder, setPlaceholder] = useState('');
   const [isItAnswer, setIsItAnswer] = useState(() => {
@@ -43,7 +44,7 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id}) => {
             {displayQuestionBody()}
           </Styles.ModalHeaderFooter>
           <Styles.ModalBody>
-            <ModalForm origin={origin} title={title} placeholder={placeholder}/>
+            <ModalForm origin={origin} title={title} placeholder={placeholder} productId={productId}/>
           </Styles.ModalBody>
           <Styles.ModalHeaderFooter>
             <button onClick={onClose}>Close</button>

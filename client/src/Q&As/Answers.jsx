@@ -6,7 +6,7 @@ import Modal from './Modal.jsx';
 const Answers = ({ product, questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
   const [loadPage, setLoadPage] = useState(2);
-  const [show, setShow] = useState(false);
+
 
 
   useEffect(() => {
@@ -36,8 +36,6 @@ const Answers = ({ product, questions, setDateFormat }) => {
             A: {answer.body} <br/>
         <div>{answer.photos}</div><br/>
         <div> by {answer.answerer_name}, {answer.formattedDate}, <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/> </div>
-        <button onClick={() => setShow(true)} >Add Answer</button>
-        <Modal title="Submit Your Answer" subTitle={product.name} id={answer.question_id} questionBody={answer.question_body} show={show} onClose={() => setShow(false)}/>
       </div>
     );
   });
