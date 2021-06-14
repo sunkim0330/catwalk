@@ -5,7 +5,7 @@ import styled, {css} from 'styled-components';
 export const Index = styled.div`
   width: 80%
   font-family: Sans-Serif;
-  font-size: 25px;
+  font-size: 18px;
   border: 1px solid white;
   font-color: #6f67bf;
 `;
