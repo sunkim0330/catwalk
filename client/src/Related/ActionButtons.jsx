@@ -11,15 +11,19 @@ export const HeartButton = (props) => {
   }, [props.currentChar]);
 
   const handleClick = () => {
+    console.log('clocked');
     setModalView(!modalView);
   };
 
-  return (
-    <ModalViewButton onClick={handleClick}>
-      {modalView ? <ModalViewComponent currentName={props.currentName} currentChar={props.currentChar} relatedName={props.relatedName} relatedChar={props.relatedChar}/> : null}
-      {/* <button onClick={handleClick}></button> */}
-    </ModalViewButton>
-  );
+  if (modalView) {
+    return (
+      <ModalViewComponent currentName={props.currentName} currentChar={props.currentChar} relatedName={props.relatedName} relatedChar={props.relatedChar} handleClick={handleClick}/>
+    );
+  } else {
+    return (
+      <ModalViewButton className="far fa-star" onClick={handleClick}/>
+    );
+  }
 };
 
 export const DeleteButton = (props) => {
@@ -39,7 +43,7 @@ export const DeleteButton = (props) => {
   };
 
   return (
-    <ModalViewButton onClick={handleDelete}>
+    <ModalViewButton className="fas fa-times" onClick={handleDelete}>
       {/* <button onClick={handleDelete} ></button> */}
     </ModalViewButton>
   );

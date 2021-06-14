@@ -54,8 +54,18 @@ export const SecondaryText = styled.p`
   font-family: sans-serif;
 `;
 
+export const TertiaryText = styled.p`
+  font-size: 12px;
+  color: gray;
+  font-family: sans-serif;
+  font-weight: lighter;
+  padding-left: 20px;
+`;
+
 export const SecondaryTextTitle = styled(SecondaryText)`
   margin-left: 10%;
+  margin-top: 50px;
+  margin-bottom: 10px;
   color: gray;
 `;
 
@@ -72,9 +82,59 @@ export const AddToOutfitButton = styled.div`
   }
 `;
 
-export const ModalViewButton = styled.button`
+export const ModalViewButton = styled.i`
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   align-self: start;
+  padding: 10px;
   justify-self: end;
+  color: lightgray;
+`;
+
+export const ModalView = styled.div`
+  position: absolute;
+  background-color: white;
+  border: 1px lightgray solid;
+  margin-left: 30px;
+  margin-top: -40px;
+  height: 300px;
+  width: 350px;
+  box-shadow: 0 0 8px lightgray;
+`;
+
+export const ModalTable = styled.table`
+  width: 90%;
+  height: 80%;
+  margin: 20px auto;
+  font-family: sans-serif;
+`;
+
+export const ModalHeader = styled.thead`
+  font-size: 15px;
+  border: lightgray 0.75px solid;
+`;
+
+export const ModalRows = styled.tr`
+  font-size: 14px;
+`;
+
+export const ModalCell = styled.td`
+  padding: 1px;
+`;
+
+export const ModalCellLeft = styled(ModalCell)`
+  text-align: left;
+  font-size: 13px;
+`;
+
+export const ModalCellCenter = styled(ModalCell)`
+  text-align: center;
+  font-weight: lighter;
+  font-size: 12px;
+
+`;
+
+export const ModalCellRight = styled(ModalCell)`
+  text-align: right;
+  font-size: 13px;
 `;

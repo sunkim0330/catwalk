@@ -1,11 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const StyledStars = styled.div(
+  ({ styles }, appliedStyles = '') => {
+    for (let attributes in styles) {
+      appliedStyles += `${attributes}: ${styles[attributes]};`;
+    }
+    return appliedStyles;
+  }
+);
 
-export const Stars = (props) => {
+const Stars = ( {rating, ...styles }) => {
   return (
-    <div>
-
+    <StyledStars styles={styles}>
       <svg viewBox="0 0 1000 200">
 
         <defs>
@@ -23,15 +30,11 @@ export const Stars = (props) => {
 
 
         <rect style={{fill: '#eeeee4', stroke: 'red', strokeWidth: '1px', height: '100%', width: '100%'}} clipPath="url(#stars)"></rect>
-        <rect width={(props.rating * 20) + '%'} style={{ fill: '#ECD08C ', height: '100%'}} clipPath="url(#stars)"></rect>
+        <rect width={(rating * 20) + '%'} style={{ fill: '#ECD08C ', height: '100%'}} clipPath="url(#stars)"></rect>
 
       </svg>
-    </div>
+    </StyledStars>
   );
 };
 
-export const StarsDiv = styled.div`
-width: ${props => props.scale};
-height: ${props => props.scale};
-`;
-
+export default Stars;

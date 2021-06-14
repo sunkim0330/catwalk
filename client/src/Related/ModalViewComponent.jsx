@@ -1,4 +1,5 @@
 import React from 'react';
+import {ModalView, TertiaryText, ModalTable, ModalHeader, ModalRows, ModalCellLeft, ModalCellRight, ModalCellCenter} from './styled.js';
 
 const ModalViewComponent = (props) => {
 
@@ -38,31 +39,32 @@ const ModalViewComponent = (props) => {
 
 
   return (
-    <div>
-      <table>
-        <thead>
+    <ModalView onClick={props.handleClick} >
+      <TertiaryText>Comparing</TertiaryText>
+      <ModalTable>
+        <ModalHeader>
           <tr>
-            <td>{props.currentName}</td>
+            <ModalCellLeft>{props.currentName}</ModalCellLeft>
             <td></td>
-            <td>{props.relatedName}</td>
+            <ModalCellRight>{props.relatedName}</ModalCellRight>
           </tr>
-        </thead>
+        </ModalHeader>
         <tbody>
           {comparisonArray.map((row, i) => { return <ComparisonRow row={row} key={i}/>; })}
         </tbody>
-      </table>
-    </div>
+      </ModalTable>
+    </ModalView>
   );
 };
 
 
 const ComparisonRow = (props) => {
   return (
-    <tr>
-      <td>{props.row[1]}</td>
-      <td>{props.row[0]}</td>
-      <td>{props.row[2]}</td>
-    </tr>
+    <ModalRows>
+      <ModalCellLeft>{props.row[1]}</ModalCellLeft>
+      <ModalCellCenter>{props.row[0]}</ModalCellCenter>
+      <ModalCellRight>{props.row[2]}</ModalCellRight>
+    </ModalRows>
   );
 };
 

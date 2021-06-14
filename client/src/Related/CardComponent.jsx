@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {HeartButton} from './ActionButtons';
 import {CardDiv, ImageDiv, LabelDiv, NameText, SecondaryText} from './styled.js';
-import {Stars, StarsDiv} from '../Shared/Star.jsx';
+import Stars from '../Shared/Star.jsx';
+import placeholder from './assets/file.png';
 
 const Card = (props) => {
 
@@ -24,7 +25,7 @@ const Card = (props) => {
     };
 
 
-    let image = props.style.photos[0].thumbnail_url || 'client/src/Related/assets/file.png';
+    let image = props.style.photos[0].thumbnail_url || placeholder;
 
     return (
 
@@ -34,7 +35,7 @@ const Card = (props) => {
           <SecondaryText>{props.product.category}</SecondaryText>
           <NameText>{props.product.name}</NameText>
           {props.style.sale_price ? <div><strike>${props.style.original_price}</strike><style color='red'>${props.style.sale_price}</style></div> : <div>${props.style.original_price}</div>}
-          {averageRating ? <StarsDiv scale='30%'><Stars rating={averageRating.toFixed(1)} /></StarsDiv> : null}
+          {averageRating ? <Stars rating={averageRating.toFixed(1)} width={'30%'}/> : null}
         </LabelDiv>
       </CardDiv >
 
