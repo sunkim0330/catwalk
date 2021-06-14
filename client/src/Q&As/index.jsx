@@ -20,11 +20,11 @@ const QandAs = ({ product, setDateFormat }) => {
   return (
     <Styles.Index>
       QUESTIONS AND ANSWERS
-      <Styles.QandAsInput>
+      <div>
         <Questions product={product} setDateFormat={setDateFormat}/>
         <button onClick={() => setShow(true)} >Ask a Question</button>
         <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
-      </Styles.QandAsInput>
+      </div>
     </Styles.Index>
   );
 };

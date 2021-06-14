@@ -22,7 +22,7 @@ export const QuestionsContainer = styled.div.attrs({className: 'Questions_contai
   font-family: Sans-Serif;
   font-color: #6f67bf;
   font-size: 15px;
-  font-weight: bold
+  // font-weight: bold
 `;
 
 export const SearchBarInput = styled.input`
@@ -36,6 +36,13 @@ export const SearchBarInput = styled.input`
   background-color: #F7CAC9;
   font-family: Sans-Serif;
 `;
+
+export const addAnswerButton = styled.button`
+  border: transparent;
+  background-color: transparent;
+  font-family: sans-serif;
+`;
+
 
 export const ModalContainer = styled.div`
   position: fixed;
@@ -66,4 +73,10 @@ export const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   font-family: Sans-Serif;
+`;
+
+export const searchResult = styled.div`
+  font-family: Sans-Serif;
+  font-size: 16px;
+  font-color: #6f67bf;
 `;

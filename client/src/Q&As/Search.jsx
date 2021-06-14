@@ -20,9 +20,9 @@ const Search = ({ questions }) => {
         }
       }).map((val, key) => {
         return (
-          <div key={key}>
+          <Styles.searchResult key={key}>
             {val.question_body}
-          </div>
+          </Styles.searchResult>
         );
       })}
     </div>
