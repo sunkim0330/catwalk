@@ -11,7 +11,7 @@ const Helpful = ({ origin, id, helpCount }) => {
     return origin === 'qa/questions';
   });
   const [type, setType] = useState('');
-  const [count, setCount] = useState(helpCount);
+  const [count, setCount] = useState(0);
 
   const sendPutReq = () => {
     axios.put(`/${origin}/${id}/${type}`)
@@ -58,6 +58,10 @@ const Helpful = ({ origin, id, helpCount }) => {
       sendPutReq();
     }
   }, [type]);
+
+  useEffect(() => {
+    setCount(helpCount);
+  }, [helpCount]);
 
 
   return (
