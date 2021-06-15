@@ -1,5 +1,5 @@
 import React from 'react';
-import style from 'styled-components';
+import style, { keyframes } from 'styled-components';
 
 // ==============
 // GRID BREAKDOWN
@@ -170,15 +170,25 @@ export const currentSort = style.div`
   }
 `;
 
+export const slideDown = keyframes`
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 80px;
+  }
+`;
+
 export const list = style.div`
   position: relative;
   margin: 3px 5px;
   width: 120px;
-  height: fit-content;
+  height: 80px;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
   z-index: 10;
-  transition: height 0.7s, opacity 3s, visibility 4s ease;
+  animation: ${slideDown} 1.5s;
 `;
 
 export const listItem = style.div`
