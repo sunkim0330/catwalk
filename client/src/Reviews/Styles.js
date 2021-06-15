@@ -8,10 +8,9 @@ export const Grid = style.div`
   font-family: sans-serif;
   cursor: default;
   max-width: 1500px;
-  min-width: 1200px;
+  min-width: 1500px;
   border: 2px solid black;
   height: 800px;
-  width: 96%;
   margin: 30px auto;
   padding: 10px;
   display: grid;
@@ -289,8 +288,6 @@ export const count = style.a`
 export const rec = style.div`
   width: 100%;
   margin: 20px 5px;
-  padding: 10px;
-  display: inline-block;
 `;
 
 // ===============
