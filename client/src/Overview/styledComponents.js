@@ -15,27 +15,53 @@ export const Overview = styled.div`
 export const Gallery = styled.div`
   align-items: center;
   display: grid;
-  grid-template-columns: 25% 75%;
-  grid-template-rows: 100%;
   height: 850px;
   position: relative;
+  ${({ extendedView }) => {
+    return extendedView ? `
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 90% 10%;
+    grid-column-start: span 2;
+    justify-content: center;
+    ` : `
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 100%;
+    `;
+  }}
 `;
 
 export const MainImgWrapper = styled.div`
   grid-column-start: 2;
   height: 100%;
-  margin: 4vh auto;
-  display: grid;
+
+
+  ${({ extendedView }) => {
+    return extendedView ? `
+    display: flex;
+    justify-self: center;
+    ` : `
+    display: grid;
+    margin: auto;
+    `;
+  }}
 `;
 
 // main img
 export const MainImg = styled.img`
-  max-width: 600px;
   height: auto;
-  max-height: 80%;
+
   width: auto;
-  margin: auto;
   align-self: center;
+
+  ${({ extendedView }) => {
+    return extendedView ? `
+    max-width: 800px;
+    max-height: 90%;
+    ` : `
+    max-width: 600px;
+    max-height: 80%;
+    `;
+  }}
 
   &:hover {
     cursor: zoom-in;
@@ -44,11 +70,18 @@ export const MainImg = styled.img`
 
 export const LeftArrow = styled.img`
   align-self: center;
-  grid-column-start: 2;
   position: absolute;
   padding-left: 8px;
   ${({ hidden }) => {
     return hidden ? 'hidden' : null;
+  }}
+
+  ${({ extendedView }) => {
+    return extendedView ? `
+    grid-column-start: 1;
+    ` : `
+    grid-column-start: 2;
+    `;
   }}
 
   &:hover {
@@ -80,19 +113,28 @@ export const RightArrow = styled.img`
 // thumbnails container
 export const Thumbnails = styled.div`
   display: flex;
-  flex-direction: column;
-  grid-column-start: 1;
-  grid-row-start: 1;
-  height: 98%;
-  justify-content: center;
-  justify-self: end;
+  height: 100%;
+
+  ${({ extendedView }) => {
+    return extendedView ? `
+    flex-direction: row;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    ` : `
+    flex-direction: column;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    justify-content: center;
+    justify-self: end;
+    `;
+  }}
 `;
 
 // thumbnail img
 export const GalleryThumbnail = styled.img`
   max-width: 100%;
   height: auto;
-  max-height: 14%;
+  max-height: 14.5%;
   width: auto;
   margin: auto;
   ${({ selected }) => {

@@ -11,10 +11,17 @@ import ShareButtons from './ShareButtons.jsx';
 const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }) => {
 
   const [currentStyle, setCurrentStyle] = useState(defaultStyle);
+  const [extendedView, setExtendedView] = useState(false);
 
   useEffect(() => {
     setCurrentStyle(defaultStyle);
   }, [product.name]);
+
+  useEffect(() => {
+    if (styles[currentStyle] === undefined) {
+      setCurrentStyle(styles.length - 1);
+    }
+  }, [currentStyle]);
 
   const getClickedElement = (event) => {
     const module = 'Overview';
@@ -25,15 +32,15 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
   };
 
   return (
-    <Styles.Overview onClick={getClickedElement} id="overview">
-      <Gallery styleImages={styles[currentStyle].photos} productID={product.id}/>
-      <Styles.Sidebar>
+    <Styles.Overview onClick={getClickedElement} extendedView={extendedView} id="overview">
+      <Gallery styleImages={styles[currentStyle].photos} productID={product.id} extendedView={extendedView} setExtendedView={setExtendedView}/>
+      {!extendedView && <Styles.Sidebar>
         <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
         <StyleSelector styles={styles} setCurrentStyle={setCurrentStyle} currentStyle={currentStyle}/>
         <CartManagement styleInventory={styles[currentStyle].skus}/>
         <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
         <ShareButtons />
-      </Styles.Sidebar>
+      </Styles.Sidebar>}
       <Styles.BottomBorder></Styles.BottomBorder>
     </Styles.Overview>
   );

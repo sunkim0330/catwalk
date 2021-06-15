@@ -1,16 +1,16 @@
 import React, { useState, useEffect} from 'react';
 import * as Styles from './styledComponents.js';
 
-const Thumbnails = ({ thumbnailsStart, styleImages, mainImageIndex, changeMainImage }) => {
+const Thumbnails = ({ thumbnailsStart, styleImages, mainImageIndex, changeMainImage, extendedView }) => {
 
   return (
-    <Styles.Thumbnails id="thumbnails">
+    <Styles.Thumbnails id="thumbnails" extendedView={extendedView}>
       {styleImages.map((stylePhoto, index) => {
         return <Styles.GalleryThumbnail
           selected={index === mainImageIndex - thumbnailsStart}
           src={stylePhoto.thumbnail_url}
           key={stylePhoto.thumbnail_url}
-          onClick={() => changeMainImage(index) }
+          onClick={() => changeMainImage(index + thumbnailsStart)}
         />;
       })}
     </Styles.Thumbnails>
