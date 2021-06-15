@@ -142,6 +142,10 @@ export const dropdown = style.div`
   width: 120px;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
+
+  :hover {
+
+  }
 `;
 
 export const currentSort = style.div`
@@ -166,9 +170,26 @@ export const currentSort = style.div`
   }
 `;
 
+export const list = style.div`
+  position: relative;
+  margin: 3px 5px;
+  width: 120px;
+  height: fit-content;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+  z-index: 10;
+  transition: height 0.7s, opacity 3s, visibility 4s ease;
+`;
 
+export const listItem = style.div`
+  padding: 4px 10px;
+  cursor: pointer;
 
-
+  &:hover {
+    text-decoration: underline;
+    color: #d3d9d9;
+  }
+`;
 
 
 
