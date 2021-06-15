@@ -10,8 +10,6 @@ export const Overview = styled.div`
   margin: auto;
 `;
 
-// gallery start
-// gallery container
 export const Gallery = styled.div`
   align-items: center;
   display: grid;
@@ -46,10 +44,9 @@ export const MainImgWrapper = styled.div`
   }}
 `;
 
-// main img
 export const MainImg = styled.img`
   height: auto;
-
+  margin: auto;
   width: auto;
   align-self: center;
 
@@ -110,7 +107,6 @@ export const RightArrow = styled.img`
   }
 `;
 
-// thumbnails container
 export const Thumbnails = styled.div`
   display: flex;
   height: 100%;
@@ -130,7 +126,6 @@ export const Thumbnails = styled.div`
   }}
 `;
 
-// thumbnail img
 export const GalleryThumbnail = styled.img`
   max-width: 100%;
   height: auto;
@@ -141,18 +136,13 @@ export const GalleryThumbnail = styled.img`
     return selected ? 'box-shadow: 0px 0px 0px 5px #808080' : 'box-shadow: 0px 0px 0px 0px #808080';
   }}
 `;
-// gallery end
 
-
-// container for everything next to gallery
 export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 `;
 
-
-// product info start
 export const ProductInfo = styled.div`
 `;
 
@@ -202,10 +192,7 @@ export const Price = styled.span`
   margin: 0px 5px;
   color: ${props => props.color || 'black'}
 `;
-// product info end
 
-
-// style selector start
 export const StyleSelector = styled.div`
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -234,9 +221,7 @@ export const Checkmark = styled.i`
   color: green;
   z-index: ${({selected}) => !selected ? '-1' : null}
 `;
-// style selector end
 
-// cart management start
 export const CartManagement = styled.div`
 `;
 
@@ -292,9 +277,7 @@ export const PointlessButton = styled.button`
     transform: translateY(2px)
   }
 `;
-// cart management end
 
-// product description start
 export const ProductDescription = styled.div`
   display: block;
 `;
@@ -381,4 +364,3 @@ export const BottomBorder = styled.hr`
   width: 100%;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
   `;
-// product description end
