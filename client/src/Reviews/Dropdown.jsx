@@ -20,7 +20,7 @@ const Dropdown = ({ sort, setSort, sortReviewsList, setCurrentReviews, currentRe
   return (
     <>
 
-      {hovered ? (
+      {/* {hovered ? (
         <Styles.sortMethods onMouseLeave={handleHover}>
           {options.map(option => {
             return (
@@ -38,7 +38,11 @@ const Dropdown = ({ sort, setSort, sortReviewsList, setCurrentReviews, currentRe
         >
           {sort} <Styles.arrow></Styles.arrow>
         </Styles.currentSort>
-      )}
+      )} */}
+
+      <Styles.dropdown>
+        <Styles.currentSort>{sort}</Styles.currentSort>
+      </Styles.dropdown>
 
     </>
   );

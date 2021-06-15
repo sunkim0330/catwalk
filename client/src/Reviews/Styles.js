@@ -81,44 +81,97 @@ export const title = style.div`
 // SORT BLOCK
 // ===============
 
-export const currentSort = style.div`
-  width: fit-content;
-  height: fit-content;
-  display: flex;
+// export const currentSort = style.div`
+//   width: fit-content;
+//   height: fit-content;
+//   display: flex;
+//   margin: 3px 5px;
+//   padding: 0 5px;
+//   border-bottom: 1px solid black;
+//   z-index: 2;
+
+//   :hover{
+//     opacity: 0;
+//     transition: opacity .25s ease-out;
+//     z-index: 0;
+
+//   }
+// `;
+
+// export const sortMethods = style.div`
+//   position: relative;
+//   width: fit-content;
+//   height: 80px;
+//   display: flex;
+//   flex-direction: column;
+//   margin: 0 5px 3px 10px;
+//   padding: 0 5px;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   border:  1px solid #d3d9d9;
+//   opacity: 0;
+
+
+//   `;
+
+// export const sortOption = style.div`
+//   :hover {
+//     color: #d3d9d9;
+//     background: black;
+//     text-decoration: underline;
+//   }
+// `;
+
+// export const arrow = style.div`
+// border-style: solid;
+// border-width: 0.15em 0.15em 0 0;
+// content: '';
+// display: inline-block;
+// height: 0.45em;
+// left: 0.15em;
+// position: relative;
+// top: 0;
+// transform: rotate(135deg);
+// vertical-align: top;
+// width: 0.45em;
+// margin: 3px 0 0 4px;
+// `;
+
+export const dropdown = style.div`
   margin: 3px 5px;
-  padding: 0 5px;
-  border-bottom: 1px solid black;
+  width: 120px;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
 `;
 
-export const sortMethods = style.div`
-  positiion: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  margin: 0 5px 3px 10px;
+export const currentSort = style.div`
+  padding: 4px 10px;
   cursor: pointer;
-`;
 
-export const sortOption = style.div`
-  :hover {
-    color: blue;
+  &:hover {
+    text-decoration: underline;
+    color: #d3d9d9;
+  }
+
+  &:after {
+    content: "";
+    transition: all .3s;
+    border: solid #d3d9d9;
+    border-width: 0 1px 1px 0;
+    float: right;
+    margin-top: 1px;
+    margin-right: 6px;
+    padding: 5px;
+    transform: rotate(45deg);
   }
 `;
 
-export const arrow = style.div`
-border-style: solid;
-border-width: 0.15em 0.15em 0 0;
-content: '';
-display: inline-block;
-height: 0.45em;
-left: 0.15em;
-position: relative;
-top: 0;
-transform: rotate(135deg);
-vertical-align: top;
-width: 0.45em;
-margin: 3px 0 0 4px;
-`;
+
+
+
+
+
+
 
 export const total = style.a`
   font-size: 1.2em;
