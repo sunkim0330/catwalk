@@ -49,7 +49,7 @@ export const ReviewList = style.div`
   grid-area: review;
   width: 95%;
   height: 94%;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 export const Characteristics = style.div`
