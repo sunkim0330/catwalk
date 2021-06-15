@@ -9,7 +9,6 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
       <Styles.StyleName className="styleTitle">{'Style Name > '}{styles[currentStyle].name}</Styles.StyleName>
 
       {styles.map((style, index) => {
-        console.log(index === currentStyle);
         return <Styles.StyleContainer>
           <Styles.Checkmark selected={index === currentStyle}className="fas fa-check checkmark"></Styles.Checkmark>
           <Styles.Style

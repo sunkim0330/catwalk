@@ -112,7 +112,7 @@ const Gallery = ({ styleImages, productID }) => {
 
       <Styles.RightArrow src={rightArrow} alt="Click here to scroll right" id="rightArrow" hidden={mainImageIndex === styleImages.length - 1} onClick={scrollRight}/>
 
-      <Thumbnails styleImages={renderedThumbnails} mainImageIndex={mainImageIndex} changeMainImage={setMainImageIndex}/>
+      <Thumbnails styleImages={renderedThumbnails} mainImageIndex={mainImageIndex} thumbnailsStart={thumbnailsStart} changeMainImage={setMainImageIndex}/>
 
     </Styles.Gallery>
   );

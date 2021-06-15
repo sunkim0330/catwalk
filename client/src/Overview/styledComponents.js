@@ -92,7 +92,7 @@ export const Thumbnails = styled.div`
 export const GalleryThumbnail = styled.img`
   max-width: 100%;
   height: auto;
-  max-height: 14.5%;
+  max-height: 14%;
   width: auto;
   margin: auto;
   ${({ selected }) => {
