@@ -177,9 +177,6 @@ export const StyleName = styled.h3`
 `;
 
 export const StyleContainer = styled.div`
-  position: absolute;
-  left: 20px;
-  top: 20px;
 `;
 
 export const Style = styled.img`

@@ -29,7 +29,7 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
       <Gallery styleImages={styles[currentStyle].photos} productID={product.id}/>
       <Styles.Sidebar>
         <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
-        <StyleSelector styles={styles} setCurrentStyle={setCurrentStyle} currentStyle={styles[currentStyle]}/>
+        <StyleSelector styles={styles} setCurrentStyle={setCurrentStyle} currentStyle={currentStyle}/>
         <CartManagement styleInventory={styles[currentStyle].skus}/>
         <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
         <ShareButtons />
