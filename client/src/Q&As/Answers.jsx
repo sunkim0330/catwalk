@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Helpful from '../Shared/Helpful.jsx';
 import Modal from './Modal.jsx';
+import * as Styles from './Styles.js';
 
 const Answers = ({ product, questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
@@ -32,22 +33,24 @@ const Answers = ({ product, questions, setDateFormat }) => {
   //I'll try to refactor when I finish with eveything
   const loadAnswers = answers.slice(0, loadPage).map((answer, index) => {
     return (
-      <div className="answer_div" key={answer.answer_id}>
-            A: {answer.body} <br/>
+      <Styles.answerContainer className="answer_div" key={answer.answer_id}>
+        <b>A:</b>  {answer.body} <br/>
         <div>{answer.photos}</div><br/>
-        <div> by {answer.answerer_name}, {answer.formattedDate}, <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/> </div>
-      </div>
+        <Styles.answerFooter> by {answer.answerer_name}, {answer.formattedDate}</Styles.answerFooter> <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
+        <Styles.btwnAnswers />
+      </Styles.answerContainer>
     );
   });
 
   return (
     <div>
       {loadAnswers}
-      <button
+      <Styles.moreAnswerButton
         style = {{display: loadPage >= answers.length ? 'none' : 'block'}}
         className="answer_button" onClick={loadMore}>
           See more answers
-      </button>
+      </Styles.moreAnswerButton>
+      <Styles.lineBreak />
     </div>
   );
 };
