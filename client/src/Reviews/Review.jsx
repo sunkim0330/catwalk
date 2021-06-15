@@ -60,7 +60,7 @@ const Review = ({ review }) => {
         <div>
           {review.photos.map((photo, index) => {
             return (
-              <>
+              <div key={index}>
                 <Styles.reviewThumbnail
                   key={index}
                   src={photo.url}
@@ -69,16 +69,16 @@ const Review = ({ review }) => {
                 ></Styles.reviewThumbnail>
 
                 {showImage ? (
-                  <>
-                    <Styles.modalOverlay onClick={() => setShowImage(false)}>
+                  <div key ={index}>
+                    <Styles.modalOverlay key={index} onClick={() => setShowImage(false)}>
                     </Styles.modalOverlay>
                     <Styles.fullImage src={photo.url}
                       alt={`${review.reviewer_name} photo ${index}`}
-                      key={photo.url}></Styles.fullImage>
-                  </>
+                      key={index}></Styles.fullImage>
+                  </div>
                 ) : null
                 }
-              </>);
+              </div>);
           })}
           )
         </div>
