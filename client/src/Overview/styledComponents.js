@@ -226,18 +226,15 @@ export const CartManagement = styled.div`
 `;
 
 export const SizeSelect = styled.select`
-  border-radius: 6px;
   font-size: 18px;
   height: 28px;
-  margin: 0px;
   width: 200px;
 `;
 
 export const QtySelect = styled.select`
-  border-radius: 6px;
   font-size: 18px;
   height: 28px;
-  margin: 10px;
+  margin: 5px;
   width: 100px;
 `;
 
@@ -246,11 +243,11 @@ export const Option = styled.option`
 `;
 
 export const AddToCart = styled.button`
-  border-radius: 5px;
   font-size: 18px;
   height: 32px;
   margin-bottom: 8px;
   width: 150px;
+  background-color: white;
 
   &:hover {
     box-shadow: 2px 2px grey;
@@ -262,12 +259,12 @@ export const AddToCart = styled.button`
 `;
 
 export const PointlessButton = styled.button`
-  border-radius: 5px;
   font-size: 18px;
   height: 32px;
   margin: 4px;
   margin-bottom: 8px;
   width: 150px;
+  background-color: white;
 
   &:hover {
     box-shadow: 2px 2px grey;
@@ -306,11 +303,11 @@ export const Socials = styled.div`
 `;
 
 export const Twitter = styled.button`
-  border-radius: 5px;
-  width: 150px;
-  height: 30px;
+  background-color: white;
   font-size: 18px;
+  height: 30px;
   margin: 10px;
+  width: 150px;
 
   &:hover {
     background-color: #9f7f31;
@@ -322,11 +319,11 @@ export const Twitter = styled.button`
 `;
 
 export const Pinterest = styled.button`
-  border-radius: 5px;
-  width: 150px;
-  height: 30px;
+  background-color: white;
   font-size: 18px;
+  height: 30px;
   margin: 10px;
+  width: 150px;
 
   &:hover {
     background-color: #9f7f31;
@@ -338,11 +335,11 @@ export const Pinterest = styled.button`
 `;
 
 export const Facebook = styled.button`
-  border-radius: 5px;
-  width: 150px;
-  height: 30px;
+  background-color: white;
   font-size: 18px;
+  height: 30px;
   margin: 8px 8px 12px 8px;
+  width: 150px;
 
   &:hover {
     background-color: #9f7f31;
@@ -363,4 +360,4 @@ export const Border = styled.hr`
   position: relative;
   width: 100%;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  `;
+`;
