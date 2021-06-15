@@ -143,11 +143,13 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
           {currentReviews.map((review, index) => {
             return <Review key={index} review={review} />;
           })}
-          {currentReviews.length === reviewsList.length
-            ? null
-            : <button onClick={handleLoadMoreReviews}>More Reviews</button>
-          }
-          <button onClick={handleShowForm}>add a review</button>
+          <Styles.flexFit>
+            {currentReviews.length === reviewsList.length
+              ? null
+              : <Styles.button onClick={handleLoadMoreReviews}>More Reviews</Styles.button>
+            }
+            <Styles.button onClick={handleShowForm}>add a review</Styles.button>
+          </Styles.flexFit>
         </Styles.ReviewList>
 
 

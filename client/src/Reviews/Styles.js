@@ -640,3 +640,21 @@ export const fullImage = style.img`
   top: 50%;
   left: 30%;
 `;
+
+export const button = style.div`
+  border: 1px solid #6B636B;
+  border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .1s ease;
+  }
+`;
+
