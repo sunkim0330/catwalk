@@ -180,7 +180,7 @@ export const list = style.div`
   border: 1px solid #d3d9d9;
   border-radius: 5px;
   z-index: 10;
-  animation: ${slideDown} 1.5s;
+  animation: ${slideDown} 1s;
 `;
 
 export const listItem = style.div`
