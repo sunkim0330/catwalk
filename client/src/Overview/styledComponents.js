@@ -353,7 +353,7 @@ export const Facebook = styled.button`
   }
 `;
 
-export const BottomBorder = styled.hr`
+export const Border = styled.hr`
   bottom: 0px;
   border: 0;
   color: black;

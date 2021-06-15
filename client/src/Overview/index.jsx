@@ -36,12 +36,16 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
       <Gallery styleImages={styles[currentStyle].photos} productID={product.id} extendedView={extendedView} setExtendedView={setExtendedView}/>
       {!extendedView && <Styles.Sidebar>
         <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>
+        <Styles.Border></Styles.Border>
         <StyleSelector styles={styles} setCurrentStyle={setCurrentStyle} currentStyle={currentStyle}/>
+        <Styles.Border></Styles.Border>
         <CartManagement styleInventory={styles[currentStyle].skus}/>
+        <Styles.Border></Styles.Border>
         <ProductDescription slogan={product.slogan} description={product.description} features={product.features}/>
+        <Styles.Border></Styles.Border>
         <ShareButtons />
       </Styles.Sidebar>}
-      <Styles.BottomBorder></Styles.BottomBorder>
+      <Styles.Border></Styles.Border>
     </Styles.Overview>
   );
 
