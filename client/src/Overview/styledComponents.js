@@ -47,6 +47,9 @@ export const LeftArrow = styled.img`
   grid-column-start: 2;
   position: absolute;
   padding-left: 8px;
+  ${({ hidden }) => {
+    return hidden ? 'hidden' : null;
+  }}
 
   &:hover {
   }
@@ -62,6 +65,9 @@ export const RightArrow = styled.img`
   justify-self: right;
   position: absolute;
   padding-right: 8px;
+  ${({ hidden }) => {
+    return hidden ? 'hidden' : null;
+  }}
 
   &:hover {
   }
@@ -183,11 +189,11 @@ export const Style = styled.img`
 `;
 
 export const Checkmark = styled.i`
-position: absolute;
-left: 1385px;
-top: 305px;
-font-size: 42px;
-color: green;
+  position: relative;
+  top: 60px;
+  font-size: 42px;
+  color: green;
+  z-index: ${({selected}) => !selected ? '-1' : null}
 `;
 // style selector end
 

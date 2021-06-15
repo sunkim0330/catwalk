@@ -11,14 +11,6 @@ const Gallery = ({ styleImages, productID }) => {
   const [renderedThumbnails, setRenderedThumbnails] = useState([]);
 
   useEffect(() => {
-    let leftArrow = document.querySelector('#leftArrow');
-    mainImageIndex === 0 ? leftArrow.setAttribute('hidden', true) : leftArrow.toggleAttribute('hidden', false);
-    let rightArrow = document.querySelector('#rightArrow');
-    mainImageIndex === styleImages.length - 1 ? rightArrow.setAttribute('hidden', true) : rightArrow.toggleAttribute('hidden', false);
-  }, [mainImageIndex]);
-
-
-  useEffect(() => {
     setMainImageIndex(0);
   }, [productID]);
 
@@ -110,7 +102,7 @@ const Gallery = ({ styleImages, productID }) => {
   return (
     <Styles.Gallery>
 
-      <Styles.LeftArrow src={leftArrow} alt="Click here to scroll left" id="leftArrow" onClick={(event) => scrollLeft(event)}/>
+      <Styles.LeftArrow src={leftArrow} alt="Click here to scroll left" id="leftArrow" hidden={mainImageIndex === 0} onClick={(event) => scrollLeft(event)}/>
 
       <Styles.MainImgWrapper id="imgWrapper">
 
@@ -118,7 +110,7 @@ const Gallery = ({ styleImages, productID }) => {
 
       </Styles.MainImgWrapper>
 
-      <Styles.RightArrow src={rightArrow} alt="Click here to scroll right" id="rightArrow" onClick={scrollRight}/>
+      <Styles.RightArrow src={rightArrow} alt="Click here to scroll right" id="rightArrow" hidden={mainImageIndex === styleImages.length - 1} onClick={scrollRight}/>
 
       <Thumbnails styleImages={renderedThumbnails} mainImageIndex={mainImageIndex} changeMainImage={setMainImageIndex}/>
 
