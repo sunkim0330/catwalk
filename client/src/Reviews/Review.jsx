@@ -5,6 +5,7 @@ import * as Styles from './Styles.js';
 
 const Review = ({ review }) => {
   const [showMore, setShowMore] = useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   const handleShowMore = () => {
     setShowMore(!showMore);
@@ -58,11 +59,35 @@ const Review = ({ review }) => {
       review.photos.length ? (
         <div>
           {review.photos.map((photo, index) => {
-            return <Styles.reviewThumbnail key={index} src={photo.url} alt={`${review.reviewer_name} photo ${index}`}></Styles.reviewThumbnail>;
+            return (
+              <>
+                <Styles.reviewThumbnail
+                  key={index}
+                  src={photo.url}
+                  alt={`${review.reviewer_name} photo ${index}`}
+                  onClick={() => handleImageClick()}
+                ></Styles.reviewThumbnail>
+
+                {showImage ? (
+                  <>
+                    <Styles.modalOverlay onClick={() => setShowImage(false)}>
+                    </Styles.modalOverlay>
+                    <Styles.fullImage src={photo.url}
+                      alt={`${review.reviewer_name} photo ${index}`}
+                      key={photo.url}></Styles.fullImage>
+                  </>
+                ) : null
+                }
+              </>);
           })}
+          )
         </div>
       ) : null
     );
+  };
+
+  const handleImageClick = () => {
+    setShowImage(true);
   };
 
   // just to help visualize for now

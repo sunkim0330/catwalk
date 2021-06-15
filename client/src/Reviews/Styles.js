@@ -633,3 +633,10 @@ export const bottomBorder = style.div`
   min-height: 2px;
   width: 100%;
 `;
+
+export const fullImage = style.img`
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 30%;
+`;
