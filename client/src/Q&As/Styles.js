@@ -3,14 +3,61 @@ import styled, {css} from 'styled-components';
 
 
 export const IndexGrid = styled.div`
+  overflow: scroll;
   padding: 5px;
   font-family: Sans-Serif;
   font-size: 18px;
   border: 1px solid grey;
   display: grid;
+  grid-template-columns: 2fr 266px;
+  grid-template-rows: 100px 300px 100px;
+  gap: 10px 0px;
+  grid-template-areas:
+    "search ."
+    "question ."
+    "buttons-buttons .";
   color: #6f67bf;
 `;
 
+export const QuestionsContainer = styled.div.attrs({className: 'Questions_container'})`
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "questions"
+    "answers"
+    "footer";
+  grid-area: question;
+  font-family: Sans-Serif;
+  color: #6f67bf;
+  font-size: 15px;
+  font-weight: bold;
+`;
+
+export const SearchBarInput = styled.input`
+  overflow: scroll;
+  grid-area: search;
+  font-size: 14px;
+  padding: 2px 5px;
+  border: 1px solid grey;
+  height: 30px;
+  width: 30%;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+  background-color: #F7CAC9;
+  font-family: Sans-Serif;
+`;
+
+export const answerContainer = styled.div`
+
+grid-area: answers;
+font-family: Sans-Serif;
+color: #6f67bf;
+font-size: 15px;
+font-weight: normal;
+`;
 export const moreQuestionButton = styled.button`
   border: transparent;
   align-self: end;
@@ -39,47 +86,8 @@ export const askQuestionButton = styled.button`
   }
 `;
 
-export const QandAsInput = styled.div.attrs({className: 'QandAsInput'})`
-  width: 80%;
-  font-family: Sans-Serif;
-  color: #6f67bf;
-  font-size: 15px;
-`;
-
-export const QuestionsContainer = styled.div.attrs({className: 'Questions_container'})`
-  width: 80%;
-  font-family: Sans-Serif;
-  color: #6f67bf;
-  font-size: 15px;
-  font-weight: bold;
-`;
-
-export const SearchBarInput = styled.input`
-  display: grid;
-  grid-column-start: 1;
-  grid-column-end: five
-  font-size: 14px;
-  padding: 2px 5px;
-  border: 1px solid grey;
-  height: 30px;
-  width: 30%;
-  padding: 2px 23px 2px 30px;
-  outline: 0;
-  background-color: #F7CAC9;
-  font-family: Sans-Serif;
-`;
-
-export const answerContainer = styled.div`
-grid-area: answer;
-width: 80%;
-font-family: Sans-Serif;
-color: #6f67bf;
-font-size: 15px;
-font-weight: normal;
-`;
-
 export const answerFooter = styled.div`
-  grid-area: answerhelpful;
+  grid-area: footer;
   font-family: sans-serif;
   font-size: 10px;
   color: grey;
@@ -97,7 +105,7 @@ export const addAnswerButton = styled.button`
   }
 `;
 export const moreAnswerButton = styled.button`
-  grid-area: answer;
+  grid-area: answers;
   border: transparent;
   background-color: transparent;
   font-family: sans-serif;

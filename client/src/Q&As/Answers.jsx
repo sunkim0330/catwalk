@@ -33,12 +33,12 @@ const Answers = ({ product, questions, setDateFormat }) => {
   //I'll try to refactor when I finish with eveything
   const loadAnswers = answers.slice(0, loadPage).map((answer, index) => {
     return (
-      <Styles.answerContainer className="answer_div" key={answer.answer_id}>
-        <b>A:</b>  {answer.body} <br/>
-        <div>{answer.photos}</div><br/>
-        <Styles.answerFooter> by {answer.answerer_name}, {answer.formattedDate}</Styles.answerFooter> <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
+      <div className="answer_div" key={answer.answer_id}>
+        <b>A:</b> {answer.body} <br/>
+        <Styles.answerFooter> by {answer.answerer_name}, {answer.formattedDate}</Styles.answerFooter>
+        <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
         <Styles.btwnAnswers />
-      </Styles.answerContainer>
+      </div>
     );
   });
 

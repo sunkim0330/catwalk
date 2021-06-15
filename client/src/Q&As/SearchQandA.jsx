@@ -37,9 +37,13 @@ const SearchQandA = ({product, setDateFormat}) => {
   }).slice(0, loadPage).map((question, key) => {
     return (
       <div className="questions_div" key={question.question_id}>
-        <Styles.QuestionsContainer>
-          Q: {question.question_body} <Styles.addAnswerButton onClick={() => setShow(true)} >Add Answer</Styles.addAnswerButton><Helpful origin="qa/questions" id={question.question_id} helpCount={question.question_helpfulness}/>
-          <Modal title="Submit Your Answer" subTitle={product.name} id={question.question_id} questionBody={question.question_body} show={show} onClose={() => setShow(false)}/><br/>
+        <Styles.QuestionsContainer id='Questions_container'>
+          Q: {question.question_body} <div onClick={() => setShow(true)} >Add Answer</div>
+          <Helpful origin="qa/questions" id={question.question_id}
+            helpCount={question.question_helpfulness} />
+          <Modal title="Submit Your Answer" subTitle={product.name}
+            id={question.question_id} questionBody={question.question_body}
+            show={show} onClose={() => setShow(false)} /><br/>
           <div><Answers product={product} questions={question} setDateFormat={setDateFormat} /></div>
         </Styles.QuestionsContainer>
       </div>
@@ -58,7 +62,7 @@ const SearchQandA = ({product, setDateFormat}) => {
 
   return (
     <div>
-      <Styles.SearchBarInput onChange={(e) => setSearch(e.target.value)}
+      <Styles.SearchBarInput id="search-bar" onChange={(e) => setSearch(e.target.value)}
         type="text"
         placeholder="Have a question? Search for answers..."
       />

@@ -17,14 +17,14 @@ const QandAs = ({ product, setDateFormat }) => {
   };
 
   return (
-    <Styles.IndexGrid>
+    <div>
       QUESTIONS AND ANSWERS
-      <div>
+      <Styles.IndexGrid id="index">
         <SearchQandA product={product} setDateFormat={setDateFormat}/>
-        <Styles.askQuestionButton onClick={() => setShow(true)} >Ask a Question</Styles.askQuestionButton>
+        <div onClick={() => setShow(true)} >Ask a Question</div>
         <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
-      </div>
-    </Styles.IndexGrid>
+      </Styles.IndexGrid>
+    </div>
   );
 };
 
