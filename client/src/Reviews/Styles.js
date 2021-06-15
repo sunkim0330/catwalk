@@ -9,7 +9,6 @@ export const Grid = style.div`
   cursor: default;
   max-width: 1500px;
   min-width: 1500px;
-  border: 2px solid black;
   height: 800px;
   margin: 30px auto;
   padding: 10px;
@@ -28,12 +27,10 @@ export const Grid = style.div`
 
 export const TitleBlock = style.div`
   grid-area: title;
-  border: 1px solid blue;
 `;
 
 export const Sort = style.div`
   grid-area: sort;
-  border: 1px solid blue;
   display: flex;
   align-items: flex-start;
 `;
@@ -42,17 +39,14 @@ export const Summary = style.div`
   grid-area: summary;
   display: flex;
   justify-content: space-between;
-  border: 1px solid blue;
 `;
 
 export const Breakdown = style.div`
   grid-area: breakdown;
-  border: 1px solid blue;
 `;
 
 export const ReviewList = style.div`
   grid-area: review;
-  border: 1px solid blue;
   width: 95%;
   height: 94%;
   overflow: scroll;
@@ -60,7 +54,6 @@ export const ReviewList = style.div`
 
 export const Characteristics = style.div`
   grid-area: characteristics;
-  border: 1px solid blue;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -227,7 +220,6 @@ export const overall = style.div`
 export const spacer = style.div`
   height: 20%;
   width: 100%;
-  border-bottom: 1px solid;
   margin-bottom: 30px;
 `;
 
@@ -352,7 +344,6 @@ export const marker = style.div(props => ({
 export const reviewTile = style.div`
   width: 98%;
   height: 45%;
-  border: solid 1px black;
   margin: 5px 3px;
   padding: 5px;
   display: flex;
@@ -634,4 +625,11 @@ export const radio = style.input`
   transform: scale(1.8);
   margin: 10px 17px 0 0;
   opacity: 0;
+`;
+
+export const bottomBorder = style.div`
+  background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.75),rgba(0,0,0,0));
+  max-height: 2px;
+  min-height: 2px;
+  width: 100%;
 `;

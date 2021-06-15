@@ -50,6 +50,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
           })}
         </Styles.filter>
         <Styles.remove onClick={handleRemoveFilters}>Remove all filters</Styles.remove>
+
       </Styles.spacer>
     );
   };
@@ -176,11 +177,11 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
         </Styles.spacer>
       )
       }
-
+      <Styles.bottomBorder></Styles.bottomBorder>
       {renderCharacteristics()}
 
       <Styles.rec>{recommends}% of reviews recommend this product</Styles.rec>
-
+      <Styles.bottomBorder></Styles.bottomBorder>
     </Styles.Breakdown>
   );
 };

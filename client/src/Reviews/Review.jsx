@@ -99,6 +99,8 @@ const Review = ({ review }) => {
         <Helpful origin='reviews' id={review.review_id} helpCount={review.helpfulness} />
       </Styles.reviewContainer>
 
+      <Styles.bottomBorder></Styles.bottomBorder>
+
 
     </Styles.reviewTile>
   );
