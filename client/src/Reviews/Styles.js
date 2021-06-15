@@ -36,7 +36,7 @@ export const Sort = style.div`
   grid-area: sort;
   border: 1px solid blue;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 `;
 
 export const Summary = style.div`
@@ -82,40 +82,28 @@ export const title = style.div`
 // ===============
 
 export const currentSort = style.div`
-  width: 100px;
+  width: fit-content;
   height: fit-content;
   display: flex;
   margin: 3px 5px;
   padding: 0 5px;
+  border-bottom: 1px solid black;
 `;
 
 export const sortMethods = style.div`
-
+  positiion: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  margin: 0 5px 3px 10px;
+  cursor: pointer;
 `;
 
-// export const arrow = style.div`
-//   position: relative;
-//   display: block;
-//   heigth: 50px;
-
-//   :before,
-//   :after {
-//     position: absolute;
-//     display: block;
-//     content: "";
-//     border: 25px solid transparent;
-//   }
-
-//   :before {
-//     top: 0;
-//     border-top-color: black;
-//   }
-
-//   :after {
-//     top: -10px;
-//     border-top-color: white;
-//   }
-// `;
+export const sortOption = style.div`
+  :hover {
+    color: blue;
+  }
+`;
 
 export const arrow = style.div`
 border-style: solid;
@@ -129,7 +117,7 @@ top: 0;
 transform: rotate(135deg);
 vertical-align: top;
 width: 0.45em;
-margin: 5px 0 0 4px;
+margin: 3px 0 0 4px;
 `;
 
 export const total = style.a`

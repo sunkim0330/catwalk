@@ -21,16 +21,16 @@ const Dropdown = ({ sort, setSort, sortReviewsList, setCurrentReviews, currentRe
     <>
 
       {hovered ? (
-        <div onMouseLeave={handleHover}>
+        <Styles.sortMethods onMouseLeave={handleHover}>
           {options.map(option => {
             return (
-              <Styles.textMain
+              <Styles.sortOption
                 onClick={handleSort}
                 key={option}
-              >{option}</Styles.textMain>
+              >{option}</Styles.sortOption>
             );
           })}
-        </div>
+        </Styles.sortMethods>
       ) : (
         <Styles.currentSort
           onMouseEnter={handleHover}
