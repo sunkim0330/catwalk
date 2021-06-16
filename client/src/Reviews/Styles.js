@@ -74,62 +74,6 @@ export const title = style.div`
 // SORT BLOCK
 // ===============
 
-// export const currentSort = style.div`
-//   width: fit-content;
-//   height: fit-content;
-//   display: flex;
-//   margin: 3px 5px;
-//   padding: 0 5px;
-//   border-bottom: 1px solid black;
-//   z-index: 2;
-
-//   :hover{
-//     opacity: 0;
-//     transition: opacity .25s ease-out;
-//     z-index: 0;
-
-//   }
-// `;
-
-// export const sortMethods = style.div`
-//   position: relative;
-//   width: fit-content;
-//   height: 80px;
-//   display: flex;
-//   flex-direction: column;
-//   margin: 0 5px 3px 10px;
-//   padding: 0 5px;
-//   cursor: pointer;
-//   border-radius: 5px;
-//   border:  1px solid #d3d9d9;
-//   opacity: 0;
-
-
-//   `;
-
-// export const sortOption = style.div`
-//   :hover {
-//     color: #d3d9d9;
-//     background: black;
-//     text-decoration: underline;
-//   }
-// `;
-
-// export const arrow = style.div`
-// border-style: solid;
-// border-width: 0.15em 0.15em 0 0;
-// content: '';
-// display: inline-block;
-// height: 0.45em;
-// left: 0.15em;
-// position: relative;
-// top: 0;
-// transform: rotate(135deg);
-// vertical-align: top;
-// width: 0.45em;
-// margin: 3px 0 0 4px;
-// `;
-
 export const dropdown = style.div`
   margin: 3px 5px;
   width: 120px;
@@ -517,6 +461,35 @@ export const modal = style.div`
   cursor: default;
 `;
 
+export const errOverlay = style.div`
+  font-family: 'Roboto', sans-serif;
+  z-index: 45;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.8);
+
+`;
+
+export const errorModal = style.div`
+  z-index: 50;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: solid 1px #d3d9d9;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: default;
+`;
+
 export const formHeader = style.div`
   width: 100%;
   height: fit-content;
@@ -726,7 +699,7 @@ export const radioSmall = style.input`
   margin-right: 0.5rem;
   outline: none;
   position: relative;
-  z-index: 1000;
+  z-index: 15;
   border-radius: 50%;
 
   :hover {
@@ -753,7 +726,7 @@ export const radioSmall = style.input`
       content: '';
       display: block;
       position: absolute;
-      z-index: 100;
+      z-index: 12;
       border-radius: 50%;
     }
   }

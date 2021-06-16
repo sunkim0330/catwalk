@@ -3,6 +3,8 @@ import axios from 'axios';
 import * as Styles from './Styles.js';
 
 const Submit = ({ reviewInfo, ratings, closeReview }) => {
+  const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState([]);
 
   const submitReview = () => {
     axios.post('/reviews', reviewInfo)
@@ -17,13 +19,13 @@ const Submit = ({ reviewInfo, ratings, closeReview }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let errorMessage = 'You must enter the following:\n';
+    let newErrorMessage = ['You must enter the following:'];
 
     const checkErrors = () => {
       let hasError = false;
 
       if (!reviewInfo.rating) {
-        errorMessage += 'Overall rating\n';
+        newErrorMessage.push('Overall rating');
         hasError = true;
       }
 
@@ -32,24 +34,24 @@ const Submit = ({ reviewInfo, ratings, closeReview }) => {
           hasError = true;
           for (let key in ratings) {
             if (ratings[key].id === Number(char)) {
-              errorMessage += `${key} rating\n`;
+              newErrorMessage.push(`${key} rating`);
             }
           }
         }
       }
 
       if (reviewInfo.body.length < 50) {
-        errorMessage += 'Review must be at least 50 characters\n';
+        newErrorMessage.push('Review must be at least 50 characters');
         hasError = true;
       }
 
       if (!reviewInfo.name) {
-        errorMessage += 'Nickname\n';
+        newErrorMessage.push('Nickname');
         hasError = true;
       }
 
       if (!reviewInfo.email) {
-        errorMessage += 'Email\n';
+        newErrorMessage.push('Email');
         hasError = true;
       }
 
@@ -58,7 +60,8 @@ const Submit = ({ reviewInfo, ratings, closeReview }) => {
     };
 
     if (checkErrors()) {
-      alert(errorMessage);
+      setHasError(true);
+      setErrorMessage(newErrorMessage);
       return;
     } else {
       submitReview();
@@ -67,10 +70,33 @@ const Submit = ({ reviewInfo, ratings, closeReview }) => {
 
   };
 
+  const closeError = () => {
+    setHasError(false);
+    setErrorMessage([]);
+  };
+
   return (
-    <div>
+    <>
       <Styles.button onClick={handleSubmit}>Submit review</Styles.button>
-    </div>
+
+      {hasError ? (
+        <>
+          <Styles.errOverlay></Styles.errOverlay>
+          <Styles.errorModal>
+            {errorMessage.map((error, i) => {
+              return i === 0 ? (
+                <Styles.textMain>{error}</Styles.textMain>
+              ) : (
+                <Styles.textSmall>{error}</Styles.textSmall>
+              );
+            })}
+            <Styles.button onClick={closeError}>Will do!</Styles.button>
+          </Styles.errorModal>
+
+        </>
+      ) : null
+      }
+    </>
   );
 };
 
