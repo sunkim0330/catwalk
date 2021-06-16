@@ -1,5 +1,5 @@
 import React from 'react';
-import style from 'styled-components';
+import style, { keyframes } from 'styled-components';
 
 // ==============
 // GRID BREAKDOWN
@@ -8,10 +8,8 @@ export const Grid = style.div`
   font-family: sans-serif;
   cursor: default;
   max-width: 1500px;
-  min-width: 1200px;
-  border: 2px solid black;
+  min-width: 1500px;
   height: 800px;
-  width: 96%;
   margin: 30px auto;
   padding: 10px;
   display: grid;
@@ -29,37 +27,33 @@ export const Grid = style.div`
 
 export const TitleBlock = style.div`
   grid-area: title;
-  border: 1px solid blue;
 `;
 
 export const Sort = style.div`
   grid-area: sort;
-  border: 1px solid blue;
+  display: flex;
+  align-items: flex-start;
 `;
 
 export const Summary = style.div`
   grid-area: summary;
   display: flex;
   justify-content: space-between;
-  border: 1px solid blue;
 `;
 
 export const Breakdown = style.div`
   grid-area: breakdown;
-  border: 1px solid blue;
 `;
 
 export const ReviewList = style.div`
   grid-area: review;
-  border: 1px solid blue;
   width: 95%;
   height: 94%;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 export const Characteristics = style.div`
   grid-area: characteristics;
-  border: 1px solid blue;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -79,16 +73,133 @@ export const title = style.div`
 // SORT BLOCK
 // ===============
 
-export const dropdown = style.select`
+// export const currentSort = style.div`
+//   width: fit-content;
+//   height: fit-content;
+//   display: flex;
+//   margin: 3px 5px;
+//   padding: 0 5px;
+//   border-bottom: 1px solid black;
+//   z-index: 2;
 
+//   :hover{
+//     opacity: 0;
+//     transition: opacity .25s ease-out;
+//     z-index: 0;
+
+//   }
+// `;
+
+// export const sortMethods = style.div`
+//   position: relative;
+//   width: fit-content;
+//   height: 80px;
+//   display: flex;
+//   flex-direction: column;
+//   margin: 0 5px 3px 10px;
+//   padding: 0 5px;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   border:  1px solid #d3d9d9;
+//   opacity: 0;
+
+
+//   `;
+
+// export const sortOption = style.div`
+//   :hover {
+//     color: #d3d9d9;
+//     background: black;
+//     text-decoration: underline;
+//   }
+// `;
+
+// export const arrow = style.div`
+// border-style: solid;
+// border-width: 0.15em 0.15em 0 0;
+// content: '';
+// display: inline-block;
+// height: 0.45em;
+// left: 0.15em;
+// position: relative;
+// top: 0;
+// transform: rotate(135deg);
+// vertical-align: top;
+// width: 0.45em;
+// margin: 3px 0 0 4px;
+// `;
+
+export const dropdown = style.div`
+  margin: 3px 5px;
+  width: 120px;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+
+  :hover {
+
+  }
 `;
 
+export const currentSort = style.div`
+  padding: 4px 10px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    color: #d3d9d9;
+  }
+
+  &:after {
+    content: "";
+    transition: all .3s;
+    border: solid #d3d9d9;
+    border-width: 0 1px 1px 0;
+    float: right;
+    margin-top: 1px;
+    margin-right: 6px;
+    padding: 5px;
+    transform: rotate(45deg);
+  }
+`;
+
+export const slideDown = keyframes`
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 80px;
+  }
+`;
+
+export const list = style.div`
+  position: relative;
+  margin: 3px 5px;
+  width: 120px;
+  height: 80px;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+  z-index: 10;
+  animation: ${slideDown} 1s;
+`;
+
+export const listItem = style.div`
+  padding: 4px 10px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    color: #d3d9d9;
+  }
+`;
+
+
+
+
 export const total = style.a`
-  display: inline-block;
   font-size: 1.2em;
   margin: 15px 30px;
   width: fit-content;
-  font-weight: normal;
 `;
 
 // ===============
@@ -109,7 +220,6 @@ export const overall = style.div`
 export const spacer = style.div`
   height: 20%;
   width: 100%;
-  border-bottom: 1px solid;
   margin-bottom: 30px;
 `;
 
@@ -170,8 +280,6 @@ export const count = style.a`
 export const rec = style.div`
   width: 100%;
   margin: 20px 5px;
-  padding: 10px;
-  display: inline-block;
 `;
 
 // ===============
@@ -236,7 +344,6 @@ export const marker = style.div(props => ({
 export const reviewTile = style.div`
   width: 98%;
   height: 45%;
-  border: solid 1px black;
   margin: 5px 3px;
   padding: 5px;
   display: flex;
@@ -333,8 +440,8 @@ export const more = style.div`
 export const helpful = style.div`
   display: flex;
   justify-content: flex-start;
-  font-size: .9em;
-  width: 25%;
+  font-size: 12px;
+  width: ${props => props.width};
 `;
 
 export const helpButton = style.button`
@@ -344,7 +451,7 @@ export const helpButton = style.button`
   color: black;
   cursor: pointer;
   background-color: white;
-  font-size: .9em;
+  font-size: 12px;
   padding: 0 5px;
   text-decoration: underline;
   &:hover {
@@ -353,10 +460,10 @@ export const helpButton = style.button`
 `;
 
 export const helpText = style.a`
-  border-right: solid 1px black;
-  width: 50%;
-  padding-right: 5%;
-  margin-right: 5%;
+  width: 110px;
+  padding-right: 10px;
+  margin-right: 15px;
+  border-right: ${props => props.borderRight};
 `;
 
 // ===============
@@ -384,10 +491,10 @@ export const modal = style.div`
   transform: translate(-50%, -50%);
   max-width: 700px;
   min-width: 700px;
-  max-height: 100px;
-  min-height: 1000px;
-  background-color: rgba(211, 217, 217,1);
-  border: solid 1px black;
+  max-height: 850px;
+  min-height: 850px;
+  background-color: white;
+  border: solid 1px #d3d9d9;
   border-radius: 10px;
   padding: 15px;
   display: flex;
@@ -399,7 +506,6 @@ export const modal = style.div`
 export const formHeader = style.div`
   width: 100%;
   height: fit-content;
-  border-bottom: solid 1px black;
   margin-bottom: 10px;
 `;
 
@@ -457,7 +563,6 @@ export const charBox = style.div`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 5px;
-  border-bottom: solid 1px;
 `;
 
 export const charButtons = style.div`
@@ -495,16 +600,18 @@ export const textInput = style.input`
   padding: 1px;
   font-size: 1em;
   margin: 2px 0;
-  border: none;
+  border: 1px solid #d3d9d9;
+  width: 240px;
 `;
 
 export const textarea = style.textarea`
   padding: 1px;
   font-size: 1em;
   margin: 2px 0;
-  border: none;
+  border: 1px solid #d3d9d9;
   resize: none;
   font-family: sans-serif;
+  width: 300px;
 `;
 
 export const flexFit = style.div`
@@ -513,9 +620,157 @@ export const flexFit = style.div`
   width: fit-content;
 `;
 
+export const flexFitHeight = style.div`
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
+  height: 70px;
+`;
+
+export const flexFitCol = style.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+export const flexWidth = style.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 export const radio = style.input`
   cursor: pointer;
   transform: scale(1.8);
   margin: 10px 17px 0 0;
   opacity: 0;
+`;
+
+export const bottomBorder = style.div`
+  background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.75),rgba(0,0,0,0));
+  max-height: 2px;
+  min-height: 2px;
+  width: 100%;
+`;
+
+export const fullImage = style.img`
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 30%;
+`;
+
+export const button = style.div`
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
+
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
+  }
+
+  :active {
+    transform: translateY(2px);
+  }
+`;
+
+export const clickWave = keyframes`
+    0% {
+      height: 30px;
+      width: 30px;
+      opacity: 0.35;
+      position: relative;
+    }
+    100% {
+      height: 90px;
+      width: 90px;
+      margin-left: -32px;
+      margin-top: -32px;
+      opacity: 0;
+    }
+`;
+
+export const radioSmall = style.input`
+  appearance: none;
+  height: 30px;
+  width: 30px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+  border-radius: 50%;
+
+  :hover {
+    background: #9faab7;
+  }
+
+  :checked {
+    background: #40e0d0;
+
+    &::before {
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      content: '✔';
+      display: block;
+      font-size: 20px;
+      text-align: center;
+      line-height: 30px;
+    }
+
+    &::after {
+      animation: ${clickWave} .5s;
+      background: #40e0d0;
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 100;
+      border-radius: 50%;
+    }
+  }
+`;
+
+export const wrapper = style.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const wiggle = keyframes`
+  0%, 100% {
+    transform: translateX(0px)
+  }
+
+  25% {
+    transform: translateX(3px)
+  }
+
+  75% {
+    transform: translateX(-3px)
+  }
+`;
+
+export const wiggler = style.a`
+
+
+  &:hover {
+    position: relative;
+    animation: ${wiggle} 1s;
+    color: blue;
+  }
 `;

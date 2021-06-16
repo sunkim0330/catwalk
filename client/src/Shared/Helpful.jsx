@@ -11,8 +11,24 @@ const Helpful = ({ origin, id, helpCount }) => {
     return origin === 'qa/questions';
   });
   const [type, setType] = useState('');
-  const [count, setCount] = useState(helpCount);
+  const [count, setCount] = useState(0);
+  const [styles, setStyles] = useState(() => {
+    let styles = {};
 
+    if (isQuestion) {
+      styles.width = '125px;';
+      styles['border-right'] = 'none;';
+    } else {
+      styles.width = '200px;';
+      styles['border-right'] = '1px solid black;';
+    }
+    return styles;
+  });
+
+  /*
+    const StyledYourComponent = styled(YourComponent)`
+    background: ${props => props.active ? 'darkred' : 'limegreen'}
+  */
   const sendPutReq = () => {
     axios.put(`/${origin}/${id}/${type}`)
       .then(res => {
@@ -43,7 +59,7 @@ const Helpful = ({ origin, id, helpCount }) => {
     if (isQuestion) {
       return null;
     } else if (link.report) {
-      return <Styles.helpText>Reported!</Styles.helpText>;
+      return <Styles.helpText border="hidden">Reported!</Styles.helpText>;
     } else {
       return (
         <>
@@ -59,10 +75,14 @@ const Helpful = ({ origin, id, helpCount }) => {
     }
   }, [type]);
 
+  useEffect(() => {
+    setCount(helpCount);
+  }, [helpCount]);
+
 
   return (
-    <Styles.helpful>
-      <Styles.helpText> Helpful? <Styles.helpButton value="helpful" onClick={handleClick}>Yes</Styles.helpButton> ({count})</Styles.helpText>
+    <Styles.helpful width={styles.width}>
+      <Styles.helpText borderRight={styles['border-right']}> Helpful? <Styles.helpButton value="helpful" onClick={handleClick}>Yes</Styles.helpButton> ({count})</Styles.helpText>
       {/* <div>|</div> */}
       {displayReport()}
     </Styles.helpful>

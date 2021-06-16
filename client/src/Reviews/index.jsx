@@ -5,6 +5,7 @@ import Breakdown from './Breakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 import Stars from '../Shared/Star.jsx';
+import Dropdown from './Dropdown.jsx';
 import * as Styles from './Styles.js';
 
 const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) => {
@@ -14,6 +15,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
   const [chars, setChars] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [sort, setSort] = useState('Relevant');
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -27,8 +29,10 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   };
 
   const sortReviewsList = (order) => {
+    // update sort method
+    setSort(order);
 
-    if (order === 'relevant') {
+    if (order === 'Relevant') {
       let relevantSort = reviewsList.sort((a, b) => {
         return b.helpfulness - a.helpfulness
         || new Date(b.date) - new Date(a.date);
@@ -36,14 +40,14 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       setReviewsList(relevantSort);
     }
 
-    if (order === 'helpful') {
+    if (order === 'Helpful') {
       let helpfulSort = reviewsList.sort((a, b) => {
         return b.helpfulness - a.helpfulness;
       });
       setReviewsList(helpfulSort);
     }
 
-    if (order === 'newest') {
+    if (order === 'Newest') {
       let newSort = reviewsList.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
       });
@@ -88,11 +92,14 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
     setChars(newChars);
   }, [meta]);
 
-  // const style = 'width: 200px';
+  useEffect(() => {
+    sortReviewsList(sort);
+  }, [sort]);
+
 
   return (
     <>
-      <Styles.Grid>
+      <Styles.Grid id="reviews-container">
         {/* container for average rating, reviews breakdown, recommends, characteristics */}
         {/* <div id="ratings-breakdown"> */}
         <Styles.TitleBlock>
@@ -109,7 +116,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
         </Styles.Summary>
 
 
-        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta}/>
+        <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta} sort={sort} sortReviewsList={sortReviewsList} />
         <Characteristics chars={chars} ratings={meta.characteristics} />
 
         {/* </div> */}
@@ -117,22 +124,32 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
         {/* container for sort dropdown, reviews, add review button */}
 
         <Styles.Sort>
-          <Styles.total>{reviews.length} reviews</Styles.total>
-          <select id="sort" onChange={handleSort}>
+          <Styles.textMain>{reviews.length} reviews</Styles.textMain>
+          {/* <select id="sort" onChange={handleSort}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>
             <option value="newest">Newest</option>
-          </select>
+          </select> */}
+          <Dropdown
+            sort={sort}
+            setSort={setSort}
+            sortReviewsList={sortReviewsList}
+            setCurrentReviews={setCurrentReviews}
+            currentReviewIndex={currentReviewIndex}
+            reviewsList={reviewsList}
+          />
         </Styles.Sort>
         <Styles.ReviewList>
           {currentReviews.map((review, index) => {
             return <Review key={index} review={review} />;
           })}
-          {currentReviews.length === reviewsList.length
-            ? null
-            : <button onClick={handleLoadMoreReviews}>More Reviews</button>
-          }
-          <button onClick={handleShowForm}>add a review</button>
+          <Styles.flexFit>
+            {currentReviews.length === reviewsList.length
+              ? null
+              : <Styles.button onClick={handleLoadMoreReviews}>More Reviews</Styles.button>
+            }
+            <Styles.button onClick={handleShowForm}>add a review</Styles.button>
+          </Styles.flexFit>
         </Styles.ReviewList>
 
 
