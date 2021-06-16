@@ -19,7 +19,7 @@ const Helpful = ({ origin, id, helpCount }) => {
       styles.width = '125px;';
       styles['border-right'] = 'none;';
     } else {
-      styles.width = '200px;';
+      styles.width = '230px;';
       styles['border-right'] = '1px solid black;';
     }
     return styles;
@@ -59,7 +59,10 @@ const Helpful = ({ origin, id, helpCount }) => {
     if (isQuestion) {
       return null;
     } else if (link.report) {
-      return <Styles.helpText border="hidden">Reported!</Styles.helpText>;
+      return <Styles.helpText
+        border="hidden"
+        marginRight="0"
+      >Reported!</Styles.helpText>;
     } else {
       return (
         <>
@@ -82,7 +85,10 @@ const Helpful = ({ origin, id, helpCount }) => {
 
   return (
     <Styles.helpful width={styles.width}>
-      <Styles.helpText borderRight={styles['border-right']}> Helpful? <Styles.helpButton value="helpful" onClick={handleClick}>Yes</Styles.helpButton> ({count})</Styles.helpText>
+      <Styles.helpText
+        borderRight={styles['border-right']}
+        marginRight="15px"
+      > Helpful? <Styles.helpButton value="helpful" onClick={handleClick}>Yes</Styles.helpButton> ({count})</Styles.helpText>
       {/* <div>|</div> */}
       {displayReport()}
     </Styles.helpful>

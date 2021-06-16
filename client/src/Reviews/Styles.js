@@ -417,7 +417,7 @@ export const helpButton = style.button`
 export const helpText = style.a`
   width: 110px;
   padding-right: 10px;
-  margin-right: 15px;
+  margin-right: ${props => props.marginRight};
   border-right: ${props => props.borderRight};
 `;
 
