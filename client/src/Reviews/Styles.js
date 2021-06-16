@@ -493,7 +493,7 @@ export const modal = style.div`
   min-width: 700px;
   max-height: 100px;
   min-height: 1000px;
-  background-color: rgba(211, 217, 217,1);
+  background-color: white;
   border: solid 1px black;
   border-radius: 10px;
   padding: 15px;
@@ -506,7 +506,6 @@ export const modal = style.div`
 export const formHeader = style.div`
   width: 100%;
   height: fit-content;
-  border-bottom: solid 1px black;
   margin-bottom: 10px;
 `;
 
@@ -564,7 +563,6 @@ export const charBox = style.div`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 5px;
-  border-bottom: solid 1px;
 `;
 
 export const charButtons = style.div`
@@ -642,19 +640,150 @@ export const fullImage = style.img`
 `;
 
 export const button = style.div`
-  border: 1px solid #6B636B;
+  border: 1px solid #d3d9d9;
   border-radius: 5px;
   width: fit-content;
   margin-right: 8px;
   padding: 5px;
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
 
   :hover {
     border: 1px solid #CEF1D5;
     color: #6B636B;
     box-shadow: none;
-    transition: all .1s ease;
+    transition: all .5s ease;
   }
 `;
 
+// export const radioSmall = style.input`
+//   cursor: pointer;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   opacity: 1e-5;
+//   pointer-events: none;
+
+//   :checked {
+//     transform: scale3d(.975, .975, 1) translate3d(0, 10%, 0);
+//     opacity: 0;
+//   }
+// `;
+
+// export const wrapper = style.div`
+//   display: inline-flex;
+//   align-items: center;
+//   cursor: pointer;
+//   color: #394a56;
+
+//   ${radioSmall}:checked {
+//     transform: scale3d(.975, .975, 1) translate3d(0, 10%, 0);
+//     opacity: 0;
+//   }
+// `;
+
+// export const indicator = style.div`
+//   position: relative;
+//   border-radius: 50%;
+//   height: 30px;
+//   width: 30px;
+//   box-shadow:
+//     -8px -4px 8px 0px #ffffff,
+//     8px 4px 12px 0px #d1d9e6;
+//   overflow: hidden;
+
+
+//   :before,
+//   :after {
+//     content: '';
+//     position: absolute;
+//     top: 10%;
+//     left: 10%;
+//     height: 80%;
+//     width: 80%;
+//     border-radius: 50%;
+//   }
+
+//   :before {
+//     box-shadow:
+//       -4px -2px 4px 0px #d1d9e6,
+//       4px 2px 8px 0px #fff;
+//   }
+
+//   :after {
+//     background-color: #ecf0f3;
+//     box-shadow:
+//       -4px -2px 4px 0px #fff,
+//       4px 2px 8px 0px #d1d9e6;
+//     transform: scale3d(1, 1, 1);
+//     transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+//     ${radioSmall}:checked {
+//       transform: scale3d(.975, .975, 1) translate3d(0, 10%, 0);
+//       opacity: 0;
+//     }
+//   }
+
+
+// `;
+
+export const clickWave = keyframes`
+    0% {
+      height: 30px;
+      width: 30px;
+      opacity: 0.35;
+      position: relative;
+    }
+    100% {
+      height: 90px;
+      width: 90px;
+      margin-left: -32px;
+      margin-top: -32px;
+      opacity: 0;
+    }
+`;
+
+export const radioSmall = style.input`
+  appearance: none;
+  height: 30px;
+  width: 30px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+  border-radius: 50%;
+
+  :hover {
+    background: #9faab7;
+  }
+
+  :checked {
+    background: #40e0d0;
+
+    &::before {
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      content: '✔';
+      display: block;
+      font-size: 20px;
+      text-align: center;
+      line-height: 30px;
+    }
+
+    &::after {
+      animation: ${clickWave} .5s;
+      background: #40e0d0;
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 100;
+      border-radius: 50%;
+    }
+  }
+`;

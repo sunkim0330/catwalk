@@ -122,16 +122,16 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
               {scale[char].map((attribute, index) => {
                 return (
 
-                  <Styles.charButtons key={index}>
-                    <Styles.charbutton
+                  <div key={index}>
+                    <Styles.radioSmall
                       type="radio"
                       name={char}
                       value={index + 1}
                       onChange={handleCharChange}
                       required
                     />
-                  </Styles.charButtons>
 
+                  </div>
                 );
               })}
             </Styles.flexContainerLong>
@@ -139,6 +139,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
               <Styles.textSmall>{scale[char][0]}</Styles.textSmall>
               <Styles.textSmall>{scale[char][4]}</Styles.textSmall>
             </Styles.flexContainerLong>
+            <Styles.bottomBorder></Styles.bottomBorder>
           </Styles.charBox>
         );
       })
@@ -204,6 +205,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
         <Styles.formHeader>
           <Styles.textTitle>Write your review</Styles.textTitle>
           <Styles.textSub>About the {product.name}</Styles.textSub>
+          <Styles.bottomBorder></Styles.bottomBorder>
         </Styles.formHeader>
 
         <Styles.formContainer>
