@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Overview = styled.div`
   font-family: 'Roboto', sans-serif;
-  background-color: white;
   display: grid;
   grid-template-columns: 70% 30%;
   text-align: center;
@@ -183,7 +182,7 @@ export const GalleryThumbnail = styled.img`
   width: auto;
   margin: auto;
   ${({ selected }) => {
-    return selected ? 'box-shadow: 0px 0px 0px 5px #808080' : 'box-shadow: 0px 0px 0px 0px #808080';
+    return selected ? 'box-shadow: 0px 0px 2px 5px #6B636B' : 'box-shadow: 0px 0px 0px 0px #6B636B';
   }}
 `;
 
@@ -259,6 +258,7 @@ export const StyleName = styled.h3`
 `;
 
 export const StyleContainer = styled.div`
+  position: relative;
 `;
 
 export const Style = styled.img`
@@ -268,10 +268,11 @@ export const Style = styled.img`
 `;
 
 export const Checkmark = styled.i`
-  position: relative;
-  top: 60px;
+  position: absolute;
+  top: 17px;
+  left: 17px;
   font-size: 42px;
-  color: green;
+  color: #3A5A40;
   z-index: ${({selected}) => !selected ? '-1' : null}
 `;
 
