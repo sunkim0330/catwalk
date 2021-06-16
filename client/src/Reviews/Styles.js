@@ -491,10 +491,10 @@ export const modal = style.div`
   transform: translate(-50%, -50%);
   max-width: 700px;
   min-width: 700px;
-  max-height: 100px;
-  min-height: 1000px;
+  max-height: 850px;
+  min-height: 850px;
   background-color: white;
-  border: solid 1px black;
+  border: solid 1px #d3d9d9;
   border-radius: 10px;
   padding: 15px;
   display: flex;
@@ -600,22 +600,44 @@ export const textInput = style.input`
   padding: 1px;
   font-size: 1em;
   margin: 2px 0;
-  border: none;
+  border: 1px solid #d3d9d9;
+  width: 240px;
 `;
 
 export const textarea = style.textarea`
   padding: 1px;
   font-size: 1em;
   margin: 2px 0;
-  border: none;
+  border: 1px solid #d3d9d9;
   resize: none;
   font-family: sans-serif;
+  width: 300px;
 `;
 
 export const flexFit = style.div`
   display: flex;
   justify-content: space-between;
   width: fit-content;
+`;
+
+export const flexFitHeight = style.div`
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
+  height: 70px;
+`;
+
+export const flexFitCol = style.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+export const flexWidth = style.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const radio = style.input`
@@ -648,6 +670,7 @@ export const button = style.div`
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
+  font-family: sans-serif;
 
   :hover {
     border: 1px solid #CEF1D5;
@@ -721,5 +744,5 @@ export const radioSmall = style.input`
 export const wrapper = style.div`
   display: flex;
   flex-direction: column;
-
+  align-items: center;
 `;

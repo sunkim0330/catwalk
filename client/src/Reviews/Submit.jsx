@@ -68,7 +68,7 @@ const Submit = ({ reviewInfo, ratings }) => {
 
   return (
     <div>
-      <button onClick={handleSubmit}>Submit review</button>
+      <Styles.button onClick={handleSubmit}>Submit review</Styles.button>
     </div>
   );
 };

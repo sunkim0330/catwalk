@@ -210,101 +210,144 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
         <Styles.formContainer>
 
-          <Styles.section>
 
-            <Styles.textMain>Overall rating</Styles.textMain>
-            <div>
-              <Stars rating={userRating}
-                width='150px'
-                cursor='pointer'
-                // margin='10px 0'
-                z-index = '-10'
-                position='absolute'
-              />
-              <div style={style}>
+          <Styles.flexWidth>
+            <Styles.flexContainerCol>
 
-                <Styles.radio
-                  type="radio"
-                  value="1"
-                  name="star"
-                  onMouseEnter={handleStarEvent}
-                  onMouseLeave={handleStarEvent}
-                  onChange={handleStarEvent}
+              <Styles.textMain>Overall rating</Styles.textMain>
+              <div>
+                <Stars rating={userRating}
+                  width='150px'
+                  cursor='pointer'
+                  // margin='10px 0'
+                  z-index = '-10'
+                  position='absolute'
                 />
-                <Styles.radio
-                  type="radio"
-                  value="2"
-                  name="star"
-                  onMouseEnter={handleStarEvent}
-                  onMouseLeave={handleStarEvent}
-                  onChange={handleStarEvent}
-                />
-                <Styles.radio
-                  type="radio"
-                  value="3"
-                  name="star"
-                  onMouseEnter={handleStarEvent}
-                  onMouseLeave={handleStarEvent}
-                  onChange={handleStarEvent}
-                />
-                <Styles.radio
-                  type="radio"
-                  value="4"
-                  name="star"
-                  onMouseEnter={handleStarEvent}
-                  onMouseLeave={handleStarEvent}
-                  onChange={handleStarEvent}
-                />
-                <Styles.radio
-                  type="radio"
-                  value="5"
-                  name="star"
-                  onMouseEnter={handleStarEvent}
-                  onMouseLeave={handleStarEvent}
-                  onChange={handleStarEvent}
-                />
+                <div style={style}>
+
+                  <Styles.radio
+                    type="radio"
+                    value="1"
+                    name="star"
+                    onMouseEnter={handleStarEvent}
+                    onMouseLeave={handleStarEvent}
+                    onChange={handleStarEvent}
+                  />
+                  <Styles.radio
+                    type="radio"
+                    value="2"
+                    name="star"
+                    onMouseEnter={handleStarEvent}
+                    onMouseLeave={handleStarEvent}
+                    onChange={handleStarEvent}
+                  />
+                  <Styles.radio
+                    type="radio"
+                    value="3"
+                    name="star"
+                    onMouseEnter={handleStarEvent}
+                    onMouseLeave={handleStarEvent}
+                    onChange={handleStarEvent}
+                  />
+                  <Styles.radio
+                    type="radio"
+                    value="4"
+                    name="star"
+                    onMouseEnter={handleStarEvent}
+                    onMouseLeave={handleStarEvent}
+                    onChange={handleStarEvent}
+                  />
+                  <Styles.radio
+                    type="radio"
+                    value="5"
+                    name="star"
+                    onMouseEnter={handleStarEvent}
+                    onMouseLeave={handleStarEvent}
+                    onChange={handleStarEvent}
+                  />
+                </div>
               </div>
-            </div>
 
-          </Styles.section>
-          <br></br>
-          <Styles.section>
-            <Styles.textSmall>Do you recommend this product?</Styles.textSmall>
-            <Styles.flexContainerShort>
-              <Styles.wrapper>
-                <Styles.radioSmall
-                  type="radio"
-                  name="recommend"
-                  value="yes"
-                  onChange={handleRecommendsChange}
+
+              <br></br>
+
+              <Styles.textSmall>Do you recommend this product?</Styles.textSmall>
+              <Styles.flexContainerShort>
+                <Styles.wrapper>
+                  <Styles.radioSmall
+                    type="radio"
+                    name="recommend"
+                    value="yes"
+                    onChange={handleRecommendsChange}
+                    required
+                  />
+                  <Styles.textSmall>Yes</Styles.textSmall>
+                </Styles.wrapper>
+
+                <Styles.wrapper>
+                  <Styles.radioSmall
+                    type="radio"
+                    name="recommend"
+                    value="no"
+                    onChange={handleRecommendsChange}
+                  />
+                  <Styles.textSmall>No</Styles.textSmall>
+                </Styles.wrapper>
+              </Styles.flexContainerShort>
+
+              <Styles.flexContainerCol>
+                <Styles.textMain>
+                Review summary
+                </Styles.textMain>
+                <Styles.textInput
+                  type="text"
+                  id="add-review-summary"
+                  name="add-review-summary"
+                  maxLength="60"
+                  placeholder="Example: Best purchase ever!"
+                  size="30"
+                  // value={summary}
+                  onChange={handleSummaryChange}
                   required
                 />
-                <Styles.textSmall>Yes</Styles.textSmall>
-              </Styles.wrapper>
+              </Styles.flexContainerCol>
 
-              <Styles.wrapper>
-                <Styles.radioSmall
-                  type="radio"
-                  name="recommend"
-                  value="no"
-                  onChange={handleRecommendsChange}
+              <Styles.flexContainerCol>
+                <Styles.textMain>
+                Review
+                </Styles.textMain>
+                <Styles.textarea
+                  id="add-review-body"
+                  name="add-review-body"
+                  rows="5"
+                  columns="30"
+                  minLength="50"
+                  maxLength="1000"
+                  placeholder="Why did you like the product or not?"
+                  // value={body}
+                  onChange={handleBodyChange}
+                  required
                 />
-                <Styles.textSmall>No</Styles.textSmall>
-              </Styles.wrapper>
-            </Styles.flexContainerShort>
+                <Styles.textSmall>
+              Minimum required characters left: {minRequiredChars}
+                </Styles.textSmall>
+              </Styles.flexContainerCol>
 
-          </Styles.section>
-
-          <Styles.section>
-            <Styles.textMain>Characteristics</Styles.textMain>
+            </Styles.flexContainerCol>
 
             <Styles.section>
-              {renderCharButtons()}
-            </Styles.section>
-          </Styles.section>
+              <Styles.textMain>Characteristics</Styles.textMain>
 
-          <Styles.section>
-            <Styles.flexContainerCol>
+              <Styles.section>
+                {renderCharButtons()}
+              </Styles.section>
+            </Styles.section>
+
+
+          </Styles.flexWidth>
+
+          {/* <Styles.section> */}
+          {/* <Styles.flexContainerCol>
               <Styles.textMain>
                 Review summary
               </Styles.textMain>
@@ -319,9 +362,9 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                 onChange={handleSummaryChange}
                 required
               />
-            </Styles.flexContainerCol>
+            </Styles.flexContainerCol> */}
 
-            <Styles.flexContainerCol>
+          {/* <Styles.flexContainerCol>
               <Styles.textMain>
                 Review
               </Styles.textMain>
@@ -341,28 +384,32 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
               Minimum required characters left: {minRequiredChars}
               </Styles.textSmall>
             </Styles.flexContainerCol>
-          </Styles.section>
+          </Styles.section> */}
 
 
-          <Styles.section>
+          <Styles.flexContainerCol>
             {reviewInfo.imageURLs.length >= 5 ? null
-              : <Styles.flexContainerCol>
-                <Styles.textMain>
-                  Share your pics! Up to 5
-                </Styles.textMain>
-                <input
-                  type="file"
-                  id="add-review-image"
-                  name="add-review-image"
-                  accept="image/*"
-                  multiple
-                  onChange={handleImageInput}
-                />
-              </Styles.flexContainerCol>
+              : (
+                <Styles.flexContainerCol>
+                  <Styles.textMain>
+                    Share your pics! Up to 5
+                  </Styles.textMain>
+                  <Styles.flexFit>
+                    <input
+                      type="file"
+                      id="add-review-image"
+                      name="add-review-image"
+                      accept="image/*"
+                      multiple
+                      onChange={handleImageInput}
+                    />
+                  </Styles.flexFit>
+                </Styles.flexContainerCol>
+              )
             }
             <Styles.flexContainerCol>
               <Styles.textMain>image preview:</Styles.textMain>
-              <Styles.flexFit>
+              <Styles.flexFitHeight>
                 {reviewInfo.imageURLs.map((image, index) => {
                   return (
                     <div key={index} >
@@ -371,28 +418,34 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                     </div>
                   );
                 })}
-              </Styles.flexFit>
+              </Styles.flexFitHeight>
             </Styles.flexContainerCol>
-          </Styles.section>
+          </Styles.flexContainerCol>
 
-          <Styles.section>
+          <Styles.flexWidth>
+
             <Styles.flexContainerCol>
-              <Styles.flexFit>
-                <Styles.textInput
-                  type="text"
-                  id="username"
-                  name="username"
-                  placeholder="Example: jackson11!"
-                  maxLength="60"
-                  // value={name}
-                  onChange={handleNameChange}
-                  required
-                />
-                <Styles.textSmall>For privacy reasons, do not use your full name or email address</Styles.textSmall>
-              </Styles.flexFit>
+              <Styles.textMain>
+                Enter a nickname
+              </Styles.textMain>
+              <Styles.textInput
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Example: jackson11!"
+                maxLength="60"
+                // value={name}
+                onChange={handleNameChange}
+                required
+              />
+              <Styles.textSmall>For privacy reasons, do not use your full name or email address</Styles.textSmall>
+            </Styles.flexContainerCol>
 
 
-
+            <Styles.flexFitCol>
+              <Styles.textMain>
+                Enter your email
+              </Styles.textMain>
               <Styles.textInput
                 type="email"
                 id="email"
@@ -403,13 +456,13 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                 onChange={handleEmailChange}
                 required
               />
-            </Styles.flexContainerCol>
-          </Styles.section>
+            </Styles.flexFitCol>
+          </Styles.flexWidth>
 
-          <Styles.flexContainerShort>
+          <Styles.flexFit>
             <Submit reviewInfo={reviewInfo} ratings={ratings} />
-            <button onClick={closeReview}>Cancel</button>
-          </Styles.flexContainerShort>
+            <Styles.button onClick={closeReview}>Cancel</Styles.button>
+          </Styles.flexFit>
 
         </Styles.formContainer>
 
