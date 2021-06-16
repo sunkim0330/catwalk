@@ -10,7 +10,7 @@ export const Grid = style.div`
   max-width: 1500px;
   min-width: 1500px;
   height: 800px;
-  margin: 30px auto;
+  margin: 30px auto 60px auto;
   padding: 10px;
   display: grid;
   grid-template-columns: 24% 38% 38%;
@@ -602,6 +602,7 @@ export const flexFit = style.div`
   display: flex;
   justify-content: space-between;
   width: fit-content;
+  padding-bottom: 3px;
 `;
 
 export const flexFitHeight = style.div`
