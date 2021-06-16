@@ -271,26 +271,28 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
           <Styles.section>
             <Styles.textMain>Do you recommend this product?</Styles.textMain>
             <Styles.flexContainerShort>
-              <label>
-                <Styles.textSmall>Yes</Styles.textSmall>
-                <input
+              <Styles.wrapper>
+                <Styles.radioSmall
                   type="radio"
                   name="recommend"
                   value="yes"
                   onChange={handleRecommendsChange}
                   required
                 />
-              </label>
-              <label>
-                <Styles.textSmall>No</Styles.textSmall>
-                <input
+                <Styles.textSmall>Yes</Styles.textSmall>
+              </Styles.wrapper>
+
+              <Styles.wrapper>
+                <Styles.radioSmall
                   type="radio"
                   name="recommend"
                   value="no"
                   onChange={handleRecommendsChange}
                 />
-              </label>
+                <Styles.textSmall>No</Styles.textSmall>
+              </Styles.wrapper>
             </Styles.flexContainerShort>
+
           </Styles.section>
 
           <Styles.section>

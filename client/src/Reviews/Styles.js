@@ -657,76 +657,6 @@ export const button = style.div`
   }
 `;
 
-// export const radioSmall = style.input`
-//   cursor: pointer;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   opacity: 1e-5;
-//   pointer-events: none;
-
-//   :checked {
-//     transform: scale3d(.975, .975, 1) translate3d(0, 10%, 0);
-//     opacity: 0;
-//   }
-// `;
-
-// export const wrapper = style.div`
-//   display: inline-flex;
-//   align-items: center;
-//   cursor: pointer;
-//   color: #394a56;
-
-//   ${radioSmall}:checked {
-//     transform: scale3d(.975, .975, 1) translate3d(0, 10%, 0);
-//     opacity: 0;
-//   }
-// `;
-
-// export const indicator = style.div`
-//   position: relative;
-//   border-radius: 50%;
-//   height: 30px;
-//   width: 30px;
-//   box-shadow:
-//     -8px -4px 8px 0px #ffffff,
-//     8px 4px 12px 0px #d1d9e6;
-//   overflow: hidden;
-
-
-//   :before,
-//   :after {
-//     content: '';
-//     position: absolute;
-//     top: 10%;
-//     left: 10%;
-//     height: 80%;
-//     width: 80%;
-//     border-radius: 50%;
-//   }
-
-//   :before {
-//     box-shadow:
-//       -4px -2px 4px 0px #d1d9e6,
-//       4px 2px 8px 0px #fff;
-//   }
-
-//   :after {
-//     background-color: #ecf0f3;
-//     box-shadow:
-//       -4px -2px 4px 0px #fff,
-//       4px 2px 8px 0px #d1d9e6;
-//     transform: scale3d(1, 1, 1);
-//     transition: opacity .25s ease-in-out, transform .25s ease-in-out;
-//     ${radioSmall}:checked {
-//       transform: scale3d(.975, .975, 1) translate3d(0, 10%, 0);
-//       opacity: 0;
-//     }
-//   }
-
-
-// `;
-
 export const clickWave = keyframes`
     0% {
       height: 30px;
@@ -786,4 +716,10 @@ export const radioSmall = style.input`
       border-radius: 50%;
     }
   }
+`;
+
+export const wrapper = style.div`
+  display: flex;
+  flex-direction: column;
+
 `;
