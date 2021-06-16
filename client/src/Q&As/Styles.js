@@ -2,141 +2,176 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 
 
-export const IndexGrid = styled.div`
-  overflow: scroll;
-  padding: 5px;
+export const Index = styled.div`
+  height: 100%;
+  width: 80;
+  color: #3A5A40;
   font-family: Sans-Serif;
   font-size: 18px;
-  border: 1px solid grey;
+  margin: auto;
+  padding: 10px;
+  column-gap: 10px;
+  row-gap: 10px;
   display: grid;
-  grid-template-columns: 2fr 266px;
-  grid-template-rows: 100px 300px 100px;
-  gap: 10px 0px;
+  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: 10% 10% 20% 30% auto;
+  column-gap: 10px;
+  row-gap: 10px;
   grid-template-areas:
-    "search ."
-    "question ."
-    "buttons-buttons .";
-  color: #6f67bf;
+    "title . ."
+    "search search ."
+    "question question ."
+    "question question ."
+    "morequestion askquestion .";
+
+`;
+
+export const title = styled.h2`
+  align-self: start;
+  grid-area: title;
+  padding: 2px;
+  margin: 0 0 10px 0;
 `;
 
 export const QuestionsContainer = styled.div.attrs({className: 'Questions_container'})`
-  overflow: scroll;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "questions"
-    "answers"
-    "footer";
-  grid-area: question;
+  margin: 10px 0 0 0;
   font-family: Sans-Serif;
-  color: #6f67bf;
+  color: #3A5A40;
   font-size: 15px;
   font-weight: bold;
+  height: fit-content;
+  grid-area: question;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  overflow: scroll;
 `;
 
 export const SearchBarInput = styled.input`
-  overflow: scroll;
+  margin: 10px 0 0 0;
+  align-self: stretch;
   grid-area: search;
-  font-size: 14px;
-  padding: 2px 5px;
+  font-size: 15px;
   border: 1px solid grey;
   height: 30px;
   width: 30%;
-  padding: 2px 23px 2px 30px;
-  outline: 0;
-  background-color: #F7CAC9;
+  padding: 2px 5px;
+  background-color: #CEF1D5;
   font-family: Sans-Serif;
 `;
 
-export const answerContainer = styled.div`
-
-grid-area: answers;
-font-family: Sans-Serif;
-color: #6f67bf;
-font-size: 15px;
-font-weight: normal;
-`;
-export const moreQuestionButton = styled.button`
-  border: transparent;
-  align-self: end;
-  grid-area: morequestions;
-  background-color: transparent;
-  font-family: sans-serif;
-  font-size: 15px;
-  padding: 5px;
-  cursor: pointer;
-  &:hover {
-    color: #b3225e;
-  }
-`;
-
-export const askQuestionButton = styled.button`
-  border: transparent;
-  align-self: end;
-  grid-area: askquestion;
-  background-color: transparent;
-  font-family: sans-serif;
-  font-size: 15px;
-  padding: 5px;
-  cursor: pointer;
-  &:hover {
-    color: #b3225e;
-  }
-`;
-
-export const answerFooter = styled.div`
-  grid-area: footer;
-  font-family: sans-serif;
-  font-size: 10px;
-  color: grey;
-  font-weight: normal;
+export const questionList = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
 `;
 
 export const addAnswerButton = styled.button`
-  grid-area: helpful;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
   border: transparent;
   background-color: transparent;
   font-family: sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  cursor: pointer;
+`;
+
+export const answerContainer = styled.div`
+  font-family: Sans-Serif;
+  color: #3A5A40;
+  font-size: 15px;
+  font-weight: normal;
+  flex-direction: column;
+  display: flex;
+`;
+
+export const answerList = styled.div`
+  color: #3A5A40;
+`;
+
+export const answerFooter = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  font-size: 12px;
+  color: #3A5A40;
+  justify-content: flex-start;
+`;
+
+export const username = styled.div`
+  font-size: 12px;
+  color: #3A5A40;
+`;
+
+export const answerhelp = styled.div`
+  margin: 2px;
+`;
+
+export const moreQuestionButton = styled.button`
+  border: transparent;
+  background-color: transparent;
   cursor: pointer;
   &:hover {
     color: #b3225e;
   }
+  font-family: sans-serif;
+  font-size: 15px;
+  padding: 5px;
+  grid-area: morequestion;
 `;
-export const moreAnswerButton = styled.button`
-  grid-area: answers;
+
+export const askQuestionButton = styled.button`
+  grid-area: askquestion;
   border: transparent;
   background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    color: #b3225e;
+  }
   font-family: sans-serif;
+  font-size: 15px;
+  padding: 5px;
+`;
+
+export const moreAnswerButton = styled.button`
+  border: transparent;
+  background-color: transparent;
   color: #050094;
   cursor: pointer;
   &:hover {
     color: #b3225e;
   }
+  font-family: sans-serif;
+`;
+
+export const scrollquestions = styled.div`
+  overflow: scroll;
 `;
 
 export const lineBreak = styled.div`
-top: 0px;
-margin:0px;
-padding: 3px 2px 2px 3px;
 border-width: 2px;
 border-bottom-style:solid;
-border-bottom: 2px #F7CAC9 solid;
+border-bottom: 2px #CEF1D5 solid;
+margin: 0 0 10px 0;
+padding: 3px 2px 2px 3px;
+top: 0px;
 width: 80%;
 `;
 
 export const btwnAnswers = styled.div`
-top: 0px;
-margin:0px;
-padding: 3px 2px 2px 3px;
 border-width: 2px;
 border-bottom-style:solid;
 border-bottom: 2px transparent;
+margin: 0 0 5px 0;
+padding: 3px 2px 2px 3px;
+top: 0px;
 width: 80%;
 `;
 
 export const ModalContainer = styled.div`
+  z-index: 5;
   position: fixed;
   left: 0;
   top: 0;
@@ -167,10 +202,14 @@ export const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
   font-family: Sans-Serif;
 `;
 
-export const searchResult = styled.div`
-  font-family: Sans-Serif;
-  font-size: 16px;
-  color: #6f67bf;
+export const emailAuth = styled.p`
+  font-size: 12px;
+  color: red;
+`;
+
+export const charCount = styled.p`
+font-size: 12px;
+font-color: #D3D9D9;
 `;
 
 /*

@@ -5,8 +5,8 @@ import * as Styles from './Styles.js';
 import SearchQandA from './SearchQandA.jsx';
 
 const QandAs = ({ product, setDateFormat }) => {
-  const [show, setShow] = useState(false);
   const [input, setInput] = useState('');
+  const [show, setShow] = useState(false);
 
   const getClickedElement = (event) => {
     const module = 'Questions and Answers';
@@ -17,14 +17,12 @@ const QandAs = ({ product, setDateFormat }) => {
   };
 
   return (
-    <div>
-      QUESTIONS AND ANSWERS
-      <Styles.IndexGrid id="index">
-        <SearchQandA product={product} setDateFormat={setDateFormat}/>
-        <div onClick={() => setShow(true)} >Ask a Question</div>
-        <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
-      </Styles.IndexGrid>
-    </div>
+    <Styles.Index id="QandAstart-div">
+      <Styles.title>QUESTIONS AND ANSWERS</Styles.title>
+      <SearchQandA product={product} setDateFormat={setDateFormat}/>
+      <Styles.askQuestionButton id="ask-question-button" onClick={() => setShow(true)} >Ask a Question</Styles.askQuestionButton>
+      <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
+    </Styles.Index >
   );
 };
 

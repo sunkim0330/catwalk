@@ -8,20 +8,26 @@ const Answers = ({ product, questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
   const [loadPage, setLoadPage] = useState(2);
 
-
-
   useEffect(() => {
-
     axios.get(`/qa/questions/${questions.question_id}/answers`)
       .then((response) => {
         setDateFormat(response.data.results);
         setAnswer(response.data.results);
       })
-
+      .then(
+        sortAnswers()
+      )
       .catch(() => {
         console.log('cant get request from answer API');
       });
   }, [questions]);
+
+  const sortAnswers = () => {
+    const sorted = answers.sort((a, b) => {
+      return b.helpfulness > a.helpfulness;
+    });
+    setAnswer(sorted);
+  };
 
   const loadMore = useCallback(() => {
     setLoadPage(prev => prev + 2);
@@ -33,25 +39,27 @@ const Answers = ({ product, questions, setDateFormat }) => {
   //I'll try to refactor when I finish with eveything
   const loadAnswers = answers.slice(0, loadPage).map((answer, index) => {
     return (
-      <div className="answer_div" key={answer.answer_id}>
-        <b>A:</b> {answer.body} <br/>
-        <Styles.answerFooter> by {answer.answerer_name}, {answer.formattedDate}</Styles.answerFooter>
-        <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
+      <Styles.answerList className="main-answer-container" key={answer.answer_id}>
+        <b>A:</b> {answer.body}
+        <Styles.answerFooter>
+          by {answer.answerer_name}, {answer.formattedDate}
+          <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
+        </Styles.answerFooter>
         <Styles.btwnAnswers />
-      </div>
+      </Styles.answerList>
     );
   });
 
   return (
-    <div>
+    <Styles.answerContainer id="answer-return-div">
       {loadAnswers}
-      <Styles.moreAnswerButton
+      <button id="more-answer-button"
         style = {{display: loadPage >= answers.length ? 'none' : 'block'}}
         className="answer_button" onClick={loadMore}>
           See more answers
-      </Styles.moreAnswerButton>
+      </button>
       <Styles.lineBreak />
-    </div>
+    </Styles.answerContainer>
   );
 };
 
