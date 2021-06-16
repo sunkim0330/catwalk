@@ -114,7 +114,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
             <Styles.flexContainerLong>
 
               <Styles.textMain>{char}</Styles.textMain>
-              <Styles.textSmall>{selected[char]}</Styles.textSmall>
+              <Styles.textSmall>Your rating: {selected[char]}</Styles.textSmall>
 
             </Styles.flexContainerLong>
 
@@ -153,7 +153,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
     chars.forEach(char => {
       newChars[ratings[char].id] = 0;
       setSelected(prev => {
-        return {...prev, [char]: null};
+        return {...prev, [char]: 'none'};
       });
     });
 
@@ -269,7 +269,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
           </Styles.section>
           <br></br>
           <Styles.section>
-            <Styles.textMain>Do you recommend this product?</Styles.textMain>
+            <Styles.textSmall>Do you recommend this product?</Styles.textSmall>
             <Styles.flexContainerShort>
               <Styles.wrapper>
                 <Styles.radioSmall
