@@ -32,6 +32,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
   }, [styleImages[0].url]);
 
   const scrollLeft = () => {
+    setZoomedIn(false);
     if (mainImageIndex > 0) {
       if (mainImageIndex - 1 <= thumbnailsStart && thumbnailsStart !== 0) {
         setRenderedThumbnails(styleImages.slice(thumbnailsStart - 1, thumbnailsStart + 6));
@@ -42,6 +43,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
   };
 
   const scrollRight = () => {
+    setZoomedIn(false);
     if (mainImageIndex < styleImages.length - 1) {
       if (mainImageIndex + 1 >= 6 && styleImages[thumbnailsStart + 7] !== undefined) {
         setRenderedThumbnails(styleImages.slice(thumbnailsStart + 1, thumbnailsStart + 8));
@@ -98,7 +100,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
     <Styles.Gallery extendedView={extendedView}>
       <Styles.CloseExtended
         className="fas fa-times fa-5x"
-        onClick={() => setExtendedView(false)}
+        onClick={() => { setZoomedIn(false); setExtendedView(false); }}
         extendedView={extendedView}
         src={close}>
       </Styles.CloseExtended>

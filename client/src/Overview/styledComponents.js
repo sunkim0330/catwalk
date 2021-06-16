@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import minus from './images/minus.png';
 
 export const Overview = styled.div`
   font-family: 'Roboto', sans-serif;
@@ -28,9 +29,10 @@ export const Gallery = styled.div`
 `;
 
 export const CloseExtended = styled.i`
+  color: #6B636B;
+  left: 0px;
   position: absolute;
   top: 0px;
-  left: 0px;
 
   ${({ extendedView }) => {
     return extendedView ? `
@@ -72,7 +74,7 @@ export const MainImg = styled.img`
     max-width: 800px;
     max-height: 100%;
     &:hover {
-      cursor: ${zoomedIn ? 'zoom-out' : 'cell'}
+      cursor: ${zoomedIn ? `url${minus}), auto;` : 'cell;'}
     }
     ` : `
     max-width: 600px;
@@ -105,8 +107,8 @@ ${({ zoomedIn }) => {
       height: 100%;
       width: 100%;
       top: 0px;
-      &:hover {
-        cursor: zoom-out;
+      :hover {
+        cursor: url(${minus}), zoom-out;
       }
     ` : `
     display: none;
@@ -116,6 +118,7 @@ ${({ zoomedIn }) => {
 
 export const LeftArrow = styled.i`
   align-self: center;
+  color: #6B636B;
   position: absolute;
   padding-left: 8px;
   ${({ hidden }) => {
@@ -140,6 +143,7 @@ export const LeftArrow = styled.i`
 
 export const RightArrow = styled.i`
   align-self: center;
+  color: #6B636B;
   grid-column-start: 2;
   justify-self: right;
   position: absolute;
@@ -182,7 +186,7 @@ export const GalleryThumbnail = styled.img`
   width: auto;
   margin: auto;
   ${({ selected }) => {
-    return selected ? 'box-shadow: 0px 0px 2px 5px #6B636B' : 'box-shadow: 0px 0px 0px 0px #6B636B';
+    return selected ? 'box-shadow: 0px 0px 2px 5px #6B636B' : 'box-shadow: 0px 0px 0px 0px black';
   }}
 `;
 
@@ -323,7 +327,7 @@ export const AddToCart = styled.button`
 `;
 
 export const PointlessButton = styled.button`
-  border: 1px solid #d3d9d9;
+  border: 1px solid #6B636B;
   border-radius: 5px;
   width: fit-content;
   margin-right: 8px;
@@ -335,7 +339,7 @@ export const PointlessButton = styled.button`
   font-size: 18px;
 
   :hover {
-    border: 1px solid #CEF1D5;
+    border: 1px solid #6B636B;
     color: #6B636B;
     box-shadow: none;
     transition: all .5s ease;
