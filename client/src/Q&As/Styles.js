@@ -4,7 +4,9 @@ import styled, {css} from 'styled-components';
 
 export const Index = styled.div`
   height: 100%;
-  width: 80%;
+  min-width: 1500px;
+  max-width: 1500px;
+  width: 1500px;
   color: #3A5A40;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
@@ -25,7 +27,7 @@ export const Index = styled.div`
     "morequestion askquestion .";
 `;
 
-export const title = styled.h2`
+export const Title = styled.h2`
   align-self: start;
   grid-area: title;
   padding: 2px;
@@ -52,7 +54,8 @@ export const SearchBarInput = styled.input`
   align-self: stretch;
   grid-area: search;
   font-size: 15px;
-  border: 1px solid grey;
+  border: 1px solid #D3D9D9;
+  border-radius: 3px;
   height: 30px;
   width: 30%;
   padding: 2px 5px;
@@ -62,12 +65,27 @@ export const SearchBarInput = styled.input`
 
 export const questionList = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: fit-content;
   font-family: 'Roboto', sans-serif;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const questionWrapper = styled.div`
+  display: flex;
+  height: fit-content;
+  font-family: 'Roboto', sans-serif;
+  alient-content: space-around;
+  alien-items: baseline;
+
+`;
+export const body = styled.div`
+  font-family:'Roboto', sans-serif;
+  color: #3A5A40;
 `;
 
 export const buttons = styled.div`
+  align-items: baseline;
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
@@ -80,20 +98,17 @@ export const buttons = styled.div`
 `;
 
 export const addAnswerButton = styled.button`
-  border: 1px solid #d3d9d9;
-  border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
-  cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
+  border-top: transparent;
+  border-bottom: transparent;
+  border-left: transparent;
+  border-right: 1px solid black;
+  margin: 5px;
+  background-color: transparent;
   font-family: 'Roboto', sans-serif;
-  :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .2s ease;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    color: #b3225e;
   }
 `;
 
@@ -112,7 +127,8 @@ export const answerList = styled.div`
 `;
 
 export const answerFooter = styled.div`
-font-family:'Roboto', sans-serif;
+  align-items: baseline;
+  font-family:'Roboto', sans-serif;
   height: fit-content;
   font-size: 12px;
   color: #3A5A40;
@@ -134,7 +150,7 @@ export const answerhelp = styled.div`
   margin: 2px;
 `;
 
-export const moreQuestionButton = styled.button`
+export const MoreQuestionButton = styled.button`
   border: 1px solid #d3d9d9;
   border-radius: 5px;
   width: fit-content;
@@ -153,7 +169,7 @@ export const moreQuestionButton = styled.button`
   grid-area: morequestion;
 `;
 
-export const askQuestionButton = styled.button`
+export const AskQuestionButton = styled.button`
   grid-area: askquestion;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
@@ -176,21 +192,28 @@ export const askQuestionButton = styled.button`
 `;
 
 export const moreAnswerButton = styled.button`
-  border: 1px solid #d3d9d9;
-  border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
+  border: transparent;
+  margin: 5px;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
-  font-family:'Roboto', sans-serif;
-  :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
+  &:hover {
+    color: #b3225e;
   }
+`;
+
+export const linegradient = styled.div`
+  height: 100px;
+  max-height: 2px;
+  max-width: 90%;
+  background-color: #CEF1D5;
+  background-image:
+    linear-gradient(
+      to right,
+      #CEF1D5, white
+    );
+  margin: 0 0 10px 0;
 `;
 
 export const lineBreak = styled.div`
@@ -227,6 +250,13 @@ export const ModalContainer = styled.div`
   font-family:'Roboto', sans-serif;
 `;
 
+export const modalLabel = styled.label`
+  font-family:'Roboto', sans-serif;
+`;
+export const subtitle = styled.h4`
+  font-family:'Roboto', sans-serif;
+  margin: 10px;
+`;
 export const ModalContent = styled.div.attrs({className: 'qanda-modal-content'})`
   width: 500px;
   background-color: #F7CAC9;
@@ -245,9 +275,31 @@ export const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
   font-family:'Roboto', sans-serif;
 `;
 
+export const textarea = styled.textarea`
+  white-space: normal;
+  vertical-align: middle;
+`;
+
+export const Auth = styled.p`
+  font-size: 12px;
+  color: red;
+`;
+
 export const emailAuth = styled.p`
   font-size: 12px;
   color: red;
+`;
+
+export const modalButtons = styled.button`
+  border: transparent;
+  margin: 5px;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    color: #b3225e;
+  }
 `;
 
 export const charCount = styled.p`
