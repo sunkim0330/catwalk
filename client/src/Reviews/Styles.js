@@ -440,8 +440,8 @@ export const more = style.div`
 export const helpful = style.div`
   display: flex;
   justify-content: flex-start;
-  font-size: .9em;
-  width: 25%;
+  font-size: 12px;
+  width: ${props => props.width};
 `;
 
 export const helpButton = style.button`
@@ -451,7 +451,7 @@ export const helpButton = style.button`
   color: black;
   cursor: pointer;
   background-color: white;
-  font-size: .9em;
+  font-size: 12px;
   padding: 0 5px;
   text-decoration: underline;
   &:hover {
@@ -460,10 +460,10 @@ export const helpButton = style.button`
 `;
 
 export const helpText = style.a`
-  border-right: solid 1px black;
-  width: 50%;
-  padding-right: 5%;
-  margin-right: 5%;
+  width: 110px;
+  padding-right: 10px;
+  margin-right: 15px;
+  border-right: ${props => props.borderRight};
 `;
 
 // ===============
