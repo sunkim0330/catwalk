@@ -411,7 +411,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
               )
             }
             <Styles.flexContainerCol>
-              <Styles.textMain>image preview:</Styles.textMain>
+              <Styles.textMain>Image preview:</Styles.textMain>
               <Styles.flexFitHeight>
                 {reviewInfo.imageURLs.map((image, index) => {
                   return (

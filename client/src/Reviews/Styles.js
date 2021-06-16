@@ -125,7 +125,7 @@ export const list = style.div`
   border: 1px solid #d3d9d9;
   border-radius: 5px;
   z-index: 1;
-  transition: height 1s ease;
+  transition: height .5s ease;
   overflow: hidden;
 
   :hover {
@@ -499,13 +499,13 @@ export const formHeader = style.div`
 export const textTitle = style.div`
   font-size: 3em;
   margin: 3px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const textSub = style.div`
   font-size: 1.5em;
   margin: 3px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const textMain = style.div`
