@@ -5,7 +5,7 @@ import style, { keyframes } from 'styled-components';
 // GRID BREAKDOWN
 // ==============
 export const Grid = style.div`
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   cursor: default;
   max-width: 1500px;
   min-width: 1500px;
@@ -67,6 +67,7 @@ export const Characteristics = style.div`
 export const title = style.div`
   margin: 2px 4px 2px 0px;
   font-size: 1em;
+  font-family: "Montserrat";
 `;
 
 // ===============
@@ -164,7 +165,7 @@ export const currentSort = style.div`
 
 export const slideDown = keyframes`
   0% {
-    height: 0;
+    height: 25px;
   }
 
   100% {
@@ -176,18 +177,29 @@ export const list = style.div`
   position: relative;
   margin: 3px 5px;
   width: 120px;
-  height: 80px;
+  height: 25px;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
   z-index: 10;
-  animation: ${slideDown} 1s;
+  transition: height 1s ease;
+  overflow: hidden;
+
+  :hover {
+    animation: ${slideDown} .5s;
+    height: 80px;
+  }
+
+  :active {
+    height: 25px;
+  }
+
 `;
 
 export const listItem = style.div`
   padding: 4px 10px;
   cursor: pointer;
 
-  &:hover {
+  :hover {
     text-decoration: underline;
     color: #d3d9d9;
   }
@@ -209,6 +221,7 @@ export const total = style.a`
 export const overall = style.div`
   margin: 5px 2px;
   font-size: 5em;
+  font-family: 'Montserrat', sans-serif;
   width: fit-content;
   height: fit-content;
 `;
@@ -296,6 +309,7 @@ export const charContainer = style.div`
 export const charName = style.div`
   width: fit-content;
   font-size: 1.2em;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const attBox = style.div`
@@ -471,7 +485,7 @@ export const helpText = style.a`
 // ===============
 
 export const modalOverlay = style.div`
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   z-index: 5;
   position: fixed;
   top: 0;
@@ -512,20 +526,20 @@ export const formHeader = style.div`
 export const textTitle = style.div`
   font-size: 3em;
   margin: 3px 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export const textSub = style.div`
   font-size: 1.5em;
   margin: 3px 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export const textMain = style.div`
   display: inline-block;
   font-size: 1em;
   margin: 3px 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const textSmall = style.div`
@@ -533,7 +547,7 @@ export const textSmall = style.div`
   font-size: .8em;
   margin: 3px 0;
   width: fit-content;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export const formContainer = style.form`
@@ -610,7 +624,7 @@ export const textarea = style.textarea`
   margin: 2px 0;
   border: 1px solid #d3d9d9;
   resize: none;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 300px;
 `;
 
@@ -670,7 +684,7 @@ export const button = style.div`
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 
   :hover {
     border: 1px solid #CEF1D5;

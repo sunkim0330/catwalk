@@ -69,8 +69,29 @@ const Dropdown = ({ sort, setSort, sortReviewsList, setCurrentReviews, currentRe
 
   return (
     <>
+      <Styles.list>
+        {options.map((option, i) => {
+          return (
+            i === 0 ? (
+              <Styles.currentSort
+                key={option}
+                // onClick={handleSort}
+              >
+                {option}
+              </Styles.currentSort>
+            ) : (
+              <Styles.listItem
+                key={option}
+                onClick={handleSort}
+              >
+                {option}
+              </Styles.listItem>
+            )
+          );
+        })}
+      </Styles.list>
 
-      {hovered ? displayList() : displayDefault()}
+      {/* {hovered ? displayList() : displayDefault()} */}
 
       {/* {hovered ? (
         <Styles.sortMethods onMouseLeave={handleHover}>

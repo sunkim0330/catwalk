@@ -30,8 +30,8 @@ const Stars = ( {rating, ...styles }) => {
 
 
 
-        <rect style={{fill: '#eeeee4', stroke: 'red', strokeWidth: '1px', height: '100%', width: '100%'}} clipPath="url(#stars)"></rect>
-        <rect width={(rating * 20) + '%'} style={{ fill: '#ECD08C ', height: '100%'}} clipPath="url(#stars)"></rect>
+        <rect style={{fill: '#D3D9D9', stroke: 'red', strokeWidth: '1px', height: '100%', width: '100%'}} clipPath="url(#stars)"></rect>
+        <rect width={(rating * 20) + '%'} style={{ fill: '#3A5A40 ', height: '100%'}} clipPath="url(#stars)"></rect>
 
       </svg>
     </StyledStars>
