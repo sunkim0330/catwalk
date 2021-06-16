@@ -14,9 +14,9 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id, productId}) =>
 
   const displayQuestionBody = () => {
     if (isItAnswer) {
-      return <h2>{subTitle} : {questionBody}</h2>;
+      return <h4>{subTitle} : {questionBody}</h4>;
     } else {
-      return <h2>{subTitle}</h2>;
+      return <h4>{subTitle}</h4>;
     }
   };
 
@@ -40,7 +40,7 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id, productId}) =>
       <Styles.ModalContainer>
         <Styles.ModalContent>
           <Styles.ModalHeaderFooter>
-            <h4>{title}</h4>
+            <h2>{title}</h2>
             {displayQuestionBody()}
           </Styles.ModalHeaderFooter>
           <Styles.ModalBody>
