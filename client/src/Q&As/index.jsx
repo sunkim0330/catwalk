@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Modal from './Modal.jsx';
 // import * as Styles from './Styles.js';
-import {Index, AskQuestionButton} from './Styles.js';
+import {Index, Title, AskQuestionButton, Buttons} from './Styles.js';
 import SearchQandA from './SearchQandA.jsx';
 
 const QandAs = ({ product, setDateFormat }) => {
@@ -19,9 +19,10 @@ const QandAs = ({ product, setDateFormat }) => {
 
   return (
     <Index id="QandAstart-div">
-      <title>QUESTIONS AND ANSWERS</title>
+      <Title>QUESTIONS AND ANSWERS</Title>
       <SearchQandA product={product} setDateFormat={setDateFormat}/>
-      <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)} >Ask a Question</AskQuestionButton>
+      <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)} >Ask a Question
+      </AskQuestionButton>
       <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
     </Index >
   );

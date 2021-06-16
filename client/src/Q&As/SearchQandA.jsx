@@ -7,7 +7,7 @@ import Answers from './Answers.jsx';
 
 const SearchQandA = ({product, setDateFormat}) => {
   const [questions, setQuestions] = useState([]);
-  const [loadPage, setLoadPage] = useState(2);
+  const [loadPage, setLoadPage] = useState(4);
   const [search, setSearch] = useState('');
   const [show, setShow] = useState(false);
 

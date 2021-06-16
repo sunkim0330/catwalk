@@ -36,7 +36,7 @@ export const Title = styled.h2`
 `;
 
 export const QuestionsContainer = styled.div.attrs({className: 'Questions_container'})`
-  margin: 10px 0 10px 0;
+  margin: 10px 0 30px 0;
   font-family: 'Montserrat', sans-serif;
   font-family: 'Roboto', sans-serif;
   color: #3A5A40;
@@ -151,6 +151,8 @@ export const answerhelp = styled.div`
 `;
 
 export const MoreQuestionButton = styled.button`
+  grid-area: morequestion;
+   justify-self: end;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
   width: fit-content;
@@ -166,7 +168,6 @@ export const MoreQuestionButton = styled.button`
     box-shadow: none;
     transition: all .5s ease;
   }
-  grid-area: morequestion;
 `;
 
 export const AskQuestionButton = styled.button`
@@ -191,7 +192,15 @@ export const AskQuestionButton = styled.button`
   }
 `;
 
+export const Buttons = styled.div`
+  grid-area: morequestions;
+  display: flex;
+  alient-content: flex-start;
+  flex-direction: row;
+`;
+
 export const moreAnswerButton = styled.button`
+  grid-area: morequestions;
   border: transparent;
   margin: 5px;
   background-color: transparent;
