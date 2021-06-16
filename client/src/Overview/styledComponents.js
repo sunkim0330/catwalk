@@ -93,8 +93,8 @@ export const Lens = styled.div`
     }
   }}
   position: absolute;
-  width: 250px;
-  height: 250px;
+  width: 150px;
+  height: 150px;
 `;
 
 export const ZoomedImage = styled.div`
@@ -163,6 +163,9 @@ export const RightArrow = styled.i`
 export const Thumbnails = styled.div`
   display: flex;
   height: 100%;
+  ${({ hidden }) => {
+    return hidden ? 'display: none;' : null;
+  }}
 
   ${({ extendedView }) => {
     return extendedView ? `

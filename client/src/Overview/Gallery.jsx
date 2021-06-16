@@ -25,14 +25,15 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
     let imagePositioning = image.getBoundingClientRect();
     let cx = zoomedImage.offsetWidth / lens.offsetWidth;
     let cy = zoomedImage.offsetHeight / lens.offsetHeight;
-    // position and scale zoomedImage display
+    // set background image of zoomedImage display and scale accordingly
     zoomedImage.style.backgroundImage = 'url("' + mainImage.src + '")';
     zoomedImage.style.backgroundSize = (image.width * cx) + 'px ' + (image.height * cy) + 'px';
     zoomedImage.style.width = image.width + 'px';
     zoomedImage.style.height = image.height + 'px';
     // place result at correct y axis - x asix is dealt with automatically
     // getBoundingClientRect returns an elements x and y (top/left) based upon relation to viewport
-    //
+    // need to get the difference between the container's distance from the top of the page
+    // and the image's distance from the top of the page to position an absolute div accordingly
     zoomedImage.style.top = (imagePositioning.top - containerPositioning.top) + 'px';
   }, [zoomedIn]);
 
@@ -119,7 +120,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
         className="fas fa-chevron-left fa-4x"
         alt="Click here to scroll left"
         id="leftArrow"
-        hidden={mainImageIndex === 0}
+        hidden={mainImageIndex === 0 || zoomedIn}
         onClick={scrollLeft}
         extendedView={extendedView}>
       </Styles.LeftArrow>
@@ -157,11 +158,11 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
         className="fas fa-chevron-right fa-4x"
         alt="Click here to scroll right"
         id="rightArrow"
-        hidden={mainImageIndex === styleImages.length - 1}
+        hidden={mainImageIndex === styleImages.length - 1 || zoomedIn}
         onClick={scrollRight}>
       </Styles.RightArrow>
 
-      <Thumbnails styleImages={renderedThumbnails} mainImageIndex={mainImageIndex} thumbnailsStart={thumbnailsStart} changeMainImage={setMainImageIndex} extendedView={extendedView}/>
+      <Thumbnails styleImages={renderedThumbnails} mainImageIndex={mainImageIndex} thumbnailsStart={thumbnailsStart} changeMainImage={setMainImageIndex} extendedView={extendedView} zoomedIn={zoomedIn}/>
 
     </Styles.Gallery>
   );

@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import * as Styles from './styledComponents.js';
 
-const Thumbnails = ({ thumbnailsStart, styleImages, mainImageIndex, changeMainImage, extendedView }) => {
+const Thumbnails = ({ thumbnailsStart, styleImages, mainImageIndex, changeMainImage, extendedView, zoomedIn }) => {
 
   return (
-    <Styles.Thumbnails id="thumbnails" extendedView={extendedView}>
+    <Styles.Thumbnails id="thumbnails" extendedView={extendedView} hidden={zoomedIn}>
       {styleImages.map((stylePhoto, index) => {
         return <Styles.GalleryThumbnail
           selected={index === mainImageIndex - thumbnailsStart}
