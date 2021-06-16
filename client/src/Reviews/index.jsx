@@ -143,9 +143,9 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
           <Styles.flexFit>
             {currentReviews.length === reviewsList.length
               ? null
-              : <Styles.button onClick={handleLoadMoreReviews}>More Reviews</Styles.button>
+              : <Styles.button onClick={handleLoadMoreReviews}>More reviews</Styles.button>
             }
-            <Styles.button onClick={handleShowForm}>add a review</Styles.button>
+            <Styles.button onClick={handleShowForm}>Add a review</Styles.button>
           </Styles.flexFit>
         </Styles.ReviewList>
 
