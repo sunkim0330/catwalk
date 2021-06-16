@@ -767,23 +767,28 @@ export const wrapper = style.div`
 
 export const wiggle = keyframes`
   0%, 100% {
-    transform: translateX(0px)
+    margin: 0;
   }
 
   25% {
-    transform: translateX(3px)
+    margin-left: 3px;
+  }
+
+  50% {
+    margin-left: -3px;
   }
 
   75% {
-    transform: translateX(-3px)
+    margin-left: 3px;
   }
 `;
 
 export const wiggler = style.a`
+  position: relative;
+  margin: 0;
 
+  :hover {
 
-  &:hover {
-    position: relative;
     animation: ${wiggle} 1s;
     color: blue;
   }

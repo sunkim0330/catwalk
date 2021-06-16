@@ -124,20 +124,17 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
         {/* container for sort dropdown, reviews, add review button */}
 
         <Styles.Sort>
-          <Styles.textMain>{reviews.length} reviews</Styles.textMain>
-          {/* <select id="sort" onChange={handleSort}>
-            <option value="relevant">Relevant</option>
-            <option value="helpful">Helpful</option>
-            <option value="newest">Newest</option>
-          </select> */}
-          <Dropdown
-            sort={sort}
-            setSort={setSort}
-            sortReviewsList={sortReviewsList}
-            setCurrentReviews={setCurrentReviews}
-            currentReviewIndex={currentReviewIndex}
-            reviewsList={reviewsList}
-          />
+          <Styles.flexContainerLong>
+            <Styles.textMain>{reviews.length} reviews</Styles.textMain>
+            <Dropdown
+              sort={sort}
+              setSort={setSort}
+              sortReviewsList={sortReviewsList}
+              setCurrentReviews={setCurrentReviews}
+              currentReviewIndex={currentReviewIndex}
+              reviewsList={reviewsList}
+            />
+          </Styles.flexContainerLong>
         </Styles.Sort>
         <Styles.ReviewList>
           {currentReviews.map((review, index) => {
