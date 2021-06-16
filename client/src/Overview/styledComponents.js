@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Overview = styled.div`
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: white;
   display: grid;
   grid-template-columns: 70% 30%;
@@ -28,7 +28,7 @@ export const Gallery = styled.div`
   }}
 `;
 
-export const CloseExtended = styled.img`
+export const CloseExtended = styled.i`
   position: absolute;
   top: 0px;
   left: 0px;
@@ -92,9 +92,8 @@ export const Lens = styled.div`
     }
   }}
   position: absolute;
-  border: 1px solid #d4d4d4;
-  width: 40px;
-  height: 40px;
+  width: 250px;
+  height: 250px;
 `;
 
 export const ZoomedImage = styled.div`
@@ -116,13 +115,12 @@ ${({ zoomedIn }) => {
   }}
 `;
 
-
-export const LeftArrow = styled.img`
+export const LeftArrow = styled.i`
   align-self: center;
   position: absolute;
   padding-left: 8px;
   ${({ hidden }) => {
-    return hidden ? 'hidden' : null;
+    return hidden ? 'display: none;' : null;
   }}
 
   ${({ extendedView }) => {
@@ -141,14 +139,14 @@ export const LeftArrow = styled.img`
   }
 `;
 
-export const RightArrow = styled.img`
+export const RightArrow = styled.i`
   align-self: center;
   grid-column-start: 2;
   justify-self: right;
   position: absolute;
   padding-right: 8px;
   ${({ hidden }) => {
-    return hidden ? 'hidden' : null;
+    return hidden ? 'display: none;' : null;
   }}
 
   &:hover {
@@ -217,6 +215,7 @@ export const LinkToReviews = styled.a`
 `;
 
 export const Category = styled.h4`
+  font-family: 'Montserrat', sans-serif;
   font-size: 22px;
   text-align: left;
   left: 24px;
@@ -225,6 +224,7 @@ export const Category = styled.h4`
 `;
 
 export const Name = styled.h3`
+  font-family: 'Montserrat', sans-serif;
   bottom: 8px;
   font-size: 28px;
   left: 24px;
@@ -254,6 +254,7 @@ export const StyleSelector = styled.div`
 `;
 
 export const StyleName = styled.h3`
+  font-family: 'Montserrat', sans-serif;
   grid-column: 1 / span 4;
 `;
 
@@ -278,12 +279,14 @@ export const CartManagement = styled.div`
 `;
 
 export const SizeSelect = styled.select`
+  border-radius: 5px;
   font-size: 18px;
   height: 28px;
   width: 200px;
 `;
 
 export const QtySelect = styled.select`
+  border-radius: 5px;
   font-size: 18px;
   height: 28px;
   margin: 5px;
@@ -295,34 +298,46 @@ export const Option = styled.option`
 `;
 
 export const AddToCart = styled.button`
-  font-size: 18px;
-  height: 32px;
-  margin-bottom: 8px;
-  width: 150px;
-  background-color: white;
-
-  &:hover {
-    box-shadow: 2px 2px grey;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
-  &:active {
+  :active {
     transform: translateY(2px)
   }
 `;
 
 export const PointlessButton = styled.button`
-  font-size: 18px;
-  height: 32px;
-  margin: 4px;
-  margin-bottom: 8px;
-  width: 150px;
-  background-color: white;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
 
-  &:hover {
-    box-shadow: 2px 2px grey;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
-  &:active {
+  :active {
     transform: translateY(2px)
   }
 `;
@@ -335,6 +350,7 @@ export const Features = styled.div`
 `;
 
 export const FeaturesHeader = styled.h3`
+  font-family: 'Montserrat', sans-serif;
   margin: 10px auto;
 `;
 
@@ -344,6 +360,7 @@ export const FeaturesItem = styled.li`
 `;
 
 export const Slogan = styled.h3`
+  font-family: 'Montserrat', sans-serif;
   background-color:
   font-style: italic;
 `;
@@ -355,14 +372,20 @@ export const Socials = styled.div`
 `;
 
 export const Twitter = styled.button`
-  background-color: white;
-  font-size: 18px;
-  height: 30px;
-  margin: 10px;
-  width: 150px;
-
-  &:hover {
-    box-shadow: 2px 2px grey;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
   &:active {
@@ -371,33 +394,47 @@ export const Twitter = styled.button`
 `;
 
 export const Pinterest = styled.button`
-  background-color: white;
-  font-size: 18px;
-  height: 30px;
-  margin: 10px;
-  width: 150px;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
 
-  &:hover {
-    box-shadow: 2px 2px grey;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
-  &:active {
+  :active {
     transform: translateY(2px)
   }
 `;
 
 export const Facebook = styled.button`
-  background-color: white;
-  font-size: 18px;
-  height: 30px;
-  margin: 8px 8px 12px 8px;
-  width: 150px;
+  border: 1px solid #d3d9d9;
+  border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
 
-  &:hover {
-    box-shadow: 2px 2px grey;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
-  &:active {
+  :active {
     transform: translateY(2px)
   }
 `;

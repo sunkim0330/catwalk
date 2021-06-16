@@ -10,7 +10,7 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
 
       {styles.map((style, index) => {
         return <Styles.StyleContainer key={index}>
-          <Styles.Checkmark selected={index === currentStyle}className="fas fa-check checkmark"></Styles.Checkmark>
+          <Styles.Checkmark selected={index === currentStyle} className="fas fa-check checkmark"></Styles.Checkmark>
           <Styles.Style
             className='style'
             src={style.photos[0].thumbnail_url}

@@ -96,8 +96,21 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
 
   return (
     <Styles.Gallery extendedView={extendedView}>
-      <Styles.CloseExtended onClick={() => setExtendedView(false)} extendedView={extendedView} src={close}></Styles.CloseExtended>
-      <Styles.LeftArrow src={leftArrow} alt="Click here to scroll left" id="leftArrow" hidden={mainImageIndex === 0} onClick={scrollLeft} extendedView={extendedView}/>
+      <Styles.CloseExtended
+        className="fas fa-times fa-5x"
+        onClick={() => setExtendedView(false)}
+        extendedView={extendedView}
+        src={close}>
+      </Styles.CloseExtended>
+
+      <Styles.LeftArrow
+        className="fas fa-chevron-left fa-4x"
+        alt="Click here to scroll left"
+        id="leftArrow"
+        hidden={mainImageIndex === 0}
+        onClick={scrollLeft}
+        extendedView={extendedView}>
+      </Styles.LeftArrow>
 
       <Styles.MainImgWrapper id="img-zoom-container" extendedView={extendedView}>
 
@@ -128,7 +141,13 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
 
       </Styles.MainImgWrapper>
 
-      <Styles.RightArrow src={rightArrow} alt="Click here to scroll right" id="rightArrow" hidden={mainImageIndex === styleImages.length - 1} onClick={scrollRight}/>
+      <Styles.RightArrow
+        className="fas fa-chevron-right fa-4x"
+        alt="Click here to scroll right"
+        id="rightArrow"
+        hidden={mainImageIndex === styleImages.length - 1}
+        onClick={scrollRight}>
+      </Styles.RightArrow>
 
       <Thumbnails styleImages={renderedThumbnails} mainImageIndex={mainImageIndex} thumbnailsStart={thumbnailsStart} changeMainImage={setMainImageIndex} extendedView={extendedView}/>
 
