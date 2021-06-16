@@ -4,7 +4,7 @@ import styled, {css} from 'styled-components';
 
 export const Index = styled.div`
   height: 100%;
-  width: 80;
+  width: 80%;
   color: #3A5A40;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
@@ -34,7 +34,7 @@ export const title = styled.h2`
 `;
 
 export const QuestionsContainer = styled.div.attrs({className: 'Questions_container'})`
-  margin: 10px 0 0 0;
+  margin: 10px 0 10px 0;
   font-family: 'Montserrat', sans-serif;
   font-family: 'Roboto', sans-serif;
   color: #3A5A40;
