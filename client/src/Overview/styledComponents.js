@@ -306,7 +306,9 @@ export const AddToCart = styled.button`
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
+  font-size: 18px;
   font-family: sans-serif;
+
   :hover {
     border: 1px solid #CEF1D5;
     color: #6B636B;
@@ -329,6 +331,7 @@ export const PointlessButton = styled.button`
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
   font-family: sans-serif;
+  font-size: 18px;
 
   :hover {
     border: 1px solid #CEF1D5;
@@ -380,7 +383,9 @@ export const Twitter = styled.button`
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
+  font-size: 18px;
   font-family: sans-serif;
+
   :hover {
     border: 1px solid #CEF1D5;
     color: #6B636B;
@@ -403,6 +408,7 @@ export const Pinterest = styled.button`
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
   font-family: sans-serif;
+  font-size: 18px;
 
   :hover {
     border: 1px solid #CEF1D5;
@@ -426,6 +432,7 @@ export const Facebook = styled.button`
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
   font-family: sans-serif;
+  font-size: 18px;
 
   :hover {
     border: 1px solid #CEF1D5;
