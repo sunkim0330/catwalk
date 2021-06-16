@@ -17,13 +17,23 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
   }, [productID]);
 
   useEffect(() => {
-    let img = document.getElementById('myimage');
-    let result = document.getElementById('myresult');
+    // create references to required elements to get their position/size details
+    let image = document.getElementById('mainImage');
+    let zoomedImage = document.getElementById('zoomedImage');
     let lens = document.getElementById('lens');
-    let cx = result.offsetWidth / lens.offsetWidth;
-    let cy = result.offsetHeight / lens.offsetHeight;
-    result.style.backgroundImage = 'url("' + img.src + '")';
-    result.style.backgroundSize = (img.width * cx) + 'px ' + (img.height * cy) + 'px';
+    let containerPositioning = document.getElementById('img-zoom-container').getBoundingClientRect();
+    let imagePositioning = image.getBoundingClientRect();
+    let cx = zoomedImage.offsetWidth / lens.offsetWidth;
+    let cy = zoomedImage.offsetHeight / lens.offsetHeight;
+    // position and scale zoomedImage display
+    zoomedImage.style.backgroundImage = 'url("' + mainImage.src + '")';
+    zoomedImage.style.backgroundSize = (image.width * cx) + 'px ' + (image.height * cy) + 'px';
+    zoomedImage.style.width = image.width + 'px';
+    zoomedImage.style.height = image.height + 'px';
+    // place result at correct y axis - x asix is dealt with automatically
+    // getBoundingClientRect returns an elements x and y (top/left) based upon relation to viewport
+    //
+    zoomedImage.style.top = (imagePositioning.top - containerPositioning.top) + 'px';
   }, [zoomedIn]);
 
   useEffect(() => {
@@ -64,7 +74,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
   };
 
   const getCursorPos = (event) => {
-    let img = document.getElementById('myimage');
+    let img = document.getElementById('mainImage');
     var a;
     var x = 0;
     var y = 0;
@@ -79,8 +89,8 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
 
   const moveLens = (event) => {
     event.preventDefault();
-    let img = document.getElementById('myimage');
-    let result = document.getElementById('myresult');
+    let img = document.getElementById('mainImage');
+    let result = document.getElementById('zoomedImage');
     let lens = document.getElementById('lens');
     let cx = result.offsetWidth / lens.offsetWidth;
     let cy = result.offsetHeight / lens.offsetHeight;
@@ -120,7 +130,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
 
         <Styles.MainImg
           src={styleImages[mainImageIndex].url}
-          id="myimage" alt={styleImages[mainImageIndex].name}
+          id="mainImage" alt={styleImages[mainImageIndex].name}
           extendedView={extendedView}
           zoomedIn={zoomedIn}
           onMouseMove={(event) => moveLens(event)}
@@ -131,7 +141,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
 
         <Styles.ZoomedImage
           zoomedIn={zoomedIn}
-          id="myresult"
+          id="zoomedImage"
           onClick={(event) => {
             manageGalleryView();
           }}
