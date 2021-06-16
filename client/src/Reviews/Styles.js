@@ -133,9 +133,6 @@ export const list = style.div`
     height: 80px;
   }
 
-  :active {
-    height: 25px;
-  }
 
 `;
 

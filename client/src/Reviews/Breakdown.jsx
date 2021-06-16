@@ -163,9 +163,6 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
     setRatingsPct(newRatingsPct);
   }, [ratings]);
 
-
-
-  // refactor using map or loop
   return (
     <Styles.Breakdown>
 
