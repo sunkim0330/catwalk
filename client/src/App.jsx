@@ -5,6 +5,23 @@ import Related from './Related';
 import QandAs from './Q&As';
 import Reviews from './Reviews';
 import * as Styles from './Shared/styledComponents.js';
+import {Toggle} from './Shared/ThemeToggle.jsx';
+
+
+export const themes = {
+  dark: {
+    color: '#CEF1D5',
+    font: 'white',
+    background: '#6B636B'
+  },
+  light: {
+    color: '#3A5A40',
+    font: 'gray',
+    background: 'white'
+  }
+};
+
+export const Theme = React.createContext(themes.light);
 
 const App = () => {
 
@@ -14,6 +31,7 @@ const App = () => {
   const [styles, setStyles] = useState([]);
   const [totalReviewCount, setTotalReviewCount] = useState(0);
   const [defaultStyle, setDefaultStyle] = useState(0);
+  const [currentTheme, setCurrentTheme] = useState(themes.light);
 
   const getProductStyles = () => {
     axios.get(`/products/${product.id}/styles`)
@@ -81,13 +99,14 @@ const App = () => {
   }, [product.id]);
 
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
-    <div>
+    <Theme.Provider value={currentTheme}>
       <Styles.Title>Super Fun Shopping Experience</Styles.Title>
+      <Toggle setCurrentTheme={setCurrentTheme}/>
       <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
       <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features} rating={averageRating}/>
       <QandAs product={product} setDateFormat={setDateFormat}/>
       <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/>
-    </div>
+    </Theme.Provider>
   );
 };
 
