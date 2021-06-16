@@ -14,7 +14,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   const [currentReviews, setCurrentReviews] = useState([]);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(2);
   const [chars, setChars] = useState([]);
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [sort, setSort] = useState('Relevant');
 
   const getReviews = () => {
