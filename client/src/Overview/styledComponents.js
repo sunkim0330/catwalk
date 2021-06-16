@@ -28,15 +28,32 @@ export const Gallery = styled.div`
   }}
 `;
 
+export const CloseExtended = styled.img`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  ${({ extendedView }) => {
+    return extendedView ? `
+    width: 80px;
+    height: auto;
+    ` : `
+    display: none;
+    `;
+  }}
+`;
+
 export const MainImgWrapper = styled.div`
   grid-column-start: 2;
   height: 100%;
-
+  width: auto;
+  max-width: 800px;
+  position: relative;
+  justify-content: center;
 
   ${({ extendedView }) => {
     return extendedView ? `
     display: flex;
-    justify-self: center;
     ` : `
     display: grid;
     margin: auto;
@@ -44,26 +61,61 @@ export const MainImgWrapper = styled.div`
   }}
 `;
 
+
 export const MainImg = styled.img`
   height: auto;
-  margin: auto;
   width: auto;
   align-self: center;
+  position: relative;
 
-  ${({ extendedView }) => {
+  ${({ extendedView, zoomedIn }) => {
     return extendedView ? `
     max-width: 800px;
-    max-height: 90%;
+    max-height: 100%;
+    &:hover {
+      cursor: ${zoomedIn ? 'zoom-out' : 'cell'}
+    }
     ` : `
     max-width: 600px;
     max-height: 80%;
+    &:hover {
+      cursor: zoom-in;
+    }
     `;
   }}
-
-  &:hover {
-    cursor: zoom-in;
-  }
 `;
+
+export const Lens = styled.div`
+  ${({ zoomedIn }) => {
+    if (!zoomedIn) {
+      return 'display: none;';
+    }
+  }}
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  width: 40px;
+  height: 40px;
+`;
+
+export const ZoomedImage = styled.div`
+${({ zoomedIn }) => {
+    return zoomedIn ? `
+      max-width: 800px;
+      max-height: 100%;
+      position: absolute;
+      border: 1px solid black;
+      height: 100%;
+      width: 100%;
+      top: 0px;
+      &:hover {
+        cursor: zoom-out;
+      }
+    ` : `
+    display: none;
+    `;
+  }}
+`;
+
 
 export const LeftArrow = styled.img`
   align-self: center;
@@ -310,7 +362,7 @@ export const Twitter = styled.button`
   width: 150px;
 
   &:hover {
-    background-color: #9f7f31;
+    box-shadow: 2px 2px grey;
   }
 
   &:active {
@@ -326,7 +378,7 @@ export const Pinterest = styled.button`
   width: 150px;
 
   &:hover {
-    background-color: #9f7f31;
+    box-shadow: 2px 2px grey;
   }
 
   &:active {
@@ -342,7 +394,7 @@ export const Facebook = styled.button`
   width: 150px;
 
   &:hover {
-    background-color: #9f7f31;
+    box-shadow: 2px 2px grey;
   }
 
   &:active {
