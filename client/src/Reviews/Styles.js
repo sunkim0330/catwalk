@@ -760,7 +760,7 @@ export const wiggler = style.a`
 
   :hover {
 
-    animation: ${wiggle} 1s;
+    animation: ${wiggle} .3s;
     color: #3A5A40;
   }
 `;
