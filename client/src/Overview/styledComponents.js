@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import minus from './images/minus.png';
 
 export const Overview = styled.div`
-  font-family: sans-serif;
-  background-color: white;
+  font-family: 'Roboto', sans-serif;
   display: grid;
   grid-template-columns: 70% 30%;
   text-align: center;
@@ -10,43 +10,128 @@ export const Overview = styled.div`
   margin: auto;
 `;
 
-// gallery start
-// gallery container
 export const Gallery = styled.div`
   align-items: center;
   display: grid;
-  grid-template-columns: 25% 75%;
-  grid-template-rows: 100%;
   height: 850px;
   position: relative;
+  ${({ extendedView }) => {
+    return extendedView ? `
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 90% 10%;
+    grid-column-start: span 2;
+    justify-content: center;
+    ` : `
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 100%;
+    `;
+  }}
+`;
+
+export const CloseExtended = styled.i`
+  color: #6B636B;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+
+  ${({ extendedView }) => {
+    return extendedView ? `
+    width: 80px;
+    height: auto;
+    ` : `
+    display: none;
+    `;
+  }}
 `;
 
 export const MainImgWrapper = styled.div`
   grid-column-start: 2;
   height: 100%;
-  margin: 4vh auto;
-  display: grid;
-`;
-
-// main img
-export const MainImg = styled.img`
-  max-width: 600px;
-  height: auto;
-  max-height: 80%;
   width: auto;
-  margin: auto;
-  align-self: center;
+  max-width: 800px;
+  position: relative;
+  justify-content: center;
 
-  &:hover {
-    cursor: zoom-in;
-  }
+  ${({ extendedView }) => {
+    return extendedView ? `
+    display: flex;
+    ` : `
+    display: grid;
+    margin: auto;
+    `;
+  }}
 `;
 
-export const LeftArrow = styled.img`
+
+export const MainImg = styled.img`
+  height: auto;
+  width: auto;
   align-self: center;
-  grid-column-start: 2;
+  position: relative;
+
+  ${({ extendedView, zoomedIn }) => {
+    return extendedView ? `
+    max-width: 800px;
+    max-height: 100%;
+    &:hover {
+      cursor: ${zoomedIn ? `url${minus}), auto;` : 'cell;'}
+    }
+    ` : `
+    max-width: 600px;
+    max-height: 80%;
+    &:hover {
+      cursor: zoom-in;
+    }
+    `;
+  }}
+`;
+
+export const Lens = styled.div`
+  ${({ zoomedIn }) => {
+    if (!zoomedIn) {
+      return 'display: none;';
+    }
+  }}
+  position: absolute;
+  width: 150px;
+  height: 150px;
+`;
+
+export const ZoomedImage = styled.div`
+${({ zoomedIn }) => {
+    return zoomedIn ? `
+      max-width: 800px;
+      max-height: 100%;
+      position: absolute;
+      border: 1px solid black;
+      height: 100%;
+      width: 100%;
+      top: 0px;
+      :hover {
+        cursor: url(${minus}), zoom-out;
+      }
+    ` : `
+    display: none;
+    `;
+  }}
+`;
+
+export const LeftArrow = styled.i`
+  align-self: center;
+  color: #6B636B;
   position: absolute;
   padding-left: 8px;
+  ${({ hidden }) => {
+    return hidden ? 'display: none;' : null;
+  }}
+
+  ${({ extendedView }) => {
+    return extendedView ? `
+    grid-column-start: 1;
+    ` : `
+    grid-column-start: 2;
+    `;
+  }}
 
   &:hover {
   }
@@ -56,12 +141,16 @@ export const LeftArrow = styled.img`
   }
 `;
 
-export const RightArrow = styled.img`
+export const RightArrow = styled.i`
   align-self: center;
+  color: #6B636B;
   grid-column-start: 2;
   justify-self: right;
   position: absolute;
   padding-right: 8px;
+  ${({ hidden }) => {
+    return hidden ? 'display: none;' : null;
+  }}
 
   &:hover {
   }
@@ -71,34 +160,45 @@ export const RightArrow = styled.img`
   }
 `;
 
-// thumbnails container
 export const Thumbnails = styled.div`
   display: flex;
-  flex-direction: column;
-  grid-column-start: 1;
-  grid-row-start: 1;
-  height: 98%;
-  justify-content: center;
-  justify-self: end;
+  height: 100%;
+  ${({ hidden }) => {
+    return hidden ? 'display: none;' : null;
+  }}
+
+  ${({ extendedView }) => {
+    return extendedView ? `
+    flex-direction: row;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    ` : `
+    flex-direction: column;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    justify-content: center;
+    justify-self: end;
+    `;
+  }}
 `;
 
-// thumbnail img
 export const GalleryThumbnail = styled.img`
-  height: 14.5%;
-  transform: scale(0.8);
+  max-width: 100%;
+  height: auto;
+  max-height: 14.5%;
+  width: auto;
+  margin: auto;
+  ${({ selected }) => {
+    return selected ? 'box-shadow: 0px 0px 2px 5px #6B636B' : 'box-shadow: 0px 0px 0px 0px black';
+  }}
 `;
-// gallery end
 
-
-// container for everything next to gallery
 export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 `;
 
-
-// product info start
 export const ProductInfo = styled.div`
 `;
 
@@ -121,6 +221,7 @@ export const LinkToReviews = styled.a`
 `;
 
 export const Category = styled.h4`
+  font-family: 'Montserrat', sans-serif;
   font-size: 22px;
   text-align: left;
   left: 24px;
@@ -129,6 +230,7 @@ export const Category = styled.h4`
 `;
 
 export const Name = styled.h3`
+  font-family: 'Montserrat', sans-serif;
   bottom: 8px;
   font-size: 28px;
   left: 24px;
@@ -148,10 +250,7 @@ export const Price = styled.span`
   margin: 0px 5px;
   color: ${props => props.color || 'black'}
 `;
-// product info end
 
-
-// style selector start
 export const StyleSelector = styled.div`
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -161,13 +260,12 @@ export const StyleSelector = styled.div`
 `;
 
 export const StyleName = styled.h3`
+  font-family: 'Montserrat', sans-serif;
   grid-column: 1 / span 4;
 `;
 
 export const StyleContainer = styled.div`
-  position: absolute;
-  left: 20px;
-  top: 20px;
+  position: relative;
 `;
 
 export const Style = styled.img`
@@ -177,31 +275,29 @@ export const Style = styled.img`
 `;
 
 export const Checkmark = styled.i`
-position: absolute;
-left: 1385px;
-top: 305px;
-font-size: 42px;
-color: green;
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  font-size: 42px;
+  color: #3A5A40;
+  z-index: ${({selected}) => !selected ? '-1' : null}
 `;
-// style selector end
 
-// cart management start
 export const CartManagement = styled.div`
 `;
 
 export const SizeSelect = styled.select`
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 18px;
   height: 28px;
-  margin: 0px;
   width: 200px;
 `;
 
 export const QtySelect = styled.select`
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 18px;
   height: 28px;
-  margin: 10px;
+  margin: 5px;
   width: 100px;
 `;
 
@@ -210,40 +306,53 @@ export const Option = styled.option`
 `;
 
 export const AddToCart = styled.button`
+  border: 1px solid #d3d9d9;
   border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
   font-size: 18px;
-  height: 32px;
-  margin-bottom: 8px;
-  width: 150px;
+  font-family: sans-serif;
 
-  &:hover {
-    box-shadow: 2px 2px grey;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
-  &:active {
+  :active {
     transform: translateY(2px)
   }
 `;
 
 export const PointlessButton = styled.button`
+  border: 1px solid #6B636B;
   border-radius: 5px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
   font-size: 18px;
-  height: 32px;
-  margin: 4px;
-  margin-bottom: 8px;
-  width: 150px;
 
-  &:hover {
-    box-shadow: 2px 2px grey;
+  :hover {
+    border: 1px solid #6B636B;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
-  &:active {
+  :active {
     transform: translateY(2px)
   }
 `;
-// cart management end
 
-// product description start
 export const ProductDescription = styled.div`
   display: block;
 `;
@@ -252,6 +361,7 @@ export const Features = styled.div`
 `;
 
 export const FeaturesHeader = styled.h3`
+  font-family: 'Montserrat', sans-serif;
   margin: 10px auto;
 `;
 
@@ -261,6 +371,7 @@ export const FeaturesItem = styled.li`
 `;
 
 export const Slogan = styled.h3`
+  font-family: 'Montserrat', sans-serif;
   background-color:
   font-style: italic;
 `;
@@ -272,14 +383,22 @@ export const Socials = styled.div`
 `;
 
 export const Twitter = styled.button`
+  border: 1px solid #d3d9d9;
   border-radius: 5px;
-  width: 150px;
-  height: 30px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
   font-size: 18px;
-  margin: 10px;
+  font-family: sans-serif;
 
-  &:hover {
-    background-color: #9f7f31;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
   &:active {
@@ -288,38 +407,54 @@ export const Twitter = styled.button`
 `;
 
 export const Pinterest = styled.button`
+  border: 1px solid #d3d9d9;
   border-radius: 5px;
-  width: 150px;
-  height: 30px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
   font-size: 18px;
-  margin: 10px;
 
-  &:hover {
-    background-color: #9f7f31;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
-  &:active {
+  :active {
     transform: translateY(2px)
   }
 `;
 
 export const Facebook = styled.button`
+  border: 1px solid #d3d9d9;
   border-radius: 5px;
-  width: 150px;
-  height: 30px;
+  width: fit-content;
+  margin-right: 8px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  transition: all .5s ease;
+  font-family: sans-serif;
   font-size: 18px;
-  margin: 8px 8px 12px 8px;
 
-  &:hover {
-    background-color: #9f7f31;
+  :hover {
+    border: 1px solid #CEF1D5;
+    color: #6B636B;
+    box-shadow: none;
+    transition: all .5s ease;
   }
 
-  &:active {
+  :active {
     transform: translateY(2px)
   }
 `;
 
-export const BottomBorder = styled.hr`
+export const Border = styled.hr`
   bottom: 0px;
   border: 0;
   color: black;
@@ -329,5 +464,4 @@ export const BottomBorder = styled.hr`
   position: relative;
   width: 100%;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  `;
-// product description end
+`;
