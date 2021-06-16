@@ -180,7 +180,7 @@ export const list = style.div`
   height: 25px;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
-  z-index: 10;
+  z-index: 1;
   transition: height 1s ease;
   overflow: hidden;
 
@@ -790,6 +790,6 @@ export const wiggler = style.a`
   :hover {
 
     animation: ${wiggle} 1s;
-    color: blue;
+    color: #3A5A40;
   }
 `;
