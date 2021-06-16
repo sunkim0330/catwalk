@@ -678,6 +678,10 @@ export const button = style.div`
     box-shadow: none;
     transition: all .5s ease;
   }
+
+  :active {
+    transform: translateY(2px);
+  }
 `;
 
 export const clickWave = keyframes`
@@ -745,4 +749,28 @@ export const wrapper = style.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const wiggle = keyframes`
+  0%, 100% {
+    transform: translateX(0px)
+  }
+
+  25% {
+    transform: translateX(3px)
+  }
+
+  75% {
+    transform: translateX(-3px)
+  }
+`;
+
+export const wiggler = style.a`
+
+
+  &:hover {
+    position: relative;
+    animation: ${wiggle} 1s;
+    color: blue;
+  }
 `;

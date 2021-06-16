@@ -173,7 +173,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
         showCurrentFilters()
       ) : (
         <Styles.spacer>
-          <Styles.filter>Filtered by: ¯\_(ツ)_/¯</Styles.filter>
+          <Styles.filter>Filtered by: <Styles.wiggler>¯\_(ツ)_/¯</Styles.wiggler></Styles.filter>
         </Styles.spacer>
       )
       }
