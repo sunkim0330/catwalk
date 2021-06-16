@@ -38,9 +38,11 @@ const SearchQandA = ({product, setDateFormat}) => {
     return (
       <Styles.questionList id="question" className="questions_div" key={question.question_id}>
           Q: {question.question_body}
-        <Styles.addAnswerButton id="add-answer-button" onClick={() => setShow(true)} >Add Answer |
+        <Styles.buttons>
+          <Styles.addAnswerButton id="add-answer-button" onClick={() => setShow(true)} >Add Answer </Styles.addAnswerButton> |&nbsp;
           <Helpful origin="qa/questions" id={question.question_id}
-            helpCount={question.question_helpfulness} /></Styles.addAnswerButton>
+            helpCount={question.question_helpfulness} />
+        </Styles.buttons>
         <Modal title="Submit Your Answer" subTitle={product.name}
           id={question.question_id} questionBody={question.question_body}
           show={show} onClose={() => setShow(false)} />
@@ -66,7 +68,6 @@ const SearchQandA = ({product, setDateFormat}) => {
         type="text"
         placeholder="Have a question? Search for answers..."
       />
-
       <Styles.QuestionsContainer id="searchQandA-component">
         <>{filteredQuestion}</>
       </Styles.QuestionsContainer>
@@ -75,7 +76,6 @@ const SearchQandA = ({product, setDateFormat}) => {
         className="question_button" onClick={loadMore}>
         MORE ANSWERED QUESTIONS
       </Styles.moreQuestionButton>
-
     </>
   );
 };

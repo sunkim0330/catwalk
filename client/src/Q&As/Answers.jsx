@@ -40,10 +40,12 @@ const Answers = ({ product, questions, setDateFormat }) => {
   const loadAnswers = answers.slice(0, loadPage).map((answer, index) => {
     return (
       <Styles.answerList className="main-answer-container" key={answer.answer_id}>
-        <b>A:</b> {answer.body}
+        <b>A:</b> {answer.body} <br/>
         <Styles.answerFooter>
-          by {answer.answerer_name}, {answer.formattedDate}
-          <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
+          <Styles.username> by {answer.answerer_name},&nbsp;{answer.formattedDate}&nbsp;</Styles.username>
+          <Styles.answerhelp>
+            <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
+          </Styles.answerhelp>
         </Styles.answerFooter>
         <Styles.btwnAnswers />
       </Styles.answerList>
