@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
+import * as Styles from './Styles.js';
 
 const ModalForm = ({origin, title, placeholder, productId}) => {
   const [errors, setErrors] = useState({});
@@ -14,9 +15,9 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
 
   const [charCount, setCharCount] = useState(() => {
     return {
-      body_char: null,
-      name_char: null,
-      email_char: null
+      body_char: 0,
+      name_char: 0,
+      email_char: 0
     };
   });
 
@@ -122,19 +123,19 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
 
   return (
     <form>
-      <label>{title}</label>
+      <label>{title}: </label>
       <textarea type="text" name="body" onChange={handleBodyChange} placeholder={placeholder} required>
       </textarea>
-      <p>{charCount.body_char} / 1000</p>
+      <Styles.charCount>{charCount.body_char} / 1000</Styles.charCount>
       {errors.body && ( <p>{errors.body}</p>)}
       <label>What is your username: </label>
       <input type="text" name="name" onChange={handleNameChange} placeholder="please enter your nickname" required/>
-      <p>{charCount.name_char} / 60</p>
+      <Styles.charCount>{charCount.name_char} / 60</Styles.charCount>
       {errors.answerer_name && ( <p>{errors.answerer_name}</p>)}
-      <label>Your email</label>
+      <label>Your email: </label>
       <input type="text" name="email" onChange={handleEmailChange} placeholder="please enter your email" value = {formData.email} required/>
-      <p>{charCount.email_char} / 60</p>
-      <p>For authentication reasons, you will not be emailed</p>
+      <Styles.charCount>{charCount.email_char} / 60</Styles.charCount>
+      <Styles.emailAuth>For authentication reasons, you will not be emailed</Styles.emailAuth>
       {errors.email && ( <p>{errors.email}</p>)}
       <button onClick={handleClick}>Submit</button>
     </form>
