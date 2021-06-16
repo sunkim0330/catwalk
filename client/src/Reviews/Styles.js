@@ -719,7 +719,7 @@ export const radioSmall = style.input`
   height: 30px;
   width: 30px;
   transition: all 0.15s ease-out 0s;
-  background: #cbd1d8;
+  background: #D3D9D9;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -730,11 +730,11 @@ export const radioSmall = style.input`
   border-radius: 50%;
 
   :hover {
-    background: #9faab7;
+    background: #6B636B;
   }
 
   :checked {
-    background: #40e0d0;
+    background: #CEF1D5;
 
     &::before {
       height: 30px;
@@ -749,7 +749,7 @@ export const radioSmall = style.input`
 
     &::after {
       animation: ${clickWave} .5s;
-      background: #40e0d0;
+      background: #CEF1D5;
       content: '';
       display: block;
       position: absolute;
