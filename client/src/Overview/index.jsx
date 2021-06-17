@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Gallery from './Gallery.jsx';
 import ProductDescription from './ProductDescription.jsx';
@@ -7,8 +7,11 @@ import CartManagement from './CartManagement.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import * as Styles from './styledComponents.js';
 import ShareButtons from './ShareButtons.jsx';
+import { Theme } from '../App.jsx';
 
 const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }) => {
+
+  const theme = useContext(Theme);
 
   const [currentStyle, setCurrentStyle] = useState(defaultStyle);
   const [extendedView, setExtendedView] = useState(false);
@@ -32,7 +35,7 @@ const Overview = ({ product, styles, defaultStyle, totalReviews, averageRating }
   };
 
   return (
-    <Styles.Overview onClick={getClickedElement} extendedView={extendedView} id="overview">
+    <Styles.Overview onClick={getClickedElement} id="overview">
       <Gallery styleImages={styles[currentStyle].photos} productID={product.id} extendedView={extendedView} setExtendedView={setExtendedView}/>
       {!extendedView && <Styles.Sidebar>
         <ProductInfo product={product} style={styles[currentStyle]} rating={averageRating} reviewCount={totalReviews}/>

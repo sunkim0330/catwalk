@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
+import {Theme} from '../App.jsx';
 
 const StyledStars = styled.div(
   ({ styles }, appliedStyles = '') => {
@@ -12,6 +13,8 @@ const StyledStars = styled.div(
 
 
 const Stars = ( {rating, ...styles }) => {
+  let theme = useContext(Theme);
+
   return (
     <StyledStars styles={styles}>
       <svg viewBox="0 0 1000 200">
@@ -30,8 +33,8 @@ const Stars = ( {rating, ...styles }) => {
 
 
 
-        <rect style={{fill: '#eeeee4', stroke: 'red', strokeWidth: '1px', height: '100%', width: '100%'}} clipPath="url(#stars)"></rect>
-        <rect width={(rating * 20) + '%'} style={{ fill: '#ECD08C ', height: '100%'}} clipPath="url(#stars)"></rect>
+        <rect style={{fill: '#D3D9D9', stroke: 'red', strokeWidth: '1px', height: '100%', width: '100%'}} clipPath="url(#stars)"></rect>
+        <rect width={(rating * 20) + '%'} style={{ fill: theme.color, height: '100%'}} clipPath="url(#stars)"></rect>
 
       </svg>
     </StyledStars>

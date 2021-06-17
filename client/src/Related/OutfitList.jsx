@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import OutfitCard from './OutfitCardComponent';
-import {RelatedListDiv, AddToOutfitButton, SecondaryTextTitle, PlusAnimation} from './styled.js';
+import {RelatedListDiv, AddToOutfitButton, SecondaryTextTitle, PlusAnimation, ArrowWrapper, ArrowRightDiv, ArrowLeftDiv, ArrowIcon} from './styled.js';
 import leftArrow from '../Overview/images/chevron-left.png';
 import rightArrow from '../Overview/images/chevron-right.png';
+import {Theme} from '../App.jsx';
 
 
 const OutfitList = (props) => {
+  let theme = useContext(Theme);
+
   let newStorage = window.localStorage;
 
   const [closet, setCloset] = useState(null);
@@ -19,6 +22,8 @@ const OutfitList = (props) => {
     }
 
   }, []);
+
+  // Add Outfit card to Local Storage and update List
 
   const handleAdd = () => {
     // structure data for card
@@ -62,16 +67,41 @@ const OutfitList = (props) => {
     console.log(closet.length);
   };
 
+  // Scroll functionality
+
+  const scrollBack = () => {
+    const list = document.getElementById('OutfitList');
+
+    list.scrollLeft -= 630;
+
+    console.log(list.scrollLeft);
+  };
+
+  const scrollForward = () => {
+    const list = document.getElementById('OutfitList');
+    console.log('right clicked');
+    list.scrollLeft += 630;
+    console.log(list.scrollLeft);
+  };
+
   if (closet !== null) {
     return (
       <div>
-        <SecondaryTextTitle>Your Outfit</SecondaryTextTitle>
-        <RelatedListDiv listLength={closet.length + 1}>
-          <AddToOutfitButton onClick={handleAdd}>
-            <PlusAnimation>Add To Outfit</PlusAnimation>
-          </AddToOutfitButton>
-          {closet ? closet.map((piece, i) => { return <OutfitCard piece={piece} key={i} grid={i + 1} updateCloset={updateCloset} />; }) : null}
-        </RelatedListDiv>
+        <SecondaryTextTitle color={theme.font}>YOUR OUTFIT</SecondaryTextTitle>
+        <ArrowWrapper>
+          <ArrowLeftDiv onClick={scrollBack}>
+            <ArrowIcon className="fas fa-chevron-left fa-2x"></ArrowIcon>
+          </ArrowLeftDiv>
+          <RelatedListDiv listLength={closet.length + 1} id="OutfitList" >
+            <AddToOutfitButton onClick={handleAdd} color={theme.color}>
+              <PlusAnimation>Add To Outfit</PlusAnimation>
+            </AddToOutfitButton>
+            {closet ? closet.map((piece, i) => { return <OutfitCard piece={piece} key={i} grid={i + 1} updateCloset={updateCloset} setCurrentProduct={props.setCurrentProduct}/>; }) : null}
+          </RelatedListDiv>
+          <ArrowRightDiv onClick={scrollForward}>
+            <ArrowIcon className="fas fa-chevron-right fa-2x"></ArrowIcon>
+          </ArrowRightDiv>
+        </ArrowWrapper>
       </div>
     );
   } else {
