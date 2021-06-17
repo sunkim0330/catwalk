@@ -145,7 +145,7 @@ export const answerhelp = styled.div`
 `;
 
 export const MoreQuestionButton = styled.div`
-  background-color: ${props => props.background};
+  // background-color: ${props => props.background};
   grid-area: morequestion;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
@@ -171,7 +171,7 @@ export const AnswerButtonWrapper = styled.div`
 `;
 
 export const AskQuestionButton = styled.div`
-  background-color: ${props => props.background};
+  // background-color: ${props => props.background};
   alien-item: end;
   grid-area: askquestion;
   border: 1px solid #d3d9d9;
@@ -260,34 +260,38 @@ export const ModalContainer = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: #D3D9D9;
-  background-color: rgba(0,0,0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
+  background-color: rgba(0,0,0,0.5);
 `;
 
 export const modalLabel = styled.label`
-  color: #3A5A40;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
+  color: #3A5A40;
 `;
+//color: #3A5A40;
 
 export const subtitle = styled.h4`
   font-family:'Roboto', sans-serif;
   margin: 10px;
+  background-color: #D3D9D9;
   color: #3A5A40;
 `;
 export const ModalContent = styled.div.attrs({className: 'qanda-modal-content'})`
   width: 500px;
-  background-color: white;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
   color: #3A5A40;
 `;
 
 export const ModalHeaderFooter = styled.div.attrs({className: 'qanda-modal-content'})`
   padding: 10px;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
   color: #3A5A40;
 `;
 
@@ -296,6 +300,7 @@ export const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
   color: #3A5A40;
 `;
 
@@ -303,6 +308,7 @@ export const textarea = styled.textarea`
   white-space: normal;
   vertical-align: middle;
   width: 200px;
+  color: #3A5A40;
 `;
 
 export const Auth = styled.p`
@@ -329,5 +335,6 @@ export const modalButtons = styled.button`
 
 export const charCount = styled.p`
 font-size: 12px;
+color: #3A5A40;
 `;
 
