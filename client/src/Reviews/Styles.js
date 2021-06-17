@@ -651,7 +651,7 @@ export const fullImage = style.img`
 export const button = style.div`
   border-radius: 5px;
   width: fit-content;
-  margin: 0 8px 0 5px;
+  margin: 5px 8px 0 5px;
   padding: 5px;
   cursor: pointer;
   box-shadow: ${props => props.shadow};

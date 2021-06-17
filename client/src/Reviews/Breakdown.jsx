@@ -136,13 +136,21 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
 
     setRatings(newRatings);
 
+  }, [reviews]);
+
+  useEffect(() => {
     let t = Number(meta.recommended.true);
     let f = Number(meta.recommended.false);
 
     setRecommends(() => {
-      return Math.round((f / (t + f)) * 100);
+      return t + f > 0 ? (
+        Math.round((t / (t + f)) * 100)
+      ) : (
+        0
+      );
     });
-  }, [reviews]);
+
+  }, [meta]);
 
   // update filters
   useEffect(() => {
