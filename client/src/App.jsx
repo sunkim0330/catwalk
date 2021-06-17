@@ -108,6 +108,12 @@ const App = () => {
     }
   }, [product.id]);
 
+  useEffect(() => {
+    let body = document.body;
+    body.style.backgroundColor = currentTheme.background;
+    body.style.color = currentTheme.color;
+  }, [currentTheme]);
+
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
     <Theme.Provider value={currentTheme}>
       <Styles.Title>Super Fun Shopping Experience</Styles.Title>

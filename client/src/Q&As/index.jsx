@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import axios from 'axios';
 import Modal from './Modal.jsx';
-// import * as Styles from './Styles.js';
 import {Index, Title, AskQuestionButton, Buttons} from './Styles.js';
 import SearchQandA from './SearchQandA.jsx';
+import {Toggle} from '../Shared/ThemeToggle.jsx';
+import {Theme} from '../App.jsx';
 
 const QandAs = ({ product, setDateFormat }) => {
   const [input, setInput] = useState('');
   const [show, setShow] = useState(false);
+  const theme = useContext(Theme);
 
   const getClickedElement = (event) => {
     const module = 'Questions and Answers';
@@ -18,7 +20,7 @@ const QandAs = ({ product, setDateFormat }) => {
   };
 
   return (
-    <Index id="QandAstart-div">
+    <Index id="QandAstart-div" background={theme.background}>
       <Title>QUESTIONS AND ANSWERS</Title>
       <SearchQandA product={product} setDateFormat={setDateFormat}/>
       <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)} >ASK A QUESTION +
