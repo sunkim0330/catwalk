@@ -16,16 +16,6 @@ const Helpful = ({ origin, id, helpCount }) => {
   const [styles, setStyles] = useState(() => {
     let styles = {};
 
-    if (isQuestion) {
-      styles.width = '125px;';
-      styles['border-right'] = 'none;';
-    } else {
-      styles.width = '230px;';
-      styles['border-right'] = '1px solid black;';
-    }
-    return styles;
-  });
-
   const theme = useContext(Theme);
 
     if (isQuestion) {
