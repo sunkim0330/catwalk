@@ -55,11 +55,13 @@ const Answers = ({ product, questions, setDateFormat }) => {
   return (
     <Styles.answerContainer id="answer-return-div">
       {loadAnswers}
-      <Styles.moreAnswerButton id="more-answer-button"
-        style = {{display: loadPage >= answers.length ? 'none' : 'block'}}
-        className="answer_button" onClick={loadMore}>
+      <Styles.AnswerButtonWrapper>
+        <Styles.moreAnswerButton id="more-answer-button"
+          style = {{display: loadPage >= answers.length ? 'none' : 'block'}}
+          className="answer_button" onClick={loadMore}>
           See more answers
-      </Styles.moreAnswerButton>
+        </Styles.moreAnswerButton>
+      </Styles.AnswerButtonWrapper>
       <Styles.linegradient />
     </Styles.answerContainer>
   );

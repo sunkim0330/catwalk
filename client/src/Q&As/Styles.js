@@ -3,46 +3,46 @@ import styled, {css} from 'styled-components';
 
 
 export const Index = styled.div`
-  height: 100%;
+  height: 650px;
   min-width: 1500px;
   max-width: 1500px;
   width: 1500px;
-  color: #3A5A40;
+  color: black;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
-  margin: auto;
+  margin: 30px;
   padding: 10px;
   column-gap: 10px;
   row-gap: 10px;
   display: grid;
-  grid-template-columns: 30% 40% 30%;
-  grid-template-rows: 10% 10% 35% 30% auto;
+  grid-template-columns: 20% 20% 30% 30%;
+  grid-template-rows: 46px 46px 224px 224px 50px;
   column-gap: 10px;
   row-gap: 10px;
   grid-template-areas:
-    "title . ."
-    "search search ."
-    "question question ."
-    "question question ."
-    "morequestion askquestion .";
+    "title title . ."
+    "search search search ."
+    "question question question ."
+    "question question question ."
+    "morequestion askquestion . .";
 `;
 
 export const Title = styled.h2`
   align-self: start;
   grid-area: title;
   padding: 2px;
-  margin: 0 0 10px 0;
+  margin: 10px 0 10px 0;
   font-family: 'Montserrat', sans-serif;
 `;
 
 export const QuestionsContainer = styled.div.attrs({className: 'Questions_container'})`
-  margin: 10px 0 30px 0;
+  margin: 10px 0 10px 0;
   font-family: 'Montserrat', sans-serif;
   font-family: 'Roboto', sans-serif;
-  color: #3A5A40;
+  color: black;
   font-size: 15px;
   font-weight: bold;
-  height: 300px;
+  height: 448px;
   grid-area: question;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@ export const QuestionsContainer = styled.div.attrs({className: 'Questions_contai
 `;
 
 export const SearchBarInput = styled.input`
-  margin: 10px 0 0 0;
+  margin: 10px;
   align-self: stretch;
   grid-area: search;
   font-size: 15px;
@@ -81,7 +81,7 @@ export const questionWrapper = styled.div`
 `;
 export const body = styled.div`
   font-family:'Roboto', sans-serif;
-  color: #3A5A40;
+  color: black;
 `;
 
 export const buttons = styled.div`
@@ -108,13 +108,13 @@ export const addAnswerButton = styled.button`
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    color: #b3225e;
+    color: #CEF1D5;
   }
 `;
 
 export const answerContainer = styled.div`
   font-family:'Roboto', sans-serif;
-  color: #3A5A40;
+  color: black;
   font-size: 15px;
   font-weight: normal;
   flex-direction: column;
@@ -123,7 +123,7 @@ export const answerContainer = styled.div`
 
 export const answerList = styled.div`
   font-family:'Roboto', sans-serif;
-  color: #3A5A40;
+  color: black;
 `;
 
 export const answerFooter = styled.div`
@@ -131,7 +131,7 @@ export const answerFooter = styled.div`
   font-family:'Roboto', sans-serif;
   height: fit-content;
   font-size: 12px;
-  color: #3A5A40;
+  color: black;
   justify-content: flex-start;
   display: flex;
   flex-direction: row;
@@ -141,7 +141,7 @@ export const username = styled.div`
   font-family:'Roboto', sans-serif;
   flex: 1;
   font-size: 12px;
-  color: #3A5A40;
+  color: black;
 `;
 
 export const answerhelp = styled.div`
@@ -151,11 +151,14 @@ export const answerhelp = styled.div`
 `;
 
 export const MoreQuestionButton = styled.button`
+  align-self: start;
   grid-area: morequestion;
-   justify-self: end;
+   justify-self: center;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
+  height: 30px;
   width: fit-content;
+  margin-top: 10px;
   margin-right: 8px;
   padding: 5px;
   cursor: pointer;
@@ -170,11 +173,19 @@ export const MoreQuestionButton = styled.button`
   }
 `;
 
+export const AnswerButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const AskQuestionButton = styled.button`
+  alien-item: end;
   grid-area: askquestion;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
+  height: 30px;
   width: fit-content;
+  margin-top: 10px;
   margin-right: 8px;
   padding: 5px;
   cursor: pointer;
@@ -200,6 +211,7 @@ export const Buttons = styled.div`
 `;
 
 export const moreAnswerButton = styled.button`
+
   grid-area: morequestions;
   border: transparent;
   margin: 5px;
@@ -208,7 +220,7 @@ export const moreAnswerButton = styled.button`
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    color: #b3225e;
+    color: #CEF1D5;
   }
 `;
 
@@ -307,13 +319,13 @@ export const modalButtons = styled.button`
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    color: #b3225e;
+    color: #CEF1D5;
   }
 `;
 
 export const charCount = styled.p`
 font-size: 12px;
-font-color: #D3D9D9;
+font-color: black;
 `;
 
 /*

@@ -21,7 +21,7 @@ const QandAs = ({ product, setDateFormat }) => {
     <Index id="QandAstart-div">
       <Title>QUESTIONS AND ANSWERS</Title>
       <SearchQandA product={product} setDateFormat={setDateFormat}/>
-      <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)} >Ask a Question
+      <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)} >ASK A QUESTION +
       </AskQuestionButton>
       <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
     </Index >
