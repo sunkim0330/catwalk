@@ -113,7 +113,7 @@ const App = () => {
   useEffect(() => {
     let body = document.body;
     body.style.backgroundColor = currentTheme.background;
-    body.style.color = currentTheme.color;
+    body.style.color = currentTheme.font;
   }, [currentTheme]);
 
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
