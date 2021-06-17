@@ -53,4 +53,3 @@ export const ThemeIcon = styled.i`
   color: ${props => props.color};
   transition: all .6s;
 `;
-

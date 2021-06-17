@@ -29,7 +29,7 @@ export const themes = {
     header2: 'black',
     thumbnailBorder: 'black',
     color: '#3A5A40',
-    font: 'gray',
+    font: 'black',
     background: '#ffffff',
     shadow: 'rgb(0 0 0 / 22%) 2px 2px 4px',
     hoverShadow: 'rgb(0 0 0 / 22%) -2px -2px 4px',
