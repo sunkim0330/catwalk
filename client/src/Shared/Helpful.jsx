@@ -16,8 +16,6 @@ const Helpful = ({ origin, id, helpCount }) => {
   const [styles, setStyles] = useState(() => {
     let styles = {};
 
-  const theme = useContext(Theme);
-
     if (isQuestion) {
       styles.width = '125px;';
       styles['border-right'] = 'none;';
@@ -28,6 +26,8 @@ const Helpful = ({ origin, id, helpCount }) => {
     return styles;
   });
 
+
+  const theme = useContext(Theme);
   /*
     const StyledYourComponent = styled(YourComponent)`
     background: ${props => props.active ? 'darkred' : 'limegreen'}
