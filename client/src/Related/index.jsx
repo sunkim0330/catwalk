@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
-import {IndexDiv} from './styled.js';
 import RelatedList from './RelatedList.jsx';
 import OutfitList from './OutfitList.jsx';
 import {Toggle} from '../Shared/ThemeToggle.jsx';
@@ -22,10 +21,10 @@ const Related = (props) => {
   };
 
   return (
-    <IndexDiv background={theme.background}>
+    <div>
       <RelatedList product={props.product} setCurrentProduct={props.setProduct} currentStyle={props.defaultStyle} currentChar={props.currentChar}/>
       <OutfitList product={props.product} style={props.defaultStyle} rating={props.rating} setCurrentProduct={props.setProduct}/>
-    </IndexDiv>
+    </div>
   );
 };
 

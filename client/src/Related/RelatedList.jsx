@@ -17,6 +17,7 @@ const RelatedList = (props) => {
   const [relatedStyles, setRelatedStyles] = useState([]);
   const [relatedMetaData, setRelatedMetaData] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollWidth, setScrollWidth] = useState(0);
 
   useEffect(() => {
     if (props.product.id) {
@@ -92,43 +93,38 @@ const RelatedList = (props) => {
     }
   }, [productIds]);
 
+  useEffect(() => {
+    if (document.getElementById('RelatedList')) {
+      setScrollWidth(document.getElementById('RelatedList').scrollWidth);
+    }
+    setScrollPosition(0);
+  }, [relatedMetaData]);
+
 
   useEffect(() => {
-    const list = document.getElementById('RelatedList');
-    const leftArrow = document.getElementById('leftArrowRelated');
-    const rightArrow = document.getElementById('rightArrowRelated');
+    if (document.getElementById('leftArrowRelated') && document.getElementById('rightArrowRelated')) {
+      const list = document.getElementById('RelatedList');
+      const leftArrow = document.getElementById('leftArrowRelated');
+      const rightArrow = document.getElementById('rightArrowRelated');
+      let end = scrollWidth - 1262;
 
-
-    if (scrollPosition === 0) {
-      leftArrow.setAttribute('style', 'visibility: hidden');
-    } else {
-      leftArrow.setAttribute('style', 'visibility: visible');
+      scrollPosition <= 0 ? leftArrow.setAttribute('style', 'visibility: hidden') : leftArrow.setAttribute('style', 'visibility: visible');
+      scrollPosition >= end ? rightArrow.setAttribute('style', 'visibility: hidden') : rightArrow.setAttribute('style', 'visibility: visible');
     }
 
-    if (scrollPosition === list.scrollWidth) {
-      rightArrow.setAttribute('style', 'visibility: hidden');
-    } else {
-      rightArrow.setAttribute('style', 'visibility: visible');
-    }
-
-
-  }, [scrollPosition]);
+  }, [scrollPosition, scrollWidth]);
 
 
   const scrollBack = () => {
     const list = document.getElementById('RelatedList');
-    console.log(list.scrollLeft);
     list.scrollLeft -= 630;
-    setScrollPosition(list.scrollLeft);
-    console.log(list.scrollLeft);
+    setScrollPosition(list.scrollLeft - 630);
   };
 
   const scrollForward = () => {
     const list = document.getElementById('RelatedList');
-    console.log(list.scrollLeft);
     list.scrollLeft += 630;
-    setScrollPosition(list.scrollLeft);
-    console.log(list.scrollLeft);
+    setScrollPosition(list.scrollLeft + 630);
   };
 
 
@@ -147,7 +143,7 @@ const RelatedList = (props) => {
           <ArrowIcon className="fas fa-chevron-left fa-2x" color={theme.color} ></ArrowIcon>
         </ArrowLeftDiv>
 
-        <RelatedListDiv listLength={productIds.length} id="RelatedList">
+        <RelatedListDiv listLength={productIds.length} id="RelatedList" font={theme.header2}>
           {relatedObjects.map((object, i) => { return <Card product={object} style={relatedStyles[i]} metaData={relatedMetaData[i]} key={object.id} setCurrentProduct={props.setCurrentProduct} currentName={props.product.name} currentChar={props.currentChar} grid={i}/>; })}
         </RelatedListDiv>
 

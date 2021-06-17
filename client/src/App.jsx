@@ -10,26 +10,34 @@ import {Toggle} from './Shared/ThemeToggle.jsx';
 
 export const themes = {
   dark: {
-    header1: '#eeeee4',
+    header1: '#6B636B',
+    header2: 'white',
     thumbnailBorder: '#CEF1D5',
     color: '#CEF1D5',
-    font: '#eeeee4',
+    font: 'white',
     background: '#6B636B',
     shadow: 'rgb(211 217 217 / 40%) 2px 2px 4px',
     hoverShadow: 'rgb(211 217 217 / 40%) -2px -2px 4px',
     hoverColor: 'white',
-    buttonBorder: 'none'
+    buttonBorder: 'none',
+    toggleShadow: '8px 4px 8px 0px #564f56, -8px -4px 8px 0px #807780',
+    toggleColor: 'linear-gradient(145deg, #726a72, #605960)',
+    containerShadow: '-8px -4px 8px 0px #807780, 8px 4px 12px 0px #564f56, 4px 4px 4px 0px #564f56 inset, -4px -4px 4px 0px #807780 inset;'
   },
   light: {
-    header1: 'black',
+    header1: 'white',
+    header2: 'black',
     thumbnailBorder: 'black',
     color: '#3A5A40',
     font: 'gray',
-    background: 'white',
+    background: '#ffffff',
     shadow: 'rgb(0 0 0 / 22%) 2px 2px 4px',
     hoverShadow: 'rgb(0 0 0 / 22%) -2px -2px 4px',
     hoverColor: '#6B636B',
-    buttonBorder: '1px solid #D3D9D9'
+    buttonBorder: '1px solid #D3D9D9',
+    toggleShadow: '-8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6',
+    toggleColor: 'linear-gradient(145deg, #fbffff, #d4e1db)',
+    containerShadow: '-8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6, 4px 4px 4px 0px #d1d9e6 inset, -4px -4px 4px 0px #ffffff inset;'
   }
 };
 
