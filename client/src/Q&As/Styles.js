@@ -4,19 +4,19 @@ import styled, {css} from 'styled-components';
 
 export const Index = styled.div`
   background-color: ${props => props.background};
-  height: 650px;
+  height: 676px;
   min-width: 1500px;
   max-width: 1500px;
   width: 1500px;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
-  margin: 30px;
+  margin: 30px 30px 100px auto;
   padding: 10px;
   column-gap: 10px;
   row-gap: 10px;
   display: grid;
   grid-template-columns: 20% 20% 30% 30%;
-  grid-template-rows: 46px 46px 224px 224px 50px;
+  grid-template-rows: 46px 46px 267px 267px 50px;
   column-gap: 10px;
   row-gap: 10px;
   grid-template-areas:
@@ -41,7 +41,7 @@ export const QuestionsContainer = styled.div.attrs({className: 'Questions_contai
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   font-weight: bold;
-  height: 448px;
+  height: 534px;
   grid-area: question;
   display: flex;
   flex-direction: column;
@@ -130,6 +130,11 @@ export const answerFooter = styled.div`
   justify-content: flex-start;
   display: flex;
   flex-direction: row;
+`;
+
+export const Answerbody = styled.div`
+  font-family:'Roboto', sans-serif;
+  font-size: 15px;
 `;
 
 export const username = styled.div`

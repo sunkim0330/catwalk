@@ -51,10 +51,11 @@ export default Answers;
 
 const Answer = ({ answer }) =>
   <Styles.answerList className="main-answer-container">
-    <b>A:</b> {answer.body}
-    <Styles.answerFooter>
-      <Styles.username> by {answer.answerer_name},&nbsp;{answer.formattedDate}&nbsp;</Styles.username>
-      <Styles.answerhelp>
+    <Styles.Answerbody><b>A:</b></Styles.Answerbody>
+    <Styles.Answerbody>{answer.body}</Styles.Answerbody>
+    <Styles.answerFooter id="answer-footer">
+      <Styles.username id="username"> by {answer.answerer_name},&nbsp;{answer.formattedDate}&nbsp;</Styles.username>
+      <Styles.answerhelp id="answerhelp">
         <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness} />
       </Styles.answerhelp>
     </Styles.answerFooter>
