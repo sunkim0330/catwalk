@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import * as Styles from './styledComponents.js';
+import { Theme } from '../App.jsx';
 
 const CartManagement = ({ styleInventory }) => {
+
+  const theme = useContext(Theme);
 
   const [formattedSkuData, setFormattedSkuData] = useState([]);
   const [productSku, setProductSku] = useState();
@@ -129,8 +132,8 @@ const CartManagement = ({ styleInventory }) => {
         {quantityOptions}
       </Styles.QtySelect>
       <br/>
-      <Styles.AddToCart type="button" id="addToCart" onClick={() => addToCart(Number(purchaseQty))}>Add to Cart</Styles.AddToCart>
-      <Styles.PointlessButton type="button" onClick={() => window.alert('You clicked the pointless button! Nice!!!')}>Pointless Button</Styles.PointlessButton>
+      <Styles.Button type="button" id="addToCart" onClick={() => addToCart(Number(purchaseQty))} theme={theme}>Add to Cart</Styles.Button>
+      <Styles.Button type="button" onClick={() => window.alert('You clicked the pointless button! Nice!!!')} theme={theme}>Pointless Button</Styles.Button>
     </Styles.CartManagement>
   );
 

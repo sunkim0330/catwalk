@@ -113,19 +113,20 @@ const App = () => {
   useEffect(() => {
     let body = document.body;
     body.style.backgroundColor = currentTheme.background;
-    body.style.color = currentTheme.font;
+    body.style.color = currentTheme.color;
   }, [currentTheme]);
 
-
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
-    <Theme.Provider value={currentTheme}>
-      <Styles.Title>Super Fun Shopping Experience</Styles.Title>
-      <Toggle setCurrentTheme={setCurrentTheme}/>
-      <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
-      <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features} rating={averageRating}/>
-      <QandAs product={product} setDateFormat={setDateFormat}/>
-      <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/>
-    </Theme.Provider>
+    <div>
+      <Theme.Provider value={currentTheme}>
+        <Styles.Title>Not Gucci</Styles.Title>
+        <Toggle setCurrentTheme={setCurrentTheme}/>
+        <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
+        <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features} rating={averageRating}/>
+        <QandAs product={product} setDateFormat={setDateFormat}/>
+        <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/>
+      </Theme.Provider>
+    </div>
   );
 };
 
