@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Theme } from '../App.jsx';
 import * as Styles from './Styles.js';
 
-const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
+const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortReviewsList }) => {
   const [ratings, setRatings] = useState({});
   const [ratingsPct, setRatingsPct] = useState({});
   const [recommends, setRecommends] = useState('');
@@ -14,6 +15,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     5: false,
   });
 
+  const theme = useContext(Theme);
+
   const showCurrentFilters = () => {
     let currentFilters = [];
     for (let i in filters) {
@@ -24,19 +27,33 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
     currentFilters.sort((a, b) => { return b - a; });
 
+    const displayFilter = (filter, i) => {
+      let last = currentFilters.length - 1;
+      let stars;
+
+      currentFilters[i] === '1' ? stars = 'star' : stars = 'stars';
+
+      if (i === last) {
+        return (
+          <span key={i}> {filter} {stars}</span>
+        );
+      } else {
+        return (
+          <span key={i}> {filter} {stars}, </span>
+        );
+      }
+    };
+
     return (
       <Styles.spacer>
         <Styles.filter>
           Filtered by:
           {currentFilters.map((filter, index) => {
-            return (
-              // need to remove the comma on last item
-              // 1 star instead of stars
-              <span key={index}> {filter} stars, </span>
-            );
+            return displayFilter(filter, index);
           })}
         </Styles.filter>
         <Styles.remove onClick={handleRemoveFilters}>Remove all filters</Styles.remove>
+
       </Styles.spacer>
     );
   };
@@ -49,6 +66,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
       }
       return prev;
     });
+
+    setReviewsList(reviews);
   };
 
   const handleFilterClick = (e) => {
@@ -91,7 +110,11 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
       return (
         <Styles.ratingContainer key={rating}>
           <Styles.rating onClick={handleFilterClick}>{rating} {rating === 1 ? 'star' : 'stars'}</Styles.rating>
-          <Styles.bar><Styles.percent width={ratingsPct[rating]}></Styles.percent></Styles.bar>
+          <Styles.bar>
+            <Styles.percent
+              width={ratingsPct[rating]}
+              color={theme.color}
+            ></Styles.percent></Styles.bar>
           <Styles.count>({ratings[rating]})</Styles.count>
         </Styles.ratingContainer>
       );
@@ -113,18 +136,30 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
 
     setRatings(newRatings);
 
-    let t = Number(meta.recommended.true);
-    let f = Number(meta.recommended.false);
+  }, [reviews]);
+
+  useEffect(() => {
+    let t = Number(meta.recommended.true) || 0;
+    let f = Number(meta.recommended.false) || 0;
 
     setRecommends(() => {
-      return Math.round((f / (t + f)) * 100);
+      return t + f > 0 ? (
+        Math.round((t / (t + f)) * 100)
+      ) : (
+        0
+      );
     });
-  }, [reviews]);
+
+  }, [meta]);
 
   // update filters
   useEffect(() => {
     filterReviews();
   }, [filters]);
+
+  useEffect(() => {
+    sortReviewsList(sort);
+  }, [reviewsList.length]);
 
   // get the percentage of each rating, determine the width of the div bar for each rating
   useEffect(() => {
@@ -143,7 +178,6 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
     setRatingsPct(newRatingsPct);
   }, [ratings]);
 
-  // refactor using map or loop
   return (
     <Styles.Breakdown>
 
@@ -151,15 +185,15 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta }) => {
         showCurrentFilters()
       ) : (
         <Styles.spacer>
-          <Styles.filter>Filtered by: none</Styles.filter>
+          <Styles.filter>Filtered by: <Styles.wiggler>¯\_(ツ)_/¯</Styles.wiggler></Styles.filter>
         </Styles.spacer>
       )
       }
-
+      <Styles.bottomBorder></Styles.bottomBorder>
       {renderCharacteristics()}
 
       <Styles.rec>{recommends}% of reviews recommend this product</Styles.rec>
-
+      <Styles.bottomBorder></Styles.bottomBorder>
     </Styles.Breakdown>
   );
 };

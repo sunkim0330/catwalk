@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Styles from './styledComponents.js';
 import Stars from '../Shared/Star.jsx';
+import { Theme } from '../App.jsx';
 
 const ProductInfo = ({ product, style, rating, reviewCount }) => {
 
+  const theme = useContext(Theme);
   let priceDisplay, ratingDisplay;
 
   if (style.sale_price) {
@@ -12,7 +14,7 @@ const ProductInfo = ({ product, style, rating, reviewCount }) => {
         <Styles.Price color={'red'}>
           <del>${product.default_price}</del>
         </Styles.Price>
-        <Styles.Price>${style.sale_price}</Styles.Price>
+        <Styles.Price theme={theme}>${style.sale_price}</Styles.Price>
       </>
     );
   } else {
@@ -23,7 +25,7 @@ const ProductInfo = ({ product, style, rating, reviewCount }) => {
     ratingDisplay = (
       <Styles.RatingDisplay>
         <Stars rating={rating} width={'100px'} left={'24px'} position={'relative'}/>
-        <Styles.LinkToReviews href="#container">{`Read all ${reviewCount} reviews`}</Styles.LinkToReviews>
+        <Styles.LinkToReviews theme={theme} href="#reviews-container">{`Read all ${reviewCount} reviews`}</Styles.LinkToReviews>
       </Styles.RatingDisplay>
     );
   }

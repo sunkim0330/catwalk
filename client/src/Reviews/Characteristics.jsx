@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Theme } from '../App.jsx';
 import * as Styles from './Styles.js';
 
 const Characteristics = ({ chars, ratings }) => {
@@ -11,6 +12,8 @@ const Characteristics = ({ chars, ratings }) => {
     Fit: ['Runs tight', 'Perfect', 'Runs loose']
   });
   const [ratingsPct, setRatingsPct] = useState('');
+
+  const theme = useContext(Theme);
 
   const getNewRatings = () => {
     let newRatings = {};
@@ -35,7 +38,10 @@ const Characteristics = ({ chars, ratings }) => {
             <Styles.charContainer key={char}>
               <Styles.charName>{char}</Styles.charName>
               <Styles.scale>
-                <Styles.marker margin-left={ratingsPct[char]}></Styles.marker>
+                <Styles.marker
+                  margin-left={ratingsPct[char]}
+                  color={theme.color}
+                ></Styles.marker>
               </Styles.scale>
               <Styles.attBox>
                 {scale[char].map((attribute, index) => {

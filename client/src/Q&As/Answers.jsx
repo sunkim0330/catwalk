@@ -2,25 +2,32 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Helpful from '../Shared/Helpful.jsx';
 import Modal from './Modal.jsx';
+import * as Styles from './Styles.js';
 
 const Answers = ({ product, questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
   const [loadPage, setLoadPage] = useState(2);
 
-
-
   useEffect(() => {
-
     axios.get(`/qa/questions/${questions.question_id}/answers`)
       .then((response) => {
         setDateFormat(response.data.results);
         setAnswer(response.data.results);
       })
-
+      .then(
+        sortAnswers()
+      )
       .catch(() => {
         console.log('cant get request from answer API');
       });
   }, [questions]);
+
+  const sortAnswers = () => {
+    const sorted = answers.sort((a, b) => {
+      return b.helpfulness > a.helpfulness;
+    });
+    setAnswer(sorted);
+  };
 
   const loadMore = useCallback(() => {
     setLoadPage(prev => prev + 2);
@@ -32,23 +39,29 @@ const Answers = ({ product, questions, setDateFormat }) => {
   //I'll try to refactor when I finish with eveything
   const loadAnswers = answers.slice(0, loadPage).map((answer, index) => {
     return (
-      <div className="answer_div" key={answer.answer_id}>
-            A: {answer.body} <br/>
-        <div>{answer.photos}</div><br/>
-        <div> by {answer.answerer_name}, {answer.formattedDate}, <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/> </div>
-      </div>
+      <Styles.answerList className="main-answer-container" key={answer.answer_id}>
+        <b>A:</b> {answer.body} <br/>
+        <Styles.answerFooter>
+          <Styles.username> by {answer.answerer_name},&nbsp;{answer.formattedDate}&nbsp;</Styles.username>
+          <Styles.answerhelp>
+            <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
+          </Styles.answerhelp>
+        </Styles.answerFooter>
+        <Styles.btwnAnswers />
+      </Styles.answerList>
     );
   });
 
   return (
-    <div>
+    <Styles.answerContainer id="answer-return-div">
       {loadAnswers}
-      <button
+      <button id="more-answer-button"
         style = {{display: loadPage >= answers.length ? 'none' : 'block'}}
         className="answer_button" onClick={loadMore}>
           See more answers
       </button>
-    </div>
+      <Styles.lineBreak />
+    </Styles.answerContainer>
   );
 };
 

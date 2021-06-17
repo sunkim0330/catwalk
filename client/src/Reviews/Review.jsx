@@ -5,6 +5,7 @@ import * as Styles from './Styles.js';
 
 const Review = ({ review }) => {
   const [showMore, setShowMore] = useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   const handleShowMore = () => {
     setShowMore(!showMore);
@@ -58,11 +59,34 @@ const Review = ({ review }) => {
       review.photos.length ? (
         <div>
           {review.photos.map((photo, index) => {
-            return <Styles.reviewThumbnail key={index} src={photo.url} alt={`${review.reviewer_name} photo ${index}`}></Styles.reviewThumbnail>;
+            return (
+              <div key={index}>
+                <Styles.reviewThumbnail
+                  key={index}
+                  src={photo.url}
+                  alt={`${review.reviewer_name} photo ${index}`}
+                  onClick={() => handleImageClick()}
+                ></Styles.reviewThumbnail>
+
+                {showImage ? (
+                  <div key ={index}>
+                    <Styles.modalOverlay key={index} onClick={() => setShowImage(false)}>
+                    </Styles.modalOverlay>
+                    <Styles.fullImage src={photo.url}
+                      alt={`${review.reviewer_name} photo ${index}`}
+                      key={index}></Styles.fullImage>
+                  </div>
+                ) : null
+                }
+              </div>);
           })}
         </div>
       ) : null
     );
+  };
+
+  const handleImageClick = () => {
+    setShowImage(true);
   };
 
   // just to help visualize for now
@@ -98,6 +122,8 @@ const Review = ({ review }) => {
         </Styles.response>
         <Helpful origin='reviews' id={review.review_id} helpCount={review.helpfulness} />
       </Styles.reviewContainer>
+
+      <Styles.bottomBorder></Styles.bottomBorder>
 
 
     </Styles.reviewTile>

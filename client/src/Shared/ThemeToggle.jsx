@@ -25,3 +25,8 @@ export const Toggle = (props) => {
     </Label>
   );
 };
+
+// label
+// toggle = container
+// togg-state = checked
+// indicator = switch

@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import Questions from './Questions.jsx';
 import Modal from './Modal.jsx';
 import * as Styles from './Styles.js';
-
+import SearchQandA from './SearchQandA.jsx';
 
 const QandAs = ({ product, setDateFormat }) => {
-  const [show, setShow] = useState(false);
   const [input, setInput] = useState('');
+  const [show, setShow] = useState(false);
 
   const getClickedElement = (event) => {
     const module = 'Questions and Answers';
@@ -18,14 +17,12 @@ const QandAs = ({ product, setDateFormat }) => {
   };
 
   return (
-    <Styles.Index>
-      QUESTIONS AND ANSWERS
-      <div>
-        <Questions product={product} setDateFormat={setDateFormat}/>
-        <button onClick={() => setShow(true)} >Ask a Question</button>
-        <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
-      </div>
-    </Styles.Index>
+    <Styles.Index id="QandAstart-div">
+      <Styles.title>QUESTIONS AND ANSWERS</Styles.title>
+      <SearchQandA product={product} setDateFormat={setDateFormat}/>
+      <Styles.askQuestionButton id="ask-question-button" onClick={() => setShow(true)} >Ask a Question</Styles.askQuestionButton>
+      <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
+    </Styles.Index >
   );
 };
 
