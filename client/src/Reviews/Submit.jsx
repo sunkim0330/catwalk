@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as Styles from './Styles.js';
 
-const Submit = ({ reviewInfo, ratings }) => {
+const Submit = ({ reviewInfo, ratings, closeReview }) => {
 
   const submitReview = () => {
     axios.post('/reviews', reviewInfo)
@@ -62,6 +62,7 @@ const Submit = ({ reviewInfo, ratings }) => {
       return;
     } else {
       submitReview();
+      closeReview();
     }
 
   };

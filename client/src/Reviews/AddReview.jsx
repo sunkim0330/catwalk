@@ -171,6 +171,9 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
     if (type === 'change') {
       setUserRating(rating);
       setIsClicked(true);
+      setReviewInfo ((prev) => {
+        return {...prev, rating };
+      });
     }
 
     // if (!isClicked) {
@@ -460,7 +463,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
           </Styles.flexWidth>
 
           <Styles.flexFit>
-            <Submit reviewInfo={reviewInfo} ratings={ratings} />
+            <Submit reviewInfo={reviewInfo} ratings={ratings} closeReview={closeReview} />
             <Styles.button onClick={closeReview}>Cancel</Styles.button>
           </Styles.flexFit>
 
