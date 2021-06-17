@@ -7,7 +7,7 @@ import Answers from './Answers.jsx';
 
 const SearchQandA = ({product, setDateFormat}) => {
   const [questions, setQuestions] = useState([]);
-  const [loadPage, setLoadPage] = useState(2);
+  const [loadPage, setLoadPage] = useState(4);
   const [search, setSearch] = useState('');
   const [show, setShow] = useState(false);
 
@@ -36,19 +36,22 @@ const SearchQandA = ({product, setDateFormat}) => {
     }
   }).slice(0, loadPage).map((question, key) => {
     return (
-      <Styles.questionList id="question" className="questions_div" key={question.question_id}>
-          Q: {question.question_body}
-        <Styles.buttons>
-          <Styles.addAnswerButton id="add-answer-button" onClick={() => setShow(true)} >Add Answer </Styles.addAnswerButton> |&nbsp;
-          <Helpful origin="qa/questions" id={question.question_id}
-            helpCount={question.question_helpfulness} />
-        </Styles.buttons>
+      <div id="question" className="questions_div" key={question.question_id}>
+        <Styles.questionList id="wrapping-questionBody-and-buttons">
+          <Styles.body id="question-body">Q: {question.question_body}</Styles.body>
+          <Styles.buttons id="buttons">
+            <Styles.addAnswerButton id="add-answer-button" onClick={() => setShow(true)} >Add Answer &nbsp;</Styles.addAnswerButton> &nbsp;
+            <Helpful origin="qa/questions" id={question.question_id}
+              helpCount={question.question_helpfulness} />
+          </Styles.buttons>
+        </Styles.questionList>
         <Modal title="Submit Your Answer" subTitle={product.name}
           id={question.question_id} questionBody={question.question_body}
           show={show} onClose={() => setShow(false)} />
         <Styles.btwnAnswers />
         <div id="answer-component-in-question"><Answers product={product} questions={question} setDateFormat={setDateFormat} /></div>
-      </Styles.questionList>
+
+      </div>
     );
   });
 
@@ -71,11 +74,11 @@ const SearchQandA = ({product, setDateFormat}) => {
       <Styles.QuestionsContainer id="searchQandA-component">
         <>{filteredQuestion}</>
       </Styles.QuestionsContainer>
-      <Styles.moreQuestionButton id="more-questions-button"
+      <Styles.MoreQuestionButton id="more-questions-button"
         style = {{display: loadPage >= questions.length ? 'none' : 'block'}}
         className="question_button" onClick={loadMore}>
         MORE ANSWERED QUESTIONS
-      </Styles.moreQuestionButton>
+      </Styles.MoreQuestionButton>
     </>
   );
 };

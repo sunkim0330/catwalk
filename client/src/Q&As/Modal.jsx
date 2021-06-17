@@ -14,9 +14,9 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id, productId}) =>
 
   const displayQuestionBody = () => {
     if (isItAnswer) {
-      return <h4>{subTitle} : {questionBody}</h4>;
+      return <Styles.subtitle>{subTitle} : {questionBody}</Styles.subtitle>;
     } else {
-      return <h4>{subTitle}</h4>;
+      return <Styles.subtitle>{subTitle}</Styles.subtitle>;
     }
   };
 
@@ -36,22 +36,21 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id, productId}) =>
   }
 
   return (
-    <div>
-      <Styles.ModalContainer>
-        <Styles.ModalContent>
-          <Styles.ModalHeaderFooter>
-            <h2>{title}</h2>
-            {displayQuestionBody()}
-          </Styles.ModalHeaderFooter>
-          <Styles.ModalBody>
-            <ModalForm origin={origin} title={title} placeholder={placeholder} productId={productId}/>
-          </Styles.ModalBody>
-          <Styles.ModalHeaderFooter>
-            <button onClick={onClose}>Close</button>
-          </Styles.ModalHeaderFooter>
-        </Styles.ModalContent>
-      </Styles.ModalContainer>
-    </div>
+    <Styles.ModalContainer>
+      <Styles.ModalContent>
+        <Styles.ModalHeaderFooter>
+          <h2>{title}</h2>
+          {displayQuestionBody()}
+        </Styles.ModalHeaderFooter>
+        <Styles.ModalBody>
+          <ModalForm origin={origin} title={title} placeholder={placeholder} productId={productId}/>
+        </Styles.ModalBody>
+        <Styles.ModalHeaderFooter>
+          <Styles.modalButtons onClick={onClose}>Close</Styles.modalButtons>
+        </Styles.ModalHeaderFooter>
+      </Styles.ModalContent>
+    </Styles.ModalContainer>
+
   );
 
 

@@ -10,6 +10,7 @@ export const Title = styled.h1`
   width: 90%;
 `;
 
+
 // indicator
 export const Switch = styled.div`
   height: 100%;
@@ -21,7 +22,6 @@ export const Switch = styled.div`
   box-shadow:
     -8px -4px 8px 0px #ffffff,
     8px 4px 12px 0px #d1d9e6;
-
 `;
 
 // toggle
@@ -38,8 +38,6 @@ box-shadow:
 8px 4px 12px 0px #d1d9e6,
 4px 4px 4px 0px #d1d9e6 inset,
 -4px -4px 4px 0px #ffffff inset;
-
-
 `;
 
 // toggle-state
@@ -51,10 +49,10 @@ display: none;
 }
 `;
 
-
 export const Label = styled.label`
   display: inline-flex;
   align-items: center;
   cursor: pointer;
   color: #394a56;
 `;
+
