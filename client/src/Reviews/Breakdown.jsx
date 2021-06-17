@@ -139,8 +139,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
   }, [reviews]);
 
   useEffect(() => {
-    let t = Number(meta.recommended.true);
-    let f = Number(meta.recommended.false);
+    let t = Number(meta.recommended.true) || 0;
+    let f = Number(meta.recommended.false) || 0;
 
     setRecommends(() => {
       return t + f > 0 ? (
