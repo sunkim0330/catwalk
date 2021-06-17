@@ -10,6 +10,7 @@ export const Title = styled.h1`
   width: 90%;
 `;
 
+
 // indicator
 export const Switch = styled.div`
   height: 100%;
@@ -46,6 +47,7 @@ export const Label = styled.label`
   cursor: pointer;
   color: #394a56;
 `;
+
 
 export const ThemeIcon = styled.i`
   color: ${props => props.color};

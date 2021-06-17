@@ -16,18 +16,22 @@ const Helpful = ({ origin, id, helpCount }) => {
   const [styles, setStyles] = useState(() => {
     let styles = {};
 
+  const theme = useContext(Theme);
+
     if (isQuestion) {
       styles.width = '125px;';
       styles['border-right'] = 'none;';
     } else {
-      styles.width = '230px;';
+      styles.width = '200px;';
       styles['border-right'] = '1px solid black;';
     }
     return styles;
   });
 
-  const theme = useContext(Theme);
-
+  /*
+    const StyledYourComponent = styled(YourComponent)`
+    background: ${props => props.active ? 'darkred' : 'limegreen'}
+  */
   const sendPutReq = () => {
     axios.put(`/${origin}/${id}/${type}`)
       .then(res => {
