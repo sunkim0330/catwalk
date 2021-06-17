@@ -39,5 +39,10 @@ export const Container = styled.div`
 
 export const Checked = styled.input`
   opacity: 0;
+  position: absolute;
   z-index: 1;
+
+  :checked {
+    transform: translate3d(25%, 0, 0);
+  }
 `;

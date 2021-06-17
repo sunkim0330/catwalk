@@ -17,7 +17,7 @@ export const Toggle = (props) => {
 
     <label class="label">
       <Container className="container">
-        <Checked type="checkbox" name="check" value="check" />
+        <Checked type="checkbox" name="check" value="check" onChange={setTheme}/>
         <Switch>
           {theme === themes.dark ? <i className='far fa-moon'></i> : <i className='far fa-sun'></i>}
         </Switch>
