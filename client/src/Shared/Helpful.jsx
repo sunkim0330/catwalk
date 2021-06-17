@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { Theme } from '../App.jsx';
 import * as Styles from '../Reviews/Styles.js';
 
 const Helpful = ({ origin, id, helpCount }) => {
@@ -25,10 +26,8 @@ const Helpful = ({ origin, id, helpCount }) => {
     return styles;
   });
 
-  /*
-    const StyledYourComponent = styled(YourComponent)`
-    background: ${props => props.active ? 'darkred' : 'limegreen'}
-  */
+  const theme = useContext(Theme);
+
   const sendPutReq = () => {
     axios.put(`/${origin}/${id}/${type}`)
       .then(res => {
@@ -66,7 +65,12 @@ const Helpful = ({ origin, id, helpCount }) => {
     } else {
       return (
         <>
-          <Styles.helpButton onClick={handleClick} value="report">Report</Styles.helpButton>
+          <Styles.helpButton
+            onClick={handleClick}
+            value="report"
+            font={theme.font}
+            background={theme.background}
+          >Report</Styles.helpButton>
         </>
       );
     }
@@ -88,7 +92,12 @@ const Helpful = ({ origin, id, helpCount }) => {
       <Styles.helpText
         borderRight={styles['border-right']}
         marginRight="15px"
-      > Helpful? <Styles.helpButton value="helpful" onClick={handleClick}>Yes</Styles.helpButton> ({count})</Styles.helpText>
+      > Helpful? <Styles.helpButton
+          value="helpful"
+          onClick={handleClick}
+          font={theme.font}
+          background={theme.background}
+        >Yes</Styles.helpButton> ({count})</Styles.helpText>
       {/* <div>|</div> */}
       {displayReport()}
     </Styles.helpful>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 export const Title = styled.h1`
   text-align: center;
@@ -7,6 +7,7 @@ export const Title = styled.h1`
   width: 80%;
 `;
 
+// indicator
 export const Switch = styled.div`
   height: 100%;
   width: 200%;
@@ -17,32 +18,40 @@ export const Switch = styled.div`
   box-shadow:
     -8px -4px 8px 0px #ffffff,
     8px 4px 12px 0px #d1d9e6;
+
 `;
 
+// toggle
 export const Container = styled.div`
-  isolation: isolate;
-  position: relative;
-  height: 30px;
-  width: 60px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow:
-    -8px -4px 8px 0px #ffffff,
-    8px 4px 12px 0px #d1d9e6,
-    4px 4px 4px 0px #d1d9e6 inset,
-    -4px -4px 4px 0px #ffffff inset;
+margin-right: 15px;
+isolation: isolate;
+position: relative;
+height: 30px;
+width: 60px;
+border-radius: 15px;
+overflow: hidden;
+box-shadow:
+-8px -4px 8px 0px #ffffff,
+8px 4px 12px 0px #d1d9e6,
+4px 4px 4px 0px #d1d9e6 inset,
+-4px -4px 4px 0px #ffffff inset;
 
-  ${Checked}:checked {
-    transform: translate3d(25%, 0, 0);
-  }
+
 `;
 
+// toggle-state
 export const Checked = styled.input`
-  opacity: 0;
-  position: absolute;
-  z-index: 1;
+display: none;
 
-  :checked {
-    transform: translate3d(25%, 0, 0);
-  }
+:checked ~ ${Switch} {
+  transform: translate3d(25%, 0, 0);
+}
+`;
+
+
+export const Label = styled.label`
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #394a56;
 `;

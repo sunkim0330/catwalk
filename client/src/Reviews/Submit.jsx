@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { Theme } from '../App.jsx';
 import * as Styles from './Styles.js';
 
 const Submit = ({ reviewInfo, ratings, closeReview }) => {
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState([]);
+
+  const theme = useContext(Theme);
 
   const submitReview = () => {
     axios.post('/reviews', reviewInfo)
@@ -77,12 +80,16 @@ const Submit = ({ reviewInfo, ratings, closeReview }) => {
 
   return (
     <>
-      <Styles.button onClick={handleSubmit}>Submit review</Styles.button>
+      <Styles.button
+        onClick={handleSubmit}
+        shadow={theme.shadow}
+        hoverShadow={theme.hoverShadow}
+      >Submit review</Styles.button>
 
       {hasError ? (
         <>
           <Styles.errOverlay></Styles.errOverlay>
-          <Styles.errorModal>
+          <Styles.errorModal background={theme.background}>
             {errorMessage.map((error, i) => {
               return i === 0 ? (
                 <Styles.textMain key={i}>{error}</Styles.textMain>
@@ -90,7 +97,11 @@ const Submit = ({ reviewInfo, ratings, closeReview }) => {
                 <Styles.textSmall key={i}>{error}</Styles.textSmall>
               );
             })}
-            <Styles.button onClick={closeError}>Will do!</Styles.button>
+            <Styles.button
+              onClick={closeError}
+              shadow={theme.shadow}
+              hoverShadow={theme.hoverShadow}
+            >Will do!</Styles.button>
           </Styles.errorModal>
 
         </>

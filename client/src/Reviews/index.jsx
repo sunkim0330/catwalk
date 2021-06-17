@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AddReview from './AddReview.jsx';
 import Breakdown from './Breakdown.jsx';
@@ -6,6 +6,7 @@ import Characteristics from './Characteristics.jsx';
 import Review from './Review';
 import Stars from '../Shared/Star.jsx';
 import Dropdown from './Dropdown.jsx';
+import { Theme } from '../App.jsx';
 import * as Styles from './Styles.js';
 
 const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) => {
@@ -16,6 +17,8 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   const [chars, setChars] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [sort, setSort] = useState('Relevant');
+
+  const theme = useContext(Theme);
 
   const getReviews = () => {
     axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
@@ -143,9 +146,17 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
           <Styles.flexFit>
             {currentReviews.length === reviewsList.length
               ? null
-              : <Styles.button onClick={handleLoadMoreReviews}>More reviews</Styles.button>
+              : <Styles.button
+                onClick={handleLoadMoreReviews}
+                shadow={theme.shadow}
+                hoverShadow={theme.hoverShadow}
+              >More reviews</Styles.button>
             }
-            <Styles.button onClick={handleShowForm}>Add a review</Styles.button>
+            <Styles.button
+              onClick={handleShowForm}
+              shadow={theme.shadow}
+              hoverShadow={theme.hoverShadow}
+            >Add a review</Styles.button>
           </Styles.flexFit>
         </Styles.ReviewList>
 

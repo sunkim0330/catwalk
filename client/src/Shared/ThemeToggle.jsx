@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Theme, themes} from '../App.jsx';
-import {Switch, Checked, Container} from './styledComponents.js';
+import {Switch, Checked, Container, Label} from './styledComponents.js';
 
 export const Toggle = (props) => {
   let theme = useContext(Theme);
@@ -15,15 +15,19 @@ export const Toggle = (props) => {
 
   return (
 
-    <label class="label">
-      <Container className="container">
-        <Checked type="checkbox" name="check" value="check" onChange={setTheme}/>
-        <Switch>
-          {theme === themes.dark ? <i className='far fa-moon'></i> : <i className='far fa-sun'></i>}
+    <Label className="label">
+      <Container className="toggle">
+        <Checked className="toggle-state" type="checkbox" name="check" value="check" onChange={setTheme}/>
+        <Switch className="indicator">
         </Switch>
       </Container>
-      <div>no more emails plz</div>
-    </label>
+      {theme === themes.dark ? <i className='far fa-moon'></i> : <i className='far fa-sun'></i>}
+    </Label>
 
   );
 };
+
+// label
+// toggle = container
+// togg-state = checked
+// indicator = switch

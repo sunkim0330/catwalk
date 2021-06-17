@@ -209,12 +209,12 @@ export const bar = style.div`
   border-radius: 3px;
 `;
 
-export const percent = style.div(props => ({
-  width: props.width,
-  height: '10px',
-  background: '#3a5a40',
-  'border-radius': '3px'
-}));
+export const percent = style.div`
+  width: ${props => props.width};
+  height: 10px;
+  background: ${props => props.color};
+  border-radius: 3px;
+`;
 
 export const rating = style.div`
   font-size: 1em;;
@@ -278,7 +278,8 @@ export const marker = style.div(props => ({
   height: 0,
   'border-left': '10px solid transparent',
   'border-right': '10px solid transparent',
-  'border-top': '15px solid #3a5a40',
+  'border-top': '15px solid',
+  'border-top-color': props.color,
   'margin-left': props['margin-left']
 }));
 
@@ -359,7 +360,8 @@ export const bodyContainer = style.div`
 `;
 
 export const reviewThumbnail = style.img`
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: ${props => props.thumbnailBorder}
   border-radius: 5px;
   height: 50px;
   margin: auto 8px 5px 0;
@@ -403,9 +405,9 @@ export const helpButton = style.button`
   appearance: none;
   border-width: 0;
   border-style: outset;
-  color: black;
+  color: ${props => props.font};
   cursor: pointer;
-  background-color: white;
+  background-color: ${props => props.background};
   font-size: 12px;
   padding: 0 5px;
   text-decoration: underline;
@@ -448,7 +450,7 @@ export const modal = style.div`
   min-width: 700px;
   max-height: 850px;
   min-height: 850px;
-  background-color: white;
+  background-color: ${props => props.background};
   border: solid 1px #d3d9d9;
   border-radius: 10px;
   padding: 15px;
@@ -477,7 +479,7 @@ export const errorModal = style.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: ${props => props.background};
   border: solid 1px #d3d9d9;
   border-radius: 10px;
   padding: 15px;
@@ -647,21 +649,19 @@ export const fullImage = style.img`
 `;
 
 export const button = style.div`
-  border: 1px solid #d3d9d9;
   border-radius: 5px;
   width: fit-content;
-  margin-right: 8px;
+  margin: 0 8px 0 5px;
   padding: 5px;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
+  box-shadow: ${props => props.shadow};
+  transition: all .3s ease-in-out;
   font-family: 'Roboto', sans-serif;
 
   :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
+    color: #D3D9D9;
+    box-shadow: ${props => props.hoverShadow};
+    transition: all .3s ease-in-out;
   }
 
   :active {
@@ -701,11 +701,11 @@ export const radioSmall = style.input`
   border-radius: 50%;
 
   :hover {
-    background: #6B636B;
+    background: ${props => props.hoverColor};
   }
 
   :checked {
-    background: #CEF1D5;
+    background: ${props => props.color};
 
     &::before {
       height: 30px;
@@ -720,7 +720,7 @@ export const radioSmall = style.input`
 
     &::after {
       animation: ${clickWave} .5s;
-      background: #CEF1D5;
+      background: ${props => props.color};
       content: '';
       display: block;
       position: absolute;
@@ -761,6 +761,6 @@ export const wiggler = style.a`
   :hover {
 
     animation: ${wiggle} .3s;
-    color: #3A5A40;
+    color: #D3D9D9;
   }
 `;
