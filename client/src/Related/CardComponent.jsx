@@ -1,10 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {HeartButton} from './ActionButtons';
 import {CardDiv, ImageDiv, LabelDiv, NameText, SecondaryText} from './styled.js';
 import Stars from '../Shared/Star.jsx';
 import placeholder from './assets/Image-Coming-Soon.jpg';
+import {Theme} from '../App.jsx';
 
 const Card = (props) => {
+
+  let theme = useContext(Theme);
 
   if (props.style && props.metaData) {
 
@@ -31,7 +34,7 @@ const Card = (props) => {
 
       <CardDiv grid={props.grid} image={image} >
         <HeartButton currentName={props.currentName} currentChar={props.currentChar} relatedName={props.product.name} relatedChar={props.product.features}/>
-        <LabelDiv onClick={handleClick}>
+        <LabelDiv onClick={handleClick} background={theme.background}>
           <SecondaryText>{props.product.category}</SecondaryText>
           <NameText>{props.product.name}</NameText>
           {props.style.sale_price ? <div><strike>${props.style.original_price}</strike><style color='red'>${props.style.sale_price}</style></div> : <div>${props.style.original_price}</div>}
@@ -41,7 +44,7 @@ const Card = (props) => {
 
     );
   } else {
-    return ('Loading...');
+    return null;
   }
 };
 
