@@ -199,6 +199,7 @@ export const RatingDisplay = styled.span`
 `;
 
 export const LinkToReviews = styled.a`
+  color: #35005e;
   display: flex;
   position: relative;
   text-decoration: none;
@@ -332,7 +333,6 @@ export const Button = styled.button`
   font-size: 18px;
 
   :hover {
-    color: #6B636B;
     box-shadow: none;
     transition: all .5s ease;
   }
