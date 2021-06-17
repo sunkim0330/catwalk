@@ -1,21 +1,33 @@
 import styled from 'styled-components';
 
+export const IndexDiv = styled.div`
+  background-color: ${props => props.background};
+`;
+
 export const RelatedListDiv = styled.div`
   height: 400px;
-  width: 80%;
-  margin: 10px auto;
+  width: 95%;
   display: grid;
   grid-template-columns: repeat(${props => props.listLength}, 305px);
   grid-template-rows: 100%;
   column-gap: 10px;
   justify-items: center;
   justify-content: start;
+  align-self: center;
+  justify-self: center;
   overflow-x: scroll;
   overflow-y: hidden;
+  scroll-behavior: smooth;
 `;
 
 export const ArrowWrapper = styled.div`
-
+  margin: 10px auto;
+  height: 406px;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 2.5% 95% 2.5%;
+  grid-template-rows: 100%;
+  column-gap: 15px;
 `;
 
 export const CardDiv = styled.div`
@@ -32,17 +44,27 @@ export const CardDiv = styled.div`
   border: 0.5px lightgray solid;
 `;
 
-export const Arrow = styled.div`
-  background: url(${props => props.arrow});
-  background-size: cover;
+
+export const ArrowRightDiv = styled.div`
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+
 `;
 
-export const ArrowRight = styled(Arrow)`
-  grid-column:
+export const ArrowLeftDiv = styled.div`
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+
 `;
 
-export const ArrowLeft = styled(Arrow)`
+export const ArrowIcon = styled.i`
+  margin-top: 200px;
+  color: ${props => props.color};
+  transition: all .3s;
 
+  :hover {
+    color: gray;
+  }
 `;
 
 
@@ -55,6 +77,7 @@ export const LabelDiv = styled.div`
   backdrop-filter: blur( 15px );
   font-family: sans-serif;
   border: 0.5px solid rgba( 255, 255, 255, 0.18 );
+  cursor: pointer;
 `;
 
 
@@ -80,10 +103,10 @@ export const TertiaryText = styled.p`
 `;
 
 export const SecondaryTextTitle = styled(SecondaryText)`
-  margin-left: 10%;
+  margin-left: 13%;
   margin-top: 50px;
   margin-bottom: 10px;
-  color: gray;
+  color: ${props => props.color};
 `;
 
 export const AddToOutfitButton = styled.div`
@@ -100,7 +123,7 @@ export const AddToOutfitButton = styled.div`
 
   :hover {
     box-shadow: 0 0 15px lightgray;
-    background-color: gray;
+    background-color: ${props => props.color};
     color: white;
     border-radius: 15px;
   }
@@ -168,7 +191,7 @@ export const ModalViewButton = styled.i`
   color: lightgray;
 
   :hover {
-    color: red;
+    color: #3a5a40;
     text-shadow: 0 0 8px gray;
   }
 `;
