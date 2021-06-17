@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import * as Styles from './styledComponents.js';
+import { Theme } from '../App.jsx';
 
 const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
+
+  const theme = useContext(Theme);
 
   return (
     <Styles.StyleSelector>
@@ -10,7 +13,12 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
 
       {styles.map((style, index) => {
         return <Styles.StyleContainer key={index}>
-          <Styles.Checkmark selected={index === currentStyle} className="fas fa-check checkmark"></Styles.Checkmark>
+          <Styles.Checkmark
+            theme={theme}
+            selected={index === currentStyle}
+            className="fas fa-check checkmark">
+          </Styles.Checkmark>
+
           <Styles.Style
             className='style'
             src={style.photos[0].thumbnail_url}

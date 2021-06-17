@@ -10,14 +10,24 @@ import {Toggle} from './Shared/ThemeToggle.jsx';
 
 export const themes = {
   dark: {
+    header1: '#eeeee4',
+    thumbnailBorder: '#CEF1D5',
     color: '#CEF1D5',
-    font: 'white',
-    background: '#6B636B'
+    font: '#eeeee4',
+    background: '#6B636B',
+    shadow: 'rgb(211 217 217 / 22%) 2px 2px 4px',
+    hoverColor: 'white',
+    buttonBorder: 'none'
   },
   light: {
+    header1: 'black',
+    thumbnailBorder: 'black',
     color: '#3A5A40',
     font: 'gray',
-    background: 'white'
+    background: 'white',
+    shadow: 'rgb(0 0 0 / 22%) 2px 2px 4px',
+    hoverColor: '#6B636B',
+    buttonBorder: '1px solid #D3D9D9'
   }
 };
 
@@ -97,6 +107,12 @@ const App = () => {
       getProductStyles();
     }
   }, [product.id]);
+
+  useEffect(() => {
+    let body = document.body;
+    body.style.backgroundColor = currentTheme.background;
+    body.style.color = currentTheme.color;
+  }, [currentTheme]);
 
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
     <div>
