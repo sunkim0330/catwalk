@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import minus from './images/minus.png';
+import React, { useContext } from 'react';
+import { Theme } from '../App.jsx';
 
 export const Overview = styled.div`
   font-family: 'Roboto', sans-serif;
@@ -322,19 +324,18 @@ export const Socials = styled.div`
 
 export const Button = styled.button`
   background: none;
-  border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
   cursor: pointer;
-  box-shadow: rgb(211 217 217 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
+  border-radius: 5px;
   font-family: sans-serif;
   font-size: 18px;
+  margin-right: 8px;
+  padding: 5px;
+  shadow: ${props => props.theme.shadow};
+  transition: all .5s ease;
+  width: fit-content;
 
   :hover {
-    box-shadow: none;
-    transition: all .5s ease;
+    box-shadow: ${props => props.theme.hoverShadow};
   }
 
   :active {
