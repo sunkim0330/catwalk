@@ -28,6 +28,7 @@ export const ArrowWrapper = styled.div`
   grid-template-columns: 2.5% 95% 2.5%;
   grid-template-rows: 100%;
   column-gap: 15px;
+  padding-bottom: 30px;
 `;
 
 export const CardDiv = styled.div`
@@ -87,6 +88,7 @@ export const NameText = styled.p`
   margin: 4px;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 `;
 
 export const SecondaryText = styled.p`

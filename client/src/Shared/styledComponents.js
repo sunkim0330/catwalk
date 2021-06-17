@@ -39,8 +39,8 @@ display: none;
 }
 `;
 export const Label = styled.label`
-  margin-left: 80%;
-  margin-top: -20px;
+  margin-left: 85%;
+  margin-top: 20px;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
