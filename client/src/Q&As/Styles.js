@@ -3,8 +3,8 @@ import styled, {css} from 'styled-components';
 
 
 export const Index = styled.div`
-  height: 100%;
-  width: 80;
+  height: 600px;
+  width: 1500px;
   color: #3A5A40;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
