@@ -15,7 +15,8 @@ export const themes = {
     color: '#CEF1D5',
     font: '#eeeee4',
     background: '#6B636B',
-    shadow: 'rgb(211 217 217 / 22%) 2px 2px 4px',
+    shadow: 'rgb(211 217 217 / 40%) 2px 2px 4px',
+    hoverShadow: 'rgb(211 217 217 / 40%) -2px -2px 4px',
     hoverColor: 'white',
     buttonBorder: 'none'
   },
@@ -26,6 +27,7 @@ export const themes = {
     font: 'gray',
     background: 'white',
     shadow: 'rgb(0 0 0 / 22%) 2px 2px 4px',
+    hoverShadow: 'rgb(0 0 0 / 22%) -2px -2px 4px',
     hoverColor: '#6B636B',
     buttonBorder: '1px solid #D3D9D9'
   }
@@ -111,18 +113,20 @@ const App = () => {
   useEffect(() => {
     let body = document.body;
     body.style.backgroundColor = currentTheme.background;
-    body.style.color = currentTheme.color;
+    body.style.color = currentTheme.font;
   }, [currentTheme]);
 
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
-    <Theme.Provider value={currentTheme}>
-      <Styles.Title>Super Fun Shopping Experience</Styles.Title>
-      <Toggle setCurrentTheme={setCurrentTheme}/>
-      <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
-      <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features} rating={averageRating}/>
-      <QandAs product={product} setDateFormat={setDateFormat}/>
-      <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/>
-    </Theme.Provider>
+    <div>
+      <Theme.Provider value={currentTheme}>
+        <Styles.Title>Not Gucci</Styles.Title>
+        <Toggle setCurrentTheme={setCurrentTheme}/>
+        <Overview product={product} styles={styles} defaultStyle={defaultStyle} totalReviews={totalReviewCount} averageRating={averageRating}/>
+        <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features} rating={averageRating}/>
+        <QandAs product={product} setDateFormat={setDateFormat}/>
+        <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/>
+      </Theme.Provider>
+    </div>
   );
 };
 

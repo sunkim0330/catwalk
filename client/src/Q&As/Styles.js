@@ -3,7 +3,6 @@ import styled, {css} from 'styled-components';
 
 
 export const Index = styled.div`
-  background-color: ${props => props.background};
   height: 650px;
   min-width: 1500px;
   max-width: 1500px;

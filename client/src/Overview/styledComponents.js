@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import minus from './images/minus.png';
+import React, { useContext } from 'react';
+import { Theme } from '../App.jsx';
 
 export const Overview = styled.div`
   font-family: 'Roboto', sans-serif;
@@ -29,7 +31,7 @@ export const Gallery = styled.div`
 `;
 
 export const CloseExtended = styled.i`
-  color: #6B636B;
+  color: ${props => props.theme.thumbnailBorder};
   left: 0px;
   position: absolute;
   top: 0px;
@@ -68,8 +70,10 @@ export const MainImg = styled.img`
   width: auto;
   align-self: center;
   position: relative;
+  box-shadow: 0px 0px 4px 8px ${props => props.theme.thumbnailBorder};
+  justify-self: center;
 
-  ${({ extendedView, zoomedIn }) => {
+  ${({ extendedView, zoomedIn, theme }) => {
     return extendedView ? `
     max-width: 800px;
     max-height: 100%;
@@ -118,23 +122,11 @@ ${({ zoomedIn }) => {
 
 export const LeftArrow = styled.i`
   align-self: center;
-  color: #6B636B;
   position: absolute;
   padding-left: 8px;
-  ${({ hidden }) => {
-    return hidden ? 'display: none;' : null;
-  }}
-
-  ${({ extendedView }) => {
-    return extendedView ? `
-    grid-column-start: 1;
-    ` : `
-    grid-column-start: 2;
-    `;
-  }}
-
-  &:hover {
-  }
+  color: ${props => props.theme.thumbnailBorder};
+  display: ${props => props.hidden ? 'none' : null};
+  grid-column-start: ${props => props.extendedView ? '1' : '2'};
 
   &:active {
     transform: translateX(-12px);
@@ -143,17 +135,12 @@ export const LeftArrow = styled.i`
 
 export const RightArrow = styled.i`
   align-self: center;
-  color: #6B636B;
   grid-column-start: 2;
   justify-self: right;
   position: absolute;
   padding-right: 8px;
-  ${({ hidden }) => {
-    return hidden ? 'display: none;' : null;
-  }}
-
-  &:hover {
-  }
+  color: ${props => props.theme.thumbnailBorder};
+  display: ${props => props.hidden ? 'none' : null};
 
   &:active {
     transform: translateX(12px);
@@ -188,8 +175,8 @@ export const GalleryThumbnail = styled.img`
   max-height: 14.5%;
   width: auto;
   margin: auto;
-  ${({ selected }) => {
-    return selected ? 'box-shadow: 0px 0px 2px 5px #6B636B' : 'box-shadow: 0px 0px 0px 0px black';
+  ${({ selected, theme }) => {
+    return selected ? `box-shadow: 0px 0px 2px 5px ${theme.thumbnailBorder}` : 'box-shadow: 0px 0px 0px 0px black';
   }}
 `;
 
@@ -214,6 +201,7 @@ export const RatingDisplay = styled.span`
 `;
 
 export const LinkToReviews = styled.a`
+  color: #35005e;
   display: flex;
   position: relative;
   text-decoration: none;
@@ -248,7 +236,7 @@ export const Price = styled.span`
   left: 18px;
   position: relative;
   margin: 0px 5px;
-  color: ${props => props.color || 'black'}
+  color: ${props => props.color || props.theme.color}
 `;
 
 export const StyleSelector = styled.div`
@@ -279,8 +267,8 @@ export const Checkmark = styled.i`
   top: 17px;
   left: 17px;
   font-size: 42px;
-  color: #3A5A40;
-  z-index: ${({selected}) => !selected ? '-1' : null}
+  color: ${props => props.theme.thumbnailBorder};
+  z-index: ${props => !props.selected ? '-1' : null};
 `;
 
 export const CartManagement = styled.div`
@@ -303,54 +291,6 @@ export const QtySelect = styled.select`
 
 export const Option = styled.option`
   text-align: center;
-`;
-
-export const AddToCart = styled.button`
-  border: 1px solid #d3d9d9;
-  border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
-  cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
-  font-size: 18px;
-  font-family: sans-serif;
-
-  :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
-  }
-
-  :active {
-    transform: translateY(2px)
-  }
-`;
-
-export const PointlessButton = styled.button`
-  border: 1px solid #6B636B;
-  border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
-  cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
-  font-family: sans-serif;
-  font-size: 18px;
-
-  :hover {
-    border: 1px solid #6B636B;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
-  }
-
-  :active {
-    transform: translateY(2px)
-  }
 `;
 
 export const ProductDescription = styled.div`
@@ -382,71 +322,20 @@ export const Description = styled.p`
 export const Socials = styled.div`
 `;
 
-export const Twitter = styled.button`
-  border: 1px solid #d3d9d9;
-  border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
+export const Button = styled.button`
+  background: none;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
-  font-size: 18px;
-  font-family: sans-serif;
-
-  :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
-  }
-
-  &:active {
-    transform: translateY(2px)
-  }
-`;
-
-export const Pinterest = styled.button`
-  border: 1px solid #d3d9d9;
   border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
-  cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
   font-family: sans-serif;
   font-size: 18px;
-
-  :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
-  }
-
-  :active {
-    transform: translateY(2px)
-  }
-`;
-
-export const Facebook = styled.button`
-  border: 1px solid #d3d9d9;
-  border-radius: 5px;
-  width: fit-content;
   margin-right: 8px;
   padding: 5px;
-  cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  shadow: ${props => props.theme.shadow};
   transition: all .5s ease;
-  font-family: sans-serif;
-  font-size: 18px;
+  width: fit-content;
 
   :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
+    box-shadow: ${props => props.theme.hoverShadow};
   }
 
   :active {
@@ -455,6 +344,7 @@ export const Facebook = styled.button`
 `;
 
 export const Border = styled.hr`
+  background: none;
   bottom: 0px;
   border: 0;
   color: black;
