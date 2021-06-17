@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Modal from './Modal.jsx';
-import * as Styles from './Styles.js';
+// import * as Styles from './Styles.js';
+import {Index, Title, AskQuestionButton, Buttons} from './Styles.js';
 import SearchQandA from './SearchQandA.jsx';
 
 const QandAs = ({ product, setDateFormat }) => {
@@ -17,12 +18,13 @@ const QandAs = ({ product, setDateFormat }) => {
   };
 
   return (
-    <Styles.Index id="QandAstart-div">
-      <Styles.title>QUESTIONS AND ANSWERS</Styles.title>
+    <Index id="QandAstart-div">
+      <Title>QUESTIONS AND ANSWERS</Title>
       <SearchQandA product={product} setDateFormat={setDateFormat}/>
-      <Styles.askQuestionButton id="ask-question-button" onClick={() => setShow(true)} >Ask a Question</Styles.askQuestionButton>
+      <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)} >ASK A QUESTION +
+      </AskQuestionButton>
       <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
-    </Styles.Index >
+    </Index >
   );
 };
 

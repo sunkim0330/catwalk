@@ -35,7 +35,7 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
       newErrors.email = 'Please enter a valid email address';
     }
     if (formData.email === '') {
-      newErrors.email = 'Mandatory Field';
+      newErrors.email = 'Please fill out your email';
     }
 
     setErrors(newErrors);
@@ -123,21 +123,21 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
 
   return (
     <form>
-      <label>{title}: </label>
-      <textarea type="text" name="body" onChange={handleBodyChange} placeholder={placeholder} required>
-      </textarea>
+      <Styles.modalLabel>{title}: </Styles.modalLabel>
+      <Styles.textarea type="text" name="body" onChange={handleBodyChange} placeholder={placeholder} required>
+      </Styles.textarea>
       <Styles.charCount>{charCount.body_char} / 1000</Styles.charCount>
-      {errors.body && ( <p>{errors.body}</p>)}
+      {errors.body && ( <Styles.Auth>{errors.body}</Styles.Auth>)}
       <label>What is your username: </label>
       <input type="text" name="name" onChange={handleNameChange} placeholder="please enter your nickname" required/>
       <Styles.charCount>{charCount.name_char} / 60</Styles.charCount>
-      {errors.answerer_name && ( <p>{errors.answerer_name}</p>)}
+      {errors.answerer_name && ( <Styles.Auth>{errors.answerer_name}</Styles.Auth>)}
       <label>Your email: </label>
       <input type="text" name="email" onChange={handleEmailChange} placeholder="please enter your email" value = {formData.email} required/>
       <Styles.charCount>{charCount.email_char} / 60</Styles.charCount>
       <Styles.emailAuth>For authentication reasons, you will not be emailed</Styles.emailAuth>
-      {errors.email && ( <p>{errors.email}</p>)}
-      <button onClick={handleClick}>Submit</button>
+      {errors.email && ( <Styles.Auth>{errors.email}</Styles.Auth>)}
+      <Styles.modalButtons onClick={handleClick}>Submit</Styles.modalButtons>
     </form>
   );
 };
