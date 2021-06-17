@@ -85,9 +85,9 @@ const Submit = ({ reviewInfo, ratings, closeReview }) => {
           <Styles.errorModal>
             {errorMessage.map((error, i) => {
               return i === 0 ? (
-                <Styles.textMain>{error}</Styles.textMain>
+                <Styles.textMain key={i}>{error}</Styles.textMain>
               ) : (
-                <Styles.textSmall>{error}</Styles.textSmall>
+                <Styles.textSmall key={i}>{error}</Styles.textSmall>
               );
             })}
             <Styles.button onClick={closeError}>Will do!</Styles.button>
