@@ -1,121 +1,64 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Helpful from '../Shared/Helpful.jsx';
 import Modal from './Modal.jsx';
 import * as Styles from './Styles.js';
 
+
 const Answers = ({ product, questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
-  const [loadPage, setLoadPage] = useState(2);
+  const [limit, setLimit] = useState(2);
+
+  const getAnswers = () => axios.get(`/qa/questions/${questions.question_id}/answers`)
+    .then((response) => {
+      setDateFormat(response.data.results);
+      setAnswer(response.data.results);
+    })
+    .catch(() => {
+      console.log('cant get request from answer API');
+    });
+
+
 
   useEffect(() => {
-    axios.get(`/qa/questions/${questions.question_id}/answers`)
-      .then((response) => {
-        setDateFormat(response.data.results);
-        setAnswer(response.data.results);
-      })
-      .then(
-        sortAnswers()
-      )
-      .catch(() => {
-        console.log('cant get request from answer API');
-      });
+    getAnswers();
+    return () => {
+      setAnswer(null);
+    };
   }, [questions]);
 
-  const sortAnswers = () => {
-    const sorted = answers.sort((a, b) => {
-      return b.helpfulness > a.helpfulness;
-    });
-    setAnswer(sorted);
+  const loadMore = () => {
+    setLimit(prev => prev + 2);
   };
-
-  const loadMore = useCallback(() => {
-    setLoadPage(prev => prev + 2);
-  }, []);
-
-
-  //couldn't figure out how to reuse loadMore function and the button from Question component.
-  //I tried e.stopProgation many different ways, but didn't figure out yet.
-  //I'll try to refactor when I finish with eveything
-  const loadAnswers = answers.slice(0, loadPage).map((answer, index) => {
-    return (
-      <Styles.answerList className="main-answer-container" key={answer.answer_id}>
-        <b>A:</b> {answer.body} <br/>
-        <Styles.answerFooter>
-          <Styles.username> by {answer.answerer_name},&nbsp;{answer.formattedDate}&nbsp;</Styles.username>
-          <Styles.answerhelp>
-            <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness}/>
-          </Styles.answerhelp>
-        </Styles.answerFooter>
-        <Styles.btwnAnswers />
-      </Styles.answerList>
-    );
-  });
 
   return (
     <Styles.answerContainer id="answer-return-div">
-      {loadAnswers}
-      <button id="more-answer-button"
-        style = {{display: loadPage >= answers.length ? 'none' : 'block'}}
-        className="answer_button" onClick={loadMore}>
+      {answers.slice(0, limit).map(answer => <Answer answer={answer} key={answer.answer_id}/>)}
+      <Styles.AnswerButtonWrapper>
+        <Styles.moreAnswerButton id="more-answer-button"
+          style = {{display: limit >= answers.length ? 'none' : 'block'}}
+          className="answer_button" onClick={loadMore}>
           See more answers
-      </button>
-      <Styles.lineBreak />
+        </Styles.moreAnswerButton>
+      </Styles.AnswerButtonWrapper>
+      <Styles.linegradient />
     </Styles.answerContainer>
   );
 };
 
 export default Answers;
 
-/*
-When expanded, the button to “See more answers” should change to read “Collapse answers”.
-*/
 
-/*
-If time allows, answers should have the capability of supporting image uploads.  If an answer submitted includes images, thumbnail images for each image submitted should appear below the answer text body, above the username and other metadata.
-Each image thumbnail should be clickable.  Upon clicking the thumbnail, a modal window expanding the image at full resolution should appear over the page.  The only functionality within this modal window should be an “X” icon through which the user can close out of the modal.
-
- <img src={answer.photos.url} />
-  something lik
-*/
-
-/*
-useEffect(() => {
-    axios.get(`/qa/questions/${questions}/answers`)
-      .then((response) => {
-        return setAnswer(response.data.results);
-      })
-      .then((data) => {
-        return setDateFormat(data);
-      })
-      .catch(() => {
-        console.log('cant get request from answer API');
-      });
-  }, [questions]);
+const Answer = ({ answer }) =>
+  <Styles.answerList className="main-answer-container">
+    <b>A:</b> {answer.body}
+    <Styles.answerFooter>
+      <Styles.username> by {answer.answerer_name},&nbsp;{answer.formattedDate}&nbsp;</Styles.username>
+      <Styles.answerhelp>
+        <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness} />
+      </Styles.answerhelp>
+    </Styles.answerFooter>
+    <Styles.btwnAnswers />
+  </Styles.answerList>;
 
 
-  const getAnswers = async () => {
-    let response = await axios.get(`/qa/questions/${questions}/answers`);
-    let answerData = await response.data;
-    setAnswer(answerData);
-    console.log('did I get it yet?', answers);
-  };
-
-  useEffect(() => {
-    if (questions) {
-      getAnswers();
-    }
-  }, []);
-
-
-return (
-      <div>
-        {answers.map((answer, index) => {
-          return <div className="answer_div" key={answer.answer_id}>
-            A: {answer.body}
-          </div>;
-        })}
-        {loadPage && <button onClick={loadMore}>See more answers</button>}
-      </div>
-    );
-*/

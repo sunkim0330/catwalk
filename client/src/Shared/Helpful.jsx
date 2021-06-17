@@ -28,6 +28,10 @@ const Helpful = ({ origin, id, helpCount }) => {
 
   const theme = useContext(Theme);
 
+  /*
+    const StyledYourComponent = styled(YourComponent)`
+    background: ${props => props.active ? 'darkred' : 'limegreen'}
+  */
   const sendPutReq = () => {
     axios.put(`/${origin}/${id}/${type}`)
       .then(res => {

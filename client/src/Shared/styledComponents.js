@@ -10,6 +10,7 @@ export const Title = styled.h1`
   width: 90%;
 `;
 
+
 // indicator
 export const Switch = styled.div`
   height: 100%;
@@ -38,6 +39,7 @@ display: none;
   transform: translate3d(25%, 0, 0);
 }
 `;
+
 export const Label = styled.label`
   margin-left: 85%;
   margin-top: 20px;

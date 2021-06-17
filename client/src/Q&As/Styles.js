@@ -3,33 +3,34 @@ import styled, {css} from 'styled-components';
 
 
 export const Index = styled.div`
-  height: 100%;
-  width: 80%;
-  color: #3A5A40;
+  height: 650px;
+  min-width: 1500px;
+  max-width: 1500px;
+  width: 1500px;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
-  margin: auto;
+  margin: 30px;
   padding: 10px;
   column-gap: 10px;
   row-gap: 10px;
   display: grid;
-  grid-template-columns: 30% 40% 30%;
-  grid-template-rows: 10% 10% 35% 30% auto;
+  grid-template-columns: 20% 20% 30% 30%;
+  grid-template-rows: 46px 46px 224px 224px 50px;
   column-gap: 10px;
   row-gap: 10px;
   grid-template-areas:
-    "title . ."
-    "search search ."
-    "question question ."
-    "question question ."
-    "morequestion askquestion .";
+    "title title . ."
+    "search search search ."
+    "question question question ."
+    "question question question ."
+    "morequestion askquestion . .";
 `;
 
-export const title = styled.h2`
+export const Title = styled.h2`
   align-self: start;
   grid-area: title;
   padding: 2px;
-  margin: 0 0 10px 0;
+  margin: 10px 0 10px 0;
   font-family: 'Montserrat', sans-serif;
 `;
 
@@ -37,10 +38,9 @@ export const QuestionsContainer = styled.div.attrs({className: 'Questions_contai
   margin: 10px 0 10px 0;
   font-family: 'Montserrat', sans-serif;
   font-family: 'Roboto', sans-serif;
-  color: #3A5A40;
   font-size: 15px;
   font-weight: bold;
-  height: 300px;
+  height: 448px;
   grid-area: question;
   display: flex;
   flex-direction: column;
@@ -48,26 +48,41 @@ export const QuestionsContainer = styled.div.attrs({className: 'Questions_contai
 `;
 
 export const SearchBarInput = styled.input`
-  margin: 10px 0 0 0;
+  margin: 10px;
   align-self: stretch;
   grid-area: search;
   font-size: 15px;
-  border: 1px solid grey;
+  border: 1px solid #D3D9D9;
+  border-radius: 3px;
   height: 30px;
   width: 30%;
   padding: 2px 5px;
-  background-color: #CEF1D5;
+  background-color: #D3D9D9;
   font-family: 'Roboto', sans-serif !important;
 `;
 
 export const questionList = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: fit-content;
   font-family: 'Roboto', sans-serif;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const questionWrapper = styled.div`
+  display: flex;
+  height: fit-content;
+  font-family: 'Roboto', sans-serif;
+  alient-content: space-around;
+  alien-items: baseline;
+
+`;
+export const body = styled.div`
+  font-family:'Roboto', sans-serif;
 `;
 
 export const buttons = styled.div`
+  align-items: baseline;
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
@@ -79,27 +94,23 @@ export const buttons = styled.div`
   cursor: pointer;
 `;
 
-export const addAnswerButton = styled.button`
-  border: 1px solid #d3d9d9;
-  border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
-  cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
+export const addAnswerButton = styled.div`
+  border-top: transparent;
+  border-bottom: transparent;
+  border-left: transparent;
+  border-right: 1px solid black;
+  margin: 5px;
+  background-color: transparent;
   font-family: 'Roboto', sans-serif;
-  :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .2s ease;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    color: #D3D9D9;
   }
 `;
 
 export const answerContainer = styled.div`
   font-family:'Roboto', sans-serif;
-  color: #3A5A40;
   font-size: 15px;
   font-weight: normal;
   flex-direction: column;
@@ -108,14 +119,13 @@ export const answerContainer = styled.div`
 
 export const answerList = styled.div`
   font-family:'Roboto', sans-serif;
-  color: #3A5A40;
 `;
 
 export const answerFooter = styled.div`
-font-family:'Roboto', sans-serif;
+  align-items: baseline;
+  font-family:'Roboto', sans-serif;
   height: fit-content;
   font-size: 12px;
-  color: #3A5A40;
   justify-content: flex-start;
   display: flex;
   flex-direction: row;
@@ -125,7 +135,6 @@ export const username = styled.div`
   font-family:'Roboto', sans-serif;
   flex: 1;
   font-size: 12px;
-  color: #3A5A40;
 `;
 
 export const answerhelp = styled.div`
@@ -134,12 +143,15 @@ export const answerhelp = styled.div`
   margin: 2px;
 `;
 
-export const moreQuestionButton = styled.button`
+export const MoreQuestionButton = styled.div`
+  // background-color: ${props => props.background};
+  grid-area: morequestion;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
   width: fit-content;
+  margin-top: 10px;
   margin-right: 8px;
-  padding: 5px;
+  padding: 8px 5px 5px 5px;
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
@@ -150,16 +162,24 @@ export const moreQuestionButton = styled.button`
     box-shadow: none;
     transition: all .5s ease;
   }
-  grid-area: morequestion;
 `;
 
-export const askQuestionButton = styled.button`
+export const AnswerButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const AskQuestionButton = styled.div`
+  // background-color: ${props => props.background};
+  alien-item: end;
   grid-area: askquestion;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
+  height: 30px;
   width: fit-content;
+  margin-top: 10px;
   margin-right: 8px;
-  padding: 5px;
+  padding: 7px 5px 1px 5px;
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
@@ -175,23 +195,38 @@ export const askQuestionButton = styled.button`
   }
 `;
 
-export const moreAnswerButton = styled.button`
-  border: 1px solid #d3d9d9;
-  border-radius: 5px;
-  width: fit-content;
-  margin-right: 8px;
-  padding: 5px;
+export const Buttons = styled.div`
+  grid-area: morequestions;
+  display: flex;
+  alient-content: flex-start;
+  flex-direction: row;
+`;
+
+export const moreAnswerButton = styled.div`
+  grid-area: morequestions;
+  border: transparent;
+  margin: 5px;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
-  font-family:'Roboto', sans-serif;
-  :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
+  &:hover {
+    color: #D3D9D9;
   }
 `;
+
+export const linegradient = styled.div`
+  margin-bottom: 10px;
+  height: 100px;
+  max-height: 2px;
+  max-width: 850px;
+  background-image: linear-gradient(to right,rgba(0,0,0,0.75),rgba(0,0,0,0.75),rgba(0,0,0,0));
+`;
+
+/* linear-gradient(
+  to right,
+  #CEF1D5, #CEF1D5, white
+);*/
 
 export const lineBreak = styled.div`
   border-width: 2px;
@@ -213,6 +248,10 @@ export const btwnAnswers = styled.div`
   width: 80%;
 `;
 
+export const ModalForm = styled.div`
+  background-color: #D3D9D9;
+`;
+
 export const ModalContainer = styled.div`
   z-index: 5;
   position: fixed;
@@ -220,22 +259,39 @@ export const ModalContainer = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
+  background-color: rgba(0,0,0,0.5);
 `;
 
+export const modalLabel = styled.label`
+  font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
+  color: #3A5A40;
+`;
+//color: #3A5A40;
+
+export const subtitle = styled.h4`
+  font-family:'Roboto', sans-serif;
+  margin: 10px;
+  background-color: #D3D9D9;
+  color: #3A5A40;
+`;
 export const ModalContent = styled.div.attrs({className: 'qanda-modal-content'})`
   width: 500px;
-  background-color: #F7CAC9;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
+  color: #3A5A40;
 `;
 
 export const ModalHeaderFooter = styled.div.attrs({className: 'qanda-modal-content'})`
   padding: 10px;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
+  color: #3A5A40;
 `;
 
 export const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
@@ -243,6 +299,20 @@ export const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   font-family:'Roboto', sans-serif;
+  background-color: #D3D9D9;
+  color: #3A5A40;
+`;
+
+export const textarea = styled.textarea`
+  white-space: normal;
+  vertical-align: middle;
+  width: 200px;
+  color: #3A5A40;
+`;
+
+export const Auth = styled.p`
+  font-size: 12px;
+  color: red;
 `;
 
 export const emailAuth = styled.p`
@@ -250,25 +320,20 @@ export const emailAuth = styled.p`
   color: red;
 `;
 
-export const charCount = styled.p`
-font-size: 12px;
-font-color: #D3D9D9;
+export const modalButtons = styled.button`
+  border: transparent;
+  margin: 5px;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    color: #CEF1D5;
+  }
 `;
 
-/*
-padding: 5px;
-  font-family:'Roboto', sans-serif;
-  font-size: 18px;
-  border: 1px solid grey;
-  grid-template-columns: 40px 50px auto 50px 40px;
-  grid-template-rows: 20% 30% 20% 10% auto; //searchbar questions answers buttons
-  column-gap: 15px;
-  row-gap: 15px;
-  grid-template-areas:
-    ". search search search  ."
-    "question question . . helpful"
-    "answer answer answer . ."
-    "answerhelpful answerhelpful answerhelpful answerhelpful . "
-    "morequestions morequestions . askquestion askquestion";
-  color: #6f67bf;
-*/
+export const charCount = styled.p`
+font-size: 12px;
+color: #3A5A40;
+`;
+
