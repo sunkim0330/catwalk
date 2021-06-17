@@ -20,7 +20,7 @@ const QandAs = ({ product, setDateFormat }) => {
   };
 
   return (
-    <Index id="QandAstart-div" background={theme.background}>
+    <Index onClick={getClickedElement} id="QandAstart-div" background={theme.background}>
       <Title>QUESTIONS AND ANSWERS</Title>
       <SearchQandA product={product} setDateFormat={setDateFormat}/>
       <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)} >ASK A QUESTION +

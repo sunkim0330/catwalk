@@ -36,7 +36,7 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id, productId}) =>
   }
 
   return (
-    <div>
+    <Styles.ModalForm>
       <Styles.ModalContainer>
         <Styles.ModalContent>
           <Styles.ModalHeaderFooter>
@@ -51,7 +51,7 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id, productId}) =>
           </Styles.ModalHeaderFooter>
         </Styles.ModalContent>
       </Styles.ModalContainer>
-    </div>
+    </Styles.ModalForm>
   );
 
 

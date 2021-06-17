@@ -122,7 +122,7 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
   };
 
   return (
-    <Styles.ModalForm>
+    <form>
       <Styles.modalLabel>{title}: </Styles.modalLabel>
       <Styles.textarea type="text" name="body" onChange={handleBodyChange} placeholder={placeholder} required>
       </Styles.textarea>
@@ -131,14 +131,14 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
       <label>What is your username: </label>
       <input type="text" name="name" onChange={handleNameChange} placeholder="please enter your nickname" required/>
       <Styles.charCount>{charCount.name_char} / 60</Styles.charCount>
-      {errors.answerer_name && ( <Styles.Auth>{errors.answerer_name}</Styles.Auth>)}
+      {errors.name && ( <Styles.Auth>{errors.name}</Styles.Auth>)}
       <label>Your email: </label>
       <input type="text" name="email" onChange={handleEmailChange} placeholder="please enter your email" value = {formData.email} required/>
       <Styles.charCount>{charCount.email_char} / 60</Styles.charCount>
       <Styles.emailAuth>For authentication reasons, you will not be emailed</Styles.emailAuth>
       {errors.email && ( <Styles.Auth>{errors.email}</Styles.Auth>)}
       <Styles.modalButtons onClick={handleClick}>Submit</Styles.modalButtons>
-    </Styles.ModalForm>
+    </form>
   );
 };
 

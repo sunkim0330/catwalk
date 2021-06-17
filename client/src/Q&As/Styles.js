@@ -106,7 +106,7 @@ export const addAnswerButton = styled.div`
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    color: #CEF1D5;
+    color: #D3D9D9;
   }
 `;
 
@@ -147,13 +147,12 @@ export const answerhelp = styled.div`
 export const MoreQuestionButton = styled.div`
   background-color: ${props => props.background};
   grid-area: morequestion;
-  justify-self: center;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
   width: fit-content;
   margin-top: 10px;
   margin-right: 8px;
-  padding: 5px;
+  padding: 8px 5px 5px 5px;
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
@@ -181,7 +180,7 @@ export const AskQuestionButton = styled.div`
   width: fit-content;
   margin-top: 10px;
   margin-right: 8px;
-  padding: 5px;
+  padding: 7px 5px 1px 5px;
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
   transition: all .5s ease;
@@ -213,11 +212,12 @@ export const moreAnswerButton = styled.div`
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    color: #CEF1D5;
+    color: #D3D9D9;
   }
 `;
 
 export const linegradient = styled.div`
+  margin-bottom: 10px;
   height: 100px;
   max-height: 2px;
   max-width: 850px;
@@ -249,6 +249,10 @@ export const btwnAnswers = styled.div`
   width: 80%;
 `;
 
+export const ModalForm = styled.div`
+  background-color: #D3D9D9;
+`;
+
 export const ModalContainer = styled.div`
   z-index: 5;
   position: fixed;
@@ -263,25 +267,28 @@ export const ModalContainer = styled.div`
   justify-content: center;
   font-family:'Roboto', sans-serif;
 `;
-export const ModalForm = styled.form`
-  background-color: #D3D9D9;
-`;
+
 export const modalLabel = styled.label`
+  color: #3A5A40;
   font-family:'Roboto', sans-serif;
 `;
+
 export const subtitle = styled.h4`
   font-family:'Roboto', sans-serif;
   margin: 10px;
+  color: #3A5A40;
 `;
 export const ModalContent = styled.div.attrs({className: 'qanda-modal-content'})`
   width: 500px;
   background-color: white;
   font-family:'Roboto', sans-serif;
+  color: #3A5A40;
 `;
 
 export const ModalHeaderFooter = styled.div.attrs({className: 'qanda-modal-content'})`
   padding: 10px;
   font-family:'Roboto', sans-serif;
+  color: #3A5A40;
 `;
 
 export const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
@@ -289,11 +296,13 @@ export const ModalBody = styled.div.attrs({className: 'qanda-modal-body'})`
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   font-family:'Roboto', sans-serif;
+  color: #3A5A40;
 `;
 
 export const textarea = styled.textarea`
   white-space: normal;
   vertical-align: middle;
+  width: 200px;
 `;
 
 export const Auth = styled.p`
