@@ -80,7 +80,6 @@ const Review = ({ review }) => {
                 }
               </div>);
           })}
-          )
         </div>
       ) : null
     );

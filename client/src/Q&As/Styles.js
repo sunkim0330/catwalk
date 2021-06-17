@@ -40,11 +40,11 @@ export const QuestionsContainer = styled.div.attrs({className: 'Questions_contai
   color: #3A5A40;
   font-size: 15px;
   font-weight: bold;
-  height: 350px;
+  height: 300px;
   grid-area: question;
   display: flex;
   flex-direction: column;
-  overflow-x: scroll;
+  overflow-x: auto;
 `;
 
 export const SearchBarInput = styled.input`

@@ -95,20 +95,20 @@ const RelatedList = (props) => {
 
   useEffect(() => {
     const list = document.getElementById('RelatedList');
-    const leftArrow = document.getElementById('leftArrow');
-    const rightArrow = document.getElementById('rightArrow');
+    const leftArrow = document.getElementById('leftArrowRelated');
+    const rightArrow = document.getElementById('rightArrowRelated');
 
 
     if (scrollPosition === 0) {
-      leftArrow.setAttribute('hidden', true);
+      leftArrow.setAttribute('style', 'visibility: hidden');
     } else {
-      leftArrow.toggleAttribute('hidden', false);
+      leftArrow.setAttribute('style', 'visibility: visible');
     }
 
     if (scrollPosition === list.scrollWidth) {
-      rightArrow.toggleAttribute('hidden', true);
+      rightArrow.setAttribute('style', 'visibility: hidden');
     } else {
-      rightArrow.setAttribute('hidden', false);
+      rightArrow.setAttribute('style', 'visibility: visible');
     }
 
 
@@ -117,16 +117,18 @@ const RelatedList = (props) => {
 
   const scrollBack = () => {
     const list = document.getElementById('RelatedList');
+    console.log(list.scrollLeft);
     list.scrollLeft -= 630;
     setScrollPosition(list.scrollLeft);
-    console.log(scrollPosition);
+    console.log(list.scrollLeft);
   };
 
   const scrollForward = () => {
     const list = document.getElementById('RelatedList');
+    console.log(list.scrollLeft);
     list.scrollLeft += 630;
     setScrollPosition(list.scrollLeft);
-    console.log(scrollPosition);
+    console.log(list.scrollLeft);
   };
 
 
@@ -141,15 +143,15 @@ const RelatedList = (props) => {
 
       <ArrowWrapper>
 
-        <ArrowLeftDiv onClick={scrollBack} id="leftArrow">
-          <ArrowIcon className="fas fa-chevron-left fa-2x" color={theme.color}></ArrowIcon>
+        <ArrowLeftDiv onClick={scrollBack} id="leftArrowRelated">
+          <ArrowIcon className="fas fa-chevron-left fa-2x" color={theme.color} ></ArrowIcon>
         </ArrowLeftDiv>
 
         <RelatedListDiv listLength={productIds.length} id="RelatedList">
           {relatedObjects.map((object, i) => { return <Card product={object} style={relatedStyles[i]} metaData={relatedMetaData[i]} key={object.id} setCurrentProduct={props.setCurrentProduct} currentName={props.product.name} currentChar={props.currentChar} grid={i}/>; })}
         </RelatedListDiv>
 
-        <ArrowRightDiv onClick={scrollForward} id="rightArrow">
+        <ArrowRightDiv onClick={scrollForward} id="rightArrowRelated">
           <ArrowIcon className="fas fa-chevron-right fa-2x" color={theme.color}></ArrowIcon>
         </ArrowRightDiv>
 

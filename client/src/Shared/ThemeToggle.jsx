@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {Theme, themes} from '../App.jsx';
+import {Switch, Checked, Container, Label} from './styledComponents.js';
 
 export const Toggle = (props) => {
   let theme = useContext(Theme);
@@ -13,11 +14,20 @@ export const Toggle = (props) => {
   };
 
   return (
-    <div className='switch'>
-      <input type='checkbox' onChange={setTheme}></input>
-      <span className='slider round'>
-        {theme === themes.dark ? <i className='far fa-moon'></i> : <i className='far fa-sun'></i>}
-      </span>
-    </div>
+
+    <Label className="label">
+      <Container className="toggle">
+        <Checked className="toggle-state" type="checkbox" name="check" value="check" onChange={setTheme}/>
+        <Switch className="indicator">
+        </Switch>
+      </Container>
+      {theme === themes.dark ? <i className='far fa-moon'></i> : <i className='far fa-sun'></i>}
+    </Label>
+
   );
 };
+
+// label
+// toggle = container
+// togg-state = checked
+// indicator = switch

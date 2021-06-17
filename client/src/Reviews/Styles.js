@@ -5,12 +5,12 @@ import style, { keyframes } from 'styled-components';
 // GRID BREAKDOWN
 // ==============
 export const Grid = style.div`
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   cursor: default;
   max-width: 1500px;
   min-width: 1500px;
   height: 800px;
-  margin: 30px auto;
+  margin: 30px auto 60px auto;
   padding: 10px;
   display: grid;
   grid-template-columns: 24% 38% 38%;
@@ -67,67 +67,12 @@ export const Characteristics = style.div`
 export const title = style.div`
   margin: 2px 4px 2px 0px;
   font-size: 1em;
+  font-family: "Montserrat";
 `;
 
 // ===============
 // SORT BLOCK
 // ===============
-
-// export const currentSort = style.div`
-//   width: fit-content;
-//   height: fit-content;
-//   display: flex;
-//   margin: 3px 5px;
-//   padding: 0 5px;
-//   border-bottom: 1px solid black;
-//   z-index: 2;
-
-//   :hover{
-//     opacity: 0;
-//     transition: opacity .25s ease-out;
-//     z-index: 0;
-
-//   }
-// `;
-
-// export const sortMethods = style.div`
-//   position: relative;
-//   width: fit-content;
-//   height: 80px;
-//   display: flex;
-//   flex-direction: column;
-//   margin: 0 5px 3px 10px;
-//   padding: 0 5px;
-//   cursor: pointer;
-//   border-radius: 5px;
-//   border:  1px solid #d3d9d9;
-//   opacity: 0;
-
-
-//   `;
-
-// export const sortOption = style.div`
-//   :hover {
-//     color: #d3d9d9;
-//     background: black;
-//     text-decoration: underline;
-//   }
-// `;
-
-// export const arrow = style.div`
-// border-style: solid;
-// border-width: 0.15em 0.15em 0 0;
-// content: '';
-// display: inline-block;
-// height: 0.45em;
-// left: 0.15em;
-// position: relative;
-// top: 0;
-// transform: rotate(135deg);
-// vertical-align: top;
-// width: 0.45em;
-// margin: 3px 0 0 4px;
-// `;
 
 export const dropdown = style.div`
   margin: 3px 5px;
@@ -164,7 +109,7 @@ export const currentSort = style.div`
 
 export const slideDown = keyframes`
   0% {
-    height: 0;
+    height: 25px;
   }
 
   100% {
@@ -176,18 +121,26 @@ export const list = style.div`
   position: relative;
   margin: 3px 5px;
   width: 120px;
-  height: 80px;
+  height: 25px;
   border: 1px solid #d3d9d9;
   border-radius: 5px;
-  z-index: 10;
-  animation: ${slideDown} 1s;
+  z-index: 1;
+  transition: height .5s ease;
+  overflow: hidden;
+
+  :hover {
+    animation: ${slideDown} .5s;
+    height: 80px;
+  }
+
+
 `;
 
 export const listItem = style.div`
   padding: 4px 10px;
   cursor: pointer;
 
-  &:hover {
+  :hover {
     text-decoration: underline;
     color: #d3d9d9;
   }
@@ -209,6 +162,7 @@ export const total = style.a`
 export const overall = style.div`
   margin: 5px 2px;
   font-size: 5em;
+  font-family: 'Montserrat', sans-serif;
   width: fit-content;
   height: fit-content;
 `;
@@ -255,12 +209,12 @@ export const bar = style.div`
   border-radius: 3px;
 `;
 
-export const percent = style.div(props => ({
-  width: props.width,
-  height: '10px',
-  background: '#3a5a40',
-  'border-radius': '3px'
-}));
+export const percent = style.div`
+  width: ${props => props.width};
+  height: 10px;
+  background: ${props => props.color};
+  border-radius: 3px;
+`;
 
 export const rating = style.div`
   font-size: 1em;;
@@ -296,6 +250,7 @@ export const charContainer = style.div`
 export const charName = style.div`
   width: fit-content;
   font-size: 1.2em;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const attBox = style.div`
@@ -323,7 +278,8 @@ export const marker = style.div(props => ({
   height: 0,
   'border-left': '10px solid transparent',
   'border-right': '10px solid transparent',
-  'border-top': '15px solid #3a5a40',
+  'border-top': '15px solid',
+  'border-top-color': props.color,
   'margin-left': props['margin-left']
 }));
 
@@ -404,7 +360,8 @@ export const bodyContainer = style.div`
 `;
 
 export const reviewThumbnail = style.img`
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: ${props => props.thumbnailBorder}
   border-radius: 5px;
   height: 50px;
   margin: auto 8px 5px 0;
@@ -440,18 +397,18 @@ export const more = style.div`
 export const helpful = style.div`
   display: flex;
   justify-content: flex-start;
-  font-size: .9em;
-  width: 25%;
+  font-size: 12px;
+  width: ${props => props.width};
 `;
 
 export const helpButton = style.button`
   appearance: none;
   border-width: 0;
   border-style: outset;
-  color: black;
+  color: ${props => props.font};
   cursor: pointer;
-  background-color: white;
-  font-size: .9em;
+  background-color: ${props => props.background};
+  font-size: 12px;
   padding: 0 5px;
   text-decoration: underline;
   &:hover {
@@ -460,10 +417,10 @@ export const helpButton = style.button`
 `;
 
 export const helpText = style.a`
-  border-right: solid 1px black;
-  width: 50%;
-  padding-right: 5%;
-  margin-right: 5%;
+  width: 110px;
+  padding-right: 10px;
+  margin-right: ${props => props.marginRight};
+  border-right: ${props => props.borderRight};
 `;
 
 // ===============
@@ -471,7 +428,7 @@ export const helpText = style.a`
 // ===============
 
 export const modalOverlay = style.div`
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   z-index: 5;
   position: fixed;
   top: 0;
@@ -493,7 +450,36 @@ export const modal = style.div`
   min-width: 700px;
   max-height: 850px;
   min-height: 850px;
-  background-color: white;
+  background-color: ${props => props.background};
+  border: solid 1px #d3d9d9;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: default;
+`;
+
+export const errOverlay = style.div`
+  font-family: 'Roboto', sans-serif;
+  z-index: 45;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.8);
+
+`;
+
+export const errorModal = style.div`
+  z-index: 50;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: ${props => props.background};
   border: solid 1px #d3d9d9;
   border-radius: 10px;
   padding: 15px;
@@ -512,20 +498,20 @@ export const formHeader = style.div`
 export const textTitle = style.div`
   font-size: 3em;
   margin: 3px 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const textSub = style.div`
   font-size: 1.5em;
   margin: 3px 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const textMain = style.div`
   display: inline-block;
   font-size: 1em;
   margin: 3px 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const textSmall = style.div`
@@ -533,7 +519,7 @@ export const textSmall = style.div`
   font-size: .8em;
   margin: 3px 0;
   width: fit-content;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export const formContainer = style.form`
@@ -610,7 +596,7 @@ export const textarea = style.textarea`
   margin: 2px 0;
   border: 1px solid #d3d9d9;
   resize: none;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 300px;
 `;
 
@@ -618,6 +604,7 @@ export const flexFit = style.div`
   display: flex;
   justify-content: space-between;
   width: fit-content;
+  padding-bottom: 3px;
 `;
 
 export const flexFitHeight = style.div`
@@ -662,21 +649,19 @@ export const fullImage = style.img`
 `;
 
 export const button = style.div`
-  border: 1px solid #d3d9d9;
   border-radius: 5px;
   width: fit-content;
-  margin-right: 8px;
+  margin: 5px 8px 0 5px;
   padding: 5px;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
-  font-family: sans-serif;
+  box-shadow: ${props => props.shadow};
+  transition: all .3s ease-in-out;
+  font-family: 'Roboto', sans-serif;
 
   :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
+    color: #D3D9D9;
+    box-shadow: ${props => props.hoverShadow};
+    transition: all .3s ease-in-out;
   }
 
   :active {
@@ -705,22 +690,22 @@ export const radioSmall = style.input`
   height: 30px;
   width: 30px;
   transition: all 0.15s ease-out 0s;
-  background: #cbd1d8;
+  background: #D3D9D9;
   border: none;
   color: #fff;
   cursor: pointer;
   margin-right: 0.5rem;
   outline: none;
   position: relative;
-  z-index: 1000;
+  z-index: 15;
   border-radius: 50%;
 
   :hover {
-    background: #9faab7;
+    background: ${props => props.hoverColor};
   }
 
   :checked {
-    background: #40e0d0;
+    background: ${props => props.color};
 
     &::before {
       height: 30px;
@@ -735,11 +720,11 @@ export const radioSmall = style.input`
 
     &::after {
       animation: ${clickWave} .5s;
-      background: #40e0d0;
+      background: ${props => props.color};
       content: '';
       display: block;
       position: absolute;
-      z-index: 100;
+      z-index: 12;
       border-radius: 50%;
     }
   }
@@ -753,24 +738,29 @@ export const wrapper = style.div`
 
 export const wiggle = keyframes`
   0%, 100% {
-    transform: translateX(0px)
+    margin: 0;
   }
 
   25% {
-    transform: translateX(3px)
+    margin-left: 3px;
+  }
+
+  50% {
+    margin-left: -3px;
   }
 
   75% {
-    transform: translateX(-3px)
+    margin-left: 3px;
   }
 `;
 
 export const wiggler = style.a`
+  position: relative;
+  margin: 0;
 
+  :hover {
 
-  &:hover {
-    position: relative;
-    animation: ${wiggle} 1s;
-    color: blue;
+    animation: ${wiggle} .3s;
+    color: #D3D9D9;
   }
 `;
