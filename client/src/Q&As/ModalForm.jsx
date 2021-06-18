@@ -100,7 +100,6 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
     })
       .then ((response) => {
         alert('Thank you for submitting your form');
-        console.log('success post request for the form', response);
       })
       .catch(() => {
         console.log('There was an error. Couldnt submit the form');
@@ -117,12 +116,11 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
   }, [errors]);
 
   const handleClick = (e) => {
-    e.preventDefault();
     formValidation();
   };
 
   return (
-    <div>
+    <form>
       <Styles.modalLabel>{title}: </Styles.modalLabel>
       <Styles.textarea type="text" name="body" onChange={handleBodyChange} placeholder={placeholder} required>
       </Styles.textarea>
@@ -137,8 +135,8 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
       <Styles.charCount>{charCount.email_char} / 60</Styles.charCount>
       <Styles.emailAuth>For authentication reasons, you will not be emailed</Styles.emailAuth>
       {errors.email && ( <Styles.Auth>{errors.email}</Styles.Auth>)}
-      <Styles.modalButtons onClick={handleClick}>Submit</Styles.modalButtons>
-    </div>
+      <Styles.modalButtons type="button" onClick={handleClick}>Submit</Styles.modalButtons>
+    </form>
   );
 };
 

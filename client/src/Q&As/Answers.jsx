@@ -8,6 +8,8 @@ import * as Styles from './Styles.js';
 const Answers = ({ product, questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
   const [limit, setLimit] = useState(2);
+  const [collapse, setCollapse] = useState(true);
+
 
   const getAnswers = () => axios.get(`/qa/questions/${questions.question_id}/answers`)
     .then((response) => {
@@ -18,8 +20,6 @@ const Answers = ({ product, questions, setDateFormat }) => {
       console.log('cant get request from answer API');
     });
 
-
-
   useEffect(() => {
     getAnswers();
     return () => {
@@ -27,19 +27,33 @@ const Answers = ({ product, questions, setDateFormat }) => {
     };
   }, [questions]);
 
-  const loadMore = () => {
-    setLimit(prev => prev + 2);
+  const displayButton = () => {
+    if (collapse) {
+      return <Styles.moreAnswerButton id="more-answer-button" type="button"
+        style = {{display: limit >= answers.length ? 'none' : 'block'}}
+        className="answer_button" onClick={handleClick}
+      > See more answers
+      </Styles.moreAnswerButton>;
+    } else if (collapse === false) {
+      return <Styles.lessAnswerButton onClick={handleClick}> Collapse answers </Styles.lessAnswerButton>;
+    }
+  };
+
+
+  const handleClick = () => {
+    if (collapse === true) {
+      setCollapse(!collapse);
+      setLimit(prev => prev + answers.length);
+    } else if (collapse === false) {
+      setLimit(2);
+    }
   };
 
   return (
     <Styles.answerContainer id="answer-return-div">
       {answers.slice(0, limit).map(answer => <Answer answer={answer} key={answer.answer_id}/>)}
       <Styles.AnswerButtonWrapper>
-        <Styles.moreAnswerButton id="more-answer-button"
-          style = {{display: limit >= answers.length ? 'none' : 'block'}}
-          className="answer_button" onClick={loadMore}>
-          See more answers
-        </Styles.moreAnswerButton>
+        {displayButton()}
       </Styles.AnswerButtonWrapper>
       <Styles.linegradient />
     </Styles.answerContainer>
@@ -51,14 +65,14 @@ export default Answers;
 
 const Answer = ({ answer }) =>
   <Styles.answerList className="main-answer-container">
-    <b>A:</b> {answer.body}
-    <Styles.answerFooter>
-      <Styles.username> by {answer.answerer_name},&nbsp;{answer.formattedDate}&nbsp;</Styles.username>
-      <Styles.answerhelp>
+    <Styles.Answerbody><b>A:</b></Styles.Answerbody>
+    <Styles.Answerbody>{answer.body}</Styles.Answerbody>
+    <Styles.answerFooter id="answer-footer">
+      <Styles.username id="username"> by {answer.answerer_name},&nbsp;{answer.formattedDate}&nbsp;</Styles.username>
+      <Styles.answerhelp id="answerhelp">
         <Helpful origin="qa/answers" id={answer.answer_id} helpCount={answer.helpfulness} />
       </Styles.answerhelp>
     </Styles.answerFooter>
     <Styles.btwnAnswers />
   </Styles.answerList>;
-
 

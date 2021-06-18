@@ -36,21 +36,22 @@ const Modal = ({title, subTitle, questionBody, onClose, show, id, productId}) =>
   }
 
   return (
-    <Styles.ModalContainer>
-      <Styles.ModalContent>
-        <Styles.ModalHeaderFooter>
-          <h2>{title}</h2>
-          {displayQuestionBody()}
-        </Styles.ModalHeaderFooter>
-        <Styles.ModalBody>
-          <ModalForm origin={origin} title={title} placeholder={placeholder} productId={productId}/>
-        </Styles.ModalBody>
-        <Styles.ModalHeaderFooter>
-          <Styles.modalButtons onClick={onClose}>Close</Styles.modalButtons>
-        </Styles.ModalHeaderFooter>
-      </Styles.ModalContent>
-    </Styles.ModalContainer>
-
+    <div>
+      <Styles.ModalContainer>
+        <Styles.ModalContent>
+          <Styles.ModalHeaderFooter>
+            <h2>{title}</h2>
+            {displayQuestionBody()}
+          </Styles.ModalHeaderFooter>
+          <Styles.ModalBody>
+            <ModalForm origin={origin} title={title} placeholder={placeholder} productId={productId}/>
+          </Styles.ModalBody>
+          <Styles.ModalHeaderFooter>
+            <Styles.modalButtons onClick={onClose}>Close</Styles.modalButtons>
+          </Styles.ModalHeaderFooter>
+        </Styles.ModalContent>
+      </Styles.ModalContainer>
+    </div>
   );
 
 
