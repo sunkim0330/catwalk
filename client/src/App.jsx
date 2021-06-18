@@ -122,6 +122,7 @@ const App = () => {
     let body = document.body;
     body.style.backgroundColor = currentTheme.background;
     body.style.color = currentTheme.font;
+    body.style.transition = 'all .3s';
   }, [currentTheme]);
 
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (

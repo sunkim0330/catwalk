@@ -14,7 +14,7 @@ export const RelatedListDiv = styled.div`
   justify-content: start;
   align-self: center;
   justify-self: center;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
   font-family: 'Roboto', sans-serif;
