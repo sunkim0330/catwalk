@@ -46,6 +46,7 @@ const Answers = ({ product, questions, setDateFormat }) => {
       setLimit(prev => prev + answers.length);
     } else if (collapse === false) {
       setLimit(2);
+      setCollapse(!collapse);
     }
   };
 
