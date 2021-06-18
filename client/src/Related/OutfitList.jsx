@@ -1,8 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import OutfitCard from './OutfitCardComponent';
 import {RelatedListDiv, AddToOutfitButton, SecondaryTextTitle, PlusAnimation, ArrowWrapper, ArrowRightDiv, ArrowLeftDiv, ArrowIcon} from './styled.js';
-import leftArrow from '../Overview/images/chevron-left.png';
-import rightArrow from '../Overview/images/chevron-right.png';
 import {Theme} from '../App.jsx';
 
 
