@@ -208,7 +208,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
   return (
     <>
       <Styles.modalOverlay></Styles.modalOverlay>
-      <Styles.modal background={theme.background}>
+      <Styles.modal background={theme.background} id="reviews-modal" className="module">
 
         <Styles.formHeader>
           <Styles.textTitle>Write your review</Styles.textTitle>
