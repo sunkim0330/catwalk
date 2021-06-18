@@ -143,6 +143,10 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
           {currentReviews.map((review, index) => {
             return <Review key={index} review={review} />;
           })}
+        </Styles.ReviewList>
+
+        <Styles.Controls>
+
           <Styles.flexFit>
             {currentReviews.length === reviewsList.length
               ? null
@@ -158,7 +162,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
               hoverShadow={theme.hoverShadow}
             >Add a review</Styles.button>
           </Styles.flexFit>
-        </Styles.ReviewList>
+        </Styles.Controls>
 
 
       </Styles.Grid>

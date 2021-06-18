@@ -14,7 +14,7 @@ export const Grid = style.div`
   padding: 10px;
   display: grid;
   grid-template-columns: 24% 38% 38%;
-  grid-template-rows: 5% 15% 40% 20% 20%;
+  grid-template-rows: 5% 15% 40% 20% 15% 5%;
   column-gap: 10px;
   row-gap: 10px;
   grid-template-areas:
@@ -22,7 +22,8 @@ export const Grid = style.div`
     "summary review review"
     "breakdown review review"
     "characteristics review review"
-    "characteristics review review";
+    "characteristics review review"
+    "characteristics controls .";
 `;
 
 export const TitleBlock = style.div`
@@ -57,6 +58,12 @@ export const Characteristics = style.div`
   height: fit-content;
   display: flex;
   flex-direction: column;
+
+`;
+
+export const Controls = style.div`
+  grid-area: controls;
+  width: fit-content;
 
 `;
 
