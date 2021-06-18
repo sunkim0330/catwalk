@@ -41,16 +41,15 @@ const SearchQandA = ({product, setDateFormat}) => {
           <Styles.body id="question-body">Q: {question.question_body}</Styles.body>
           <Styles.buttons id="buttons">
             <Styles.addAnswerButton id="add-answer-button" onClick={() => setShow(true)} >Add Answer &nbsp;</Styles.addAnswerButton> &nbsp;
+            <Modal title="Submit Your Answer" subTitle={product.name}
+              id={question.question_id} questionBody={question.question_body}
+              show={show} onClose={() => setShow(false)} />
             <Helpful origin="qa/questions" id={question.question_id}
               helpCount={question.question_helpfulness} />
           </Styles.buttons>
         </Styles.questionList>
-        <Modal title="Submit Your Answer" subTitle={product.name}
-          id={question.question_id} questionBody={question.question_body}
-          show={show} onClose={() => setShow(false)} />
         <Styles.btwnAnswers />
         <div id="answer-component-in-question"><Answers product={product} questions={question} setDateFormat={setDateFormat} /></div>
-
       </div>
     );
   });

@@ -8,6 +8,8 @@ import * as Styles from './Styles.js';
 const Answers = ({ product, questions, setDateFormat }) => {
   const [answers, setAnswer] = useState([]);
   const [limit, setLimit] = useState(2);
+  const [collapse, setCollapse] = useState(true);
+
 
   const getAnswers = () => axios.get(`/qa/questions/${questions.question_id}/answers`)
     .then((response) => {
@@ -18,8 +20,6 @@ const Answers = ({ product, questions, setDateFormat }) => {
       console.log('cant get request from answer API');
     });
 
-
-
   useEffect(() => {
     getAnswers();
     return () => {
@@ -27,29 +27,26 @@ const Answers = ({ product, questions, setDateFormat }) => {
     };
   }, [questions]);
 
-  const loadMore = () => {
-    setLimit(prev => prev + 2);
-  };
 
-  const collapseAll = () => {
-    setLimit(2);
+  const handleClick = () => {
+    setCollapse(!collapse);
+    if (collapse === true) {
+      setLimit(prev => prev + answers.length);
+    } else {
+      setLimit(2);
+    }
   };
 
   return (
     <Styles.answerContainer id="answer-return-div">
       {answers.slice(0, limit).map(answer => <Answer answer={answer} key={answer.answer_id}/>)}
       <Styles.AnswerButtonWrapper>
-        <Styles.moreAnswerButton id="more-answer-button"
-          style = {{display: limit >= answers.length ? 'none' : 'block'}}
-          className="answer_button" onClick={loadMore}>
-          See more answers
-        </Styles.moreAnswerButton>
-        <Styles.lessAnswerButton id="less-answer-button"
-          // style = {{display: limit >= 3 ? 'none' : 'block'}}
-          onClick={collapseAll}
+        <Styles.moreAnswerButton id="more-answer-button" type="button"
+          // style = {{display: limit >= answers.length ? 'none' : 'block'}}
+          className="answer_button" onClick={handleClick}
         >
-          Collapse All
-        </Styles.lessAnswerButton>
+          {collapse ? 'See more answers' : 'Collapse answers'}
+        </Styles.moreAnswerButton>
       </Styles.AnswerButtonWrapper>
       <Styles.linegradient />
     </Styles.answerContainer>
@@ -71,5 +68,4 @@ const Answer = ({ answer }) =>
     </Styles.answerFooter>
     <Styles.btwnAnswers />
   </Styles.answerList>;
-
 
