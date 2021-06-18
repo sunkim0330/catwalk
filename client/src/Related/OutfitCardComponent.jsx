@@ -15,7 +15,7 @@ const OutfitCard = (props) => {
   };
 
   return (
-    <CardDiv image={image} grid={props.grid}>
+    <CardDiv image={image} grid={props.grid} name={props.piece.product.name}>
       <DeleteButton name={props.piece.product.name} updateCloset={props.updateCloset} />
       <LabelDiv onClick={handleClick} background={theme.background}>
         <SecondaryText>{props.piece.product.category}</SecondaryText>
