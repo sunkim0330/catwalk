@@ -260,11 +260,6 @@ export const linegradient = styled.div`
   background-image: linear-gradient(to right,rgba(0,0,0,0.75),rgba(0,0,0,0.75),rgba(0,0,0,0));
 `;
 
-/* linear-gradient(
-  to right,
-  #CEF1D5, #CEF1D5, white
-);*/
-
 export const lineBreak = styled.div`
   border-width: 2px;
   border-bottom-style:solid;
@@ -283,10 +278,6 @@ export const btwnAnswers = styled.div`
   padding: 3px 2px 2px 3px;
   top: 0px;
   width: 80%;
-`;
-
-export const ModalForm = styled.div`
-  background-color: #D3D9D9;
 `;
 
 export const ModalContainer = styled.div`
@@ -309,13 +300,13 @@ export const modalLabel = styled.label`
   background-color: #D3D9D9;
   color: #3A5A40;
 `;
-//color: #3A5A40;
 
 export const subtitle = styled.h4`
   font-family:'Roboto', sans-serif;
   margin: 10px;
   background-color: #D3D9D9;
   color: #3A5A40;
+  font-size: 14px;
 `;
 export const ModalContent = styled.div.attrs({className: 'qanda-modal-content'})`
   width: 500px;

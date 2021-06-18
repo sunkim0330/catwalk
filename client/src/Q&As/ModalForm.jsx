@@ -120,7 +120,7 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
   };
 
   return (
-    <div>
+    <form>
       <Styles.modalLabel>{title}: </Styles.modalLabel>
       <Styles.textarea type="text" name="body" onChange={handleBodyChange} placeholder={placeholder} required>
       </Styles.textarea>
@@ -136,7 +136,7 @@ const ModalForm = ({origin, title, placeholder, productId}) => {
       <Styles.emailAuth>For authentication reasons, you will not be emailed</Styles.emailAuth>
       {errors.email && ( <Styles.Auth>{errors.email}</Styles.Auth>)}
       <Styles.modalButtons type="button" onClick={handleClick}>Submit</Styles.modalButtons>
-    </div>
+    </form>
   );
 };
 
