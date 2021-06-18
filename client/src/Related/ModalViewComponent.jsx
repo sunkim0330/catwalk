@@ -1,8 +1,9 @@
-import React from 'react';
-import {ModalView, TertiaryText, ModalTable, ModalHeader, ModalRows, ModalCellLeft, ModalCellRight, ModalCellCenter} from './styled.js';
+import React, {useContext} from 'react';
+import {ModalView, TertiaryText, ModalTable, ModalHeader, ModalRows, ModalCellLeft, ModalCellRight, ModalCellCenter, ModalOverlay} from './styled.js';
+import {Theme} from '../App.jsx';
 
 const ModalViewComponent = (props) => {
-
+  let theme = useContext(Theme);
 
   let comparison = {};
   let comparisonArray = [];
@@ -39,21 +40,23 @@ const ModalViewComponent = (props) => {
 
 
   return (
-    <ModalView onClick={props.handleClick} >
-      <TertiaryText>Comparing</TertiaryText>
-      <ModalTable>
-        <ModalHeader>
-          <tr>
-            <ModalCellLeft>{props.currentName}</ModalCellLeft>
-            <td></td>
-            <ModalCellRight>{props.relatedName}</ModalCellRight>
-          </tr>
-        </ModalHeader>
-        <tbody>
-          {comparisonArray.map((row, i) => { return <ComparisonRow row={row} key={i}/>; })}
-        </tbody>
-      </ModalTable>
-    </ModalView>
+    <ModalOverlay>
+      <ModalView onClick={props.handleClick} background={theme.background} >
+        <TertiaryText>Comparing</TertiaryText>
+        <ModalTable>
+          <ModalHeader>
+            <tr>
+              <ModalCellLeft>{props.currentName}</ModalCellLeft>
+              <td></td>
+              <ModalCellRight>{props.relatedName}</ModalCellRight>
+            </tr>
+          </ModalHeader>
+          <tbody>
+            {comparisonArray.map((row, i) => { return <ComparisonRow row={row} key={i}/>; })}
+          </tbody>
+        </ModalTable>
+      </ModalView>
+    </ModalOverlay>
   );
 };
 

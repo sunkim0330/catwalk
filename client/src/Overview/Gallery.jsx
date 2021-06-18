@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Thumbnails from './Thumbnails.jsx';
 import * as Styles from './styledComponents.js';
-import leftArrow from './images/chevron-left.png';
-import rightArrow from './images/chevron-right.png';
-import close from './images/closeGallery.png';
+import { Theme } from '../App.jsx';
 
 const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
+
+  const theme = useContext(Theme);
 
   const [thumbnailsStart, setThumbnailsStart] = useState(0);
   const [mainImageIndex, setMainImageIndex] = useState(0);
@@ -30,10 +30,10 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
     zoomedImage.style.backgroundSize = (image.width * cx) + 'px ' + (image.height * cy) + 'px';
     zoomedImage.style.width = image.width + 'px';
     zoomedImage.style.height = image.height + 'px';
-    // place result at correct y axis - x asix is dealt with automatically
+    // place zoomed image at correct y axis - x asix is dealt with automatically
     // getBoundingClientRect returns an elements x and y (top/left) based upon relation to viewport
     // need to get the difference between the container's distance from the top of the page
-    // and the image's distance from the top of the page to position an absolute div accordingly
+    // and the image's distance from the top of the page to position an absolute div accordingly on the y axis
     zoomedImage.style.top = (imagePositioning.top - containerPositioning.top) + 'px';
   }, [zoomedIn]);
 
@@ -109,14 +109,16 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
 
   return (
     <Styles.Gallery extendedView={extendedView}>
+
       <Styles.CloseExtended
+        theme={theme}
         className="fas fa-times fa-5x"
         onClick={() => { setZoomedIn(false); setExtendedView(false); }}
-        extendedView={extendedView}
-        src={close}>
+        extendedView={extendedView}>
       </Styles.CloseExtended>
 
       <Styles.LeftArrow
+        theme={theme}
         className="fas fa-chevron-left fa-4x"
         alt="Click here to scroll left"
         id="leftArrow"
@@ -130,6 +132,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
         <Styles.Lens id="lens" className="img-zoom-lens" onMouseMove={(event) => moveLens(event)} zoomedIn={zoomedIn}></Styles.Lens>
 
         <Styles.MainImg
+          theme={theme}
           src={styleImages[mainImageIndex].url}
           id="mainImage" alt={styleImages[mainImageIndex].name}
           extendedView={extendedView}
@@ -155,6 +158,7 @@ const Gallery = ({ styleImages, productID, extendedView, setExtendedView }) => {
       </Styles.MainImgWrapper>
 
       <Styles.RightArrow
+        theme={theme}
         className="fas fa-chevron-right fa-4x"
         alt="Click here to scroll right"
         id="rightArrow"

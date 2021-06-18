@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Theme } from '../App.jsx';
 import * as Styles from './Styles.js';
 
 const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortReviewsList }) => {
@@ -13,6 +14,8 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
     4: false,
     5: false,
   });
+
+  const theme = useContext(Theme);
 
   const showCurrentFilters = () => {
     let currentFilters = [];
@@ -107,7 +110,11 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
       return (
         <Styles.ratingContainer key={rating}>
           <Styles.rating onClick={handleFilterClick}>{rating} {rating === 1 ? 'star' : 'stars'}</Styles.rating>
-          <Styles.bar><Styles.percent width={ratingsPct[rating]}></Styles.percent></Styles.bar>
+          <Styles.bar>
+            <Styles.percent
+              width={ratingsPct[rating]}
+              color={theme.color}
+            ></Styles.percent></Styles.bar>
           <Styles.count>({ratings[rating]})</Styles.count>
         </Styles.ratingContainer>
       );
@@ -129,13 +136,21 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
 
     setRatings(newRatings);
 
-    let t = Number(meta.recommended.true);
-    let f = Number(meta.recommended.false);
+  }, [reviews]);
+
+  useEffect(() => {
+    let t = Number(meta.recommended.true) || 0;
+    let f = Number(meta.recommended.false) || 0;
 
     setRecommends(() => {
-      return Math.round((f / (t + f)) * 100);
+      return t + f > 0 ? (
+        Math.round((t / (t + f)) * 100)
+      ) : (
+        0
+      );
     });
-  }, [reviews]);
+
+  }, [meta]);
 
   // update filters
   useEffect(() => {
@@ -163,9 +178,6 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
     setRatingsPct(newRatingsPct);
   }, [ratings]);
 
-
-
-  // refactor using map or loop
   return (
     <Styles.Breakdown>
 

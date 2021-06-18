@@ -12,6 +12,8 @@ const OutfitList = (props) => {
   let newStorage = window.localStorage;
 
   const [closet, setCloset] = useState(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollWidth, setScrollWidth] = useState(0);
 
   useEffect(() => {
     if (newStorage.getItem('closet')) {
@@ -69,39 +71,65 @@ const OutfitList = (props) => {
 
   // Scroll functionality
 
+  useEffect(() => {
+    if (document.getElementById('OutfitList')) {
+      setScrollWidth(document.getElementById('OutfitList').scrollWidth);
+    }
+    setScrollPosition(0);
+  }, [closet]);
+
+
+  useEffect(() => {
+    if (document.getElementById('leftArrowOutfit') && document.getElementById('rightArrowOutfit')) {
+      const list = document.getElementById('OutfitList');
+      const leftArrow = document.getElementById('leftArrowOutfit');
+      const rightArrow = document.getElementById('rightArrowOutfit');
+      let end = scrollWidth - 1262;
+
+      scrollPosition <= 0 ? leftArrow.setAttribute('style', 'visibility: hidden') : leftArrow.setAttribute('style', 'visibility: visible');
+      scrollPosition >= end ? rightArrow.setAttribute('style', 'visibility: hidden') : rightArrow.setAttribute('style', 'visibility: visible');
+    }
+
+  }, [scrollPosition, scrollWidth]);
+
+
   const scrollBack = () => {
     const list = document.getElementById('OutfitList');
-
     list.scrollLeft -= 630;
-
-    console.log(list.scrollLeft);
+    setScrollPosition(list.scrollLeft - 630);
   };
 
   const scrollForward = () => {
     const list = document.getElementById('OutfitList');
-    console.log('right clicked');
     list.scrollLeft += 630;
-    console.log(list.scrollLeft);
+    setScrollPosition(list.scrollLeft + 630);
   };
+
 
   if (closet !== null) {
     return (
       <div>
         <SecondaryTextTitle color={theme.font}>YOUR OUTFIT</SecondaryTextTitle>
+
         <ArrowWrapper>
-          <ArrowLeftDiv onClick={scrollBack}>
-            <ArrowIcon className="fas fa-chevron-left fa-2x"></ArrowIcon>
+
+          <ArrowLeftDiv onClick={scrollBack} id='leftArrowOutfit'>
+            <ArrowIcon className="fas fa-chevron-left fa-2x" color={theme.color}></ArrowIcon>
           </ArrowLeftDiv>
-          <RelatedListDiv listLength={closet.length + 1} id="OutfitList" >
-            <AddToOutfitButton onClick={handleAdd} color={theme.color}>
-              <PlusAnimation>Add To Outfit</PlusAnimation>
+
+          <RelatedListDiv listLength={closet.length + 1} id="OutfitList" font={theme.header2}>
+            <AddToOutfitButton onClick={handleAdd} color={theme.color} background={theme.background} font={theme.header1} shadow={theme.shadow}>
+              <PlusAnimation background={theme.background} color={theme.color} >Add To Outfit</PlusAnimation>
             </AddToOutfitButton>
             {closet ? closet.map((piece, i) => { return <OutfitCard piece={piece} key={i} grid={i + 1} updateCloset={updateCloset} setCurrentProduct={props.setCurrentProduct}/>; }) : null}
           </RelatedListDiv>
-          <ArrowRightDiv onClick={scrollForward}>
-            <ArrowIcon className="fas fa-chevron-right fa-2x"></ArrowIcon>
+
+          <ArrowRightDiv onClick={scrollForward} id='rightArrowOutfit'>
+            <ArrowIcon className="fas fa-chevron-right fa-2x" color={theme.color}></ArrowIcon>
           </ArrowRightDiv>
+
         </ArrowWrapper>
+
       </div>
     );
   } else {

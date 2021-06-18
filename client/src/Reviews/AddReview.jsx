@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Submit from './Submit.jsx';
 import Stars from '../Shared/Star.jsx';
+import { Theme } from '../App.jsx';
 import * as Styles from './Styles.js';
 
 const AddReview = ({ product, chars, ratings, setShowForm }) => {
@@ -27,6 +28,8 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
   const [selected, setSelected] = useState({});
   const [userRating, setUserRating] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
+
+  const theme = useContext(Theme);
 
   const handleSummaryChange = (e) => {
     setReviewInfo(prev => {
@@ -127,6 +130,8 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                       type="radio"
                       name={char}
                       value={index + 1}
+                      hoverColor={theme.hoverColor}
+                      color={theme.color}
                       onChange={handleCharChange}
                       required
                     />
@@ -203,7 +208,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
   return (
     <>
       <Styles.modalOverlay></Styles.modalOverlay>
-      <Styles.modal>
+      <Styles.modal background={theme.background} id="reviews-modal" className="module">
 
         <Styles.formHeader>
           <Styles.textTitle>Write your review</Styles.textTitle>
@@ -281,6 +286,8 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                     type="radio"
                     name="recommend"
                     value="yes"
+                    hoverColor={theme.hoverColor}
+                    color={theme.color}
                     onChange={handleRecommendsChange}
                     required
                   />
@@ -292,6 +299,8 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                     type="radio"
                     name="recommend"
                     value="no"
+                    hoverColor={theme.hoverColor}
+                    color={theme.color}
                     onChange={handleRecommendsChange}
                   />
                   <Styles.textSmall>No</Styles.textSmall>
@@ -349,47 +358,6 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
           </Styles.flexWidth>
 
-          {/* <Styles.section> */}
-          {/* <Styles.flexContainerCol>
-              <Styles.textMain>
-                Review summary
-              </Styles.textMain>
-              <Styles.textInput
-                type="text"
-                id="add-review-summary"
-                name="add-review-summary"
-                maxLength="60"
-                placeholder="Example: Best purchase ever!"
-                size="30"
-                // value={summary}
-                onChange={handleSummaryChange}
-                required
-              />
-            </Styles.flexContainerCol> */}
-
-          {/* <Styles.flexContainerCol>
-              <Styles.textMain>
-                Review
-              </Styles.textMain>
-              <Styles.textarea
-                id="add-review-body"
-                name="add-review-body"
-                rows="5"
-                columns="30"
-                minLength="50"
-                maxLength="1000"
-                placeholder="Why did you like the product or not?"
-                // value={body}
-                onChange={handleBodyChange}
-                required
-              />
-              <Styles.textSmall>
-              Minimum required characters left: {minRequiredChars}
-              </Styles.textSmall>
-            </Styles.flexContainerCol>
-          </Styles.section> */}
-
-
           <Styles.flexContainerCol>
             {reviewInfo.imageURLs.length >= 5 ? null
               : (
@@ -411,7 +379,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
               )
             }
             <Styles.flexContainerCol>
-              <Styles.textMain>image preview:</Styles.textMain>
+              <Styles.textMain>Image preview:</Styles.textMain>
               <Styles.flexFitHeight>
                 {reviewInfo.imageURLs.map((image, index) => {
                   return (
@@ -464,7 +432,11 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
           <Styles.flexFit>
             <Submit reviewInfo={reviewInfo} ratings={ratings} closeReview={closeReview} />
-            <Styles.button onClick={closeReview}>Cancel</Styles.button>
+            <Styles.button
+              onClick={closeReview}
+              shadow={theme.shadow}
+              hoverShadow={theme.hoverShadow}
+            >Cancel</Styles.button>
           </Styles.flexFit>
 
         </Styles.formContainer>

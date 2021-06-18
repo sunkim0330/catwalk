@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FeaturesList from './FeaturesList.jsx';
 import * as Styles from './styledComponents.js';
+import { Theme } from '../App.jsx';
 
 const ProductDescription = ({ slogan, description, features }) => {
+
+  const theme = useContext(Theme);
 
   return (
     <Styles.ProductDescription>
