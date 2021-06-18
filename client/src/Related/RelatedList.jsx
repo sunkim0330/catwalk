@@ -109,7 +109,6 @@ const RelatedList = (props) => {
       scrollPosition <= 0 ? leftArrow.setAttribute('style', 'visibility: hidden') : leftArrow.setAttribute('style', 'visibility: visible');
       scrollPosition >= end ? rightArrow.setAttribute('style', 'visibility: hidden') : rightArrow.setAttribute('style', 'visibility: visible');
     }
-
   }, [scrollPosition, scrollWidth]);
 
 

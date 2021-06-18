@@ -32,7 +32,7 @@ const Card = (props) => {
 
     return (
 
-      <CardDiv grid={props.grid} image={image} >
+      <CardDiv grid={props.grid} image={image} name={props.product.name}>
         <HeartButton currentName={props.currentName} currentChar={props.currentChar} relatedName={props.product.name} relatedChar={props.product.features}/>
         <LabelDiv onClick={handleClick} background={theme.background}>
           <SecondaryText>{props.product.category}</SecondaryText>
