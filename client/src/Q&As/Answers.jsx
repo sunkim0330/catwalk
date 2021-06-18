@@ -31,6 +31,10 @@ const Answers = ({ product, questions, setDateFormat }) => {
     setLimit(prev => prev + 2);
   };
 
+  const collapseAll = () => {
+    setLimit(2);
+  };
+
   return (
     <Styles.answerContainer id="answer-return-div">
       {answers.slice(0, limit).map(answer => <Answer answer={answer} key={answer.answer_id}/>)}
@@ -40,6 +44,12 @@ const Answers = ({ product, questions, setDateFormat }) => {
           className="answer_button" onClick={loadMore}>
           See more answers
         </Styles.moreAnswerButton>
+        <Styles.lessAnswerButton id="less-answer-button"
+          // style = {{display: limit >= 3 ? 'none' : 'block'}}
+          onClick={collapseAll}
+        >
+          Collapse All
+        </Styles.lessAnswerButton>
       </Styles.AnswerButtonWrapper>
       <Styles.linegradient />
     </Styles.answerContainer>

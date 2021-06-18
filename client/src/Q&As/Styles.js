@@ -10,12 +10,12 @@ export const Index = styled.div`
   width: 1500px;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
-  margin: 30px 30px 100px auto;
+  margin: auto 30px 100px auto;
   padding: 10px;
   column-gap: 10px;
   row-gap: 10px;
   display: grid;
-  grid-template-columns: 20% 20% 30% 30%;
+  grid-template-columns: 20% 20% 40% 20%;
   grid-template-rows: 46px 46px 267px 267px 50px;
   column-gap: 10px;
   row-gap: 10px;
@@ -106,7 +106,7 @@ export const addAnswerButton = styled.div`
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    color: #D3D9D9;
+    color: black;
   }
 `;
 
@@ -175,6 +175,30 @@ export const AnswerButtonWrapper = styled.div`
   flex-direction: row;
 `;
 
+export const moreAnswerButton = styled.div`
+  border: transparent;
+  margin: 5px;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
+`;
+
+export const lessAnswerButton = styled.div`
+  border: transparent;
+  margin: 5px;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
+`;
+
 export const AskQuestionButton = styled.div`
   // background-color: ${props => props.background};
   alien-item: end;
@@ -206,19 +230,6 @@ export const Buttons = styled.div`
   display: flex;
   alient-content: flex-start;
   flex-direction: row;
-`;
-
-export const moreAnswerButton = styled.div`
-  grid-area: morequestions;
-  border: transparent;
-  margin: 5px;
-  background-color: transparent;
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  cursor: pointer;
-  &:hover {
-    color: #D3D9D9;
-  }
 `;
 
 export const linegradient = styled.div`
