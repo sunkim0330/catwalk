@@ -279,7 +279,9 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
               <br></br>
 
-              <Styles.textSmall>Do you recommend this product?</Styles.textSmall>
+              <Styles.div>
+                <Styles.textSmall>Do you recommend this product?</Styles.textSmall>
+              </Styles.div>
               <Styles.flexContainerShort>
                 <Styles.wrapper>
                   <Styles.radioSmall
