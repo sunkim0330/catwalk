@@ -15,7 +15,10 @@ const QandAs = ({ product, setDateFormat }) => {
     <Index id="QandAstart-div" background={theme.background} className="module">
       <Title>QUESTIONS AND ANSWERS</Title>
       <SearchQandA product={product} setDateFormat={setDateFormat}/>
-      <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)} >ASK A QUESTION +
+      <AskQuestionButton id="ask-question-button" onClick={() => setShow(true)}
+        shadow={theme.shadow}
+        hoverShadow={theme.hoverShadow}
+      >ASK A QUESTION +
       </AskQuestionButton>
       <Modal productId={product.id} title="Ask Your Question" subTitle={product.name} show={show} onClose={() => setShow(false)}/>
     </Index >

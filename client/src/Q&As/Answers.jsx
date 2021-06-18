@@ -27,12 +27,24 @@ const Answers = ({ product, questions, setDateFormat }) => {
     };
   }, [questions]);
 
+  const displayButton = () => {
+    if (collapse) {
+      return <Styles.moreAnswerButton id="more-answer-button" type="button"
+        style = {{display: limit >= answers.length ? 'none' : 'block'}}
+        className="answer_button" onClick={handleClick}
+      > See more answers
+      </Styles.moreAnswerButton>;
+    } else if (collapse === false) {
+      return <Styles.lessAnswerButton onClick={handleClick}> Collapse answers </Styles.lessAnswerButton>;
+    }
+  };
+
 
   const handleClick = () => {
-    setCollapse(!collapse);
     if (collapse === true) {
+      setCollapse(!collapse);
       setLimit(prev => prev + answers.length);
-    } else {
+    } else if (collapse === false) {
       setLimit(2);
     }
   };
@@ -41,12 +53,7 @@ const Answers = ({ product, questions, setDateFormat }) => {
     <Styles.answerContainer id="answer-return-div">
       {answers.slice(0, limit).map(answer => <Answer answer={answer} key={answer.answer_id}/>)}
       <Styles.AnswerButtonWrapper>
-        <Styles.moreAnswerButton id="more-answer-button" type="button"
-          // style = {{display: limit >= answers.length ? 'none' : 'block'}}
-          className="answer_button" onClick={handleClick}
-        >
-          {collapse ? 'See more answers' : 'Collapse answers'}
-        </Styles.moreAnswerButton>
+        {displayButton()}
       </Styles.AnswerButtonWrapper>
       <Styles.linegradient />
     </Styles.answerContainer>

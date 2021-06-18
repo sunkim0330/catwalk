@@ -150,25 +150,47 @@ export const answerhelp = styled.div`
 `;
 
 export const MoreQuestionButton = styled.div`
-  // background-color: ${props => props.background};
   grid-area: morequestion;
-  border: 1px solid #d3d9d9;
   border-radius: 5px;
   width: fit-content;
   margin-top: 10px;
   margin-right: 8px;
   padding: 8px 5px 5px 5px;
+  padding: 5px;
+  box-shadow: ${props => props.shadow};
+  transition: all .3s ease-in-out;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
-  transition: all .5s ease;
   font-family: 'Roboto', sans-serif;
   :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
+    color: #D3D9D9;
+    box-shadow: ${props => props.hoverShadow};
+    transition: all .3s ease-in-out;
   }
+  :active {
+    transform: translateY(2px);
+    }
 `;
+
+/*
+    border-radius: 5px;
+  width: fit-content;
+  margin: 5px 8px 0 5px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: ${props => props.shadow};
+  transition: all .3s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+
+  :hover {
+    color: #D3D9D9;
+    box-shadow: ${props => props.hoverShadow};
+    transition: all .3s ease-in-out;
+  }
+
+  :active {
+    transform: translateY(2px);
+  }
+  }*/
 
 export const AnswerButtonWrapper = styled.div`
   display: flex;
@@ -203,7 +225,6 @@ export const AskQuestionButton = styled.div`
   // background-color: ${props => props.background};
   alien-item: end;
   grid-area: askquestion;
-  border: 1px solid #d3d9d9;
   border-radius: 5px;
   height: 30px;
   width: fit-content;
@@ -211,17 +232,16 @@ export const AskQuestionButton = styled.div`
   margin-right: 8px;
   padding: 7px 5px 1px 5px;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 22%) 2px 2px 4px;
+  box-shadow: ${props => props.shadow};
   transition: all .5s ease;
   font-family:'Roboto', sans-serif;
   :hover {
-    border: 1px solid #CEF1D5;
-    color: #6B636B;
-    box-shadow: none;
-    transition: all .5s ease;
+    color: #D3D9D9;
+    box-shadow: ${props => props.hoverShadow};
+    transition: all .3s ease-in-out;
   }
   :active {
-    transform: translateY(2px)
+    transform: translateY(2px);
   }
 `;
 

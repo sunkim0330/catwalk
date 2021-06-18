@@ -1,15 +1,19 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import Helpful from '../Shared/Helpful.jsx';
 import Modal from './Modal.jsx';
 import * as Styles from './Styles.js';
 import Answers from './Answers.jsx';
+import {Toggle} from '../Shared/ThemeToggle.jsx';
+import {Theme} from '../App.jsx';
 
 const SearchQandA = ({product, setDateFormat}) => {
   const [questions, setQuestions] = useState([]);
   const [loadPage, setLoadPage] = useState(4);
   const [search, setSearch] = useState('');
   const [show, setShow] = useState(false);
+
+  const theme = useContext(Theme);
 
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${product.id}&count=100`)
@@ -60,9 +64,9 @@ const SearchQandA = ({product, setDateFormat}) => {
     sortQuestions();
   }, [questions]);
 
-  const loadMore = useCallback(() => {
+  const loadMore = () => {
     setLoadPage(prev => prev + 2);
-  }, []);
+  };
 
   return (
     <>
@@ -75,7 +79,10 @@ const SearchQandA = ({product, setDateFormat}) => {
       </Styles.QuestionsContainer>
       <Styles.MoreQuestionButton id="more-questions-button"
         style = {{display: loadPage >= questions.length ? 'none' : 'block'}}
-        className="question_button" onClick={loadMore}>
+        className="question_button" onClick={loadMore}
+        shadow={theme.shadow}
+        hoverShadow={theme.hoverShadow}
+      >
         MORE ANSWERED QUESTIONS
       </Styles.MoreQuestionButton>
     </>
