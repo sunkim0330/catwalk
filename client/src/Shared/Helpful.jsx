@@ -20,14 +20,14 @@ const Helpful = ({ origin, id, helpCount }) => {
       styles.width = '125px;';
       styles['border-right'] = 'none;';
     } else {
-      styles.width = '200px;';
+      styles.width = '230px;';
       styles['border-right'] = '1px solid black;';
     }
     return styles;
   });
 
-
   const theme = useContext(Theme);
+
   /*
     const StyledYourComponent = styled(YourComponent)`
     background: ${props => props.active ? 'darkred' : 'limegreen'}

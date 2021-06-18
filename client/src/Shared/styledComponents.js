@@ -39,6 +39,7 @@ display: none;
   transform: translate3d(25%, 0, 0);
 }
 `;
+
 export const Label = styled.label`
   margin-left: 85%;
   margin-top: 20px;
@@ -48,9 +49,7 @@ export const Label = styled.label`
   color: #394a56;
 `;
 
-
 export const ThemeIcon = styled.i`
   color: ${props => props.color};
   transition: all .6s;
 `;
-

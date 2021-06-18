@@ -102,7 +102,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
 
   return (
     <>
-      <Styles.Grid id="reviews-container">
+      <Styles.Grid id="reviews-container" className="module">
         {/* container for average rating, reviews breakdown, recommends, characteristics */}
         {/* <div id="ratings-breakdown"> */}
         <Styles.TitleBlock>
@@ -164,7 +164,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       </Styles.Grid>
 
       {showForm ? (
-        <AddReview product={product} chars={chars} ratings={meta.characteristics} setShowForm={setShowForm} />
+        <AddReview product={product} chars={chars} ratings={meta.characteristics} setShowForm={setShowForm}/>
       ) : (
         null
       )}
