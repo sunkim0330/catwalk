@@ -764,3 +764,7 @@ export const wiggler = style.a`
     color: #D3D9D9;
   }
 `;
+
+export const div = style.div`
+  margin-top: 15px;
+`;
