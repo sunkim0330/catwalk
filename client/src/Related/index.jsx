@@ -21,7 +21,7 @@ const Related = (props) => {
   };
 
   return (
-    <div>
+    <div id="related" className="module">
       <RelatedList product={props.product} setCurrentProduct={props.setProduct} currentStyle={props.defaultStyle} currentChar={props.currentChar}/>
       <OutfitList product={props.product} style={props.defaultStyle} rating={props.rating} setCurrentProduct={props.setProduct}/>
     </div>

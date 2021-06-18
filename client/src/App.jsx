@@ -6,6 +6,7 @@ import QandAs from './Q&As';
 import Reviews from './Reviews';
 import * as Styles from './Shared/styledComponents.js';
 import {Toggle} from './Shared/ThemeToggle.jsx';
+import { InteractionTracker } from './InteractionTracker.jsx';
 
 
 export const themes = {
@@ -126,7 +127,7 @@ const App = () => {
   }, [currentTheme]);
 
   return !product.id || !styles.length || !reviewMetaData.product_id ? <div>Loading Epic Shopping Xperience...</div> : (
-    <div>
+    <InteractionTracker component={
       <Theme.Provider value={currentTheme}>
         <Styles.Title>Not Gucci</Styles.Title>
         <Toggle setCurrentTheme={setCurrentTheme}/>
@@ -134,8 +135,8 @@ const App = () => {
         <Related product={product} setProduct={setProduct} defaultStyle={styles[defaultStyle]} currentChar={product.features} rating={averageRating}/>
         <QandAs product={product} setDateFormat={setDateFormat}/>
         <Reviews product={product} meta={reviewMetaData} averageRating={averageRating} totalReviews={totalReviewCount} setDateFormat={setDateFormat}/>
-      </Theme.Provider>
-    </div>
+      </Theme.Provider>}>
+    </InteractionTracker>
   );
 };
 
