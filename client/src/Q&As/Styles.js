@@ -5,26 +5,26 @@ import styled, {css} from 'styled-components';
 export const Index = styled.div`
   background-color: ${props => props.background};
   height: 676px;
-  min-width: 1500px;
-  max-width: 1500px;
-  width: 1500px;
+  min-width: 1050px;
+  max-width: 1050px;
+  width: 1050px;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
-  margin: auto 30px 100px auto;
+  margin: auto auto 100px auto;
   padding: 10px;
   column-gap: 10px;
   row-gap: 10px;
   display: grid;
-  grid-template-columns: 20% 20% 40% 20%;
+  grid-template-columns: 300px 385px 350px;
   grid-template-rows: 46px 46px 267px 267px 50px;
   column-gap: 10px;
   row-gap: 10px;
   grid-template-areas:
-    "title title . ."
-    "search search search ."
-    "question question question ."
-    "question question question ."
-    "morequestion askquestion . .";
+    "title title . "
+    "search search search"
+    "question question question "
+    "question question question "
+    "morequestion askquestion . ";
 `;
 
 export const Title = styled.h2`
