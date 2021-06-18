@@ -2,8 +2,6 @@ import React, {useEffect, useState, useContext} from 'react';
 import Card from './CardComponent.jsx';
 import {RelatedListDiv, SecondaryTextTitle, ArrowWrapper, ArrowRightDiv, ArrowLeftDiv, ArrowIcon} from './styled.js';
 import axios from 'axios';
-import leftArrow from '../Overview/images/chevron-left.png';
-import rightArrow from '../Overview/images/chevron-right.png';
 import {Theme} from '../App.jsx';
 
 
