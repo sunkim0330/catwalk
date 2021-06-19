@@ -10,6 +10,7 @@
 
 ## Not Gucci
 #### Overview
+---
   - Scroll through product images
   - Select style, size, and quantity
   - Zoom in and pan images
