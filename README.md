@@ -32,28 +32,28 @@
 
 ## Built with
 
-- [React] (https://reactjs.org/)
-- [styled components] (https://styled-components.com/)
+- [React](https://reactjs.org/)
+- [styled components](https://styled-components.com/)
 
 ## Installation
 
 ### Dependencies
 
-- [axios] (https://www.npmjs.com/package/axios)
-- [express] (https://www.npmjs.com/package/express)
-- [react] (https://www.npmjs.com/package/react)
-- [react-dom] (https://www.npmjs.com/package/react-dom)
-- [styled-components] (https://www.npmjs.com/package/react-dom)
-- [nodemon] (https://www.npmjs.com/package/nodemon)
+- [axios](https://www.npmjs.com/package/axios)
+- [express](https://www.npmjs.com/package/express)
+- [react](https://www.npmjs.com/package/react)
+- [react-dom](https://www.npmjs.com/package/react-dom)
+- [styled-components](https://www.npmjs.com/package/react-dom)
+- [nodemon](https://www.npmjs.com/package/nodemon)
 
 ### Getting started
-`npm install`
-`npm run build`
-`npm start`
+- `npm install`
+- `npm run build`
+- `npm start`
 
 ## Team
 
-- [Alex Armstrong] (https://github.com/AlexArms)
-- [Kate Darby] (https://github.com/kate-darby)
-- [Sun Kim] (https://github.com/sunkim0330)
-- [Chris McClelland] (https://github.com/chrimack)
+- [Alex Armstrong](https://github.com/AlexArms)
+- [Kate Darby](https://github.com/kate-darby)
+- [Sun Kim](https://github.com/sunkim0330)
+- [Chris McClelland](https://github.com/chrimack)
