@@ -9,7 +9,7 @@
 </table>
 
 ## Not Gucci
-### Overview
+#### Overview
   - Scroll through product images
   - Select style, size, and quantity
   - Zoom in and pan images
