@@ -1,19 +1,59 @@
 # catwalk
-FEC repo for RFE3's Zion team
+## FEC repo for RFE3's Zion team
+<table>
+<tr>
+<td>
+  A project for Hack Reactor where we will be building an entire front-end for an e-commerce website.
+</td>
+</tr>
+</table>
 
-Title - Project Catwalk
+## Not Gucci
+### Overview
+  - Scroll through product images
+  - Select style, size, and quantity
+  - Zoom in and pan images
+  - Link to social media
 
-Overview - A project for Hack Reactor where we will be building an entire front-end for an e-commerce website.
+### Related products
+  - Scroll through related products
+  - Compare features with main product
+  - Add/remove products to/from 'Your outfit'
 
-Table of Contents
+### Q&A
+  - Search for questions
+  - Ask a new question or add an answer
+  - Mark questions/answers as helpful
 
-Description
+### Reviews
+  - Sort/filter reviews
+  - Submit a new review
+  - See ratings breakdown
 
-Installation
-  - dependencies go here
+## Built with
 
-Usage
+- [React] (https://reactjs.org/)
+- [styled components] (https://styled-components.com/)
 
-Team Members - Chris(Team Lead), Sun(Team Goal Tracker), Kate(Team Member), Alex(Tech Lead)
+## Installation
 
-Roadmap - still deciding. tba
+### Dependencies
+
+- [axios] (https://www.npmjs.com/package/axios)
+- [express] (https://www.npmjs.com/package/express)
+- [react] (https://www.npmjs.com/package/react)
+- [react-dom] (https://www.npmjs.com/package/react-dom)
+- [styled-components] (https://www.npmjs.com/package/react-dom)
+- [nodemon] (https://www.npmjs.com/package/nodemon)
+
+### Getting started
+`npm install`
+`npm run build`
+`npm start`
+
+## Team
+
+- [Alex Armstrong] (https://github.com/AlexArms)
+- [Kate Darby] (https://github.com/kate-darby)
+- [Sun Kim] (https://github.com/sunkim0330)
+- [Chris McClelland] (https://github.com/chrimack)
