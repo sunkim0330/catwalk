@@ -20,16 +20,19 @@
   - Scroll through related products
   - Compare features with main product
   - Add/remove products to/from 'Your outfit'
+  ![related screenshot](https://github.com/FEC-Zion/catwalk/blob/media/Related.png?raw=true)
 
 #### Q&A
   - Search for questions
   - Ask a new question or add an answer
   - Mark questions/answers as helpful
+  ![q&a screenshot](https://github.com/FEC-Zion/catwalk/blob/media/QA.png?raw=true)
 
 #### Reviews
   - Sort/filter reviews
   - Submit a new review
   - See ratings breakdown
+  ![reviews screenshot](https://github.com/FEC-Zion/catwalk/blob/media/Reviews.png?raw=true)
 
 ## Built with
 
