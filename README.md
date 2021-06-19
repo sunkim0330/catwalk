@@ -9,6 +9,7 @@
 </table>
 
 ## Not Gucci
+![overview screenshot](https://github.com/FEC-Zion/catwalk/blob/media/Overview.png?raw=true)
 #### Overview
   - Scroll through product images
   - Select style, size, and quantity
