@@ -29,7 +29,6 @@ const Dropdown = ({ sort, setSort, sortReviewsList, setCurrentReviews, currentRe
             i === 0 ? (
               <Styles.currentSort
                 key={option}
-                // onClick={handleSort}
               >
                 {option}
               </Styles.currentSort>

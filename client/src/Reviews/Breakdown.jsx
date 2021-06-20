@@ -52,7 +52,7 @@ const Breakdown = ({ reviews, reviewsList, setReviewsList, meta, sort, sortRevie
             return displayFilter(filter, index);
           })}
         </Styles.filter>
-        <Styles.remove onClick={handleRemoveFilters}>Remove all filters</Styles.remove>
+        <Styles.remove onClick={handleRemoveFilters}>Clear filters</Styles.remove>
 
       </Styles.spacer>
     );

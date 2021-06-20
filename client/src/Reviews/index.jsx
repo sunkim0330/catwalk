@@ -103,8 +103,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   return (
     <>
       <Styles.Grid id="reviews-container" className="module">
-        {/* container for average rating, reviews breakdown, recommends, characteristics */}
-        {/* <div id="ratings-breakdown"> */}
+
         <Styles.TitleBlock>
           <Styles.title>RATINGS & REVIEWS</Styles.title>
         </Styles.TitleBlock>
@@ -122,9 +121,6 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
         <Breakdown reviews={reviews} reviewsList={reviewsList} setReviewsList={setReviewsList} meta={meta} sort={sort} sortReviewsList={sortReviewsList} />
         <Characteristics chars={chars} ratings={meta.characteristics} />
 
-        {/* </div> */}
-
-        {/* container for sort dropdown, reviews, add review button */}
 
         <Styles.Sort>
           <Styles.flexContainerLong>
