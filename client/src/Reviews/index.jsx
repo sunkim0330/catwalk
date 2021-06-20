@@ -20,8 +20,8 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
 
   const theme = useContext(Theme);
 
-  const getReviews = () => {
-    axios.get(`/reviews?count=100&sort=relevant&product_id=${product.id}`)
+  const getReviews = (id) => {
+    axios.get(`/reviews?count=100&sort=relevant&product_id=${id}`)
       .then((results) => {
         let newReviews = results.data.results;
         setDateFormat(newReviews);
@@ -77,7 +77,7 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
   // get review data
   useEffect(() => {
     if (product.id) {
-      getReviews();
+      getReviews(product.id);
     }
   }, [product.id]);
 
@@ -164,7 +164,13 @@ const Reviews = ({ product, meta, averageRating, totalReviews, setDateFormat }) 
       </Styles.Grid>
 
       {showForm ? (
-        <AddReview product={product} chars={chars} ratings={meta.characteristics} setShowForm={setShowForm}/>
+        <AddReview
+          product={product}
+          chars={chars}
+          ratings={meta.characteristics}
+          setShowForm={setShowForm}
+          getReviews={getReviews}
+        />
       ) : (
         null
       )}
