@@ -60,7 +60,7 @@ const Review = ({ review }) => {
         <div>
           {review.photos.map((photo, index) => {
             return (
-              <div key={index}>
+              <div key={`${review.reviewer_name} photo ${index}`}>
                 <Styles.reviewThumbnail
                   key={index}
                   src={photo.url}
