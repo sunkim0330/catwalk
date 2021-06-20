@@ -152,6 +152,23 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
   };
 
+
+
+  const renderStarButtons = () => {
+    let buttons = [1, 2, 3, 4, 5];
+
+    return buttons.map(button => {
+      return (
+        <Styles.radio
+          type="radio"
+          value={button}
+          name="star"
+          onChange={handleStarEvent}
+        />
+      );
+    });
+  };
+
   useEffect(() => {
 
     let newChars = {};
@@ -180,15 +197,6 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
         return {...prev, rating };
       });
     }
-
-    // if (!isClicked) {
-    //   if (type === 'mouseenter') {
-    //     setUserRating(rating);
-    //   } else {
-    //     setUserRating(0);
-    //   }
-    // }
-
 
   };
 
@@ -227,52 +235,11 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                 <Stars rating={userRating}
                   width='150px'
                   cursor='pointer'
-                  // margin='10px 0'
                   z-index = '-10'
                   position='absolute'
                 />
                 <div style={style}>
-
-                  <Styles.radio
-                    type="radio"
-                    value="1"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
-                  <Styles.radio
-                    type="radio"
-                    value="2"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
-                  <Styles.radio
-                    type="radio"
-                    value="3"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
-                  <Styles.radio
-                    type="radio"
-                    value="4"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
-                  <Styles.radio
-                    type="radio"
-                    value="5"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
+                  {renderStarButtons()}
                 </div>
               </div>
 
