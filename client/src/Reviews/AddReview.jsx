@@ -4,7 +4,7 @@ import Stars from '../Shared/Star.jsx';
 import { Theme } from '../App.jsx';
 import * as Styles from './Styles.js';
 
-const AddReview = ({ product, chars, ratings, setShowForm }) => {
+const AddReview = ({ product, chars, ratings, setShowForm, getReviews }) => {
   const [scale, setScale] = useState({
     Size: ['Too small', '\u00B9/\u2082 a size too small', 'Perfect', '\u00B9/\u2082 a size too big', 'Too big'],
     Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'],
@@ -27,7 +27,7 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
   });
   const [selected, setSelected] = useState({});
   const [userRating, setUserRating] = useState(0);
-  const [isClicked, setIsClicked] = useState(false);
+
 
   const theme = useContext(Theme);
 
@@ -152,6 +152,24 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
 
   };
 
+
+
+  const renderStarButtons = () => {
+    let buttons = [1, 2, 3, 4, 5];
+
+    return buttons.map(button => {
+      return (
+        <Styles.radio
+          key={button}
+          type="radio"
+          value={button}
+          name="star"
+          onChange={handleStarEvent}
+        />
+      );
+    });
+  };
+
   useEffect(() => {
 
     let newChars = {};
@@ -170,24 +188,14 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
   }, [chars]);
 
   const handleStarEvent = (e) => {
-    let rating = e.target.value;
-    let type = e.type;
+    let rating = Number(e.target.value);
 
-    if (type === 'change') {
-      setUserRating(rating);
-      setIsClicked(true);
-      setReviewInfo ((prev) => {
-        return {...prev, rating };
-      });
-    }
 
-    // if (!isClicked) {
-    //   if (type === 'mouseenter') {
-    //     setUserRating(rating);
-    //   } else {
-    //     setUserRating(0);
-    //   }
-    // }
+    setUserRating(rating);
+
+    setReviewInfo ((prev) => {
+      return {...prev, rating };
+    });
 
 
   };
@@ -227,52 +235,11 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                 <Stars rating={userRating}
                   width='150px'
                   cursor='pointer'
-                  // margin='10px 0'
                   z-index = '-10'
                   position='absolute'
                 />
                 <div style={style}>
-
-                  <Styles.radio
-                    type="radio"
-                    value="1"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
-                  <Styles.radio
-                    type="radio"
-                    value="2"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
-                  <Styles.radio
-                    type="radio"
-                    value="3"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
-                  <Styles.radio
-                    type="radio"
-                    value="4"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
-                  <Styles.radio
-                    type="radio"
-                    value="5"
-                    name="star"
-                    onMouseEnter={handleStarEvent}
-                    onMouseLeave={handleStarEvent}
-                    onChange={handleStarEvent}
-                  />
+                  {renderStarButtons()}
                 </div>
               </div>
 
@@ -387,7 +354,6 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
                   return (
                     <div key={index} >
                       <Styles.reviewThumbnail src={image} />
-                      {/* <button style={xbutton}>x</button> */}
                     </div>
                   );
                 })}
@@ -433,7 +399,12 @@ const AddReview = ({ product, chars, ratings, setShowForm }) => {
           </Styles.flexWidth>
 
           <Styles.flexFit>
-            <Submit reviewInfo={reviewInfo} ratings={ratings} closeReview={closeReview} />
+            <Submit
+              reviewInfo={reviewInfo}
+              ratings={ratings}
+              closeReview={closeReview}
+              getReviews={getReviews}
+            />
             <Styles.button
               onClick={closeReview}
               shadow={theme.shadow}

@@ -3,19 +3,18 @@ import axios from 'axios';
 import { Theme } from '../App.jsx';
 import * as Styles from './Styles.js';
 
-const Submit = ({ reviewInfo, ratings, closeReview }) => {
+const Submit = ({ reviewInfo, ratings, closeReview, getReviews }) => {
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState([]);
 
   const theme = useContext(Theme);
 
   const submitReview = () => {
+    console.log(reviewInfo);
     axios.post('/reviews', reviewInfo)
       .then(res => {
         console.log('submitted', res);
-      })
-      .catch(err => {
-        console.log('error: ', err);
+        getReviews(reviewInfo.product_id);
       });
   };
 

@@ -368,7 +368,7 @@ export const bodyContainer = style.div`
 
 export const reviewThumbnail = style.img`
   border: 1px solid;
-  border-color: ${props => props.thumbnailBorder}
+  border-color: ${props => props.thumbnailBorder};
   border-radius: 5px;
   height: 50px;
   margin: auto 8px 5px 0;
@@ -651,8 +651,12 @@ export const bottomBorder = style.div`
 export const fullImage = style.img`
   position: fixed;
   z-index: 10;
+  transform: translate(0%,-50%);
   top: 50%;
   left: 30%;
+  width: 800px;
+  box-shadow: rgb(0 0 0 / 22%) 0px 0px 4px 8px;
+  border-radius: 5px;
 `;
 
 export const button = style.div`

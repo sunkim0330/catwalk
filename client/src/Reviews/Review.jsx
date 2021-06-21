@@ -11,8 +11,6 @@ const Review = ({ review }) => {
     setShowMore(!showMore);
   };
 
-  // display first 250 characters of review body
-  // refactor have only one div tag
   const checkReviewLength = () => {
     if (review.body.length <= 250) {
       return (
@@ -46,21 +44,15 @@ const Review = ({ review }) => {
     }
   };
 
-  // checks for review images
-  // need to set conditional to check for bad urls
-  const checkForImages = () => {
-    // for (let photos in reviews) {
-    //   if (photos.length) {
 
-    //   }
-    // }
+  const checkForImages = () => {
 
     return (
       review.photos.length ? (
         <div>
           {review.photos.map((photo, index) => {
             return (
-              <div key={index}>
+              <div key={`${review.reviewer_name} photo ${index}`}>
                 <Styles.reviewThumbnail
                   key={index}
                   src={photo.url}
@@ -89,15 +81,6 @@ const Review = ({ review }) => {
     setShowImage(true);
   };
 
-  // just to help visualize for now
-  const style = {
-    border: '1px solid black'
-  };
-  const thumbnail = {
-    border: '1px solid black',
-    padding: '5px',
-    width: '100px'
-  };
 
   return (
     <Styles.reviewTile>
@@ -109,13 +92,10 @@ const Review = ({ review }) => {
         </Styles.reviewStars>
         <Styles.text>{review.reviewer_name}, {review.formattedDate}</Styles.text>
       </Styles.topRow>
-      {/* don't think it's possible to reference sales with the API */}
-      {/* <span>verified purchase goes here</span> */}
 
       <Styles.reviewContainer>
         <Styles.summary>{review.summary}</Styles.summary>
         {checkReviewLength()}
-        {/* {checkForImages()} */}
         <Styles.text>{review.recommend ? 'I recommend this product' : null}</Styles.text>
         <Styles.response>
           {review.response ? <span>Response: {review.response}</span> : null}
