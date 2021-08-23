@@ -81,8 +81,20 @@
 
 ## Built with
 
-- [React](https://reactjs.org/)
-- [styled components](https://styled-components.com/)
+**Front End:** [React](https://reactjs.org/), [Axios](https://github.com/axios/axios), and [styled components](https://styled-components.com/)
+
+**Server:** [Node](https://nodejs.org/) and [Express](https://expressjs.com/)
+
+**Deployment:** [AWS](https://aws.amazon.com/) EC2 - 20.04 [Ubuntu](https://ubuntu.com/) - 8gb SDD 1gb RAM
+
+
+## Features
+
+- Light/dark mode toggle
+- Live previews
+- Responsive image and product carousels
+- Persistent local data storage for a user
+- Ability to leave ratings, reviews, questions, and answers
 
 ## Installation
 
