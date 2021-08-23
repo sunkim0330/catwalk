@@ -3,7 +3,7 @@
 <table>
 <tr>
 <td>
-  A project for Hack Reactor where we will be building an entire front-end for an e-commerce website.
+ Build a dynamic store front for a clothing retail company. This app needed to display product information, related products, questions & answers, as well as   ratings & reviews. The app would need to dynamically render all data to allow for the best customer experience.
 </td>
 </tr>
 </table>
